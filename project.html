@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="content" style="border: solid 1px; padding: 20px; background: #ddd;">
+        <button onclick="creat()">aaa</button>
+        <script>
+            document.getElementById("content").style.display = 'none';
+        </script>
+    </div>
+
+
+    <form>
+        <input type="text" placeholder="nhap id" id="id">
+        <input type="password" placeholder="pass" id="pass">
+        <input type="button" value="login" onclick="check();">
+        <p id="hienid"></p>
+    </form>
+    <script>
+        function getid() {
+            let id = document.getElementById("id").value;
+            document.getElementById("hienid").innerHTML = id;
+        }
+    </script>
+
+    <input type="button" value="batdau" onclick="start();">
+    <p id="question"></p>
+
+    <form id="trl">
+
+        <input type="button" value="" id="answer1" onclick="checkkq(answer1.value);">
+        <input type="button" value="" id="answer2" onclick="checkkq(answer2.value);">
+        <input type="button" value="" id="answer3" onclick="checkkq(answer3.value);">
+        <input type="button" value="" id="answer4" onclick="checkkq(answer4.value);">
+        <br>
+        <input type="button" value="pause" id="pau" onclick="pause();">
+        <input type="button" value="play" id="pl" onclick="play();">
+        <script>
+            document.getElementById("pl").style.display = 'none';
+        </script>
+
+        <p id="kqua"></p>
+        <p id="diem"></p>
+        <p id="end"></p>
+        <p id="time"></p>
+    </form>
+
+
+    <script src="project.js"></script>
+</body>
+
+</html>
