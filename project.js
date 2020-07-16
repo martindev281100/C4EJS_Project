@@ -7,11 +7,10 @@ check = function () {
     } else {
         document.getElementById("content").style.display = 'none';
     }
-
 };
+
 function start() {
-    let cauhoi = [
-        {
+    let cauhoi = [{
             title: 'bac ho ten that la gi : ',
             0: 'cung',
             1: 'a',
@@ -54,6 +53,7 @@ function start() {
     let isPaused = false;
     let tim = 3000;
     myf = function () {
+       
         if (!isPaused) {
             if (i == cauhoi.length) {
 
@@ -63,26 +63,51 @@ function start() {
             }
             document.getElementById("question").innerHTML = cauhoi[i].title;
             document.getElementById("answer1").value = cauhoi[i][0];
+
+
             document.getElementById("answer2").value = cauhoi[i][1];
             document.getElementById("answer3").value = cauhoi[i][2];
             document.getElementById("answer4").value = cauhoi[i][3];
             i++;
         }
     };
-    checkkq = function (trl) {
-    
-        let a = trl;
+    check_result = function (form_quizz) {
+
+        let a = form_quizz;
         for (let j = 0; j < cauhoi.length; j++) {
             tim = 0;
             if (a == cauhoi[j].true) {
                 score++;
-              
-            } 
+
+            }
+
         }
+        newEvent = document.getElementById('answer1');
+
     }
     myf();
-
     doquizz = setInterval(myf, tim);
+
+    onClick_skip = function () {
+        onClick_answer1 = document.getElementById('answer1')
+        onClick_answer1.addEventListener('click', () => {
+            myf()
+        })
+        onClick_answer2 = document.getElementById('answer2')
+        onClick_answer2.addEventListener('click', () => {
+            myf()
+        })
+        onClick_answer3 = document.getElementById('answer3')
+        onClick_answer3.addEventListener('click', () => {
+            myf()
+        })
+        onClick_answer4 = document.getElementById('answer4')
+        onClick_answer4.addEventListener('click', () => {
+            myf()
+        })
+    }
+
+    onClick_skip();
 
     pause = function () {
         isPaused = true;
@@ -95,4 +120,3 @@ function start() {
         document.getElementById("pl").style.display = 'none';
     }
 }
-
