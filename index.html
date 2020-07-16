@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <input type="text" placeholder="Enter account" id="input_account">
+            <input type="password" placeholder="Enter password" id="input_password">
+            <button id="btn_logIn">Log In</button>
+        </div>
+        <div>
+            <button id="btn_add">Add items</button>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Questions</th>
+                        <th>Correct Answer</th>
+                        <th>Wrong Answer</th>
+                        <th>Hints</th>
+                        <th>Actions (Update-delete)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="question_content"></td>
+                        <td id="correct_answer"></td>
+                        <td id="wrong_answer"</td>
+                        <td id="hint"></td>
+                        <td>
+                            <button id="btn_update">Update</button>
+                            <button id="btn_delete">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
