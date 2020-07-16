@@ -70,8 +70,7 @@ function start() {
         }
     };
     checkkq = function (trl) {
-        clearInterval(doquizz);
-        doquizz();
+    
         let a = trl;
         for (let j = 0; j < cauhoi.length; j++) {
             tim = 0;
