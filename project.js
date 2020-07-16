@@ -70,16 +70,15 @@ function start() {
         }
     };
     checkkq = function (trl) {
-        clearInterval(doquizz);
-        doquizz();
+     
         let a = trl;
         for (let j = 0; j < cauhoi.length; j++) {
             tim = 0;
             if (a == cauhoi[j].true) {
                 score++;
-                document.getElementById("kqua").textContent = 'dung';
+ 
             } else {
-                document.getElementById("kqua").textContent = 'sai';
+ 
             }
         }
     }
