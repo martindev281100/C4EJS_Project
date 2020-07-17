@@ -53,6 +53,7 @@ function start() {
     let score = 0;
     let isPaused = false;
     const tim = 3000;
+    let current_timer = document.getElementById('timer');
     let myf = function () {
 
         if (!isPaused) {
@@ -67,19 +68,20 @@ function start() {
             document.getElementById("answer2").value = quizz_data[index][1];
             document.getElementById("answer3").value = quizz_data[index][2];
             document.getElementById("answer4").value = quizz_data[index][3];
-            let current_timer = document.getElementById('timer');
             current_timer.innerHTML = 3;
             var count_down = setInterval(() => {
-                current_timer.innerHTML = current_timer.innerHTML - 1;
-
+                current_timer.innerHTML--;
                 console.log(current_timer.innerHTML);
-                if (current_timer.innerHTML == 0) {
+                if (index == quizz_data.length) {
                     let stop = clearInterval(count_down);
                 }
             }, 1000);
             index++;
         }
+
+
     };
+
     check_result = function (form_quizz) {
 
         let a = form_quizz;
