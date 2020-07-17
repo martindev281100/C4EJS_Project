@@ -91,19 +91,23 @@ function start() {
     onClick_skip = function () {
         onClick_answer1 = document.getElementById('answer1')
         onClick_answer1.addEventListener('click', () => {
-            myf()
+            myf();
+            tim = 3000;
         })
         onClick_answer2 = document.getElementById('answer2')
         onClick_answer2.addEventListener('click', () => {
             myf()
+            tim = 3000;
         })
         onClick_answer3 = document.getElementById('answer3')
         onClick_answer3.addEventListener('click', () => {
             myf()
+            tim = 3000;
         })
         onClick_answer4 = document.getElementById('answer4')
         onClick_answer4.addEventListener('click', () => {
             myf()
+            tim =3000;
         })
     }
 
