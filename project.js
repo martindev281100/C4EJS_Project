@@ -48,26 +48,35 @@ function start() {
     // document.getElementById("trl2").value = cauhoi[0][1];
     // document.getElementById("trl3").value = cauhoi[0][2];
     // document.getElementById("trl4").value = cauhoi[0][3];
+
     let index = 0;
     let score = 0;
     let isPaused = false;
-    let tim = 3000;
-    myf = function () {
+    const tim = 3000;
+    let myf = function () {
 
         if (!isPaused) {
             if (index == quizz_data.length) {
 
-                timer.stop();
+                clear();
                 document.getElementById("end").innerHTML = 'ket thuc';
                 document.getElementById("diem").innerHTML = 'Diem cua ban : ' + score;
             }
             document.getElementById("question").innerHTML = quizz_data[index].title;
             document.getElementById("answer1").value = quizz_data[index][0];
-
-
             document.getElementById("answer2").value = quizz_data[index][1];
             document.getElementById("answer3").value = quizz_data[index][2];
             document.getElementById("answer4").value = quizz_data[index][3];
+            let current_timer = document.getElementById('timer');
+            current_timer.innerHTML = 3;
+            var count_down = setInterval(() => {
+                current_timer.innerHTML = current_timer.innerHTML - 1;
+
+                console.log(current_timer.innerHTML);
+                if (current_timer.innerHTML == 0) {
+                    let stop = clearInterval(count_down);
+                }
+            }, 1000);
             index++;
         }
     };
@@ -75,116 +84,86 @@ function start() {
 
         let a = form_quizz;
         for (let j = 0; j < quizz_data.length; j++) {
-            tim = 0;
             if (a == quizz_data[j].true) {
                 score++;
 
             }
 
         }
-        newEvent = document.getElementById('answer1');
 
     }
     myf();
     // doquizz = setInterval(myf, tim);
 
-    let timer_count = function(){
-        let current_timer = document.getElementById('timer');
-        current_timer.innerHTML = 3;
-        var count_down = setInterval(() => {
-            current_timer.innerHTML = current_timer.innerHTML - 1;
-            
-            console.log(current_timer.innerHTML);
-            if(current_timer.innerHTML == 0)
-            {
-                let stop = clearInterval(count_down)
-                myf();
-            }
-        }, 1000);
+    let timer_count = function () {
+
     }
-    timer_count();
-        
-    
-    var timer = new Timer(function() {
-        myf();
-    }, 5000);
-    function Timer(fn, t) {
-        var timerObj = setInterval(fn, t);
-        
-        this.stop = function () {
-            if (timerObj) {
-                clearInterval(timerObj);
-                timerObj = null;
-                clearInterval(count_down);
-            }
-            return this;
-        }
 
-        // start timer using current settings (if it's not already running)
-        this.start = function () {
-            if (!timerObj) {
-                this.stop();
-                timerObj = setInterval(fn, t);
-                timer_count();
-            }
-            return this;
-        }
 
-        // start with new or original interval, stop current interval
-        this.reset = function (newT = t) {
-            t = newT;
-            return this.stop().start();
-        }
+    // var timer = new Timer(function() {
+    //     myf();
+    // }, 5000);
+    // function Timer(fn, t) {
+    //     var timerObj = setInterval(fn, t);
+
+    //     this.stop = function () {
+    //         if (timerObj) {
+    //             clearInterval(timerObj);
+    //             timerObj = null;
+    //             clearInterval(count_down);
+    //         }
+    //         return this;
+    //     }
+
+    //     // start timer using current settings (if it's not already running)
+    //     this.start = function () {
+    //         if (!timerObj) {
+    //             this.stop();
+    //             timerObj = setInterval(fn, t);
+    //             timer_count();
+    //         }
+    //         return this;
+    //     }
+
+    //     // start with new or original interval, stop current interval
+    //     this.reset = function (newT = t) {
+    //         t = newT;
+    //         return this.stop().start();
+    //     }
+    // }
+    let start = function () {
+        setInterval(() => {
+            myf();
+        }, tim);
+    }
+    let clear = function () {
+        clearInterval(start);
     }
 
     onClick_skip = function () {
         onClick_answer1 = document.getElementById('answer1')
         onClick_answer1.addEventListener('click', () => {
+            clear();
             myf();
-            // switch interval to 10 seconds
-            timer.reset(3000);
-
-            // stop the timer
-            timer.stop();
-
-            // start the timer
-            timer.start();
+            start();
         })
         onClick_answer2 = document.getElementById('answer2')
         onClick_answer2.addEventListener('click', () => {
-            myf()
-            // switch interval to 10 seconds
-            timer.reset(3000);
-
-            // stop the timer
-            timer.stop();
-
-            // start the timer
-            timer.start();
+            clear();
+            myf();
+            start();
         })
         onClick_answer3 = document.getElementById('answer3')
         onClick_answer3.addEventListener('click', () => {
-            myf()
-            // switch interval to 10 seconds
-            timer.reset(3000);
-
-            // stop the timer
-            timer.stop();
-
-            // start the timer
-            timer.start();
+            clear();
+            myf();
+            start();
         })
         onClick_answer4 = document.getElementById('answer4')
         onClick_answer4.addEventListener('click', () => {
-            myf()
-            // switch interval to 10 seconds
-            timer.reset(3000);
-
-            // stop the timer
-            timer.stop();
-
-            // start the timer
-            timer.start();
+            clear();
+            myf();
+            start();
         })
     }
 
