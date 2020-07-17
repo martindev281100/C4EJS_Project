@@ -53,7 +53,7 @@ function start() {
     let isPaused = false;
     let tim = 3000;
     myf = function () {
-       
+
         if (!isPaused) {
             if (index == quizz_data.length) {
 
@@ -88,26 +88,81 @@ function start() {
     myf();
     doquizz = setInterval(myf, tim);
 
+    function Timer(fn, t) {
+        var timerObj = setInterval(fn, t);
+
+        this.stop = function () {
+            if (timerObj) {
+                clearInterval(timerObj);
+                timerObj = null;
+            }
+            return this;
+        }
+
+        // start timer using current settings (if it's not already running)
+        this.start = function () {
+            if (!timerObj) {
+                this.stop();
+                timerObj = setInterval(fn, t);
+            }
+            return this;
+        }
+
+        // start with new or original interval, stop current interval
+        this.reset = function (newT = t) {
+            t = newT;
+            return this.stop().start();
+        }
+    }
+
     onClick_skip = function () {
         onClick_answer1 = document.getElementById('answer1')
         onClick_answer1.addEventListener('click', () => {
             myf();
-            tim = 3000;
+            // switch interval to 10 seconds
+            timer.reset(3000);
+
+            // stop the timer
+            timer.stop();
+
+            // start the timer
+            timer.start();
         })
         onClick_answer2 = document.getElementById('answer2')
         onClick_answer2.addEventListener('click', () => {
             myf()
-            tim = 3000;
+            // switch interval to 10 seconds
+            timer.reset(3000);
+
+            // stop the timer
+            timer.stop();
+
+            // start the timer
+            timer.start();
         })
         onClick_answer3 = document.getElementById('answer3')
         onClick_answer3.addEventListener('click', () => {
             myf()
-            tim = 3000;
+            // switch interval to 10 seconds
+            timer.reset(3000);
+
+            // stop the timer
+            timer.stop();
+
+            // start the timer
+            timer.start();
         })
         onClick_answer4 = document.getElementById('answer4')
         onClick_answer4.addEventListener('click', () => {
             myf()
-            tim =3000;
+            // switch interval to 10 seconds
+            timer.reset(3000);
+
+            // stop the timer
+            timer.stop();
+
+            // start the timer
+            timer.start();
         })
     }
 
