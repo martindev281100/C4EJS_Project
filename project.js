@@ -10,7 +10,7 @@ check = function () {
 };
 
 function start() {
-    let cauhoi = [{
+    let quizz_data = [{
             title: 'bac ho ten that la gi : ',
             0: 'cung',
             1: 'a',
@@ -48,35 +48,35 @@ function start() {
     // document.getElementById("trl2").value = cauhoi[0][1];
     // document.getElementById("trl3").value = cauhoi[0][2];
     // document.getElementById("trl4").value = cauhoi[0][3];
-    let i = 0;
+    let index = 0;
     let score = 0;
     let isPaused = false;
     let tim = 3000;
     myf = function () {
        
         if (!isPaused) {
-            if (i == cauhoi.length) {
+            if (index == quizz_data.length) {
 
                 clearInterval(doquizz);
                 document.getElementById("end").innerHTML = 'ket thuc';
                 document.getElementById("diem").innerHTML = 'Diem cua ban : ' + score;
             }
-            document.getElementById("question").innerHTML = cauhoi[i].title;
-            document.getElementById("answer1").value = cauhoi[i][0];
+            document.getElementById("question").innerHTML = quizz_data[index].title;
+            document.getElementById("answer1").value = quizz_data[index][0];
 
 
-            document.getElementById("answer2").value = cauhoi[i][1];
-            document.getElementById("answer3").value = cauhoi[i][2];
-            document.getElementById("answer4").value = cauhoi[i][3];
-            i++;
+            document.getElementById("answer2").value = quizz_data[index][1];
+            document.getElementById("answer3").value = quizz_data[index][2];
+            document.getElementById("answer4").value = quizz_data[index][3];
+            index++;
         }
     };
     check_result = function (form_quizz) {
 
         let a = form_quizz;
-        for (let j = 0; j < cauhoi.length; j++) {
+        for (let j = 0; j < quizz_data.length; j++) {
             tim = 0;
-            if (a == cauhoi[j].true) {
+            if (a == quizz_data[j].true) {
                 score++;
 
             }
