@@ -57,7 +57,7 @@ function start() {
         if (!isPaused) {
             if (index == quizz_data.length) {
 
-                clearInterval(doquizz);
+                timer.stop();
                 document.getElementById("end").innerHTML = 'ket thuc';
                 document.getElementById("diem").innerHTML = 'Diem cua ban : ' + score;
             }
@@ -86,15 +86,36 @@ function start() {
 
     }
     myf();
-    doquizz = setInterval(myf, tim);
+    // doquizz = setInterval(myf, tim);
 
+    let timer_count = function(){
+        let current_timer = document.getElementById('timer');
+        current_timer.innerHTML = 3;
+        var count_down = setInterval(() => {
+            current_timer.innerHTML = current_timer.innerHTML - 1;
+            
+            console.log(current_timer.innerHTML);
+            if(current_timer.innerHTML == 0)
+            {
+                let stop = clearInterval(count_down)
+                myf();
+            }
+        }, 1000);
+    }
+    timer_count();
+        
+    
+    var timer = new Timer(function() {
+        myf();
+    }, 5000);
     function Timer(fn, t) {
         var timerObj = setInterval(fn, t);
-
+        
         this.stop = function () {
             if (timerObj) {
                 clearInterval(timerObj);
                 timerObj = null;
+                clearInterval(count_down);
             }
             return this;
         }
@@ -104,6 +125,7 @@ function start() {
             if (!timerObj) {
                 this.stop();
                 timerObj = setInterval(fn, t);
+                timer_count();
             }
             return this;
         }
