@@ -27,6 +27,7 @@ unclicked_btn_add = function () {
     document.getElementById('form-add').style.display = 'none';
 }
 unclicked_btn_add();
+
 clicked_btn_add = function () {
     document.getElementById('form-add').style.display = 'block';
 }
@@ -41,6 +42,7 @@ btn_add.addEventListener('click', function () {
 btn_add_item.addEventListener('click', function () {
     //Code Event khi click thêm câu hỏi mới
     unclicked_btn_add();
+    btn_add.style.display = 'block';
 })
 
 check = function () {
