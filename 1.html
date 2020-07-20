@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+
+<body>
+    <div id="reStart" onclick="reGame();">Chơi lại</div>
+    <div id="chude">
+        <input type="button" value="chude1" onclick="start(0);">
+        <input type="button" value="chude2" onclick="start(1)">
+    <script>
+        document.getElementById("reStart").style.display = 'none';
+    </script>
+    </div>
+
+
+    <div id="formGame">
+        <div id="cauHoi"></div>
+        <input class="ans" type="button" value="" id="c1" onclick="check(c1.value,1);">  
+        <input class="ans" type="button" value="" id="c2" onclick="check(c2.value,2);"> 
+        <input class="ans" type="button" value="" id="c3" onclick="check(c3.value,3);"> 
+        <input class="ans" type="button" value="" id="c4" onclick="check(c4.value,4);"> 
+        <input class="ans" type="button" value="hint" id="hint" onclick="hint();">
+        <script>
+            document.getElementById("formGame").style.display = 'none';
+        </script>
+    </div id="formGame">
+    <div id="thongBaoKq"></div>
+   <div id="end">
+       <div id="score"></div>
+   </div>
+
+
+
+
+
+    <script src="1.js"></script>
+</body>
+
+</html>
