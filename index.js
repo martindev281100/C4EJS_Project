@@ -45,10 +45,15 @@ btn_add_item.addEventListener('click', function () {
     btn_add.style.display = 'block';
 })
 
+const btn_logIn = document.getElementById('btn_logIn');
+btn_logIn.addEventListener('click', function () {
+    check();
+})
+
 check = function () {
     const account = document.getElementById("input_account").value;
     const password = document.getElementById("input_password").value;
-    console.log(account + password)
+    console.log(account + password);
     if (account == "admin" && password == "1234") {
         authorized_form();
     } else {
@@ -56,10 +61,7 @@ check = function () {
     }
 };
 
-const btn_logIn = document.getElementById('btn_logIn');
-btn_logIn.addEventListener('click', function () {
-    check();
-})
+
 
 const btn_logOut = document.getElementById('btn_logOut')
 btn_logOut.addEventListener('click', function () {
