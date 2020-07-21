@@ -5,11 +5,13 @@ let unauthorized_form = function () {
     document.getElementById("btn_add").style.display = 'none';
     document.getElementById('btn_logIn').hidden = false;
     document.getElementById('btn_register').hidden = false;
-    document.getElementById('btn_logOut').style.display = 'none';
+    document.getElementById('btn_logOut').hidden = true;
     document.getElementById('input_account').style.display = 'block';
     document.getElementById('input_password').style.display = 'block';
     document.getElementById('col_hint').hidden = true;
     document.getElementById('col_hint_title').hidden = true;
+    document.getElementById('btn_add').hidden = true;
+    document.getElementById('form-add').hidden = true;
 }
 unauthorized_form();
 
@@ -17,15 +19,15 @@ let user_authorized = function () {
     document.getElementById("col_action").hidden = true;
     document.getElementById("col_action_title").hidden = true;
     document.getElementById("btn_add").style.display = 'none';
-    document.getElementById('btn_logIn').style.display = 'block';
-    document.getElementById('btn_logOut').style.display = 'none';
+    document.getElementById('btn_logIn').hidden = true;
+    document.getElementById('btn_logOut').hidden = false;
     document.getElementById('btn_register').hidden = true;
     document.getElementById('input_account').style.display = 'block';
     document.getElementById('input_password').style.display = 'block';
     document.getElementById('col_hint').hidden = true;
     document.getElementById('col_hint_title').hidden = true;
     document.getElementById('table_questions').hidden = false;
-
+    document.getElementById('form_register').hidden = true;
 }
 
 let authorized_form = function () {
@@ -40,14 +42,16 @@ let authorized_form = function () {
     document.getElementById('input_password').style.display = 'none';
     document.getElementById('col_hint').hidden = false;
     document.getElementById('col_hint_title').hidden = false;
+
 }
 
-unclicked_btn_add = function () {
+
+let unclicked_btn_add = function () {
     document.getElementById('form-add').style.display = 'none';
 }
 unclicked_btn_add();
 
-clicked_btn_add = function () {
+let clicked_btn_add = function () {
     document.getElementById('form-add').style.display = 'block';
 }
 
@@ -69,25 +73,19 @@ btn_logIn.addEventListener('click', function () {
     check();
 })
 
-let arr_account = [{
-    'username': 'martin',
-    'password': 2,
-}, {
-    'username': 'user',
-    'password': 1,
-}, {
-    'username': 'user2',
-    'password': 1,
-}]
+let arr_account = []
 
 check = function () {
     const account = document.getElementById("input_account").value;
     const password = document.getElementById("input_password").value;
     console.log(account + password);
+    if (account == 'admin' && password == 1234) {
+        authorized_form();
+        console.log('Logged in')
+    }
     for (let i = 0; i < arr_account.length; i++) {
-        if (account == 'admin' && password == 1234) {
-            authorized_form();
-        } else if (account == arr_account[i]['username'] && password == arr_account[i]['password']) {
+        if (account == arr_account[i]['email'] && password == arr_account[i]['password']) {
+            console.log('Logged in')
             user_authorized();
         } else {
             unauthorized_form();
@@ -99,4 +97,46 @@ check = function () {
 const btn_logOut = document.getElementById('btn_logOut')
 btn_logOut.addEventListener('click', function () {
     unauthorized_form();
+})
+
+
+let validate_registration = function () {
+    const input_fName = document.getElementById('input_fName').value;
+    const input_email = document.getElementById('input_email').value;
+    const input_regPassword = document.getElementById('input_regPassword').value;
+    const input_cPassword = document.getElementById('input_cPassword').value;
+
+    const newObj = {
+        'full_name': input_fName,
+        'email': input_email,
+        'password': input_cPassword,
+    }
+    if (input_email == "" || input_fName == "" || input_cPassword == "" || input_regPassword == "") {
+        alert('All form must be filled out');
+    } else if (input_regPassword != input_cPassword) {
+        alert('Password must be match!')
+    } else {
+        arr_account.push(newObj)
+    }
+}
+
+let unclicked_btn_reg = function () {
+    document.getElementById('form_register').hidden = true;
+}
+unclicked_btn_reg();
+let clicked_btn_reg = function () {
+    document.getElementById('form_register').hidden = false;
+}
+const btn_register = document.getElementById('btn_register')
+btn_register.addEventListener('click', function () {
+    clicked_btn_reg();
+})
+
+const btn_reg = document.getElementById('btn_reg')
+btn_reg.addEventListener('click', function () {
+    console.log(input_cPassword + ' - ' + input_regPassword + ' - ' + input_fName + ' - ' + input_email)
+    console.log('clicked')
+    validate_registration();
+    console.log(arr_account)
+
 })
