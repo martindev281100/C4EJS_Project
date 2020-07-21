@@ -1,4 +1,5 @@
-unauthorized_form = function () {
+let unauthorized_form = function () {
+    document.getElementById('table_questions').hidden = true;
     document.getElementById("col_action").hidden = true;
     document.getElementById("col_action_title").hidden = true;
     document.getElementById("btn_add").style.display = 'none';
@@ -11,7 +12,22 @@ unauthorized_form = function () {
 }
 unauthorized_form();
 
-authorized_form = function () {
+let user_authorized = function () {
+    document.getElementById("col_action").hidden = true;
+    document.getElementById("col_action_title").hidden = true;
+    document.getElementById("btn_add").style.display = 'none';
+    document.getElementById('btn_logIn').style.display = 'block';
+    document.getElementById('btn_logOut').style.display = 'none';
+    document.getElementById('input_account').style.display = 'block';
+    document.getElementById('input_password').style.display = 'block';
+    document.getElementById('col_hint').hidden = true;
+    document.getElementById('col_hint_title').hidden = true;
+    document.getElementById('table_questions').hidden = false;
+
+}
+
+let authorized_form = function () {
+    document.getElementById('table_questions').hidden = false;
     document.getElementById("col_action").hidden = false;
     document.getElementById("col_action_title").hidden = false;
     document.getElementById("btn_add").style.display = 'block';
@@ -50,17 +66,31 @@ btn_logIn.addEventListener('click', function () {
     check();
 })
 
+let arr_account = [{
+    'username': 'martin',
+    'password': 2,
+}, {
+    'username': 'user',
+    'password': 1,
+}, {
+    'username': 'user2',
+    'password': 1,
+}]
+
 check = function () {
     const account = document.getElementById("input_account").value;
     const password = document.getElementById("input_password").value;
     console.log(account + password);
-    if (account == "admin" && password == "1234") {
-        authorized_form();
-    } else {
-        unauthorized_form();
+    for (let i = 0; i < arr_account.length; i++) {
+        if (account == 'admin' && password == 1234) {
+            authorized_form();
+        } else if (account == arr_account[i]['username'] && password == arr_account[i]['password']) {
+            user_authorized();
+        } else {
+            unauthorized_form();
+        }
     }
 };
-
 
 
 const btn_logOut = document.getElementById('btn_logOut')
