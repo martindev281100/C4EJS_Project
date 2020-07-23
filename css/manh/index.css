@@ -1,3 +1,27 @@
-.manh_container{
+.manh_container {
     margin: 10px ;
 }
+.col_action {
+    width: 10%;
+}
+.col_hint {
+    width: 20%;
+}
+.question_content {
+    width: 20%;
+}
+.correct_answer {
+    width: 20%;
+}
+.btn_update {
+    width: 100%;
+}
+.btn_delete {
+    width: 100%;
+}
+#table_head {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 20px;
+}
+
