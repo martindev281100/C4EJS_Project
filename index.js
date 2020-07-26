@@ -813,6 +813,7 @@ start = function (chudeinput) {
 
     document.getElementById("chude").style.display = 'none';
     document.getElementById("formGame").style.display = 'block';
+    alert('smt')
 
     let score = 0;
 
