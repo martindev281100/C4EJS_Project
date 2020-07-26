@@ -1,5 +1,4 @@
-let general_topic = [
-    {
+let general_topic = [{
         question: "What causes ocean tides?",
         correctAnswer: "The pull of gravity from the Moon and the Sun",
         wrongAnswers: [
@@ -8,7 +7,7 @@ let general_topic = [
             "The Earth spin around its axis",
         ],
         hint: "Not only one cause",
-        },
+    },
     {
         question: "What is the biggest animal that ever lived?",
         correctAnswer: "Blue whale",
@@ -101,8 +100,7 @@ let general_topic = [
     }
 ];
 
-let math_topic = [
-    {
+let math_topic = [{
         question: "Bo is buying candy by the pound. For every 10 pounds, he pays $23. What is the cost per pound?",
         correctAnswer: "$2.30",
         wrongAnswers: [
@@ -204,8 +202,7 @@ let math_topic = [
     },
 ];
 
-let calculation_topic = [
-    {
+let calculation_topic = [{
         question: "1 + 1 = ?",
         correctAnswer: "2",
         wrongAnswers: [
@@ -297,8 +294,7 @@ let calculation_topic = [
     },
 ];
 
-let coding_topic = [
-    {
+let coding_topic = [{
         questions: "What is a list of steps you can follow to finish a task?",
         correctAnswer: "Algorithm",
         wrongAnswers: [
@@ -307,7 +303,7 @@ let coding_topic = [
             "Code",
         ],
         hint: "",
-    }, 
+    },
     {
         questions: "What is an error in a program that prevents the program from running as expected?",
         correctAnswer: "Bug",
@@ -337,7 +333,7 @@ let coding_topic = [
             "Program",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "What is a sprite?",
         correctAnswer: "A 2D object on the stage that can be given commands",
@@ -347,7 +343,7 @@ let coding_topic = [
             "The area where all commands are typed",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "What is the stage?",
         correctAnswer: "The area where the visual output of a program is displayed",
@@ -357,7 +353,7 @@ let coding_topic = [
             "Python",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "What is a comment?",
         correctAnswer: "A line that is used to provide information about the code",
@@ -367,7 +363,7 @@ let coding_topic = [
             "The area where all commands are typed",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "What is a variable?",
         correctAnswer: "A name that stores a value",
@@ -377,7 +373,7 @@ let coding_topic = [
             "Program",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "What is a Pixel?",
         correctAnswer: "The unit of measurement on the stage",
@@ -387,7 +383,7 @@ let coding_topic = [
             "Codesters",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "What is a Binary Code?",
         correctAnswer: "Information that a computer can understand",
@@ -397,11 +393,10 @@ let coding_topic = [
             "Fraction",
         ],
         hint: "",
-    }   
+    }
 ];
 
-let environment_topic = [
-    {
+let environment_topic = [{
         questions: "Which of the following objects can temporarily resist the force of gravity?",
         correctAnswer: "Airplane",
         wrongAnswers: [
@@ -410,7 +405,7 @@ let environment_topic = [
             "Motorcycle",
         ],
         hint: "",
-    },  
+    },
     {
         questions: "Which source of electric energy is non-renewable?",
         correctAnswer: "Coal",
@@ -420,7 +415,7 @@ let environment_topic = [
             "Dams",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "Which type of rock is formed from the cooling of lava and magma?",
         correctAnswer: "Igneous",
@@ -430,7 +425,7 @@ let environment_topic = [
             "Metamorphic",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "Which type of rock is made from many other rocks cementing together in layers?",
         correctAnswer: "Sedimentary",
@@ -440,7 +435,7 @@ let environment_topic = [
             "Metamorphic",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "Where does the sun find its greatest source of water to turn into vapor?",
         correctAnswer: "Oceans",
@@ -450,7 +445,7 @@ let environment_topic = [
             "Rivers",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "If humidity needs warm air and moisture to exist, which environment would have higher humidity?",
         correctAnswer: "Rainforest",
@@ -460,7 +455,7 @@ let environment_topic = [
             "Desert",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "Which environment has higher latitudes, moderate precipitation, and low temperatures?",
         correctAnswer: "Tundra",
@@ -470,7 +465,7 @@ let environment_topic = [
             "Desert",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "If the Sun is shining in the sky over Florida at 1:00pm on Tues., where will it be in 24 hours?",
         correctAnswer: "Shining in the sky over Florida",
@@ -480,7 +475,7 @@ let environment_topic = [
             "Rising in the east over Japan",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "Why does the Earth have changing seasons?",
         correctAnswer: "The Earth revolves around the Sun every 365 days",
@@ -490,7 +485,7 @@ let environment_topic = [
             "The amount of humidity the Sun creates in the atmosphere",
         ],
         hint: "",
-    },   
+    },
     {
         questions: "Of what is Earth's crust made?",
         correctAnswer: "Rock",
@@ -500,13 +495,13 @@ let environment_topic = [
             "Water",
         ],
         hint: "",
-    },   
+    },
 ];
 // document.getElementById("redirect-to-login").onclick = function () {
 //     document.getElementById("register-form").style.display = "none";
 //     document.getElementById("login-form").style.display = "block";
 //     }
-    
+
 //     document.getElementById("redirect-to-register").onclick = function () {
 //     document.getElementById("register-form").style.display = "block";
 //     document.getElementById("login-form").style.display = "none";
@@ -713,17 +708,22 @@ let validate_registration = function () {
     if (input_email == "" || input_fName == "" || input_cPassword == "" || input_regPassword == "") {
         alert('All form must be filled out');
     } else if (input_regPassword != input_cPassword) {
-        alert('Password must be match!');
+        let alert_warning = document.getElementById('alert_warning');
+        alert_warning.innerHTML = 'Password must be match!';
+        alert_warning.hidden = false;
+        setTimeout(function () {
+            alert_warning.hidden = true;
+        }, 3000)
     } else {
         if (reg == true) {
             arr_account.push(newObj);
             console.log(arr_account)
             document.getElementById('alert_success').hidden = false;
+            document.getElementById('alert_success').innerHTML = 'Registration success!'
             setTimeout(function () {
                 document.getElementById('alert_success').hidden = true;
             }, 3000)
         }
-
     }
 }
 let unclicked_btn_reg = function () {
@@ -776,7 +776,7 @@ let checkReg = function () {
                 alert_warning.hidden = true;
             }, 3000)
             reg = false;
-            break; 
+            break;
         } else {
             reg = true;
         }
@@ -911,13 +911,6 @@ start = function (chudeinput) {
         i = 0;
 
     }
-    // toMau = function (kq) {
-    //     document.getElementById(kq).style.background = "red";
-    //     a = setTimeout(() => {
-    //         document.getElementById(kq).style.background = "white";
-    //     }, 1000);
-    // }
-
     doihint = () => {
         document.getElementById("score").innerHTML = "Diem cua ban la : " + userscore;
         console.log(score + ' ' + userscore);
@@ -942,8 +935,6 @@ start = function (chudeinput) {
         score -= 0.5;
         console.log(score);
         let cc = 'c';
-
-
         let arr = [];
         for (let i3 = 1; i3 < 5; i3++) {
             //let rand = Math.ceil(Math.random()*4);
