@@ -75,6 +75,16 @@ div
 }
 
 
+<<<<<<< HEAD
+=======
+p a
+{
+	display: inline;
+	position: relative;
+	color: inherit;
+	border-bottom: solid 1px #ffa07f;
+}
+>>>>>>> 88a5e5e7aea3edbbf16af13c43ecb15ff39085af
 a, a:hover, a:visited, a:active, a:link
 {
 	text-decoration: none;
