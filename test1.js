@@ -77,7 +77,7 @@ let arr_account = [{
     'full_name': 'a',
     'email': 'a',
     'password': 'a',
-    score: 69
+    score: 10
 }
 ];
 
@@ -108,10 +108,10 @@ btn_logOut.addEventListener('click', function () {
     unauthorized_form();
     i = 0;
     score = 0;
-    //stop();
+    stop();
     c = [];
     console.log("logout");
-    reGame();
+    playGame();
 
 });
 
@@ -158,6 +158,7 @@ btn_reg.addEventListener('click', function () {
 });
 
 
+
 let data = [
     {
         question: "What causes ocean tides?",
@@ -178,17 +179,17 @@ let data = [
             "Sperm whale",
         ],
         hint: "Fish",
+    },
+    {
+        question: "What is culture?",
+        correctAnswer: "The features of everyday life shared by a group",
+        wrongAnswers: [
+            "A person's individual traits",
+            "Something different that one person does in their daily life",
+            "Having respect and acceptance for people different than you",
+        ],
+        hint: "Stem from more than one person",
     }
-    // {
-    //     question: "What is culture?",
-    //     correctAnswer: "The features of everyday life shared by a group",
-    //     wrongAnswers: [
-    //         "A person's individual traits",
-    //         "Something different that one person does in their daily life",
-    //         "Having respect and acceptance for people different than you",
-    //     ],
-    //     hint: "Stem from more than one person",
-    // },
     // {
     //     question: "Who sets the standards that create a culture?",
     //     correctAnswer: "All People",
@@ -353,36 +354,46 @@ let math = [
     },
 ];
 
-reGame = function () {
+
+chonchude = function () {
     document.getElementById("chude").style.display = 'block';
-   // document.getElementById("reStart").style.display = 'none';
+
 }
+playGame = function () {
+    document.getElementById("chude").style.display = 'block';
+    document.getElementById("play").style.display = 'none';
+    document.getElementById("formGame").style.display = 'none';
+}
+let i = 0;
+var out = false;
+let userscore = 0;
+let login = false;
+let iAcc;
+checkAcc = function () {
+    let idAcc = document.getElementById("input_account").value;
+    let passAcc = document.getElementById("input_password").value;
 
+    for (let i in arr_account) {
+        if (arr_account[i].email == idAcc) {
 
-
-
-
+            login = true;
+            iAcc = i;
+            alert(iAcc);
+        }
+    }
+}
 start = function (chudeinput) {
-    let i = 0;
-    let loginn = false;
-    let trangthailogin = document.getElementById("account").innerHTML
-    if (trangthailogin != "") {
-        loginn = true;
+    if (document.getElementById("account").innerHTML != "") {
     };
-    let userscore = 0;
-    if (loginn == true) {
-        userscore = arr_account[0].score;
-    };
-
     document.getElementById("chude").style.display = 'none';
     document.getElementById("formGame").style.display = 'block';
 
     let score = 0;
-    let timeRun = 3000;
-    var isPaused = false;
+
     var chuDe = chudeinput;
     let c = [];
     run = function () {
+
         c.push(chuDe[i].wrongAnswers[0]);
         c.push(chuDe[i].wrongAnswers[1]);
         c.push(chuDe[i].wrongAnswers[2]);
@@ -393,15 +404,29 @@ start = function (chudeinput) {
         for (let i1 = 1; i1 < 5; i1++) {
             rand = Math.floor(Math.random() * c.length);
             document.getElementById('c' + i1).value = c[rand];
-            document.getElementById("c" + i1).style.background = 'white';
+            document.getElementById("c" + i1).style.background = 'rgb(64, 204, 8)';
             c.splice(rand, 1);
         };
-
-        document.getElementById("score").innerHTML = score;
     }
-    run();
-    check = function (valuec, idtab) {
 
+    run();
+    logout = function () {
+        i = 0;
+        score = 0;
+        userscore = 0;
+        login = false;
+        stop();
+        chonchude();
+        alert("logout");
+        document.getElementById("account").innerHTML = "";
+    };
+    if (login == true) {
+        alert('ok');
+    };
+    if (login == true) {
+        userscore = arr_account[iAcc].score;
+    };
+    check = function (valuec, idtab) {
         let kq = valuec;
         let idthe = 'c' + idtab;
         let idtrue = 'c';
@@ -409,12 +434,15 @@ start = function (chudeinput) {
         for (let j in chuDe) {
             if (kq == chuDe[j].correctAnswer) {
                 score++;
+
                 xanh = setTimeout(() => {
                     document.getElementById("thongBaoKq").innerHTML = 'dung';
                     if (document.getElementById(idthe).value == chuDe[j].correctAnswer) {
                         document.getElementById(idthe).style.background = "green";
+
                     }
                 }, 500);
+
             } else {
                 vang = setTimeout(() => {
                     document.getElementById("thongBaoKq").innerHTML = 'sai';
@@ -424,56 +452,70 @@ start = function (chudeinput) {
                         }
                     }
                 }, 499);
+
             }
         }
         let endGame = setTimeout(() => {
             if (i == chuDe.length) {
                 console.log("end");
                 document.getElementById("formGame").style.display = 'none';
-                //document.getElementById("reStart").style.display = 'block';
+                document.getElementById("play").style.display = 'block';
                 stop();
                 clearTimeout(reRun);
+                if (login == true) {
+                    console.log(arr_account);
+                }
+
             }
         }, 800);
+
+        // toMau(idthe);
         i++;
         reRun = setTimeout(run, 1000);
 
     }
 
     stop = function () {
-        userscore += score;
-        console.log(userscore);
-        console.log(i);
-        console.log(arr_account);
-        document.getElementById("score").innerHTML = "Diem cua ban la : " + userscore;
-        if (loginn == true) {
-            arr_account[0].score += score;
-            userscore = 0;
+        if (login == true) {
+            arr_account[iAcc].score += score;
         };
 
+        userscore += score;
+        document.getElementById("score").innerHTML = "Diem cua ban la : " + userscore;
+        i = 0;
+
     }
+    // toMau = function (kq) {
+    //     document.getElementById(kq).style.background = "red";
+    //     a = setTimeout(() => {
+    //         document.getElementById(kq).style.background = "white";
+    //     }, 1000);
+    // }
 
     doihint = () => {
-
-        console.log(score + ' ' + userscore)
+        document.getElementById("score").innerHTML = "Diem cua ban la : " + userscore;
+        console.log(score + ' ' + userscore);
         if (chuDe[i].hint) {
             if (score > 0) {
                 alert(chuDe[i].hint);
-                score--;
+                score -= 0.5;
 
-            } else if (score < 1 && userscore < 1) {
+            } else if (score < 0.5 && userscore < 0.5) {
                 alert("ban khong du diem ");
             }
             else if (userscore > 0) {
                 alert(chuDe[i].hint);
-                score--;
+                score -= 0.5;
             }
+        } else {
+            alert("not hint");
         }
 
 
     };
     trogiup = function () {
-
+        score -= 0.5;
+        console.log(score);
         let cc = 'c';
 
 
@@ -494,31 +536,29 @@ start = function (chudeinput) {
         } console.log(arr);
         for (let i5 = 1; i5 < 5; i5++) {
             if (i5 != arr[0] && i5 != arr[1]) {
-                document.getElementById(cc + i5).value = "";
+                document.getElementById(cc + i5).value = "x";
             }
         }
     }
 
-}
-quay = function () {
-    document.getElementById("inscore").style.display = 'block';
-    document.getElementById("quay").style.display = 'block';
-    let diemcuoc = document.getElementById("inscore").value;
-    console.log(diemcuoc);
-}
-quayso = function () {
-    let diemdoi = document.getElementById("inscore").value;
-    let ran = Math.floor(Math.random() * ((diemdoi * 2) + 1));
 
-
-    if (userscore >= diemdoi) {
-        userscore -= diemdoi;
-        console.log("ban nhan duoc " + ran + " diem");
-        userscore += ran;
-        console.log(userscore + " D");
-    }
-    else {
-        alert("ban khong du diem");
+    quay = function () {
+        document.getElementById("inscore").style.display = 'block';
+        document.getElementById("quay").style.display = 'block';
+        let diemcuoc = document.getElementById("inscore").value;
+        console.log(diemcuoc);
     };
-
-}
+    quayso = function () {
+        let diemdoi = document.getElementById("inscore").value;
+        let ran = Math.floor(Math.random() * ((diemdoi * 2) + 1));
+        if (userscore >= diemdoi) {
+            userscore -= diemdoi;
+            console.log("ban nhan duoc " + ran + " diem");
+            userscore += ran;
+            console.log(userscore + " D");
+        }
+        else {
+            console.log("ban khong du diem");
+        }
+    }
+};
