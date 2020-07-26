@@ -1,66 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Test Quizz</title>
 </head>
-
 <body>
-    <div id="content" style="border: solid 1px; padding: 20px; background: #ddd;">
-        <button onclick="creat()">aaa</button>
-        <script>
-            document.getElementById("content").style.display = 'none';
-        </script>
+    <div id="quizz">
+        <div>Question: <span id="question_content"></span></div>
+        <div id="answer">
+            <button id="answer1"></button>
+            <button id="answer2"></button>
+            <button id="answer3"></button>
+            <button id="answer4"></button>
+        </div>
     </div>
-
-
-    <form>
-        <input type="text" placeholder="nhap id" id="id">
-        <input type="password" placeholder="pass" id="pass">
-        <input type="button" value="login" onclick="check();">
-        <p id="hienid"></p>
-    </form>
-    <script>
-        function getid() {
-            let id = document.getElementById("id").value;
-            document.getElementById("hienid").innerHTML = id;
-        }
-    </script>
-
-    <input type="button" value="Start Quizz" onclick="start();">
-    <div id="question"></div>
-    <div>Timer: <span id="timer"></span></div>
-
-    <form id="form_quizz">
-
-        <!-- <button id="answer1" onclick="checkkq(answer1.value);"></button>
-        <button id="answer2" onclick="checkkq(answer2.value);"></button>
-        <button id="answer3" onclick="checkkq(answer3.value);"></button>
-        <button id="answer4" onclick="checkkq(answer4.value);"></button> -->
-
-        <input type="button" value="" id="answer1" onclick="check_result(answer1.value);">
-        <input type="button" value="" id="answer2" onclick="check_result(answer2.value);">
-        <input type="button" value="" id="answer3" onclick="check_result(answer3.value);">
-        <input type="button" value="" id="answer4" onclick="check_result(answer4.value);">
-        <br>
-        <!-- <button id="pau">Pause</button>
-        <button id="pl">Continue</button> -->
-        <input type="button" value="pause" id="pau" onclick="pause();">
-        <input type="button" value="play" id="pl" onclick="play();">
-        <script>
-            document.getElementById("pl").style.display = 'none';
-        </script>
-
-        <div id="kqua"></div>
-        <div id="diem"></div>
-        <div id="end"></div>
-        <div id="time"></div>
-    </form>
-
-
     <script src="project.js"></script>
 </body>
-
 </html>

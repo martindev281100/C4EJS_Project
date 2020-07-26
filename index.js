@@ -1,5 +1,4 @@
-let data = [
-    {
+let data = [{
         question: "What causes ocean tides?",
         correctAnswer: "The pull of gravity from the Moon and the Sun",
         wrongAnswers: [
@@ -101,8 +100,7 @@ let data = [
     }
 ];
 
-let math = [
-    {
+let math = [{
         question: "1 + 1 = ?",
         correctAnswer: "2",
         wrongAnswers: [
@@ -194,7 +192,7 @@ let math = [
     },
 ];
 
-for(let i = 0; i < data.length; i ++) {
+for (let i = 0; i < data.length; i++) {
     let arr = [data[i].question, data[i].correctAnswer, data[i].wrongAnswers, data[i].hint];
     showItems(arr);
 }
@@ -215,22 +213,30 @@ function addItem() {
 function showItems(arr) {
     let table = document.getElementById("table_questions");
     let tableRow = document.createElement("tr");
-    for(let i = 0; i < 4; i ++) {
+    for (let i = 0; i < 4; i++) {
         let tableDetail = document.createElement("td");
-        if(i == 2) tableDetail.innerHTML = arr[i].join(", ");
+        if (i == 2) tableDetail.innerHTML = arr[i].join(", ");
         else tableDetail.innerHTML = arr[i];
-        switch(i) {
-            case 0: tableDetail.classList.add("question_content"); break;
-            case 1: tableDetail.classList.add("correct_answer"); break;
-            case 2: tableDetail.classList.add("wrong_answer"); break;
-            case 3: tableDetail.classList.add("col_hint"); break;
+        switch (i) {
+            case 0:
+                tableDetail.classList.add("question_content");
+                break;
+            case 1:
+                tableDetail.classList.add("correct_answer");
+                break;
+            case 2:
+                tableDetail.classList.add("wrong_answer");
+                break;
+            case 3:
+                tableDetail.classList.add("col_hint");
+                break;
         }
         tableRow.appendChild(tableDetail);
     }
-  
+
     let tableDetail = document.createElement("td");
     tableDetail.classList.add("col_action");
-    
+
     let buttonUpdate = document.createElement("button");
     buttonUpdate.innerHTML = "Update";
     buttonUpdate.onclick = function () {
@@ -247,7 +253,7 @@ function showItems(arr) {
     buttonUpdate.classList.add("btn-warning");
     buttonUpdate.classList.add("btn");
     buttonUpdate.classList.add("btn_update");
-  
+
     let buttonDelete = document.createElement("button");
     buttonDelete.innerHTML = "Delete";
     buttonDelete.onclick = function () {
@@ -258,7 +264,7 @@ function showItems(arr) {
     buttonDelete.classList.add("btn-danger");
     buttonDelete.classList.add("btn");
     buttonDelete.classList.add("btn_delete");
-  
+
     tableDetail.appendChild(buttonUpdate);
     tableDetail.appendChild(buttonDelete);
     tableRow.appendChild(tableDetail);
@@ -302,13 +308,12 @@ let authorized_form = function () {
     document.getElementById("col_action_title").hidden = false;
     document.getElementById("btn_add").hidden = false;
     document.getElementById('btn_logOut').hidden = false;
-    document.getElementById('btn_logIn').style.display = 'none';
+    document.getElementById('btn_logIn').hidden = true;
     document.getElementById('btn_register').hidden = true;
     document.getElementById('input_account').style.display = 'none';
     document.getElementById('input_password').style.display = 'none';
     document.getElementsByClassName('col_hint').hidden = false;
     document.getElementById('col_hint_title').hidden = false;
-
 }
 
 let unclicked_btn_add = function () {
@@ -377,12 +382,11 @@ let validate_registration = function () {
     if (input_email == "" || input_fName == "" || input_cPassword == "" || input_regPassword == "") {
         alert('All form must be filled out');
     } else if (input_regPassword != input_cPassword) {
-        alert('Password must be match!')
+        alert('Password must be match!');
     } else {
-        arr_account.push(newObj)
+        arr_account.push(newObj);
     }
 }
-
 let unclicked_btn_reg = function () {
     document.getElementById('form_register').hidden = true;
 }
