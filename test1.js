@@ -127,8 +127,6 @@ var arr_account = [{
 //         }
 //     }
 // };
-
-
 const btn_logOut = document.getElementById('btn_logOut')
 btn_logOut.addEventListener('click', function () {
     unauthorized_form();
@@ -423,25 +421,20 @@ checkAcc = function () {
             console.log('Logged in');
 
         }
-        else if (idAcc == arr_account[i].email) {
-            console.log(arr_account[i].email + 'checkemail');
+        else if (idAcc == arr_account[i].email) {           
 
              if (arr_account[i].password == passAcc) {
                 login = true;
-                iAcc = i;
-                console.log('cjecking password')
+                iAcc = i;               
                 alert(iAcc);
                 user_authorized();
-
             }
              else {
                 alert('sai mat khau');
             }
             console.log(i);
             break;
-
         }
-
         else if (i == arr_account.length - 1) {
             alert("sai tai khoan");
         };
@@ -474,6 +467,8 @@ start = function (chudeinput) {
     // };
     document.getElementById("chude").style.display = 'none';
     document.getElementById("formGame").style.display = 'block';
+
+
 
     let score = 0;
 
@@ -509,10 +504,10 @@ start = function (chudeinput) {
     };
     if (login == true) {
         alert('ok');
-    };
-    if (login == true) {
+        document.getElementById("score").innerHTML = arr_account[iAcc].score;
         userscore = arr_account[iAcc].score;
     };
+   
     check1 = function (valuec, idtab) {
         let kq = valuec;
         let idthe = 'c' + idtab;
@@ -629,23 +624,24 @@ start = function (chudeinput) {
     }
 
 
-    quay = function () {
-        document.getElementById("inscore").style.display = 'block';
-        document.getElementById("quay").style.display = 'block';
-        let diemcuoc = document.getElementById("inscore").value;
-        console.log(diemcuoc);
-    };
-    quayso = function () {
-        let diemdoi = document.getElementById("inscore").value;
-        let ran = Math.floor(Math.random() * ((diemdoi * 2) + 1));
-        if (userscore >= diemdoi) {
-            userscore -= diemdoi;
-            console.log("ban nhan duoc " + ran + " diem");
-            userscore += ran;
-            console.log(userscore + " D");
-        }
-        else {
-            console.log("ban khong du diem");
-        }
-    }
+   
 };
+quay = function () {
+    document.getElementById("inscore").style.display = 'block';
+    document.getElementById("quay").style.display = 'block';
+    let diemcuoc = document.getElementById("inscore").value;
+    console.log(diemcuoc);
+};
+quayso = function () {
+    let diemdoi = document.getElementById("inscore").value;
+    let ran = Math.floor(Math.random() * ((diemdoi * 2) + 1));
+    if (userscore >= diemdoi) {
+        userscore -= diemdoi;
+        console.log("ban nhan duoc " + ran + " diem");
+        userscore += ran;
+        console.log(userscore + " D");
+    }
+    else {
+        console.log("ban khong du diem");
+    }
+}
