@@ -46,125 +46,9 @@
       </div>
 
 <div class="container manh_container">
-    <div id="form_register">
-        <div class="form-group">
-            <label for="input_fName">Full name: </label>
-            <input type="text" placeholder="Enter full name" id="input_fName" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="input_email">Email: </label>
-            <input type="text" placeholder="Enter your email" id="input_email" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="input_regPassword">Password </label>
-            <input type="password" placeholder="Enter your password" id="input_regPassword" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="input_cPassword">Confirm Password </label>
-            <input type="password" placeholder="Enter your password" id="input_cPassword" class="form-control">
-        </div>
-        <button class="btn btn-outline-success" id="btn_reg" type="button" onclick="checkReg()">Register</button>
-    </div>
-
-    <div>
-        <div id="form-add">
-            <div class="form-group">
-                <label for="input_question">Question: </label>
-                <input type="text" id="input_question" placeholder="Enter question" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="input_correct">Correct Answer: </label>
-                <input type="text" id="input_correct" placeholder="Enter correct answer" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="input_wrong">Wrong Answer: </label>
-                <input type="text" id="input_wrong" placeholder="Enter wrong answer" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="input_hint">Hints: </label>
-                <input type="text" id="input_hint" placeholder="Enter hint for question" class="form-control">
-            </div>
-            <button id="btn_item_add" class="btn btn-success" onclick = "addItem()">Add Item</button>
-        </div>
-        <button id="btn_add" class="btn btn-primary">Add Question</button>
-
-        <table id="table_questions" border="1" class="table table-striped">
-            <thead id="table_head">
-            <tr>
-                <th>Questions</th>
-                <th>Correct Answer</th>
-                <th>Wrong Answer</th>
-                <th id="col_hint_title">Hints</th>
-                <th id="col_action_title">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr hidden>
-                <td class="question_content">1 + 1 = ?</td>
-                <td class="correct_answer">2</td>
-                <td class="wrong_answer">1, 3, 4</td>
-                <td class="col_hint">Lam toan di!</td>
-                <td class="col_action">
-                    <button class="btn_update btn btn-warning">Update</button>
-                    <button class="btn_delete btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <div id="form_quizz">
-            <div id="thuvanmay">
-                <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
-                <input type="number" name="" id="inscore">
-                <input type="button" value="doi diem" id="quay" onclick="quayso();">
-                <script>
-                    document.getElementById("inscore").style.display = 'none';
-                    document.getElementById("quay").style.display = 'none';
-                </script>
-            </div>
-            <div id="playgame">
-                <button onclick="playGame()">Play</button>
-                <div id="chude">
-                    <input class="btn_chude" type="button" value="Data" onclick="start(data);">
-                    <input class="btn_chude" type="button" value="Toán Học" onclick="start(math)">
-                    <script>
-                        document.getElementById("chude").style.display = 'none';
-                    </script>
-                </div>
-            </div>
-            <div id="thongbao">
-                <div id="thongBaoKq"></div>
-                <div id="end">
-                    <div id="score"></div>
-                </div>
-            </div>
-            <div id="formGame">
-                <div id="cauHoi"></div>
-                <div id="support">
-                    <input class="sp" type="button" value="hint" id="hint" onclick="doihint(hint.value);">
-                    <input class="sp" type="button" value="50 / 50" id="trogiup" onclick="trogiup();">
-                </div>
-    
-                <div id="formGame0">
-                    <div id="formGame1">
-                        <hr>
-                        <input class="ans" type="button" value="" id="c1" onclick="check(c1.value,1);">
-                        <input class="ans" type="button" value="" id="c2" onclick="check(c2.value,2);">
-                    </div>
-                    <div id="formGame2">
-                        <input class="ans" type="button" value="" id="c3" onclick="check(c3.value,3);">
-                        <input class="ans" type="button" value="" id="c4" onclick="check(c4.value,4);">
-                    </div>
-                </div>    
-                <script>
-                    document.getElementById("formGame").style.display = 'none';
-                </script>
-            </div id="formGame">
-    
-        </div>
-    
     
     </div>
-</div>
+    
 
 	<div class="super_container">
 		<!-- Header -->
@@ -187,8 +71,8 @@
                                 <input type="text" placeholder="Enter account" id="input_account" class="form-control">
                                 <input type="password" placeholder="Enter password" id="input_password" class="form-control">
                                 <span>
-                                    <button id="btn_logIn" class="btn btn-success" type="button" onclick="checkAcc();">Log In</button>
-                                    <button id="btn_register" class="btn btn-success" type="button">Register</button>
+                                    <button id="btn_logIn" class="btn btn-success" type="button" onclick="checkAcc();"><a href="#formtable">Log In</a></button>
+                                    <button id="btn_register" class="btn btn-success" type="button"><a href="#register">Register</a></button>
                                     <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
                                 </span>
                             </div>
@@ -224,6 +108,27 @@
 					</div>
 				</div>
 			</div>
+        </div>
+    </section>
+    <section id="register" style="background-color: wheat;"" >
+        <div id="form_register">
+            <div class="form-group">
+                <label for="input_fName">Full name: </label>
+                <input type="text" placeholder="Enter full name" id="input_fName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="input_email">Email: </label>
+                <input type="text" placeholder="Enter your email" id="input_email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="input_regPassword">Password </label>
+                <input type="password" placeholder="Enter your password" id="input_regPassword" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="input_cPassword">Confirm Password </label>
+                <input type="password" placeholder="Enter your password" id="input_cPassword" class="form-control">
+            </div>
+            <button class="btn btn-outline-success" id="btn_reg" type="button" onclick="checkReg()">Register</button>
         </div>
     </section>
         <!-- Services -->
@@ -305,6 +210,109 @@
 			</div>
         </div>
         </section>
+
+        <section id="formtable" style="background-color: tomato;">
+            <div>
+                <div id="form-add">
+                    <div class="form-group">
+                        <label for="input_question">Question: </label>
+                        <input type="text" id="input_question" placeholder="Enter question" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="input_correct">Correct Answer: </label>
+                        <input type="text" id="input_correct" placeholder="Enter correct answer" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="input_wrong">Wrong Answer: </label>
+                        <input type="text" id="input_wrong" placeholder="Enter wrong answer" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="input_hint">Hints: </label>
+                        <input type="text" id="input_hint" placeholder="Enter hint for question" class="form-control">
+                    </div>
+                    <button id="btn_item_add" class="btn btn-success" onclick = "addItem()">Add Item</button>
+                </div>
+                <button id="btn_add" class="btn btn-primary">Add Question</button>
+                <div id="form_quizz">
+                    <div id="thuvanmay">
+                        <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
+                        <input type="number" name="" id="inscore">
+                        <input type="button" value="doi diem" id="quay" onclick="quayso();">
+                        <script>
+                            document.getElementById("inscore").style.display = 'none';
+                            document.getElementById("quay").style.display = 'none';
+                        </script>
+                    </div>
+                    <div id="playgame">
+                        <button onclick="playGame()">Play</button>
+                        <div id="chude">
+                            <input class="btn_chude" type="button" value="Data" onclick="start(data);">
+                            <input class="btn_chude" type="button" value="Toán Học" onclick="start(math)">
+                            <script>
+                                document.getElementById("chude").style.display = 'none';
+                            </script>
+                        </div>
+                    </div>
+                    <div id="thongbao">
+                        <div id="thongBaoKq"></div>
+                        <div id="end">
+                            <div id="score"></div>
+                        </div>
+                    </div>
+                    <div id="formGame">
+                        <div id="cauHoi"></div>
+                        <div id="support">
+                            <input class="sp" type="button" value="hint" id="hint" onclick="doihint(hint.value);">
+                            <input class="sp" type="button" value="50 / 50" id="trogiup" onclick="trogiup();">
+                        </div>
+            
+                        <div id="formGame0">
+                            <div id="formGame1">
+                                <hr>
+                                <input class="ans" type="button" value="" id="c1" onclick="check(c1.value,1);">
+                                <input class="ans" type="button" value="" id="c2" onclick="check(c2.value,2);">
+                            </div>
+                            <div id="formGame2">
+                                <input class="ans" type="button" value="" id="c3" onclick="check(c3.value,3);">
+                                <input class="ans" type="button" value="" id="c4" onclick="check(c4.value,4);">
+                            </div>
+                        </div>    
+                        <script>
+                            document.getElementById("formGame").style.display = 'none';
+                        </script>
+                    </div id="formGame">
+            
+                </div>
+        
+                <table id="table_questions" border="1" class="table table-striped">
+                    <thead id="table_head">
+                    <tr>
+                        <th>Questions</th>
+                        <th>Correct Answer</th>
+                        <th>Wrong Answer</th>
+                        <th id="col_hint_title">Hints</th>
+                        <th id="col_action_title">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr hidden>
+                        <td class="question_content">1 + 1 = ?</td>
+                        <td class="correct_answer">2</td>
+                        <td class="wrong_answer">1, 3, 4</td>
+                        <td class="col_hint">Lam toan di!</td>
+                        <td class="col_action">
+                            <button class="btn_update btn btn-warning">Update</button>
+                            <button class="btn_delete btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                
+            
+            
+            </div>
+        </section>
+
 		<!-- Testimonials -->
 		<div class="testimonials page_section">
 			<!-- <div class="testimonials_background" style="background-image:url(images/testimonials_background.jpg)"></div> -->

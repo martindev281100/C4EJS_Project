@@ -75,14 +75,6 @@ div
 }
 
 
-p a
-{
-	display: inline;
-	position: relative;
-	color: inherit;
-	border-bottom: solid 1px #ffa07f;
-	
-}
 a, a:hover, a:visited, a:active, a:link
 {
 	text-decoration: none;
