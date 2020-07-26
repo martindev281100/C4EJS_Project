@@ -1,5 +1,4 @@
-let general_topic = [
-    {
+let general_topic = [{
         question: "What causes ocean tides?",
         correctAnswer: "The pull of gravity from the Moon and the Sun",
         wrongAnswers: [
@@ -8,7 +7,7 @@ let general_topic = [
             "The Earth spin around its axis",
         ],
         hint: "Not only one cause",
-        },
+    },
     {
         question: "What is the biggest animal that ever lived?",
         correctAnswer: "Blue whale",
@@ -101,8 +100,7 @@ let general_topic = [
     }
 ];
 
-let math_topic = [
-    {
+let math_topic = [{
         question: "Bo is buying candy by the pound. For every 10 pounds, he pays $23. What is the cost per pound?",
         correctAnswer: "$2.30",
         wrongAnswers: [
@@ -204,8 +202,7 @@ let math_topic = [
     },
 ];
 
-let calculation_topic = [
-    {
+let calculation_topic = [{
         question: "1 + 1 = ?",
         correctAnswer: "2",
         wrongAnswers: [
@@ -317,7 +314,7 @@ let coding_topic = [
             "Code",
         ],
         hint: "",
-    }, 
+    },
     {
         question: "What is an error in a program that prevents the program from running as expected?",
         correctAnswer: "Bug",
@@ -347,7 +344,7 @@ let coding_topic = [
             "Program",
         ],
         hint: "",
-    },   
+    },
     {
         question: "What is a sprite?",
         correctAnswer: "A 2D object on the stage that can be given commands",
@@ -357,7 +354,7 @@ let coding_topic = [
             "The area where all commands are typed",
         ],
         hint: "",
-    },   
+    },
     {
         question: "What is the stage?",
         correctAnswer: "The area where the visual output of a program is displayed",
@@ -367,7 +364,7 @@ let coding_topic = [
             "Python",
         ],
         hint: "",
-    },   
+    },
     {
         question: "What is a comment?",
         correctAnswer: "A line that is used to provide information about the code",
@@ -377,7 +374,7 @@ let coding_topic = [
             "The area where all commands are typed",
         ],
         hint: "",
-    },   
+    },
     {
         question: "What is a variable?",
         correctAnswer: "A name that stores a value",
@@ -387,7 +384,7 @@ let coding_topic = [
             "Program",
         ],
         hint: "",
-    },   
+    },
     {
         question: "What is a Pixel?",
         correctAnswer: "The unit of measurement on the stage",
@@ -397,7 +394,7 @@ let coding_topic = [
             "Codesters",
         ],
         hint: "",
-    },   
+    },
     {
         question: "What is a Binary Code?",
         correctAnswer: "Information that a computer can understand",
@@ -407,7 +404,7 @@ let coding_topic = [
             "Fraction",
         ],
         hint: "",
-    }   
+    }
 ];
 
 let environment_topic = [
@@ -420,7 +417,7 @@ let environment_topic = [
             "Motorcycle",
         ],
         hint: "",
-    },  
+    },
     {
         question: "Which source of electric energy is non-renewable?",
         correctAnswer: "Coal",
@@ -430,7 +427,7 @@ let environment_topic = [
             "Dams",
         ],
         hint: "",
-    },   
+    },
     {
         question: "Which type of rock is formed from the cooling of lava and magma?",
         correctAnswer: "Igneous",
@@ -440,7 +437,7 @@ let environment_topic = [
             "Metamorphic",
         ],
         hint: "",
-    },   
+    },
     {
         question: "Which type of rock is made from many other rocks cementing together in layers?",
         correctAnswer: "Sedimentary",
@@ -450,7 +447,7 @@ let environment_topic = [
             "Metamorphic",
         ],
         hint: "",
-    },   
+    },
     {
         question: "Where does the sun find its greatest source of water to turn into vapor?",
         correctAnswer: "Oceans",
@@ -460,7 +457,7 @@ let environment_topic = [
             "Rivers",
         ],
         hint: "",
-    },   
+    },
     {
         question: "If humidity needs warm air and moisture to exist, which environment would have higher humidity?",
         correctAnswer: "Rainforest",
@@ -470,7 +467,7 @@ let environment_topic = [
             "Desert",
         ],
         hint: "",
-    },   
+    },
     {
         question: "Which environment has higher latitudes, moderate precipitation, and low temperatures?",
         correctAnswer: "Tundra",
@@ -480,7 +477,7 @@ let environment_topic = [
             "Desert",
         ],
         hint: "",
-    },   
+    },
     {
         question: "If the Sun is shining in the sky over Florida at 1:00pm on Tues., where will it be in 24 hours?",
         correctAnswer: "Shining in the sky over Florida",
@@ -490,7 +487,7 @@ let environment_topic = [
             "Rising in the east over Japan",
         ],
         hint: "",
-    },   
+    },
     {
         question: "Why does the Earth have changing seasons?",
         correctAnswer: "The Earth revolves around the Sun every 365 days",
@@ -500,7 +497,7 @@ let environment_topic = [
             "The amount of humidity the Sun creates in the atmosphere",
         ],
         hint: "",
-    },   
+    },
     {
         question: "Of what is Earth's crust made?",
         correctAnswer: "Rock",
@@ -510,7 +507,7 @@ let environment_topic = [
             "Water",
         ],
         hint: "",
-    },   
+    },
 ];
 
 let topic = general_topic;
@@ -518,7 +515,7 @@ let topic = general_topic;
 //     document.getElementById("register-form").style.display = "none";
 //     document.getElementById("login-form").style.display = "block";
 //     }
-    
+
 //     document.getElementById("redirect-to-register").onclick = function () {
 //     document.getElementById("register-form").style.display = "block";
 //     document.getElementById("login-form").style.display = "none";
@@ -654,7 +651,7 @@ let user_authorized = function () {
     document.getElementById('input_password').style.display = 'block';
     document.getElementsByClassName('col_hint').hidden = true;
     document.getElementById('col_hint_title').hidden = true;
-    document.getElementById('table_questions').hidden = false;
+    document.getElementById('table_questions').hidden = true;
     document.getElementById('form_register').hidden = true;
     document.getElementById('form_quizz').hidden = false;
 }
@@ -724,7 +721,6 @@ let arr_account = [{
 //             unauthorized_form();
 //         }
 //     }
-
 // };
 
 const btn_logOut = document.getElementById('btn_logOut')
@@ -746,17 +742,22 @@ let validate_registration = function () {
     if (input_email == "" || input_fName == "" || input_cPassword == "" || input_regPassword == "") {
         alert('All form must be filled out');
     } else if (input_regPassword != input_cPassword) {
-        alert('Password must be match!');
+        let alert_warning = document.getElementById('alert_warning');
+        alert_warning.innerHTML = 'Password must be match!';
+        alert_warning.hidden = false;
+        setTimeout(function () {
+            alert_warning.hidden = true;
+        }, 3000)
     } else {
         if (reg == true) {
             arr_account.push(newObj);
             console.log(arr_account)
             document.getElementById('alert_success').hidden = false;
+            document.getElementById('alert_success').innerHTML = 'Registration success!'
             setTimeout(function () {
                 document.getElementById('alert_success').hidden = true;
             }, 3000)
         }
-
     }
 }
 let unclicked_btn_reg = function () {
@@ -780,16 +781,15 @@ btn_reg.addEventListener('click', function () {
     unclicked_btn_reg();
 })
 
-
 chonchude = function () {
     document.getElementById("chude").style.display = 'block';
 
 }
-playGame = function () {
-    document.getElementById("chude").style.display = 'block';
-    document.getElementById("play").style.display = 'none';
-    document.getElementById("formGame").style.display = 'none';
-}
+// playGame = function () {
+//     document.getElementById("chude").style.display = 'block';
+//     document.getElementById("play").style.display = 'none';
+//     document.getElementById("formGame").style.display = 'none';
+// }
 let i = 0;
 var out = false;
 let userscore = 0;
@@ -810,7 +810,7 @@ let checkReg = function () {
                 alert_warning.hidden = true;
             }, 3000)
             reg = false;
-            break; 
+            break;
         } else {
             reg = true;
         }
@@ -826,7 +826,6 @@ checkAcc = function () {
         if (idAcc == 'admin' && passAcc == 1234) {
             authorized_form();
             console.log('Logged in');
-
         } else if (idAcc == arr_account[i].email) {
 
             if (arr_account[i].password == passAcc) {
@@ -846,8 +845,9 @@ checkAcc = function () {
 };
 start = function (chudeinput) {
 
-    document.getElementById("chude").style.display = 'none';
+    // document.getElementById("chude").style.display = 'none';
     document.getElementById("formGame").style.display = 'block';
+    alert('smt')
 
     let score = 0;
 
@@ -946,13 +946,6 @@ start = function (chudeinput) {
         i = 0;
 
     }
-    // toMau = function (kq) {
-    //     document.getElementById(kq).style.background = "red";
-    //     a = setTimeout(() => {
-    //         document.getElementById(kq).style.background = "white";
-    //     }, 1000);
-    // }
-
     doihint = () => {
         document.getElementById("score").innerHTML = "Diem cua ban la : " + userscore;
         console.log(score + ' ' + userscore);
@@ -977,8 +970,6 @@ start = function (chudeinput) {
         score -= 0.5;
         console.log(score);
         let cc = 'c';
-
-
         let arr = [];
         for (let i3 = 1; i3 < 5; i3++) {
             //let rand = Math.ceil(Math.random()*4);
@@ -1022,3 +1013,19 @@ start = function (chudeinput) {
         }
     }
 };
+
+let btn_ls_question = document.getElementById('btn_ls_question');
+
+btn_ls_question.addEventListener('click', function () {
+    console.log('click')
+    let table_questions = document.getElementById('table_questions')
+    if(table_questions.hidden == true)
+    {
+        table_questions.hidden = false;
+    }
+    else{
+        table_questions.hidden = true;
+        console.log('second condition')
+    }
+})
+
