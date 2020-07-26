@@ -89,6 +89,19 @@ var arr_account = [{
 //         authorized_form();
 //         console.log('Logged in');
 
+
+    
+//     for (let i = 0; i < arr_account.length; i++) {
+//         if (account == arr_account[i]['email'] && password == arr_account[i]['password']) {
+//             document.getElementById("account").innerHTML = account;
+//             console.log('Logged in')
+//             user_authorized();
+//         } else {
+//             unauthorized_form();
+//         }
+//     }
+// ;
+
 //     }
 //     for (let i = 0; i < arr_account.length; i++) {
 //         let idAcc = document.getElementById("input_account").value;
@@ -127,6 +140,7 @@ var arr_account = [{
 //         }
 //     }
 // };
+
 const btn_logOut = document.getElementById('btn_logOut')
 btn_logOut.addEventListener('click', function () {
     unauthorized_form();
@@ -599,8 +613,6 @@ start = function (chudeinput) {
         score -= 0.5;
         console.log(score);
         let cc = 'c';
-
-
         let arr = [];
         for (let i3 = 1; i3 < 5; i3++) {
             //let rand = Math.ceil(Math.random()*4);

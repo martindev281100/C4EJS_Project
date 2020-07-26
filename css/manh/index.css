@@ -1,5 +1,5 @@
 .manh_container {
-    margin: 10px ;
+    margin: 0 auto ;
 }
 .col_action {
     width: 10%;
@@ -23,4 +23,7 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
     font-size: 20px;
+}
+.nav1-color{
+    
 }
