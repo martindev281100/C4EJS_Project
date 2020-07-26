@@ -1,182 +1,131 @@
-check = function () {
-    const ider = document.getElementById("id").value;
-    const passw = document.getElementById("pass").value;
-    if (ider == "admin" && passw == "1234") {
-
-        document.getElementById("content").style.display = 'block';
-    } else {
-        document.getElementById("content").style.display = 'none';
+let data = [{
+        question: "What causes ocean tides?",
+        correctAnswer: "The pull of gravity from the Moon and the Sun",
+        wrongAnswers: [
+            "The pull of gravity from the Sun",
+            "The pull of gravity from the Moon",
+            "The Earth spin around its axis",
+        ],
+        hint: "Not only one cause",
+    },
+    {
+        question: "What is the biggest animal that ever lived?",
+        correctAnswer: "Blue whale",
+        wrongAnswers: [
+            "King Kong",
+            "Tyrannosaurus rex",
+            "Sperm whale",
+        ],
+        hint: "Fish",
+    },
+    {
+        question: "What is culture?",
+        correctAnswer: "The features of everyday life shared by a group",
+        wrongAnswers: [
+            "A person's individual traits",
+            "Something different that one person does in their daily life",
+            "Having respect and acceptance for people different than you",
+        ],
+        hint: "Stem from more than one person",
+    },
+    {
+        question: "Who sets the standards that create a culture?",
+        correctAnswer: "All People",
+        wrongAnswers: [
+            "Family Elders",
+            "Artists",
+            "Governments",
+        ],
+        hint: "Something that is normal",
+    },
+    {
+        question: "Which is not a danger to explorers searching for the lost city?",
+        correctAnswer: "Rabid monkeys",
+        wrongAnswers: [
+            "Deadly snakes",
+            "Hungry jaguars",
+            "Poisonous insects",
+        ],
+        hint: "Animals contain non-contagious disease",
+    },
+    {
+        question: "What is a property that leads to electromagnetic interactions between particles of matter?",
+        correctAnswer: "Electric charge",
+        wrongAnswers: [
+            "Static electricity",
+            "Electric conduction",
+            "Semi-conduction",
+        ],
+        hint: "Intake of electricity",
+    },
+    {
+        question: "Which of the following is not an element of which color is composed?",
+        correctAnswer: "Detail (definition)",
+        wrongAnswers: [
+            "Value (hue)",
+            "Intensity (saturation)",
+            "Tonality (luminance)",
+        ],
+        hint: "HSL",
+    },
+    {
+        question: "What is the measurement of Earth's gravity?",
+        correctAnswer: "9.8 m/s2",
+        wrongAnswers: [
+            "8.2 m/s2",
+            "6.9 m/s2",
+            "3.5 m/s2",
+        ],
+        hint: "Can be rounded up to 10 m/s2",
+    },
+    {
+        question: "BarmBrack, a fruitcake, is a Halloween Irish tradition. This cake contains:",
+        correctAnswer: "Objects baked into the bread used as a fortune-telling game",
+        wrongAnswers: [
+            "Special powers that will make you see ghosts",
+            "Chili and different spices",
+            "Meat",
+        ],
+        hint: "Something for prophecy",
+    },
+    {
+        question: "Which of the following is NOT a major component of Cell Theory?",
+        correctAnswer: "All organisms contain eukaryotic cells",
+        wrongAnswers: [
+            "All organisms are made of 1 or more cells",
+            "The cell is the basic unit of life",
+            "All cells come from pre-existing cells",
+        ],
+        hint: "Not the fundamental root of an organism",
     }
-};
+];
 
-function start() {
-    let quizz_data = [{
-            title: 'bac ho ten that la gi : ',
-            0: 'cung',
-            1: 'a',
-            2: 'b',
-            3: 'c',
-            true: 'cung'
-        },
-        {
-            title: 'bac sinh nam nao?',
-            0: 1890,
-            1: 1900,
-            2: 1901,
-            3: 1001,
-            true: 1890
-        },
-        {
-            title: '1 + 1 = ?',
-            0: 1,
-            1: 2,
-            2: 3,
-            3: 4,
-            true: 2
-        },
-        {
-            title: '2 + 2 = ?',
-            0: 1,
-            1: 2,
-            2: 3,
-            3: 4,
-            true: 4
-        }
-    ];
-    // document.getElementById("cauhoi").innerHTML = cauhoi[0].title;
-    // document.getElementById("trl1").value = cauhoi[0][0];
-    // document.getElementById("trl2").value = cauhoi[0][1];
-    // document.getElementById("trl3").value = cauhoi[0][2];
-    // document.getElementById("trl4").value = cauhoi[0][3];
+let question = document.getElementById('question_content');
 
-    let index = 0;
-    let score = 0;
-    let isPaused = false;
-    const tim = 3000;
-    let myf = function () {
+let random_question = data[Math.floor(Math.random() * data.length)];
 
-        if (!isPaused) {
-            if (index == quizz_data.length) {
+question.innerHTML = random_question.question;
+let answer1 = document.getElementById('answer1');
+let answer2 = document.getElementById('answer2');
+let answer3 = document.getElementById('answer3');
+let answer4 = document.getElementById('answer4');
 
-                clear();
-                document.getElementById("end").innerHTML = 'ket thuc';
-                document.getElementById("diem").innerHTML = 'Diem cua ban : ' + score;
-            }
-            document.getElementById("question").innerHTML = quizz_data[index].title;
-            document.getElementById("answer1").value = quizz_data[index][0];
-            document.getElementById("answer2").value = quizz_data[index][1];
-            document.getElementById("answer3").value = quizz_data[index][2];
-            document.getElementById("answer4").value = quizz_data[index][3];
-            let current_timer = document.getElementById('timer');
-            current_timer.innerHTML = 3;
-            var count_down = setInterval(() => {
-                current_timer.innerHTML = current_timer.innerHTML - 1;
+let arr_answer = [answer1, answer2, answer3, answer4];
 
-                console.log(current_timer.innerHTML);
-                if (current_timer.innerHTML == 0) {
-                    let stop = clearInterval(count_down);
-                }
-            }, 1000);
-            index++;
-        }
-    };
-    check_result = function (form_quizz) {
+let random_canswer = arr_answer[Math.floor(Math.random() * arr_answer.length)];
 
-        let a = form_quizz;
-        for (let j = 0; j < quizz_data.length; j++) {
-            if (a == quizz_data[j].true) {
-                score++;
+random_canswer.innerHTML = random_question.correctAnswer;
+let index_canswer = arr_answer.indexOf(random_canswer);
+console.log('index canswer: ' + arr_answer.indexOf(random_canswer));
+arr_answer.splice(index_canswer, 1);
+console.log('arr_answer: ' + arr_answer);
 
-            }
-
-        }
-
-    }
-    myf();
-    // doquizz = setInterval(myf, tim);
-
-    let timer_count = function () {
-
-    }
-
-
-    // var timer = new Timer(function() {
-    //     myf();
-    // }, 5000);
-    // function Timer(fn, t) {
-    //     var timerObj = setInterval(fn, t);
-
-    //     this.stop = function () {
-    //         if (timerObj) {
-    //             clearInterval(timerObj);
-    //             timerObj = null;
-    //             clearInterval(count_down);
-    //         }
-    //         return this;
-    //     }
-
-    //     // start timer using current settings (if it's not already running)
-    //     this.start = function () {
-    //         if (!timerObj) {
-    //             this.stop();
-    //             timerObj = setInterval(fn, t);
-    //             timer_count();
-    //         }
-    //         return this;
-    //     }
-
-    //     // start with new or original interval, stop current interval
-    //     this.reset = function (newT = t) {
-    //         t = newT;
-    //         return this.stop().start();
-    //     }
-    // }
-    let start = function () {
-        setInterval(() => {
-            myf();
-        }, tim);
-    }
-    let clear = function () {
-        clearInterval(start);
-    }
-
-    onClick_skip = function () {
-        onClick_answer1 = document.getElementById('answer1')
-        onClick_answer1.addEventListener('click', () => {
-            clear();
-            myf();
-            start();
-        })
-        onClick_answer2 = document.getElementById('answer2')
-        onClick_answer2.addEventListener('click', () => {
-            clear();
-            myf();
-            start();
-        })
-        onClick_answer3 = document.getElementById('answer3')
-        onClick_answer3.addEventListener('click', () => {
-            clear();
-            myf();
-            start();
-        })
-        onClick_answer4 = document.getElementById('answer4')
-        onClick_answer4.addEventListener('click', () => {
-            clear();
-            myf();
-            start();
-        })
-    }
-
-    onClick_skip();
-
-    pause = function () {
-        isPaused = true;
-        document.getElementById("pl").style.display = 'block';
-        document.getElementById("pau").style.display = 'none';
-    }
-    play = function () {
-        isPaused = false;
-        document.getElementById("pau").style.display = 'block';
-        document.getElementById("pl").style.display = 'none';
-    }
+for (let i = 0; i < arr_answer.length; i++) {
+    console.log('length'+arr_answer.length)
+    let random_wanswer = arr_answer[Math.floor(Math.random() * arr_answer.length)];
+    console.log(random_wanswer);
+    random_wanswer.innerHTML = random_question.wrongAnswers[i];
+    let index_wanswer = arr_answer.indexOf(random_wanswer);
+    arr_answer.splice(index_wanswer, 1);
 }
+
