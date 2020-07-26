@@ -289,7 +289,11 @@ let unauthorized_form = function () {
 unauthorized_form();
 
 let user_authorized = function () {
-    document.getElementsByClassName("col_action").hidden = true;
+    for(let i = 0; i <  document.getElementsByClassName('col_hint').length; i++)
+    {
+        document.getElementsByClassName('col_hint')[i].hidden = true;
+        document.getElementsByClassName('col_action')[i].hidden = true;
+    }
     document.getElementById("col_action_title").hidden = true;
     document.getElementById("btn_add").hidden = true;
     document.getElementById('btn_logIn').hidden = true;
@@ -299,7 +303,7 @@ let user_authorized = function () {
     document.getElementById('input_password').style.display = 'block';
     document.getElementsByClassName('col_hint').hidden = true;
     document.getElementById('col_hint_title').hidden = true;
-    document.getElementById('table_questions').hidden = true;
+    document.getElementById('table_questions').hidden = false;
     document.getElementById('form_register').hidden = true;
     document.getElementById('form_quizz').hidden = false;
 }
@@ -365,7 +369,7 @@ check = function () {
             unauthorized_form();
         }
     }
-    
+
 };
 
 const btn_logOut = document.getElementById('btn_logOut')
@@ -390,10 +394,10 @@ let validate_registration = function () {
         alert('Password must be match!');
     } else {
         arr_account.push(newObj);
-       let alert_success = document.getElementById('alert_success');
-       setTimeout(function(){
-        
-       })
+        document.getElementById('alert_success').hidden = false;
+        setTimeout(function () {
+            document.getElementById('alert_success').hidden = true;
+        }, 3000)
     }
 }
 let unclicked_btn_reg = function () {
@@ -446,7 +450,7 @@ checkAcc = function () {
     }
 }
 start = function (chudeinput) {
-    
+
     document.getElementById("chude").style.display = 'none';
     document.getElementById("formGame").style.display = 'block';
 
@@ -564,8 +568,7 @@ start = function (chudeinput) {
 
             } else if (score < 0.5 && userscore < 0.5) {
                 alert("ban khong du diem ");
-            }
-            else if (userscore > 0) {
+            } else if (userscore > 0) {
                 alert(chuDe[i].hint);
                 score -= 0.5;
             }
@@ -595,7 +598,8 @@ start = function (chudeinput) {
                 }
 
             }
-        } console.log(arr);
+        }
+        console.log(arr);
         for (let i5 = 1; i5 < 5; i5++) {
             if (i5 != arr[0] && i5 != arr[1]) {
                 document.getElementById(cc + i5).value = "x";
@@ -618,8 +622,7 @@ start = function (chudeinput) {
             console.log("ban nhan duoc " + ran + " diem");
             userscore += ran;
             console.log(userscore + " D");
-        }
-        else {
+        } else {
             console.log("ban khong du diem");
         }
     }

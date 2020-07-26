@@ -73,7 +73,7 @@ btn_logIn.addEventListener('click', function () {
     check();
 })
 
-let arr_account = [{
+var arr_account = [{
     'full_name': 'a',
     'email': 'a',
     'password': 'a',
@@ -116,26 +116,26 @@ btn_logOut.addEventListener('click', function () {
 });
 
 
-let validate_registration = function () {
-    var input_fName = document.getElementById('input_fName').value;
-    var input_email = document.getElementById('input_email').value;
-    var input_regPassword = document.getElementById('input_regPassword').value;
-    var input_cPassword = document.getElementById('input_cPassword').value;
+// let validate_registration = function () {
+//     var input_fName = document.getElementById('input_fName').value;
+//     var input_email = document.getElementById('input_email').value;
+//     var input_regPassword = document.getElementById('input_regPassword').value;
+//     var input_cPassword = document.getElementById('input_cPassword').value;
 
-    const newObj = {
-        'full_name': input_fName,
-        'email': input_email,
-        'password': input_cPassword,
-        score: 0
-    }
-    if (input_email == "" || input_fName == "" || input_cPassword == "" || input_regPassword == "") {
-        alert('All form must be filled out');
-    } else if (input_regPassword != input_cPassword) {
-        alert('Password must be match!')
-    } else {
-        arr_account.push(newObj);
-    }
-}
+//     const newObj = {
+//         'full_name': input_fName,
+//         'email': input_email,
+//         'password': input_cPassword,
+//         score: 0
+//     }
+//     if (input_email == "" || input_fName == "" || input_cPassword == "" || input_regPassword == "") {
+//         alert('All form must be filled out');
+//     } else if (input_regPassword != input_cPassword) {
+//         alert('Password must be match!')
+//     } else {
+//          arr_account.push(newObj);
+//     }
+// }
 
 let unclicked_btn_reg = function () {
     document.getElementById('form_register').hidden = true;
@@ -369,19 +369,71 @@ var out = false;
 let userscore = 0;
 let login = false;
 let iAcc;
+let reg = false;
+checkReg = function () {
+    let idRegister = document.getElementById("input_email").value;
+    console.log(idRegister);
+    for (let i in arr_account) {
+        if (arr_account[i].email == idRegister) {
+            alert('tai khoan da dang ky');
+            reg = false;
+            break;
+        }
+        else {
+            alert('ok');           
+            reg = true;
+        }
+    }
+};
+
 checkAcc = function () {
     let idAcc = document.getElementById("input_account").value;
     let passAcc = document.getElementById("input_password").value;
+    console.log(arr_account[0].email + ' email');
+    
+    for (let i = 0; i < arr_account.length; i++) {
+        if(idAcc == arr_account[i].email) {
+            console.log(arr_account[i].email + 'checkemail');
+            if (arr_account[i].password == passAcc) {
+                login = true;
+                iAcc = i;
+                console.log('cjecking password')
+                alert(iAcc);
+                
+            } else  {
+                alert('sai mat khau');
+            }
+            console.log(i);
+            break;   
 
-    for (let i in arr_account) {
-        if (arr_account[i].email == idAcc) {
-
-            login = true;
-            iAcc = i;
-            alert(iAcc);
+        }
+        else if(i == arr_account.length-1) {
+            alert("sai tai khoan");
+        };
+    }
+};
+let validate_registration = function () {
+    var input_fName = document.getElementById('input_fName').value;
+    var input_email = document.getElementById('input_email').value;
+    var input_regPassword = document.getElementById('input_regPassword').value;
+    var input_cPassword = document.getElementById('input_cPassword').value;
+    const newObj = {
+        'full_name': input_fName,
+        'email': input_email,
+        'password': input_cPassword,
+        score: 0
+    }
+    if (input_email == "" || input_fName == "" || input_cPassword == "" || input_regPassword == "") {
+        alert('All form must be filled out');
+    } else if (input_regPassword != input_cPassword) {
+        alert('Password must be match!')
+    } else {
+        if (reg == true) {
+            arr_account.push(newObj);
         }
     }
 }
+
 start = function (chudeinput) {
     if (document.getElementById("account").innerHTML != "") {
     };
