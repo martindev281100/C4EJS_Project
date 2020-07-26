@@ -617,7 +617,7 @@ let user_authorized = function () {
     document.getElementById('input_password').style.display = 'block';
     document.getElementsByClassName('col_hint').hidden = true;
     document.getElementById('col_hint_title').hidden = true;
-    document.getElementById('table_questions').hidden = false;
+    document.getElementById('table_questions').hidden = true;
     document.getElementById('form_register').hidden = true;
     document.getElementById('form_quizz').hidden = false;
 }
@@ -979,3 +979,19 @@ start = function (chudeinput) {
         }
     }
 };
+
+let btn_ls_question = document.getElementById('btn_ls_question');
+
+btn_ls_question.addEventListener('click', function () {
+    console.log('click')
+    let table_questions = document.getElementById('table_questions')
+    if(table_questions.hidden == true)
+    {
+        table_questions.hidden = false;
+    }
+    else{
+        table_questions.hidden = true;
+        console.log('second condition')
+    }
+})
+
