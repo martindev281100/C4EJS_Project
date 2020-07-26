@@ -38,38 +38,10 @@
         </div>
     </div>
     -->
-    <div class="alert alert-success" id="alert_success" hidden>
-        <strong>Register Success!</strong>
-      </div>
-      <div class="alert alert-danger" id="alert_logIn_fail" hidden>
-        <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
-      </div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <div class="form-group">
-                <input type="text" placeholder="Enter account" id="input_account" class="form-control">
-                <input type="password" placeholder="Enter password" id="input_password" class="form-control">
-                <span>
-                    <button id="btn_logIn" class="btn btn-success" type="button">Log In</button>
-                    <button id="btn_register" class="btn btn-success" type="button">Register</button>
-                    <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
-                </span>
-            </div>
-        </form>
-    </div>
-</nav>
+    <!-- <div class="alert alert-success" id="alert_success">
+        <strong>Success!</strong> This alert box could indicate a successful or positive action.
+      </div> -->
+      
 
 <div class="container manh_container">
     <div id="form_register">
@@ -193,20 +165,59 @@
 </div>
 
 	<div class="super_container">
-		
+		<!-- Header -->
+        <header class="header d-flex flex-row">
+            
+            <div class="header_content  ">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" style="color: turquoise;" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <div class="form-group">
+                                <input type="text" placeholder="Enter account" id="input_account" class="form-control">
+                                <input type="password" placeholder="Enter password" id="input_password" class="form-control">
+                                <span>
+                                    <button id="btn_logIn" class="btn btn-success" type="button">Log In</button>
+                                    <button id="btn_register" class="btn btn-success" type="button">Register</button>
+                                    <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+
 		<!-- Home -->
 		<div class="home">
-			<!-- Hero Slider -->
+            <!-- Hero Slider -->
 			<div class="hero_slider_container">
+                
 				<div class="hero_slider owl-carousel">
-					<!-- Hero Slide -->
+                    <!-- Hero Slide -->
+                    
 					<div class="hero_slide">
-						<div class="hero_slide_background" style="background-image:url(images/slider_background.jpg)">
-						</div>
+                        
+                        <div class="hero_slide_background" style="background-image:url(images/slider_background.jpg)">
+                            
+                        </div>
+                        
 						<div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
+                            
 							<div class="hero_slide_content text-center">
-								<h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Get your
-									<span>Education</span> today!</h1>
+								<h1>Get your
+								<span>Education</span> today!</h1>
 							</div>
 						</div>
 					</div>
