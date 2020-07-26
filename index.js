@@ -289,7 +289,11 @@ let unauthorized_form = function () {
 unauthorized_form();
 
 let user_authorized = function () {
-    document.getElementsByClassName("col_action").hidden = true;
+    for(let i = 0; i <  document.getElementsByClassName('col_hint').length; i++)
+    {
+        document.getElementsByClassName('col_hint')[i].hidden = true;
+        document.getElementsByClassName('col_action')[i].hidden = true;
+    }
     document.getElementById("col_action_title").hidden = true;
     document.getElementById("btn_add").hidden = true;
     document.getElementById('btn_logIn').hidden = true;
@@ -299,7 +303,7 @@ let user_authorized = function () {
     document.getElementById('input_password').style.display = 'block';
     document.getElementsByClassName('col_hint').hidden = true;
     document.getElementById('col_hint_title').hidden = true;
-    document.getElementById('table_questions').hidden = true;
+    document.getElementById('table_questions').hidden = false;
     document.getElementById('form_register').hidden = true;
     document.getElementById('form_quizz').hidden = false;
 }
