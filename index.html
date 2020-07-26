@@ -41,7 +41,9 @@
      <div class="alert alert-success" id="alert_success" hidden>
         <strong>Success!</strong> This alert box could indicate a successful or positive action.
       </div>
-      
+      <div class="alert alert-warning" id="alert_warning" hidden>
+        <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
+      </div>
 
 <div class="container manh_container">
     <div id="form_register">
@@ -61,7 +63,7 @@
             <label for="input_cPassword">Confirm Password </label>
             <input type="password" placeholder="Enter your password" id="input_cPassword" class="form-control">
         </div>
-        <button class="btn btn-outline-success" id="btn_reg" type="button">Register</button>
+        <button class="btn btn-outline-success" id="btn_reg" type="button" onclick="checkReg()">Register</button>
     </div>
 
     <div>
@@ -168,7 +170,7 @@
 		<!-- Header -->
         <header class="header  ">
             
-            <div class="header_content" style="width: 100%;" >
+            <div>
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="navbar-brand" style="color: turquoise;" href="#">Navbar</a>
                     <ul class="navbar-nav ">
