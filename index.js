@@ -751,11 +751,11 @@ chonchude = function () {
     document.getElementById("chude").style.display = 'block';
 
 }
-playGame = function () {
-    document.getElementById("chude").style.display = 'block';
-    document.getElementById("play").style.display = 'none';
-    document.getElementById("formGame").style.display = 'none';
-}
+// playGame = function () {
+//     document.getElementById("chude").style.display = 'block';
+//     document.getElementById("play").style.display = 'none';
+//     document.getElementById("formGame").style.display = 'none';
+// }
 let i = 0;
 var out = false;
 let userscore = 0;
@@ -811,7 +811,7 @@ checkAcc = function () {
 };
 start = function (chudeinput) {
 
-    document.getElementById("chude").style.display = 'none';
+    // document.getElementById("chude").style.display = 'none';
     document.getElementById("formGame").style.display = 'block';
     alert('smt')
 
