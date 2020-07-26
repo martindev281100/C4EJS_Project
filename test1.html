@@ -108,7 +108,59 @@
             </table>
         </div>
     </div>
-    
+    <div id="form_quizz">
+        <div id="thuvanmay">
+            <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
+            <input type="number" name="" id="inscore">
+            <input type="button" value="doi diem" id="quay" onclick="quayso();">
+            <script>
+                document.getElementById("inscore").style.display = 'none';
+                document.getElementById("quay").style.display = 'none';
+            </script>
+        </div>
+        <div id="playgame">
+            <button id="play" onclick="playGame()">Play</button>
+            <div id="chude">
+                <input class="btn_chude" type="button" value="Data" onclick="start(data);">
+                <input class="btn_chude" type="button" value="Toán Học" onclick="start(math)">
+                <script>
+                    document.getElementById("chude").style.display = 'none';
+                </script>
+            </div>
+        </div>
+        <div id="thongbao">
+            <div id="thongBaoKq"></div>
+            <div id="end">
+                <div id="score"></div>
+            </div>
+        </div>
+        <div id="formGame">
+            <div id="cauHoi"></div>
+            <div id="support">
+                <input class="sp" type="button" value="hint" id="hint" onclick="doihint(hint.value);">
+                <input class="sp" type="button" value="50 / 50" id="trogiup" onclick="trogiup();">
+            </div>
+
+            <div id="formGame0">
+                <div id="formGame1">
+                    <hr>
+                    <input class="ans" type="button" value="" id="c1" onclick="check1(c1.value,1);">
+                    <input class="ans" type="button" value="" id="c2" onclick="check1(c2.value,2);">
+                </div>
+                <div id="formGame2">
+                    <input class="ans" type="button" value="" id="c3" onclick="check1(c3.value,3);">
+                    <input class="ans" type="button" value="" id="c4" onclick="check1(c4.value,4);">
+                </div>
+            </div>    
+            <script>
+                document.getElementById("formGame").style.display = 'none';
+            </script>
+        </div id="formGame">
+
+    </div>
+
+
+</div>  
 
 
 

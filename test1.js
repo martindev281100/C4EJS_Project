@@ -69,9 +69,9 @@ btn_add_item.addEventListener('click', function () {
 })
 
 const btn_logIn = document.getElementById('btn_logIn');
-btn_logIn.addEventListener('click', function () {
-    check();
-})
+// btn_logIn.addEventListener('click', function () {
+//     check();
+// })
 
 var arr_account = [{
     'full_name': 'a',
@@ -81,14 +81,15 @@ var arr_account = [{
 }
 ];
 
-check = function () {
-    const account = document.getElementById("input_account").value;
-    const password = document.getElementById("input_password").value;
-    console.log(account + password);
-    if (account == 'admin' && password == 1234) {
-        authorized_form();
-        console.log('Logged in');
+// check = function () {
+//     const account = document.getElementById("input_account").value;
+//     const password = document.getElementById("input_password").value;
+//     console.log(account + password);
+//     if (account == 'admin' && password == 1234) {
+//         authorized_form();
+//         console.log('Logged in');
 
+<<<<<<< HEAD
     }
     for (let i = 0; i < arr_account.length; i++) {
         if (account == arr_account[i]['email'] && password == arr_account[i]['password']) {
@@ -100,6 +101,46 @@ check = function () {
         }
     }
 };
+=======
+//     }
+//     for (let i = 0; i < arr_account.length; i++) {
+//         let idAcc = document.getElementById("input_account").value;
+//         let passAcc = document.getElementById("input_password").value;
+//         console.log(arr_account[0].email + ' email');
+//         if (account == arr_account[i]['email'] && password == arr_account[i]['password']) {
+//             //document.getElementById("account").innerHTML = account;
+
+//             console.log('Logged in')
+//             user_authorized();
+//         } else {
+//             unauthorized_form();
+//         }
+
+
+//         for (let i = 0; i < arr_account.length; i++) {
+//             if (idAcc == arr_account[i].email) {
+//                 console.log(arr_account[i].email + 'checkemail');
+//                 if (arr_account[i].password == passAcc) {
+//                     login = true;
+//                     iAcc = i;
+//                     console.log('cjecking password')
+//                     alert(iAcc);
+//                     user_authorized();
+
+//                 } else {
+//                     alert('sai mat khau');
+//                 }
+//                 console.log(i);
+//                 break;
+
+//             }
+//             else if (i == arr_account.length - 1) {
+//                 alert("sai tai khoan");
+//             };
+//         }
+//     }
+// };
+>>>>>>> df57a10e0e7d6ef79c9f300209a2effb0f1f08bc
 
 
 const btn_logOut = document.getElementById('btn_logOut')
@@ -132,7 +173,7 @@ btn_logOut.addEventListener('click', function () {
 //     } else if (input_regPassword != input_cPassword) {
 //         alert('Password must be match!')
 //     } else {
-//          arr_account.push(newObj);
+//         arr_account.push(newObj);
 //     }
 // }
 
@@ -379,7 +420,7 @@ checkReg = function () {
             break;
         }
         else {
-            alert('ok');           
+            alert('ok');
             reg = true;
         }
     }
@@ -389,24 +430,33 @@ checkAcc = function () {
     let idAcc = document.getElementById("input_account").value;
     let passAcc = document.getElementById("input_password").value;
     console.log(arr_account[0].email + ' email');
-    
+
     for (let i = 0; i < arr_account.length; i++) {
-        if(idAcc == arr_account[i].email) {
+        if (idAcc == 'admin' && passAcc == 1234) {
+            authorized_form();
+            console.log('Logged in');
+
+        }
+        else if (idAcc == arr_account[i].email) {
             console.log(arr_account[i].email + 'checkemail');
-            if (arr_account[i].password == passAcc) {
+
+             if (arr_account[i].password == passAcc) {
                 login = true;
                 iAcc = i;
                 console.log('cjecking password')
                 alert(iAcc);
-                
-            } else  {
+                user_authorized();
+
+            }
+             else {
                 alert('sai mat khau');
             }
             console.log(i);
-            break;   
+            break;
 
         }
-        else if(i == arr_account.length-1) {
+
+        else if (i == arr_account.length - 1) {
             alert("sai tai khoan");
         };
     }
@@ -434,8 +484,8 @@ let validate_registration = function () {
 }
 
 start = function (chudeinput) {
-    if (document.getElementById("account").innerHTML != "") {
-    };
+    // if (document.getElementById("account").innerHTML != "") {
+    // };
     document.getElementById("chude").style.display = 'none';
     document.getElementById("formGame").style.display = 'block';
 
@@ -477,7 +527,7 @@ start = function (chudeinput) {
     if (login == true) {
         userscore = arr_account[iAcc].score;
     };
-    check = function (valuec, idtab) {
+    check1 = function (valuec, idtab) {
         let kq = valuec;
         let idthe = 'c' + idtab;
         let idtrue = 'c';
