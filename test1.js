@@ -1,4 +1,4 @@
-let unauthorized_form = function () {
+const unauthorized_form = function () {
     document.getElementById('table_questions').hidden = true;
     document.getElementById("col_action").hidden = true;
     document.getElementById("col_action_title").hidden = true;
@@ -15,7 +15,7 @@ let unauthorized_form = function () {
 }
 unauthorized_form();
 
-let user_authorized = function () {
+const user_authorized = function () {
     document.getElementById("col_action").hidden = true;
     document.getElementById("col_action_title").hidden = true;
     document.getElementById("btn_add").style.display = 'none';
@@ -30,7 +30,7 @@ let user_authorized = function () {
     document.getElementById('form_register').hidden = true;
 }
 
-let authorized_form = function () {
+const authorized_form = function () {
     document.getElementById('table_questions').hidden = false;
     document.getElementById("col_action").hidden = false;
     document.getElementById("col_action_title").hidden = false;
@@ -46,12 +46,12 @@ let authorized_form = function () {
 }
 
 
-let unclicked_btn_add = function () {
+const unclicked_btn_add = function () {
     document.getElementById('form-add').style.display = 'none';
 }
 unclicked_btn_add();
 
-let clicked_btn_add = function () {
+const clicked_btn_add = function () {
     document.getElementById('form-add').style.display = 'block';
 }
 
@@ -175,11 +175,11 @@ btn_logOut.addEventListener('click', function () {
 //     }
 // }
 
-let unclicked_btn_reg = function () {
+const unclicked_btn_reg = function () {
     document.getElementById('form_register').hidden = true;
 }
 unclicked_btn_reg();
-let clicked_btn_reg = function () {
+const clicked_btn_reg = function () {
     document.getElementById('form_register').hidden = false;
 }
 const btn_register = document.getElementById('btn_register')
@@ -441,6 +441,8 @@ checkAcc = function () {
                 login = true;
                 iAcc = i;               
                 alert(iAcc);
+                
+                
                 user_authorized();
             }
              else {
@@ -454,7 +456,7 @@ checkAcc = function () {
         };
     }
 };
-let validate_registration = function () {
+const validate_registration = function () {
     var input_fName = document.getElementById('input_fName').value;
     var input_email = document.getElementById('input_email').value;
     var input_regPassword = document.getElementById('input_regPassword').value;
@@ -551,7 +553,7 @@ start = function (chudeinput) {
 
             }
         }
-        let endGame = setTimeout(() => {
+        const endGame = setTimeout(() => {
             if (i == chuDe.length) {
                 console.log("end");
                 document.getElementById("formGame").style.display = 'none';
