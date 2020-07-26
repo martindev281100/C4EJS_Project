@@ -194,88 +194,88 @@ let math = [{
 let coding_topic = [{
     questions: "What is a list of steps you can follow to finish a task?",
     correctAnswer: "Algorithm",
-        wrongAnswers: [
-            "Program",
-            "Bug",
-            "Code",
-        ],
-        hint: "Which procedure has steps to follow ?",
+    wrongAnswers: [
+        "Program",
+        "Bug",
+        "Code",
+    ],
+    hint: "Which procedure has steps to follow ?",
 }, {
     questions: "What is an error in a program that prevents the program from running as expected?",
     correctAnswer: "Bug",
-        wrongAnswers: [
-            "Program",
-            "Algorithm",
-            "Code",
-        ],
-        hint: "Which cause program running failed ?",
-},{
+    wrongAnswers: [
+        "Program",
+        "Algorithm",
+        "Code",
+    ],
+    hint: "Which cause program running failed ?",
+}, {
     questions: "What is an error in a program that prevents the program from running as expected?",
     correctAnswer: "Code",
-        wrongAnswers: [
-            "Program",
-            "Algorithm",
-            "Bug",
-        ],
-        hint: "What is programming ?",
-},{
+    wrongAnswers: [
+        "Program",
+        "Algorithm",
+        "Bug",
+    ],
+    hint: "What is programming ?",
+}, {
     questions: "What is finding and fixing errors in programs?",
     correctAnswer: "Debugging",
-        wrongAnswers: [
-            "Program",
-            "Code",
-            "Bug",
-        ],
-        hint: "What should you do when program run incorrect?",
-},{
+    wrongAnswers: [
+        "Program",
+        "Code",
+        "Bug",
+    ],
+    hint: "What should you do when program run incorrect?",
+}, {
     questions: "What is the action of doing something over and over again?",
     correctAnswer: "Loop",
-        wrongAnswers: [
-            "Persistence",
-            "Code",
-            "Bug",
-        ],
-        hint: "What should you do when program run incorrect?",
+    wrongAnswers: [
+        "Persistence",
+        "Code",
+        "Bug",
+    ],
+    hint: "What should you do when program run incorrect?",
 }]
 
 let topic_greetings = [{
-    questions: "Hola!",
-    correctAnswer: "Hello",
+        questions: "Hola!",
+        correctAnswer: "Hello",
         wrongAnswers: [
             "Goodbye",
             "All of the above",
             "Nice to meet you",
         ],
         hint: "",
-},{
-    questions: "Buenos dias!",
-    correctAnswer: "Good Morning",
+    }, {
+        questions: "Buenos dias!",
+        correctAnswer: "Good Morning",
         wrongAnswers: [
             "Goodbye",
             "All of the above",
             "Nice to meet you",
         ],
         hint: "",
-}, {
-    questions: "Buenas noches!",
-    correctAnswer: "Good Evening",
+    }, {
+        questions: "Buenas noches!",
+        correctAnswer: "Good Evening",
         wrongAnswers: [
             "Good Afternoon",
             "All of the above",
             "Nice to meet you",
         ],
         hint: "",
-},
-{
-    questions: "Gracias!",
-    correctAnswer: "Thank you",
+    },
+    {
+        questions: "Gracias!",
+        correctAnswer: "Thank you",
         wrongAnswers: [
             "Good Afternoon",
             "All of the above",
             "Nice to meet you",
         ],
         hint: "",
-},
+    },
 ]
 for (let i = 0; i < data.length; i++) {
     let arr = [data[i].question, data[i].correctAnswer, data[i].wrongAnswers, data[i].hint];
@@ -374,8 +374,7 @@ let unauthorized_form = function () {
 unauthorized_form();
 
 let user_authorized = function () {
-    for(let i = 0; i <  document.getElementsByClassName('col_hint').length; i++)
-    {
+    for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
         document.getElementsByClassName('col_hint')[i].hidden = true;
         document.getElementsByClassName('col_action')[i].hidden = true;
     }
@@ -435,7 +434,12 @@ btn_logIn.addEventListener('click', function () {
     document.getElementById("input_password").value = '';
 })
 
-let arr_account = [];
+let arr_account = [{
+    'full_name': 'a',
+    'email': 'a',
+    'password': 'a',
+    score: 10
+}];
 
 // check = function () {
 //     let account = document.getElementById("input_account").value;
@@ -477,12 +481,15 @@ let validate_registration = function () {
     } else if (input_regPassword != input_cPassword) {
         alert('Password must be match!');
     } else {
-        arr_account.push(newObj);
-        console.log(arr_account)
-        document.getElementById('alert_success').hidden = false;
-        setTimeout(function () {
-            document.getElementById('alert_success').hidden = true;
-        }, 3000)
+        if (reg == true) {
+            arr_account.push(newObj);
+            console.log(arr_account)
+            document.getElementById('alert_success').hidden = false;
+            setTimeout(function () {
+                document.getElementById('alert_success').hidden = true;
+            }, 3000)
+        }
+
     }
 }
 let unclicked_btn_reg = function () {
@@ -522,17 +529,22 @@ let userscore = 0;
 let login = false;
 let iAcc;
 let reg = false;
-checkReg = function () {
+let checkReg = function () {
     let idRegister = document.getElementById("input_email").value;
     console.log(idRegister);
+    console.log('arr_account length: ' + arr_account.length)
     for (let i in arr_account) {
         if (arr_account[i].email == idRegister) {
             alert('tai khoan da dang ky');
+            let alert_warning = document.getElementById('alert_warning');
+            alert_warning.innerHTML = 'Account has been created!';
+            alert_warning.hidden = false;
+            setTimeout(function () {
+                alert_warning.hidden = true;
+            }, 3000)
             reg = false;
-            break;
-        }
-        else {
-            alert('ok');
+            break; 
+        } else {
             reg = true;
         }
     }
@@ -548,22 +560,19 @@ checkAcc = function () {
             authorized_form();
             console.log('Logged in');
 
-        }
-        else if (idAcc == arr_account[i].email) {           
+        } else if (idAcc == arr_account[i].email) {
 
-             if (arr_account[i].password == passAcc) {
+            if (arr_account[i].password == passAcc) {
                 login = true;
-                iAcc = i;               
+                iAcc = i;
                 alert(iAcc);
                 user_authorized();
-            }
-             else {
+            } else {
                 alert('sai mat khau');
             }
             console.log(i);
             break;
-        }
-        else if (i == arr_account.length - 1) {
+        } else if (i == arr_account.length - 1) {
             alert("sai tai khoan");
         };
     }
