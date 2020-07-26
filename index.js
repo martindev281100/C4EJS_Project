@@ -1,4 +1,5 @@
-let data = [{
+let general_topic = [
+    {
         question: "What causes ocean tides?",
         correctAnswer: "The pull of gravity from the Moon and the Sun",
         wrongAnswers: [
@@ -7,7 +8,7 @@ let data = [{
             "The Earth spin around its axis",
         ],
         hint: "Not only one cause",
-    },
+        },
     {
         question: "What is the biggest animal that ever lived?",
         correctAnswer: "Blue whale",
@@ -100,7 +101,111 @@ let data = [{
     }
 ];
 
-let math = [{
+let math_topic = [
+    {
+        question: "Bo is buying candy by the pound. For every 10 pounds, he pays $23. What is the cost per pound?",
+        correctAnswer: "$2.30",
+        wrongAnswers: [
+            "$0.43",
+            "$1.50",
+            "$23.00",
+        ],
+        hint: ""
+    },
+    {
+        question: "Which statement describes a unit rate?",
+        correctAnswer: "Sam is driving 40 miles per 1 hour.",
+        wrongAnswers: [
+            "Sam ate 1 piece of pizza.",
+            "Sam ate 4 cookies and 1 almond.",
+            "Sam is driving 40 miles.",
+        ],
+        hint: ""
+    },
+    {
+        question: "Mr. Ramsey bought 5 pounds of dog food for $10. How much did he pay per pound in dollars?",
+        correctAnswer: "$2.00 per pound",
+        wrongAnswers: [
+            "$50.00 per pound",
+            "$5.00 per pound",
+            "$15.00 per pound",
+        ],
+        hint: ""
+    },
+    {
+        question: "Jim used 3 hours to drive 150 miles. At that rate, how far would he drive in 8 hours?",
+        correctAnswer: "400 miles",
+        wrongAnswers: [
+            "24 miles",
+            "1200 miles",
+            "50 miles",
+        ],
+        hint: ""
+    },
+    {
+        question: "Steve ran 1 lap in 7 minutes. At this rate, how far would he run in 42 minutes?",
+        correctAnswer: "6 laps",
+        wrongAnswers: [
+            "10 laps",
+            "5 laps",
+            "7 laps",
+        ],
+        hint: ""
+    },
+    {
+        question: "There are 12 yards of fabric. Each pillow uses 2/3 yard. How many pillows can be made?",
+        correctAnswer: "18 pillows",
+        wrongAnswers: [
+            "8 pillows",
+            "12 pillows",
+            "15 pillows",
+        ],
+        hint: ""
+    },
+    {
+        question: "Twelve whole pizzas are eaten. Each person eats 1/4 pizza. How many people eat pizza?",
+        correctAnswer: "48 people",
+        wrongAnswers: [
+            "16 people",
+            "8 people",
+            "24 people",
+        ],
+        hint: ""
+    },
+    {
+        question: "The area of a rectangle is 25/42 and its width is 5/6. What is the length?",
+        correctAnswer: "5/7",
+        wrongAnswers: [
+            "1.3/7",
+            "1.2/5",
+            "125/252",
+        ],
+        hint: ""
+    },
+    {
+        question: "The area of the triangle is 1/8. What is the length of the base?",
+        correctAnswer: "2/9",
+        wrongAnswers: [
+            "1/18",
+            "1/9",
+            "9/2",
+        ],
+        hint: ""
+    },
+    {
+        question: "A 21-foot long rope is cut into 3/8-foot pieces. Which expression finds the number of pieces?",
+        correctAnswer: "21 ÷ 3/8",
+        wrongAnswers: [
+            "21 × 3/8",
+            "3/8 ÷ 21",
+            "21 − 3/8",
+        ],
+        hint: ""
+    },
+];
+
+let calculation_topic = [
+    {
         question: "1 + 1 = ?",
         correctAnswer: "2",
         wrongAnswers: [
@@ -191,107 +296,237 @@ let math = [{
         ],
     },
 ];
-let coding_topic = [{
-    questions: "What is a list of steps you can follow to finish a task?",
-    correctAnswer: "Algorithm",
-    wrongAnswers: [
-        "Program",
-        "Bug",
-        "Code",
-    ],
-    hint: "Which procedure has steps to follow ?",
-}, {
-    questions: "What is an error in a program that prevents the program from running as expected?",
-    correctAnswer: "Bug",
-    wrongAnswers: [
-        "Program",
-        "Algorithm",
-        "Code",
-    ],
-    hint: "Which cause program running failed ?",
-}, {
-    questions: "What is an error in a program that prevents the program from running as expected?",
-    correctAnswer: "Code",
-    wrongAnswers: [
-        "Program",
-        "Algorithm",
-        "Bug",
-    ],
-    hint: "What is programming ?",
-}, {
-    questions: "What is finding and fixing errors in programs?",
-    correctAnswer: "Debugging",
-    wrongAnswers: [
-        "Program",
-        "Code",
-        "Bug",
-    ],
-    hint: "What should you do when program run incorrect?",
-}, {
-    questions: "What is the action of doing something over and over again?",
-    correctAnswer: "Loop",
-    wrongAnswers: [
-        "Persistence",
-        "Code",
-        "Bug",
-    ],
-    hint: "What should you do when program run incorrect?",
-}]
 
-let topic_greetings = [{
-        questions: "Hola!",
-        correctAnswer: "Hello",
+let coding_topic = [
+    {
+        questions: "What is a list of steps you can follow to finish a task?",
+        correctAnswer: "Algorithm",
         wrongAnswers: [
-            "Goodbye",
-            "All of the above",
-            "Nice to meet you",
+            "Program",
+            "Bug",
+            "Code",
         ],
         hint: "",
-    }, {
-        questions: "Buenos dias!",
-        correctAnswer: "Good Morning",
+    }, 
+    {
+        questions: "What is an error in a program that prevents the program from running as expected?",
+        correctAnswer: "Bug",
         wrongAnswers: [
-            "Goodbye",
-            "All of the above",
-            "Nice to meet you",
-        ],
-        hint: "",
-    }, {
-        questions: "Buenas noches!",
-        correctAnswer: "Good Evening",
-        wrongAnswers: [
-            "Good Afternoon",
-            "All of the above",
-            "Nice to meet you",
+            "Program",
+            "Algorithm",
+            "Code",
         ],
         hint: "",
     },
     {
-        questions: "Gracias!",
-        correctAnswer: "Thank you",
+        questions: "What is finding and fixing errors in programs?",
+        correctAnswer: "Debugging",
         wrongAnswers: [
-            "Good Afternoon",
-            "All of the above",
-            "Nice to meet you",
+            "Program",
+            "Code",
+            "Bug",
         ],
         hint: "",
     },
-]
-for (let i = 0; i < data.length; i++) {
-    let arr = [data[i].question, data[i].correctAnswer, data[i].wrongAnswers, data[i].hint];
+    {
+        questions: "What is the action of doing something over and over again?",
+        correctAnswer: "Loop",
+        wrongAnswers: [
+            "Persistence",
+            "Code",
+            "Program",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "What is a sprite?",
+        correctAnswer: "A 2D object on the stage that can be given commands",
+        wrongAnswers: [
+            "A set of commands that run in order from top to bottom",
+            "Computer",
+            "The area where all commands are typed",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "What is the stage?",
+        correctAnswer: "The area where the visual output of a program is displayed",
+        wrongAnswers: [
+            "Finding and fixing the error or bug in a program",
+            "The area where all commands are typed",
+            "Python",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "What is a comment?",
+        correctAnswer: "A line that is used to provide information about the code",
+        wrongAnswers: [
+            "The unit of measurement on the stage",
+            "A 2D object on the stage",
+            "The area where all commands are typed",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "What is a variable?",
+        correctAnswer: "A name that stores a value",
+        wrongAnswers: [
+            "The area where all commands are typed",
+            "A block of code containing commands",
+            "Program",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "What is a Pixel?",
+        correctAnswer: "The unit of measurement on the stage",
+        wrongAnswers: [
+            "An object on the stage",
+            "Code",
+            "Codesters",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "What is a Binary Code?",
+        correctAnswer: "Information that a computer can understand",
+        wrongAnswers: [
+            "The matrix trilogy",
+            "A social media website",
+            "Fraction",
+        ],
+        hint: "",
+    }   
+];
+
+let environment_topic = [
+    {
+        questions: "Which of the following objects can temporarily resist the force of gravity?",
+        correctAnswer: "Airplane",
+        wrongAnswers: [
+            "Train",
+            "Boat",
+            "Motorcycle",
+        ],
+        hint: "",
+    },  
+    {
+        questions: "Which source of electric energy is non-renewable?",
+        correctAnswer: "Coal",
+        wrongAnswers: [
+            "Solar panels",
+            "Windmills",
+            "Dams",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "Which type of rock is formed from the cooling of lava and magma?",
+        correctAnswer: "Igneous",
+        wrongAnswers: [
+            "Mineral",
+            "Sedimentary",
+            "Metamorphic",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "Which type of rock is made from many other rocks cementing together in layers?",
+        correctAnswer: "Sedimentary",
+        wrongAnswers: [
+            "Mineral",
+            "Igneous",
+            "Metamorphic",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "Where does the sun find its greatest source of water to turn into vapor?",
+        correctAnswer: "Oceans",
+        wrongAnswers: [
+            "Puddles",
+            "Lakes",
+            "Rivers",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "If humidity needs warm air and moisture to exist, which environment would have higher humidity?",
+        correctAnswer: "Rainforest",
+        wrongAnswers: [
+            "Tundra",
+            "Grasslands",
+            "Desert",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "Which environment has higher latitudes, moderate precipitation, and low temperatures?",
+        correctAnswer: "Tundra",
+        wrongAnswers: [
+            "Rainforest",
+            "Grasslands",
+            "Desert",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "If the Sun is shining in the sky over Florida at 1:00pm on Tues., where will it be in 24 hours?",
+        correctAnswer: "Shining in the sky over Florida",
+        wrongAnswers: [
+            "Shining in the sky over Africa",
+            "Setting in the West in California",
+            "Rising in the east over Japan",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "Why does the Earth have changing seasons?",
+        correctAnswer: "The Earth revolves around the Sun every 365 days",
+        wrongAnswers: [
+            "The Sun revolves around the Earth every 365 days",
+            "The Earth's rotation every 24 hours",
+            "The amount of humidity the Sun creates in the atmosphere",
+        ],
+        hint: "",
+    },   
+    {
+        questions: "Of what is Earth's crust made?",
+        correctAnswer: "Rock",
+        wrongAnswers: [
+            "Oxygen",
+            "Magma",
+            "Water",
+        ],
+        hint: "",
+    },   
+];
+// document.getElementById("redirect-to-login").onclick = function () {
+//     document.getElementById("register-form").style.display = "none";
+//     document.getElementById("login-form").style.display = "block";
+//     }
+    
+//     document.getElementById("redirect-to-register").onclick = function () {
+//     document.getElementById("register-form").style.display = "block";
+//     document.getElementById("login-form").style.display = "none";
+// }
+
+for (let i = 0; i < general_topic.length; i++) {
+    let arr = [general_topic[i].question, general_topic[i].correctAnswer, general_topic[i].wrongAnswers, general_topic[i].hint];
     showItems(arr);
 }
 
 function addItem() {
-    let newData = {
+    let data = {
         question: document.getElementById("input_question").value,
         correctAnswer: document.getElementById("input_correct").value,
         wrongAnswers: document.getElementById("input_wrong").value,
         hint: document.getElementById("input_hint").value,
     }
-    newData.wrongAnswers = newData.wrongAnswers.split(", ");
-    data.push(newData);
-    let arr = [newData.question, newData.correctAnswer, newData.wrongAnswers, newData.hint];
+    data.wrongAnswers = data.wrongAnswers.split(", ");
+    general_topic.push(data);
+    let arr = [data.question, data.correctAnswer, data.wrongAnswers, data.hint];
     showItems(arr);
 }
 
@@ -329,10 +564,10 @@ function showItems(arr) {
         table.rows[i].contentEditable = "true";
         table.rows[i].onfocusout = function () {
             table.rows[i].contentEditable = "false";
-            data[i - 2].question = table.rows[i].cells[0].innerHTML;
-            data[i - 2].correctAnswer = table.rows[i].cells[1].innerHTML;
-            data[i - 2].wrongAnswers = table.rows[i].cells[2].innerHTML;
-            data[i - 2].hint = table.rows[i].cells[3].innerHTML;
+            general_topic[i - 2].question = table.rows[i].cells[0].innerHTML;
+            general_topic[i - 2].correctAnswer = table.rows[i].cells[1].innerHTML;
+            general_topic[i - 2].wrongAnswers = table.rows[i].cells[2].innerHTML;
+            general_topic[i - 2].hint = table.rows[i].cells[3].innerHTML;
         }
     }
     buttonUpdate.classList.add("btn-warning");
@@ -344,7 +579,7 @@ function showItems(arr) {
     buttonDelete.onclick = function () {
         let i = buttonDelete.parentNode.parentNode.rowIndex;
         document.getElementById("table_questions").deleteRow(i);
-        data.splice(i - 2, 1);
+        general_topic.splice(i - 2, 1);
     };
     buttonDelete.classList.add("btn-danger");
     buttonDelete.classList.add("btn");

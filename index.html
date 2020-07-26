@@ -11,7 +11,9 @@
 	<link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 	<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-	<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+    <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+    <link rel="stylesheet" href="css/manh/index.css">
+    <link rel="stylesheet" href="css/manh/login.css">
 	<link rel="stylesheet" href="css/manh/index.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -22,22 +24,23 @@
 <!--
     <div class="login-page">
         <div class="form">
-          <form class="register-form">
+          <form id="register-form">
             <input type="text" placeholder="name"/>
             <input type="password" placeholder="password"/>
             <input type="text" placeholder="email address"/>
-            <button>create</button>
-            <p class="message">Already registered? <a href="#">Sign In</a></p>
+            <button>CREATE</button>
+            <p class="message">Already registered? <a id="redirect-to-login" href="#">Sign In</a></p>
           </form>
-          <form class="login-form">
+          <form id="login-form">
             <input type="text" placeholder="username"/>
             <input type="password" placeholder="password"/>
-            <button>login</button>
-            <p class="message">Not registered? <a href="#">Create an account</a></p>
+            <button>LOGIN</button>
+            <p class="message">Not registered? <a id="redirect-to-register" href="#">Create an account</a></p>
           </form>
         </div>
     </div>
-    -->
+-->
+    
      <div class="alert alert-success" id="alert_success" hidden>
         <strong>Success!</strong> This alert box could indicate a successful or positive action.
       </div>
@@ -370,7 +373,8 @@
 	<script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 	<!-- <script src="plugins/easing/easing.js"></script> -->
 	<script src="js/custom.js"></script>
-	<script src="index.js"></script>
+    <script src="index.js"></script>
+    <script src="data.js"></script>
 
 </body>
 
