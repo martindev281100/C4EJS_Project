@@ -191,6 +191,52 @@ let math = [{
         ],
     },
 ];
+let coding_topic = [{
+    questions: "What is a list of steps you can follow to finish a task?",
+    correctAnswer: "Algorithm",
+        wrongAnswers: [
+            "Program",
+            "Bug",
+            "Code",
+        ],
+        hint: "Which procedure has steps to follow ?",
+}, {
+    questions: "What is an error in a program that prevents the program from running as expected?",
+    correctAnswer: "Bug",
+        wrongAnswers: [
+            "Program",
+            "Algorithm",
+            "Code",
+        ],
+        hint: "Which cause program running failed ?",
+},{
+    questions: "What is an error in a program that prevents the program from running as expected?",
+    correctAnswer: "Code",
+        wrongAnswers: [
+            "Program",
+            "Algorithm",
+            "Bug",
+        ],
+        hint: "What is programming ?",
+},{
+    questions: "What is finding and fixing errors in programs?",
+    correctAnswer: "Debugging",
+        wrongAnswers: [
+            "Program",
+            "Code",
+            "Bug",
+        ],
+        hint: "What should you do when program run incorrect?",
+},{
+    questions: "What is the action of doing something over and over again?",
+    correctAnswer: "Loop",
+        wrongAnswers: [
+            "Persistence",
+            "Code",
+            "Program",
+        ],
+        hint: "What should you do when program run incorrect?",
+}]
 
 for (let i = 0; i < data.length; i++) {
     let arr = [data[i].question, data[i].correctAnswer, data[i].wrongAnswers, data[i].hint];

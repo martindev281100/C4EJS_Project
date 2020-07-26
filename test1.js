@@ -93,7 +93,6 @@ check = function () {
     for (let i = 0; i < arr_account.length; i++) {
         if (account == arr_account[i]['email'] && password == arr_account[i]['password']) {
             document.getElementById("account").innerHTML = account;
-
             console.log('Logged in')
             user_authorized();
         } else {
@@ -569,8 +568,6 @@ start = function (chudeinput) {
         score -= 0.5;
         console.log(score);
         let cc = 'c';
-
-
         let arr = [];
         for (let i3 = 1; i3 < 5; i3++) {
             //let rand = Math.ceil(Math.random()*4);
