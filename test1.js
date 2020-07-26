@@ -589,7 +589,8 @@ start = function (chudeinput) {
     //         document.getElementById(kq).style.background = "white";
     //     }, 1000);
     // }
-
+    
+    
     doihint = () => {
         document.getElementById("score").innerHTML = "Diem cua ban la : " + userscore;
         console.log(score + ' ' + userscore);
