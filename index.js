@@ -210,7 +210,6 @@ let calculation_topic = [{
             "4",
             "5",
         ],
-        hint: ""
     },
     {
         question: "1 x 10 = ?",
@@ -220,7 +219,6 @@ let calculation_topic = [{
             "40",
             "50",
         ],
-        hint: ""
     },
     {
         question: "11 x 12 = ?",
@@ -230,7 +228,6 @@ let calculation_topic = [{
             "145",
             "213",
         ],
-        hint: ""
     },
     {
         question: "99 - 72 = ?",
@@ -240,7 +237,6 @@ let calculation_topic = [{
             "49",
             "52",
         ],
-        hint: ""
     },
     {
         question: "3 x 2 = ?",
@@ -250,7 +246,6 @@ let calculation_topic = [{
             "10",
             "5",
         ],
-        hint: ""
     },
     {
         question: "0 / 1 = ?",
@@ -260,7 +255,6 @@ let calculation_topic = [{
             "100",
             "10",
         ],
-        hint: ""
     },
     {
         question: "99 / 3 = ?",
@@ -270,7 +264,6 @@ let calculation_topic = [{
             "49",
             "11",
         ],
-        hint: ""
     },
     {
         question: "3! = ?",
@@ -280,7 +273,6 @@ let calculation_topic = [{
             "9",
             "10",
         ],
-        hint: ""
     },
     {
         question: "9 ^ 2 = ?",
@@ -290,7 +282,6 @@ let calculation_topic = [{
             "63",
             "72",
         ],
-        hint: ""
     },
     {
         question: "sin(0) = ?",
@@ -300,13 +291,11 @@ let calculation_topic = [{
             "0.3",
             "0.6",
         ],
-        hint: ""
     },
 ];
 
-let coding_topic = [
-    {
-        question: "What is a list of steps you can follow to finish a task?",
+let coding_topic = [{
+        questions: "What is a list of steps you can follow to finish a task?",
         correctAnswer: "Algorithm",
         wrongAnswers: [
             "Program",
@@ -316,7 +305,7 @@ let coding_topic = [
         hint: "",
     },
     {
-        question: "What is an error in a program that prevents the program from running as expected?",
+        questions: "What is an error in a program that prevents the program from running as expected?",
         correctAnswer: "Bug",
         wrongAnswers: [
             "Program",
@@ -326,7 +315,7 @@ let coding_topic = [
         hint: "",
     },
     {
-        question: "What is finding and fixing errors in programs?",
+        questions: "What is finding and fixing errors in programs?",
         correctAnswer: "Debugging",
         wrongAnswers: [
             "Program",
@@ -336,7 +325,7 @@ let coding_topic = [
         hint: "",
     },
     {
-        question: "What is the action of doing something over and over again?",
+        questions: "What is the action of doing something over and over again?",
         correctAnswer: "Loop",
         wrongAnswers: [
             "Persistence",
@@ -346,7 +335,7 @@ let coding_topic = [
         hint: "",
     },
     {
-        question: "What is a sprite?",
+        questions: "What is a sprite?",
         correctAnswer: "A 2D object on the stage that can be given commands",
         wrongAnswers: [
             "A set of commands that run in order from top to bottom",
@@ -356,7 +345,7 @@ let coding_topic = [
         hint: "",
     },
     {
-        question: "What is the stage?",
+        questions: "What is the stage?",
         correctAnswer: "The area where the visual output of a program is displayed",
         wrongAnswers: [
             "Finding and fixing the error or bug in a program",
@@ -366,7 +355,7 @@ let coding_topic = [
         hint: "",
     },
     {
-        question: "What is a comment?",
+        questions: "What is a comment?",
         correctAnswer: "A line that is used to provide information about the code",
         wrongAnswers: [
             "The unit of measurement on the stage",
@@ -376,7 +365,7 @@ let coding_topic = [
         hint: "",
     },
     {
-        question: "What is a variable?",
+        questions: "What is a variable?",
         correctAnswer: "A name that stores a value",
         wrongAnswers: [
             "The area where all commands are typed",
@@ -386,7 +375,7 @@ let coding_topic = [
         hint: "",
     },
     {
-        question: "What is a Pixel?",
+        questions: "What is a Pixel?",
         correctAnswer: "The unit of measurement on the stage",
         wrongAnswers: [
             "An object on the stage",
@@ -396,7 +385,7 @@ let coding_topic = [
         hint: "",
     },
     {
-        question: "What is a Binary Code?",
+        questions: "What is a Binary Code?",
         correctAnswer: "Information that a computer can understand",
         wrongAnswers: [
             "The matrix trilogy",
@@ -407,9 +396,8 @@ let coding_topic = [
     }
 ];
 
-let environment_topic = [
-    {
-        question: "Which of the following objects can temporarily resist the force of gravity?",
+let environment_topic = [{
+        questions: "Which of the following objects can temporarily resist the force of gravity?",
         correctAnswer: "Airplane",
         wrongAnswers: [
             "Train",
@@ -419,7 +407,7 @@ let environment_topic = [
         hint: "",
     },
     {
-        question: "Which source of electric energy is non-renewable?",
+        questions: "Which source of electric energy is non-renewable?",
         correctAnswer: "Coal",
         wrongAnswers: [
             "Solar panels",
@@ -429,7 +417,7 @@ let environment_topic = [
         hint: "",
     },
     {
-        question: "Which type of rock is formed from the cooling of lava and magma?",
+        questions: "Which type of rock is formed from the cooling of lava and magma?",
         correctAnswer: "Igneous",
         wrongAnswers: [
             "Mineral",
@@ -439,7 +427,7 @@ let environment_topic = [
         hint: "",
     },
     {
-        question: "Which type of rock is made from many other rocks cementing together in layers?",
+        questions: "Which type of rock is made from many other rocks cementing together in layers?",
         correctAnswer: "Sedimentary",
         wrongAnswers: [
             "Mineral",
@@ -449,7 +437,7 @@ let environment_topic = [
         hint: "",
     },
     {
-        question: "Where does the sun find its greatest source of water to turn into vapor?",
+        questions: "Where does the sun find its greatest source of water to turn into vapor?",
         correctAnswer: "Oceans",
         wrongAnswers: [
             "Puddles",
@@ -459,7 +447,7 @@ let environment_topic = [
         hint: "",
     },
     {
-        question: "If humidity needs warm air and moisture to exist, which environment would have higher humidity?",
+        questions: "If humidity needs warm air and moisture to exist, which environment would have higher humidity?",
         correctAnswer: "Rainforest",
         wrongAnswers: [
             "Tundra",
@@ -469,7 +457,7 @@ let environment_topic = [
         hint: "",
     },
     {
-        question: "Which environment has higher latitudes, moderate precipitation, and low temperatures?",
+        questions: "Which environment has higher latitudes, moderate precipitation, and low temperatures?",
         correctAnswer: "Tundra",
         wrongAnswers: [
             "Rainforest",
@@ -479,7 +467,7 @@ let environment_topic = [
         hint: "",
     },
     {
-        question: "If the Sun is shining in the sky over Florida at 1:00pm on Tues., where will it be in 24 hours?",
+        questions: "If the Sun is shining in the sky over Florida at 1:00pm on Tues., where will it be in 24 hours?",
         correctAnswer: "Shining in the sky over Florida",
         wrongAnswers: [
             "Shining in the sky over Africa",
@@ -489,7 +477,7 @@ let environment_topic = [
         hint: "",
     },
     {
-        question: "Why does the Earth have changing seasons?",
+        questions: "Why does the Earth have changing seasons?",
         correctAnswer: "The Earth revolves around the Sun every 365 days",
         wrongAnswers: [
             "The Sun revolves around the Earth every 365 days",
@@ -499,7 +487,7 @@ let environment_topic = [
         hint: "",
     },
     {
-        question: "Of what is Earth's crust made?",
+        questions: "Of what is Earth's crust made?",
         correctAnswer: "Rock",
         wrongAnswers: [
             "Oxygen",
@@ -509,8 +497,6 @@ let environment_topic = [
         hint: "",
     },
 ];
-
-let topic = general_topic;
 // document.getElementById("redirect-to-login").onclick = function () {
 //     document.getElementById("register-form").style.display = "none";
 //     document.getElementById("login-form").style.display = "block";
@@ -521,28 +507,9 @@ let topic = general_topic;
 //     document.getElementById("login-form").style.display = "none";
 // }
 
-function showTable() {
-    let tableBody = document.getElementById("table_body");
-    while(tableBody.childElementCount > 1) {
-        tableBody.removeChild(tableBody.lastChild);
-    }
-    for (let i = 0; i < topic.length; i++) {
-        let arr = [topic[i].question, topic[i].correctAnswer, topic[i].wrongAnswers, topic[i].hint];
-        showItems(arr);
-    }
-}
-showTable();
-
-document.getElementById("select_topic").onchange = function () {
-    let topic_title = document.getElementById("select_topic").value;
-    switch (topic_title) {
-        case "general": topic = general_topic; break;
-        case "math": topic = math_topic; break;
-        case "calculation": topic = calculation_topic; break;
-        case "environment": topic = environment_topic; break;
-        case "coding": topic = coding_topic; break;
-    }
-    showTable();
+for (let i = 0; i < general_topic.length; i++) {
+    let arr = [general_topic[i].question, general_topic[i].correctAnswer, general_topic[i].wrongAnswers, general_topic[i].hint];
+    showItems(arr);
 }
 
 function addItem() {
@@ -553,13 +520,13 @@ function addItem() {
         hint: document.getElementById("input_hint").value,
     }
     data.wrongAnswers = data.wrongAnswers.split(", ");
-    topic.push(data);
+    general_topic.push(data);
     let arr = [data.question, data.correctAnswer, data.wrongAnswers, data.hint];
     showItems(arr);
 }
 
 function showItems(arr) {
-    let tableBody = document.getElementById("table_body");
+    let table = document.getElementById("table_questions");
     let tableRow = document.createElement("tr");
     for (let i = 0; i < 4; i++) {
         let tableDetail = document.createElement("td");
@@ -589,13 +556,13 @@ function showItems(arr) {
     buttonUpdate.innerHTML = "Update";
     buttonUpdate.onclick = function () {
         let i = buttonUpdate.parentNode.parentNode.rowIndex;
-        tableBody.rows[i - 1].contentEditable = "true";
-        tableBody.rows[i - 1].onfocusout = function () {
-            tableBody.rows[i - 1].contentEditable = "false";
-            topic[i - 2].question = tableBody.rows[i - 1].cells[0].innerHTML;
-            topic[i - 2].correctAnswer = tableBody.rows[i - 1].cells[1].innerHTML;
-            topic[i - 2].wrongAnswers = tableBody.rows[i - 1].cells[2].innerHTML;
-            topic[i - 2].hint = tableBody.rows[i - 1].cells[3].innerHTML;
+        table.rows[i].contentEditable = "true";
+        table.rows[i].onfocusout = function () {
+            table.rows[i].contentEditable = "false";
+            general_topic[i - 2].question = table.rows[i].cells[0].innerHTML;
+            general_topic[i - 2].correctAnswer = table.rows[i].cells[1].innerHTML;
+            general_topic[i - 2].wrongAnswers = table.rows[i].cells[2].innerHTML;
+            general_topic[i - 2].hint = table.rows[i].cells[3].innerHTML;
         }
     }
     buttonUpdate.classList.add("btn-warning");
@@ -606,8 +573,8 @@ function showItems(arr) {
     buttonDelete.innerHTML = "Delete";
     buttonDelete.onclick = function () {
         let i = buttonDelete.parentNode.parentNode.rowIndex;
-        tableBody.deleteRow(i - 1);
-        topic.splice(i - 2, 1);
+        document.getElementById("table_questions").deleteRow(i);
+        general_topic.splice(i - 2, 1);
     };
     buttonDelete.classList.add("btn-danger");
     buttonDelete.classList.add("btn");
@@ -616,8 +583,7 @@ function showItems(arr) {
     tableDetail.appendChild(buttonUpdate);
     tableDetail.appendChild(buttonDelete);
     tableRow.appendChild(tableDetail);
-    tableBody.appendChild(tableRow);
-    return 
+    table.appendChild(tableRow);
 }
 
 let unauthorized_form = function () {
@@ -785,11 +751,11 @@ chonchude = function () {
     document.getElementById("chude").style.display = 'block';
 
 }
-// playGame = function () {
-//     document.getElementById("chude").style.display = 'block';
-//     document.getElementById("play").style.display = 'none';
-//     document.getElementById("formGame").style.display = 'none';
-// }
+playGame = function () {
+    document.getElementById("chude").style.display = 'block';
+    document.getElementById("play").style.display = 'none';
+    document.getElementById("formGame").style.display = 'none';
+}
 let i = 0;
 var out = false;
 let userscore = 0;
@@ -845,7 +811,7 @@ checkAcc = function () {
 };
 start = function (chudeinput) {
 
-    // document.getElementById("chude").style.display = 'none';
+    document.getElementById("chude").style.display = 'none';
     document.getElementById("formGame").style.display = 'block';
     alert('smt')
 
@@ -1023,7 +989,7 @@ btn_ls_question.addEventListener('click', function () {
     {
         table_questions.hidden = false;
     }
-    else{
+    else {
         table_questions.hidden = true;
         console.log('second condition')
     }
