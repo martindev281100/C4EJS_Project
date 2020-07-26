@@ -116,26 +116,26 @@ btn_logOut.addEventListener('click', function () {
 });
 
 
-let validate_registration = function () {
-    var input_fName = document.getElementById('input_fName').value;
-    var input_email = document.getElementById('input_email').value;
-    var input_regPassword = document.getElementById('input_regPassword').value;
-    var input_cPassword = document.getElementById('input_cPassword').value;
+// let validate_registration = function () {
+//     var input_fName = document.getElementById('input_fName').value;
+//     var input_email = document.getElementById('input_email').value;
+//     var input_regPassword = document.getElementById('input_regPassword').value;
+//     var input_cPassword = document.getElementById('input_cPassword').value;
 
-    const newObj = {
-        'full_name': input_fName,
-        'email': input_email,
-        'password': input_cPassword,
-        score: 0
-    }
-    if (input_email == "" || input_fName == "" || input_cPassword == "" || input_regPassword == "") {
-        alert('All form must be filled out');
-    } else if (input_regPassword != input_cPassword) {
-        alert('Password must be match!')
-    } else {
-        arr_account.push(newObj);
-    }
-}
+//     const newObj = {
+//         'full_name': input_fName,
+//         'email': input_email,
+//         'password': input_cPassword,
+//         score: 0
+//     }
+//     if (input_email == "" || input_fName == "" || input_cPassword == "" || input_regPassword == "") {
+//         alert('All form must be filled out');
+//     } else if (input_regPassword != input_cPassword) {
+//         alert('Password must be match!')
+//     } else {
+//          arr_account.push(newObj);
+//     }
+// }
 
 let unclicked_btn_reg = function () {
     document.getElementById('form_register').hidden = true;
@@ -369,19 +369,71 @@ var out = false;
 let userscore = 0;
 let login = false;
 let iAcc;
+checkReg = function () {
+    let idRegister = document.getElementById("input_email").value;
+    console.log(idRegister);
+    for(let i in arr_account) {
+        if(arr_account[i].email == idRegister){
+            alert('tai khoan da dang ky');
+            reg = false;
+            break;
+            
+         } 
+        else {
+            alert('ok');
+            //arr_account.push(newObj);
+            reg = true;
+            
+        }
+    }
+};
+let reg = false;
+
+let validate_registration = function () {
+    var input_fName = document.getElementById('input_fName').value;
+    var input_email = document.getElementById('input_email').value;
+    var input_regPassword = document.getElementById('input_regPassword').value;
+    var input_cPassword = document.getElementById('input_cPassword').value;
+
+    const newObj = {
+        'full_name': input_fName,
+        'email': input_email,
+        'password': input_cPassword,
+        score: 0
+    }
+    if (input_email == "" || input_fName == "" || input_cPassword == "" || input_regPassword == "") {
+        alert('All form must be filled out');
+    } else if (input_regPassword != input_cPassword) {
+        alert('Password must be match!')
+    } else {
+        if( reg == true){
+            arr_account.push(newObj);
+        }
+         
+    }
+}
 checkAcc = function () {
     let idAcc = document.getElementById("input_account").value;
     let passAcc = document.getElementById("input_password").value;
 
     for (let i in arr_account) {
         if (arr_account[i].email == idAcc) {
-
+          if(arr_account[i].password == passAcc){
             login = true;
             iAcc = i;
             alert(iAcc);
+          } else {
+              alert('sai mat khau');
+              
+          }
+            
         }
+         else {
+            alert("sai tai khoan");
+        };
     }
-}
+};
+
 start = function (chudeinput) {
     if (document.getElementById("account").innerHTML != "") {
     };
