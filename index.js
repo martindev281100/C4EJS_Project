@@ -457,7 +457,6 @@ let arr_account = [{
 //             unauthorized_form();
 //         }
 //     }
-
 // };
 
 const btn_logOut = document.getElementById('btn_logOut')
@@ -513,7 +512,6 @@ btn_reg.addEventListener('click', function () {
     unclicked_btn_reg();
 })
 
-
 chonchude = function () {
     document.getElementById("chude").style.display = 'block';
 
@@ -559,7 +557,6 @@ checkAcc = function () {
         if (idAcc == 'admin' && passAcc == 1234) {
             authorized_form();
             console.log('Logged in');
-
         } else if (idAcc == arr_account[i].email) {
 
             if (arr_account[i].password == passAcc) {
