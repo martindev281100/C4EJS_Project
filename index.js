@@ -233,11 +233,50 @@ let coding_topic = [{
         wrongAnswers: [
             "Persistence",
             "Code",
-            "Program",
+            "Bug",
         ],
         hint: "What should you do when program run incorrect?",
 }]
 
+let topic_greetings = [{
+    questions: "Hola!",
+    correctAnswer: "Hello",
+        wrongAnswers: [
+            "Goodbye",
+            "All of the above",
+            "Nice to meet you",
+        ],
+        hint: "",
+},{
+    questions: "Buenos dias!",
+    correctAnswer: "Good Morning",
+        wrongAnswers: [
+            "Goodbye",
+            "All of the above",
+            "Nice to meet you",
+        ],
+        hint: "",
+}, {
+    questions: "Buenas noches!",
+    correctAnswer: "Good Evening",
+        wrongAnswers: [
+            "Good Afternoon",
+            "All of the above",
+            "Nice to meet you",
+        ],
+        hint: "",
+},
+{
+    questions: "Gracias!",
+    correctAnswer: "Thank you",
+        wrongAnswers: [
+            "Good Afternoon",
+            "All of the above",
+            "Nice to meet you",
+        ],
+        hint: "",
+},
+]
 for (let i = 0; i < data.length; i++) {
     let arr = [data[i].question, data[i].correctAnswer, data[i].wrongAnswers, data[i].hint];
     showItems(arr);
@@ -392,31 +431,30 @@ btn_add_item.addEventListener('click', function () {
 
 const btn_logIn = document.getElementById('btn_logIn');
 btn_logIn.addEventListener('click', function () {
-    check();
     document.getElementById("input_account").value = '';
     document.getElementById("input_password").value = '';
 })
 
 let arr_account = [];
 
-check = function () {
-    let account = document.getElementById("input_account").value;
-    let password = document.getElementById("input_password").value;
-    console.log(account + password);
-    if (account == 'admin' && password == 1234) {
-        authorized_form();
-        console.log('Logged in')
-    }
-    for (let i = 0; i < arr_account.length; i++) {
-        if (account == arr_account[i]['email'] && password == arr_account[i]['password']) {
-            console.log('Logged in')
-            user_authorized();
-        } else {
-            unauthorized_form();
-        }
-    }
+// check = function () {
+//     let account = document.getElementById("input_account").value;
+//     let password = document.getElementById("input_password").value;
+//     console.log(account + password);
+//     if (account == 'admin' && password == 1234) {
+//         authorized_form();
+//         console.log('Logged in')
+//     }
+//     for (let i = 0; i < arr_account.length; i++) {
+//         if (account == arr_account[i]['email'] && password == arr_account[i]['password']) {
+//             console.log('Logged in')
+//             user_authorized();
+//         } else {
+//             unauthorized_form();
+//         }
+//     }
 
-};
+// };
 
 const btn_logOut = document.getElementById('btn_logOut')
 btn_logOut.addEventListener('click', function () {
@@ -440,6 +478,7 @@ let validate_registration = function () {
         alert('Password must be match!');
     } else {
         arr_account.push(newObj);
+        console.log(arr_account)
         document.getElementById('alert_success').hidden = false;
         setTimeout(function () {
             document.getElementById('alert_success').hidden = true;
@@ -482,19 +521,53 @@ var out = false;
 let userscore = 0;
 let login = false;
 let iAcc;
+let reg = false;
+checkReg = function () {
+    let idRegister = document.getElementById("input_email").value;
+    console.log(idRegister);
+    for (let i in arr_account) {
+        if (arr_account[i].email == idRegister) {
+            alert('tai khoan da dang ky');
+            reg = false;
+            break;
+        }
+        else {
+            alert('ok');
+            reg = true;
+        }
+    }
+};
+
 checkAcc = function () {
     let idAcc = document.getElementById("input_account").value;
     let passAcc = document.getElementById("input_password").value;
+    console.log(arr_account[0].email + ' email');
 
-    for (let i in arr_account) {
-        if (arr_account[i].email == idAcc) {
+    for (let i = 0; i < arr_account.length; i++) {
+        if (idAcc == 'admin' && passAcc == 1234) {
+            authorized_form();
+            console.log('Logged in');
 
-            login = true;
-            iAcc = i;
-            alert(iAcc);
         }
+        else if (idAcc == arr_account[i].email) {           
+
+             if (arr_account[i].password == passAcc) {
+                login = true;
+                iAcc = i;               
+                alert(iAcc);
+                user_authorized();
+            }
+             else {
+                alert('sai mat khau');
+            }
+            console.log(i);
+            break;
+        }
+        else if (i == arr_account.length - 1) {
+            alert("sai tai khoan");
+        };
     }
-}
+};
 start = function (chudeinput) {
 
     document.getElementById("chude").style.display = 'none';
