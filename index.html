@@ -214,7 +214,6 @@
                                 vel
                                 nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
                         </div>
-
                         <div
                             class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
                             <div class="icon_container d-flex flex-column justify-content-end">
@@ -225,7 +224,6 @@
                                 vel
                                 nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -252,6 +250,13 @@
                     </div>
                     <button id="btn_item_add" class="btn btn-success" onclick = "addItem()">Add Item</button>
                 </div>
+                <select id="select_topic">
+                    <option value="general">General</option>
+                    <option value="math">Math</option>
+                    <option value="calculation">Calculation</option>
+                    <option value="environment">Environment</option>
+                    <option value="coding">Coding</option>
+                </select>
                 <button id="btn_add" class="btn btn-primary">Add Question</button>
                 <div id="form_quizz">
                     <div id="thuvanmay">
@@ -319,7 +324,7 @@
                         <th id="col_action_title">Actions</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table_body">
                     <tr hidden>
                         <td class="question_content">1 + 1 = ?</td>
                         <td class="correct_answer">2</td>
@@ -382,7 +387,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
