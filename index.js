@@ -497,6 +497,8 @@ let environment_topic = [{
         hint: "",
     },
 ];
+let topic = general_topic;
+
 // document.getElementById("redirect-to-login").onclick = function () {
 //     document.getElementById("register-form").style.display = "none";
 //     document.getElementById("login-form").style.display = "block";
@@ -506,12 +508,29 @@ let environment_topic = [{
 //     document.getElementById("register-form").style.display = "block";
 //     document.getElementById("login-form").style.display = "none";
 // }
-
-for (let i = 0; i < general_topic.length; i++) {
-    let arr = [general_topic[i].question, general_topic[i].correctAnswer, general_topic[i].wrongAnswers, general_topic[i].hint];
-    showItems(arr);
+function showTable() {
+    let tableBody = document.getElementById("table_body");
+    while(tableBody.childElementCount > 1) {
+        tableBody.removeChild(tableBody.lastChild);
+    }
+    for (let i = 0; i < topic.length; i++) {
+        let arr = [topic[i].question, topic[i].correctAnswer, topic[i].wrongAnswers, topic[i].hint];
+        showItems(arr);
+    }
 }
+showTable();
 
+document.getElementById("select_topic").onchange = function () {
+    let topic_title = document.getElementById("select_topic").value;
+    switch (topic_title) {
+        case "general": topic = general_topic; break;
+        case "math": topic = math_topic; break;
+        case "calculation": topic = calculation_topic; break;
+        case "environment": topic = environment_topic; break;
+        case "coding": topic = coding_topic; break;
+    }
+    showTable();
+}
 function addItem() {
     let data = {
         question: document.getElementById("input_question").value,
@@ -520,13 +539,13 @@ function addItem() {
         hint: document.getElementById("input_hint").value,
     }
     data.wrongAnswers = data.wrongAnswers.split(", ");
-    general_topic.push(data);
+    topic.push(data);
     let arr = [data.question, data.correctAnswer, data.wrongAnswers, data.hint];
     showItems(arr);
 }
 
 function showItems(arr) {
-    let table = document.getElementById("table_questions");
+    let tableBody = document.getElementById("table_body");
     let tableRow = document.createElement("tr");
     for (let i = 0; i < 4; i++) {
         let tableDetail = document.createElement("td");
@@ -556,13 +575,13 @@ function showItems(arr) {
     buttonUpdate.innerHTML = "Update";
     buttonUpdate.onclick = function () {
         let i = buttonUpdate.parentNode.parentNode.rowIndex;
-        table.rows[i].contentEditable = "true";
-        table.rows[i].onfocusout = function () {
-            table.rows[i].contentEditable = "false";
-            general_topic[i - 2].question = table.rows[i].cells[0].innerHTML;
-            general_topic[i - 2].correctAnswer = table.rows[i].cells[1].innerHTML;
-            general_topic[i - 2].wrongAnswers = table.rows[i].cells[2].innerHTML;
-            general_topic[i - 2].hint = table.rows[i].cells[3].innerHTML;
+        tableBody.rows[i - 1].contentEditable = "true";
+        tableBody.rows[i - 1].onfocusout = function () {
+            tableBody.rows[i - 1].contentEditable = "false";
+            topic[i - 2].question = tableBody.rows[i - 1].cells[0].innerHTML;
+            topic[i - 2].correctAnswer = tableBody.rows[i - 1].cells[1].innerHTML;
+            topic[i - 2].wrongAnswers = tableBody.rows[i - 1].cells[2].innerHTML;
+            topic[i - 2].hint = tableBody.rows[i - 1].cells[3].innerHTML;
         }
     }
     buttonUpdate.classList.add("btn-warning");
@@ -573,8 +592,8 @@ function showItems(arr) {
     buttonDelete.innerHTML = "Delete";
     buttonDelete.onclick = function () {
         let i = buttonDelete.parentNode.parentNode.rowIndex;
-        document.getElementById("table_questions").deleteRow(i);
-        general_topic.splice(i - 2, 1);
+        tableBody.deleteRow(i - 1);
+        topic.splice(i - 2, 1);
     };
     buttonDelete.classList.add("btn-danger");
     buttonDelete.classList.add("btn");
@@ -583,7 +602,7 @@ function showItems(arr) {
     tableDetail.appendChild(buttonUpdate);
     tableDetail.appendChild(buttonDelete);
     tableRow.appendChild(tableDetail);
-    table.appendChild(tableRow);
+    tableBody.appendChild(tableRow);
 }
 
 let unauthorized_form = function () {
@@ -751,11 +770,11 @@ chonchude = function () {
     document.getElementById("chude").style.display = 'block';
 
 }
-// playGame = function () {
-//     document.getElementById("chude").style.display = 'block';
-//     document.getElementById("play").style.display = 'none';
-//     document.getElementById("formGame").style.display = 'none';
-// }
+playGame = function () {
+    document.getElementById("chude").style.display = 'block';
+    document.getElementById("play").style.display = 'none';
+    document.getElementById("formGame").style.display = 'none';
+}
 let i = 0;
 var out = false;
 let userscore = 0;
@@ -811,7 +830,7 @@ checkAcc = function () {
 };
 start = function (chudeinput) {
 
-    // document.getElementById("chude").style.display = 'none';
+    document.getElementById("chude").style.display = 'none';
     document.getElementById("formGame").style.display = 'block';
     alert('smt')
 

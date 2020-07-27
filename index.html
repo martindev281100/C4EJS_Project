@@ -153,7 +153,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="section_title text-center">
-                                <h1>Our Object</h1>
+                                <h1>Our Services</h1>
                             </div>
                         </div>
                     </div>
@@ -215,7 +215,6 @@
                                 vel
                                 nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
                         </div>
-
                         <div
                             class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
                             <div class="icon_container d-flex flex-column justify-content-end">
@@ -226,7 +225,6 @@
                                 vel
                                 nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
                         </div>
-
                     </div>
                     
                 </div>
@@ -254,6 +252,13 @@
                     </div>
                     <button id="btn_item_add" class="btn btn-success" onclick = "addItem()">Add Item</button>
                 </div>
+                <select id="select_topic">
+                    <option value="general">General</option>
+                    <option value="math">Math</option>
+                    <option value="calculation">Calculation</option>
+                    <option value="environment">Environment</option>
+                    <option value="coding">Coding</option>
+                </select>
                 <button id="btn_add" class="btn btn-primary">Add Question</button>
                 <div id="form_quizz">
                     <div id="thuvanmay">
@@ -266,14 +271,25 @@
                         </script>
                     </div>
                     <button id="btn_ls_question">List Question</button>
+
                     <div id="playgame">
+<<<<<<< HEAD
                         
+=======
+                        <button onclick="playGame()">Play</button>
+>>>>>>> 40e68c926f0fb708dad6b468a29ad30a5491a8b5
                         <div id="chude">
                             <input class="btn_chude" type="button" value="Data" onclick="start(general_topic);">
                             <input class="btn_chude" type="button" value="Toán Học" onclick="start(calculation_topic)">
                             <input class="btn_chude" type="button" value="math" onclick="start(math_topic)">
                             <input class="btn_chude" type="button" value="coding" onclick="start(coding_topic)">
                             <input class="btn_chude" type="button" value="moi truong" onclick="start(environment_topic)">
+<<<<<<< HEAD
+=======
+                            <script>
+                                document.getElementById("chude").style.display = 'none';
+                            </script>
+>>>>>>> 40e68c926f0fb708dad6b468a29ad30a5491a8b5
                         </div>
                     </div>
                     <div id="thongbao">
@@ -317,7 +333,7 @@
                         <th id="col_action_title">Actions</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table_body">
                     <tr hidden>
                         <td class="question_content">1 + 1 = ?</td>
                         <td class="correct_answer">2</td>
@@ -380,7 +396,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
