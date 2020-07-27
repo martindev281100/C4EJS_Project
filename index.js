@@ -107,20 +107,7 @@ function showItems(arr) {
     tableBody.appendChild(tableRow);
 }
 
-let login_hideForm = function(){
-    document.getElementById('table_questions').hidden = true;
-    document.getElementsByClassName("col_action").hidden = true;
-    document.getElementById("col_action_title").hidden = true;
-    document.getElementById('btn_logOut').hidden = true;
-    document.getElementById('btn_Hidelogin').hidden=true;
-    document.getElementsByClassName('col_hint').hidden = true;
-    document.getElementById('col_hint_title').hidden = true;
-    document.getElementById('btn_add').hidden = true;
-    document.getElementById('login-page').hidden=true;
-    document.getElementById('form-add').hidden = true;
-    document.getElementById('form_quizz').hidden = true;
-}
-login_hideForm();
+
 
 let unauthorized_form = function () {
     document.getElementById('table_questions').hidden = true;
@@ -147,9 +134,11 @@ let user_authorized = function () {
     document.getElementById('col_hint_title').hidden = true;
     document.getElementById('table_questions').hidden = true;
     document.getElementById('form_quizz').hidden = false;
+    document.getElementById('login-page').hidden = true;
 }
 
 let authorized_form = function () {
+    document.getElementById('login-page').hidden = true;
     document.getElementById('table_questions').hidden = false;
     document.getElementsByClassName("col_action").hidden = false;
     document.getElementById("col_action_title").hidden = false;
@@ -253,8 +242,9 @@ let clicked_btn_log = function () {
 }
 const btn_Hidelogin = document.getElementById('btn_Hidelogin')
 btn_Hidelogin.addEventListener('click', function () {
-    login_hideForm();
+    
     clicked_btn_log();
+    
 })
 
 const btn_reg = document.getElementById('btn_reg')
