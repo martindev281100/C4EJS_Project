@@ -14,44 +14,34 @@
     <link rel="stylesheet" type="text/css" href="styles/responsive.css">
     <link rel="stylesheet" href="css/manh/index.css">
     <link rel="stylesheet" href="css/manh/login.css">
-    <link rel="stylesheet" href="css/manh/index.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
 
 <body>
-    <div class="alert alert-success" id="alert_success" style="margin-bottom: 0rem;" hidden>
-
-    </div>
-    <div class="alert alert-warning" id="alert_warning" style="margin-bottom: 0rem;" hidden>
-
-    </div>
-    <!--
-    <div class="login-page">
+    <div class="alert alert-success" id="alert_success" style="margin-bottom: 0rem;" hidden></div>
+    <div class="alert alert-warning" id="alert_warning" style="margin-bottom: 0rem;" hidden></div>
+    
+    <div id="login-page">
         <div class="form">
           <form id="register-form">
-            <input type="text" placeholder="name"/>
-            <input type="password" placeholder="password"/>
-            <input type="text" placeholder="email address"/>
-            <button>CREATE</button>
+            <input type="text" placeholder="name" id="input_fName"/>
+            <input type="text" placeholder="email address" id="input_email"/>
+            <input type="password" placeholder="password" id="input_regPassword"/>
+            <input type="password" placeholder="confirm password" id="input_cPassword"/>
+            <button id="btn_reg" onclick="checkReg()">CREATE</button>
             <p class="message">Already registered? <a id="redirect-to-login" href="#">Sign In</a></p>
           </form>
+
           <form id="login-form">
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
-            <button>LOGIN</button>
+            <input type="text" placeholder="username" id="input_account"/>
+            <input type="password" placeholder="password" id="input_password"/>
+            <button id="btn_logIn" onclick="checkAcc()">LOGIN</button>
             <p class="message">Not registered? <a id="redirect-to-register" href="#">Create an account</a></p>
           </form>
         </div>
     </div>
-    -->
-     <div class="alert alert-success" id="alert_success" hidden>
-        <strong>Success!</strong> This alert box could indicate a successful or positive action.
-      </div>
-      <div class="alert alert-warning" id="alert_warning" hidden>
-        <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
-      </div>
 
 <div class="container manh_container">
     
@@ -73,20 +63,7 @@
                             <a class="nav-link" href="#Question" style="color: turquoise;">List of question </a>
                         </li>
                     </ul>
-                    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-                        <form class="form-inline my-2 my-lg-0">
-                            <div class="form-group">
-                                <input type="text" placeholder="Enter account" id="input_account" class="form-control">
-                                <input type="password" placeholder="Enter password" id="input_password"
-                                    class="form-control">
-                                <span>
-                                    <button id="btn_logIn" class="btn btn-success" type="button" onclick="checkAcc();"><a href="#formtable">Log In</a></button>
-                                    <button id="btn_register" class="btn btn-success" type="button"><a href="#register">Register</a></button>
-                                    <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
+                    <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
                 </nav>
             </div>
         </header>
@@ -124,27 +101,7 @@
 			</div>
         </div>
     </section>
-    <section id="register" style="background-color: wheat;"" >
-        <div id="form_register">
-            <div class="form-group">
-                <label for="input_fName">Full name: </label>
-                <input type="text" placeholder="Enter full name" id="input_fName" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="input_email">Email: </label>
-                <input type="text" placeholder="Enter your email" id="input_email" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="input_regPassword">Password </label>
-                <input type="password" placeholder="Enter your password" id="input_regPassword" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="input_cPassword">Confirm Password </label>
-                <input type="password" placeholder="Enter your password" id="input_cPassword" class="form-control">
-            </div>
-            <button class="btn btn-outline-success" id="btn_reg" type="button" onclick="checkReg()">Register</button>
-        </div>
-    </section>
+
         <!-- Services -->
         <section id="Question">
             <div class="services page_section">
@@ -250,6 +207,7 @@
                     </div>
                     <button id="btn_item_add" class="btn btn-success" onclick = "addItem()">Add Item</button>
                 </div>
+
                 <select id="select_topic">
                     <option value="general">General</option>
                     <option value="math">Math</option>
@@ -257,6 +215,7 @@
                     <option value="environment">Environment</option>
                     <option value="coding">Coding</option>
                 </select>
+
                 <button id="btn_add" class="btn btn-primary">Add Question</button>
                 <div id="form_quizz">
                     <div id="thuvanmay">
@@ -317,10 +276,10 @@
                 <table id="table_questions" border="1" class="table table-striped">
                     <thead id="table_head">
                     <tr>
-                        <th>Questions</th>
+                        <th>Question</th>
                         <th>Correct Answer</th>
                         <th>Wrong Answer</th>
-                        <th id="col_hint_title">Hints</th>
+                        <th id="col_hint_title">Hint</th>
                         <th id="col_action_title">Actions</th>
                     </tr>
                     </thead>
@@ -414,7 +373,7 @@
 	<script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 	<!-- <script src="plugins/easing/easing.js"></script> -->
 	<script src="js/custom.js"></script>
-	<script src="index.js"></script>
+    <script src="index.js"></script>
 
 </body>
 
