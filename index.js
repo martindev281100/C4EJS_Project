@@ -107,14 +107,31 @@ function showItems(arr) {
     tableBody.appendChild(tableRow);
 }
 
+let login_hideForm = function(){
+    document.getElementById('table_questions').hidden = true;
+    document.getElementsByClassName("col_action").hidden = true;
+    document.getElementById("col_action_title").hidden = true;
+    document.getElementById('btn_logOut').hidden = true;
+    document.getElementById('btn_Hidelogin').hidden=true;
+    document.getElementsByClassName('col_hint').hidden = true;
+    document.getElementById('col_hint_title').hidden = true;
+    document.getElementById('btn_add').hidden = true;
+    document.getElementById('login-page').hidden=true;
+    document.getElementById('form-add').hidden = true;
+    document.getElementById('form_quizz').hidden = true;
+}
+login_hideForm();
+
 let unauthorized_form = function () {
     document.getElementById('table_questions').hidden = true;
     document.getElementsByClassName("col_action").hidden = true;
     document.getElementById("col_action_title").hidden = true;
     document.getElementById('btn_logOut').hidden = true;
+    document.getElementById('btn_Hidelogin').hidden=false;
     document.getElementsByClassName('col_hint').hidden = true;
     document.getElementById('col_hint_title').hidden = true;
     document.getElementById('btn_add').hidden = true;
+    document.getElementById('login-page').hidden=true;
     document.getElementById('form-add').hidden = true;
     document.getElementById('form_quizz').hidden = true;
 }
@@ -123,6 +140,7 @@ unauthorized_form();
 let user_authorized = function () {
     document.getElementById("col_action_title").hidden = true;
     document.getElementById("btn_add").hidden = true;
+    document.getElementById('btn_Hidelogin').hidden=true;
     document.getElementById('btn_logOut').hidden = false;
     document.getElementsByClassName('col_hint').hidden = true;
     document.getElementsByClassName('col_action').hidden = true;
@@ -136,6 +154,7 @@ let authorized_form = function () {
     document.getElementsByClassName("col_action").hidden = false;
     document.getElementById("col_action_title").hidden = false;
     document.getElementById("btn_add").hidden = false;
+    document.getElementById('btn_Hidelogin').hidden=true;
     document.getElementById('btn_logOut').hidden = false;
     document.getElementsByClassName('col_hint').hidden = false;
     document.getElementById('col_hint_title').hidden = false;
@@ -225,6 +244,18 @@ let validate_registration = function () {
         }
     }
 }
+let unclicked_btn_log = function () {
+    document.getElementById('login-page').hidden = true;
+}
+unclicked_btn_log();
+let clicked_btn_log = function () {
+    document.getElementById('login-page').hidden = false;
+}
+const btn_Hidelogin = document.getElementById('btn_Hidelogin')
+btn_Hidelogin.addEventListener('click', function () {
+    login_hideForm();
+    clicked_btn_log();
+})
 
 const btn_reg = document.getElementById('btn_reg')
 btn_reg.addEventListener('click', function () {
@@ -300,7 +331,7 @@ start = function (chudeinput) {
 
     document.getElementById("chude").style.display = 'none';
     document.getElementById("formGame").style.display = 'block';
-    alert('smt')
+    
 
     let score = 0;
 

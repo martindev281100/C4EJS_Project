@@ -34,8 +34,7 @@
             <button id="btn_reg" onclick="checkReg()">CREATE</button>
             <p class="message">Already registered? <a id="redirect-to-login" href="#">Sign In</a></p>
           </form>
-
-          <form id="login-form">
+          <form >
             <input type="text" placeholder="username" id="input_account"/>
             <input type="password" placeholder="password" id="input_password"/>
             <button id="btn_logIn" onclick="checkAcc()">LOGIN</button>
@@ -45,8 +44,7 @@
     </div>
 
 <div class="container manh_container">
-    
-    </div>
+</div>
     
 
     <div class="super_container">
@@ -64,8 +62,10 @@
                             <a class="nav-link" href="#Question" style="color: turquoise;">List of question </a>
                         </li>
                     </ul>
+                    
                     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
                         <span>
+                        <button class="btn btn-success" type="button" id="btn_Hidelogin">Log In</button>
                         <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
                         </span>
                     </div>
@@ -313,7 +313,7 @@
         </section>
 
 		<!-- Testimonials -->
-		<div class="testimonials page_section">
+		<div class="testimonials page_section" id="foot_er">
 			<!-- <div class="testimonials_background" style="background-image:url(images/testimonials_background.jpg)"></div> -->
 			<div class="testimonials_background_container prlx_parent">
 				<div class="testimonials_background prlx"
