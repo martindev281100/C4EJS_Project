@@ -210,6 +210,7 @@ let calculation_topic = [{
             "4",
             "5",
         ],
+        hints:""
     },
     {
         question: "1 x 10 = ?",
@@ -219,6 +220,8 @@ let calculation_topic = [{
             "40",
             "50",
         ],
+        hints:""
+
     },
     {
         question: "11 x 12 = ?",
@@ -228,6 +231,8 @@ let calculation_topic = [{
             "145",
             "213",
         ],
+        hints:""
+
     },
     {
         question: "99 - 72 = ?",
@@ -237,6 +242,8 @@ let calculation_topic = [{
             "49",
             "52",
         ],
+        hints:""
+
     },
     {
         question: "3 x 2 = ?",
@@ -246,6 +253,8 @@ let calculation_topic = [{
             "10",
             "5",
         ],
+        hints:""
+
     },
     {
         question: "0 / 1 = ?",
@@ -255,6 +264,8 @@ let calculation_topic = [{
             "100",
             "10",
         ],
+        hints:""
+
     },
     {
         question: "99 / 3 = ?",
@@ -273,6 +284,8 @@ let calculation_topic = [{
             "9",
             "10",
         ],
+        hints:""
+
     },
     {
         question: "9 ^ 2 = ?",
@@ -291,11 +304,13 @@ let calculation_topic = [{
             "0.3",
             "0.6",
         ],
+        hints:""
+
     },
 ];
 
 let coding_topic = [{
-        questions: "What is a list of steps you can follow to finish a task?",
+        question: "What is a list of steps you can follow to finish a task?",
         correctAnswer: "Algorithm",
         wrongAnswers: [
             "Program",
@@ -305,7 +320,7 @@ let coding_topic = [{
         hint: "",
     },
     {
-        questions: "What is an error in a program that prevents the program from running as expected?",
+        question: "What is an error in a program that prevents the program from running as expected?",
         correctAnswer: "Bug",
         wrongAnswers: [
             "Program",
@@ -315,7 +330,7 @@ let coding_topic = [{
         hint: "",
     },
     {
-        questions: "What is finding and fixing errors in programs?",
+        question: "What is finding and fixing errors in programs?",
         correctAnswer: "Debugging",
         wrongAnswers: [
             "Program",
@@ -325,7 +340,7 @@ let coding_topic = [{
         hint: "",
     },
     {
-        questions: "What is the action of doing something over and over again?",
+        question: "What is the action of doing something over and over again?",
         correctAnswer: "Loop",
         wrongAnswers: [
             "Persistence",
@@ -335,7 +350,7 @@ let coding_topic = [{
         hint: "",
     },
     {
-        questions: "What is a sprite?",
+        question: "What is a sprite?",
         correctAnswer: "A 2D object on the stage that can be given commands",
         wrongAnswers: [
             "A set of commands that run in order from top to bottom",
@@ -345,7 +360,7 @@ let coding_topic = [{
         hint: "",
     },
     {
-        questions: "What is the stage?",
+        question: "What is the stage?",
         correctAnswer: "The area where the visual output of a program is displayed",
         wrongAnswers: [
             "Finding and fixing the error or bug in a program",
@@ -355,7 +370,7 @@ let coding_topic = [{
         hint: "",
     },
     {
-        questions: "What is a comment?",
+        question: "What is a comment?",
         correctAnswer: "A line that is used to provide information about the code",
         wrongAnswers: [
             "The unit of measurement on the stage",
@@ -365,7 +380,7 @@ let coding_topic = [{
         hint: "",
     },
     {
-        questions: "What is a variable?",
+        question: "What is a variable?",
         correctAnswer: "A name that stores a value",
         wrongAnswers: [
             "The area where all commands are typed",
@@ -375,7 +390,7 @@ let coding_topic = [{
         hint: "",
     },
     {
-        questions: "What is a Pixel?",
+        question: "What is a Pixel?",
         correctAnswer: "The unit of measurement on the stage",
         wrongAnswers: [
             "An object on the stage",
@@ -385,7 +400,7 @@ let coding_topic = [{
         hint: "",
     },
     {
-        questions: "What is a Binary Code?",
+        question: "What is a Binary Code?",
         correctAnswer: "Information that a computer can understand",
         wrongAnswers: [
             "The matrix trilogy",
@@ -397,7 +412,7 @@ let coding_topic = [{
 ];
 
 let environment_topic = [{
-        questions: "Which of the following objects can temporarily resist the force of gravity?",
+        question: "Which of the following objects can temporarily resist the force of gravity?",
         correctAnswer: "Airplane",
         wrongAnswers: [
             "Train",
@@ -407,7 +422,7 @@ let environment_topic = [{
         hint: "",
     },
     {
-        questions: "Which source of electric energy is non-renewable?",
+        question: "Which source of electric energy is non-renewable?",
         correctAnswer: "Coal",
         wrongAnswers: [
             "Solar panels",
@@ -417,7 +432,7 @@ let environment_topic = [{
         hint: "",
     },
     {
-        questions: "Which type of rock is formed from the cooling of lava and magma?",
+        question: "Which type of rock is formed from the cooling of lava and magma?",
         correctAnswer: "Igneous",
         wrongAnswers: [
             "Mineral",
@@ -427,7 +442,7 @@ let environment_topic = [{
         hint: "",
     },
     {
-        questions: "Which type of rock is made from many other rocks cementing together in layers?",
+        question: "Which type of rock is made from many other rocks cementing together in layers?",
         correctAnswer: "Sedimentary",
         wrongAnswers: [
             "Mineral",
@@ -437,7 +452,7 @@ let environment_topic = [{
         hint: "",
     },
     {
-        questions: "Where does the sun find its greatest source of water to turn into vapor?",
+        question: "Where does the sun find its greatest source of water to turn into vapor?",
         correctAnswer: "Oceans",
         wrongAnswers: [
             "Puddles",
@@ -447,7 +462,7 @@ let environment_topic = [{
         hint: "",
     },
     {
-        questions: "If humidity needs warm air and moisture to exist, which environment would have higher humidity?",
+        question: "If humidity needs warm air and moisture to exist, which environment would have higher humidity?",
         correctAnswer: "Rainforest",
         wrongAnswers: [
             "Tundra",
@@ -457,7 +472,7 @@ let environment_topic = [{
         hint: "",
     },
     {
-        questions: "Which environment has higher latitudes, moderate precipitation, and low temperatures?",
+        question: "Which environment has higher latitudes, moderate precipitation, and low temperatures?",
         correctAnswer: "Tundra",
         wrongAnswers: [
             "Rainforest",
@@ -467,7 +482,7 @@ let environment_topic = [{
         hint: "",
     },
     {
-        questions: "If the Sun is shining in the sky over Florida at 1:00pm on Tues., where will it be in 24 hours?",
+        question: "If the Sun is shining in the sky over Florida at 1:00pm on Tues., where will it be in 24 hours?",
         correctAnswer: "Shining in the sky over Florida",
         wrongAnswers: [
             "Shining in the sky over Africa",
@@ -477,7 +492,7 @@ let environment_topic = [{
         hint: "",
     },
     {
-        questions: "Why does the Earth have changing seasons?",
+        question: "Why does the Earth have changing seasons?",
         correctAnswer: "The Earth revolves around the Sun every 365 days",
         wrongAnswers: [
             "The Sun revolves around the Earth every 365 days",
@@ -487,7 +502,7 @@ let environment_topic = [{
         hint: "",
     },
     {
-        questions: "Of what is Earth's crust made?",
+        question: "Of what is Earth's crust made?",
         correctAnswer: "Rock",
         wrongAnswers: [
             "Oxygen",
