@@ -21,10 +21,12 @@
 </head>
 
 <body>
+    
+    <div id="login-page">
     <div class="alert alert-success" id="alert_success" style="margin-bottom: 0rem;" hidden></div>
     <div class="alert alert-warning" id="alert_warning" style="margin-bottom: 0rem;" hidden></div>
     
-    <div id="login-page">
+    <section id="pLog">
         <div class="form">
           <form id="register-form">
             <input type="text" placeholder="name" id="input_fName"/>
@@ -37,16 +39,15 @@
           <form >
             <input type="text" placeholder="username" id="input_account"/>
             <input type="password" placeholder="password" id="input_password"/>
-            <button id="btn_logIn" onclick="checkAcc()">LOGIN</button>
+            <button id="btn_logIn" onclick="checkAcc()"> LOGIN</button>
             <p class="message">Not registered? <a id="redirect-to-register" href="#">Create an account</a></p>
           </form>
         </div>
     </div>
-
-<div class="container manh_container" id="">
+    </section>
+<div class="container manh_container">
 </div>
     
-
     <div class="super_container">
         <!-- Header -->
         <header class="header " id="super_header">
@@ -62,10 +63,9 @@
                             <a class="nav-link" href="#Question" style="color: turquoise;">List of question </a>
                         </li>
                     </ul>
-                    
                     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
                         <span>
-                        <button class="btn btn-success" type="button" id="btn_Hidelogin">Log In</button>
+                        <button class="btn btn-success" type="button" id="btn_Hidelogin"><a href="#pLog">Log In</a></button>
                         <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
                         </span>
                     </div>
@@ -80,20 +80,14 @@
             <div class="home">
                 <!-- Hero Slider -->
                 <div class="hero_slider_container">
-
                     <div class="hero_slider owl-carousel">
                         <!-- Hero Slide -->
-
                         <div class="hero_slide">
-
                             <div class="hero_slide_background"
                                 style="background-image:url(images/slider_background.jpg)">
-
                             </div>
-
                             <div
                                 class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
-
                                 <div class="hero_slide_content text-center">
                                     <h1>Get your
                                         <span>Education</span> today!</h1>
