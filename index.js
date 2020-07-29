@@ -31,7 +31,11 @@ document.getElementById("select_topic").onchange = function () {
     showTable();
 }
 
-// Add item
+// Add question
+let clicked_btn_add_question = function () {
+    document.getElementById('form-add-question').hidden = false;
+}
+
 function addItem() {
     let data = {
         question: document.getElementById("input_question").value,
@@ -46,7 +50,7 @@ function addItem() {
         alert_warning.hidden = false;
         setTimeout(function () {
             alert_warning.hidden = true;
-        }, 3000)
+        }, 1000)
     } else {
         document.getElementById('form-add-question').hidden = true;
         data.wrongAnswers = data.wrongAnswers.split(", ");
@@ -57,7 +61,7 @@ function addItem() {
         document.getElementById('alert_success').innerHTML = 'Item is successfully added!';
         setTimeout(function () {
             document.getElementById('alert_success').hidden = true;
-        }, 3000)
+        }, 1000)
     }
 }
 
@@ -123,6 +127,10 @@ function showItems(arr) {
 }
 
 // Add topic
+let clicked_btn_add_topic = function () {
+    document.getElementById('form-add-topic').hidden = false;
+}
+
 function addItemTopic() {
     let newTopic = document.getElementById("new-topic").value;
     document.getElementById("new-topic").value = "";
@@ -140,7 +148,7 @@ let unauthorized_form = function () {
         document.getElementsByClassName('col_hint')[i].hidden = true;
         document.getElementsByClassName('col_action')[i].hidden = true;
     }
-    document.getElementById('table_questions').hidden = true;
+    document.getElementById('question-list').hidden = true;
     document.getElementById("col_action_title").hidden = true;
     document.getElementById('btn_logOut').hidden = true;
     document.getElementById('btn_logIn').hidden = false;
@@ -149,7 +157,6 @@ let unauthorized_form = function () {
     document.getElementById("btn_add_topic").hidden = true;
     document.getElementById('form-add-question').hidden = true;
     document.getElementById('form-add-topic').hidden = true;
-    document.getElementById('form_quizz').hidden = true;
     document.getElementById('ls_action').hidden = true;
     document.getElementById('homepage').hidden = false;
     document.getElementById('form_greeting').hidden = true;
@@ -169,8 +176,7 @@ let user_authorized = function () {
     document.getElementsByClassName('col_hint').hidden = true;
     document.getElementsByClassName('col_action').hidden = true;
     document.getElementById('col_hint_title').hidden = true;
-    document.getElementById('table_questions').hidden = true;
-    document.getElementById('form_quizz').hidden = false;
+    document.getElementById('question-list').hidden = true;
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('form_qTopic').hidden = false;
     document.getElementById('btn_ls_question').hidden = false;
@@ -181,7 +187,7 @@ let authorized_form = function () {
         document.getElementsByClassName('col_hint')[i].hidden = false;
         document.getElementsByClassName('col_action')[i].hidden = false;
     }
-    document.getElementById('table_questions').hidden = false;
+    document.getElementById('question-list').hidden = false;
     document.getElementsByClassName("col_action").hidden = false;
     document.getElementById("col_action_title").hidden = false;
     document.getElementById("btn_add_question").hidden = false;
@@ -192,37 +198,8 @@ let authorized_form = function () {
     document.getElementById('col_hint_title').hidden = false;
     document.getElementById('ls_action').hidden = false;
     document.getElementById('form_greeting').hidden = false;
+    document.getElementById('btn_ls_question').hidden = false;
 }
-
-let form_greeting = document.getElementById('form_greeting')
-form_greeting.addEventListener('click', function () {
-    document.getElementById('form_profile').hidden = false;
-    document.getElementById('input_pName').readonly = false;
-    document.getElementById('input_pEmail').readonly = false;
-})
-
-let clicked_btn_updateAcc = document.getElementById('btn_updateAcc')
-clicked_btn_updateAcc.addEventListener('click', function(){
-    document.getElementById('')
-})
-let clicked_btn_add_question = function () {
-    document.getElementById('form-add-question').hidden = false;
-}
-let clicked_btn_add_topic = function () {
-    document.getElementById('form-add-topic').hidden = false;
-}
-
-const btn_add_topic = document.getElementById('btn_add_topic');
-
-const btn_add = document.getElementById('btn_add_question');
-
-btn_add_topic.addEventListener('click', function () {
-    clicked_btn_add_topic();
-})
-
-btn_add.addEventListener('click', function () {
-    clicked_btn_add_question();
-})
 
 let arr_account = [{
     'full_name': 'a',
@@ -231,35 +208,11 @@ let arr_account = [{
     score: 10
 }];
 
-// check = function () {
-//     let account = document.getElementById("input_account").value;
-//     let password = document.getElementById("input_password").value;
-//     console.log(account + password);
-//     if (account == 'admin' && password == 1234) {
-//         authorized_form();
-//         console.log('Logged in')
-//     }
-//     for (let i = 0; i < arr_account.length; i++) {
-//         if (account == arr_account[i]['email'] && password == arr_account[i]['password']) {
-//             console.log('Logged in')
-//             user_authorized();
-//         } else {
-//             unauthorized_form();
-//         }
-//     }
-// };
-
 const btn_logOut = document.getElementById('btn_logOut')
 btn_logOut.addEventListener('click', function () {
     unauthorized_form();
     stop();
 })
-
-
-// let unclicked_btn_log = function () {
-//     document.getElementById('login-page').hidden = true;
-// }
-// unclicked_btn_log();
 
 let clicked_btn_logIn = function () {
     document.getElementById('login-page').hidden = false;
@@ -587,11 +540,11 @@ let btn_ls_question = document.getElementById('btn_ls_question');
 
 btn_ls_question.addEventListener('click', function () {
     console.log('click')
-    let table_questions = document.getElementById('table_questions')
-    if (table_questions.hidden == true) {
-        table_questions.hidden = false;
+    let question_list = document.getElementById('question-list')
+    if (question_list.hidden == true) {
+        question_list.hidden = false;
     } else {
-        table_questions.hidden = true;
+        question_list.hidden = true;
         console.log('second condition')
     }
 })
