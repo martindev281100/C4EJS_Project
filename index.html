@@ -49,13 +49,13 @@
                     <a class="nav-link" href="#" id="btn_quizz">Quizz</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="btn_ls_question">Question List</a>
+                    <a class="nav-link" href="#" id="btn_ls_question" hidden>Question List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="btn_add_question" onclick="clicked_btn_add_question()">Add Question</a>
+                    <a class="nav-link" href="#" id="btn_add_question" onclick="clicked_btn_add_question()" hidden>Add Question</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="btn_add_topic" onclick="clicked_btn_add_topic()">Add Topic</a>
+                    <a class="nav-link" href="#" id="btn_add_topic" onclick="clicked_btn_add_topic()" hidden>Add Topic</a>
                 </li>
                 
             </ul>
@@ -110,7 +110,7 @@
 
     <div id="login-page" hidden>
         <div class="form">
-            <form id="register-form">
+            <form id="register-form" hidden>
                 <input type="text" placeholder="name" id="input_fName" />
                 <input type="text" placeholder="email address" id="input_email" />
                 <input type="password" placeholder="password" id="input_regPassword" />
@@ -140,7 +140,7 @@
             <button id="btn_updateAcc" class="btn btn-outline-success">Update Account</button>
         </div>
 
-        <div id="form-add-question" class="form_add">
+        <div id="form-add-question" class="form_add" hidden>
             <div class="form-group">
                 <label for="input_question">Question: </label>
                 <input type="text" id="input_question" placeholder="Enter question" class="form-control">
@@ -160,7 +160,7 @@
             <button id="btn_item_add" class="btn btn-success" onclick="addItem()">Add Item</button>
         </div>
 
-        <div id="form-add-topic" class="form_add">
+        <div id="form-add-topic" class="form_add" hidden>
             <div class="form-group">
                 <label for="new-topic">Topic: </label>
                 <input type="text" id="new-topic" placeholder="Enter topic" class="form-control">
@@ -221,7 +221,7 @@
         </div>
     </div>
 
-    <div id="question-list">
+    <div id="question-list" hidden>
         <div class="form-group" id="ls_action">
             <label for="select_topic">Topic: </label>
             <select id="select_topic" class="custom-select">

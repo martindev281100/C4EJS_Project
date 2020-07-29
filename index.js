@@ -1,13 +1,13 @@
 // Redirect
 console.log(topics.calculation_topic[0].question)
 document.getElementById("redirect-to-login").onclick = function () {
-    document.getElementById("register-form").style.display = "none";
-    document.getElementById("login-form").style.display = "block";
+    document.getElementById("register-form").hidden = true;
+    document.getElementById("login-form").hidden = false;
 }
 
 document.getElementById("redirect-to-register").onclick = function () {
-    document.getElementById("register-form").style.display = "block";
-    document.getElementById("login-form").style.display = "none";
+    document.getElementById("register-form").hidden = false;
+    document.getElementById("login-form").hidden = true;
 }
 
 // Display topic
@@ -166,13 +166,7 @@ function addItemTopic() {
 
 // Authorize
 let unauthorized_form = function () {
-    document.getElementById('btn_ls_question').hidden = true;
-    document.getElementById('question-list').hidden = true;
     document.getElementById('btn_logOut').hidden = true;
-    document.getElementById('btn_add_question').hidden = true;
-    document.getElementById("btn_add_topic").hidden = true;
-    document.getElementById('form-add-question').hidden = true;
-    document.getElementById('form-add-topic').hidden = true;
     document.getElementById('ls_action').hidden = true;
     document.getElementById('form_greeting').hidden = true;
     document.getElementById('form_qTopic').hidden = true;
