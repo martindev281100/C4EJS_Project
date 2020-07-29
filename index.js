@@ -143,29 +143,28 @@ function addItemTopic() {
     document.getElementById('chude').insertAdjacentHTML('beforeend','<input class="btn btn-outline-dark" type="button" value="moi truong"onclick="start(environment_topic)">')
 }
 
+// Authorize
 let unauthorized_form = function () {
-    for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
-        document.getElementsByClassName('col_hint')[i].hidden = true;
-        document.getElementsByClassName('col_action')[i].hidden = true;
-    }
+    document.getElementById('btn_ls_question').hidden = true;
     document.getElementById('question-list').hidden = true;
-    document.getElementById("col_action_title").hidden = true;
     document.getElementById('btn_logOut').hidden = true;
-    document.getElementById('btn_logIn').hidden = false;
-    document.getElementById('col_hint_title').hidden = true;
     document.getElementById('btn_add_question').hidden = true;
     document.getElementById("btn_add_topic").hidden = true;
     document.getElementById('form-add-question').hidden = true;
     document.getElementById('form-add-topic').hidden = true;
     document.getElementById('ls_action').hidden = true;
-    document.getElementById('homepage').hidden = false;
     document.getElementById('form_greeting').hidden = true;
     document.getElementById('form_qTopic').hidden = true;
-    document.getElementById('btn_ls_question').hidden = true;
 }
 unauthorized_form();
 
 let user_authorized = function () {
+    document.getElementById("col_action_title").hidden = true;
+    document.getElementById('col_hint_title').hidden = true;
+    for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
+        document.getElementsByClassName('col_hint')[i].hidden = true;
+        document.getElementsByClassName('col_action')[i].hidden = true;
+    }
     document.getElementById("col_action_title").hidden = true;
     document.getElementById("btn_add_question").hidden = true;
     document.getElementById("btn_add_topic").hidden = true;
@@ -180,20 +179,12 @@ let user_authorized = function () {
     document.getElementById('btn_ls_question').hidden = false;
 }
 
-let authorized_form = function () {
-    for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
-        document.getElementsByClassName('col_hint')[i].hidden = false;
-        document.getElementsByClassName('col_action')[i].hidden = false;
-    }
+let admin_authorized = function () {
     document.getElementById('question-list').hidden = false;
-    document.getElementsByClassName("col_action").hidden = false;
-    document.getElementById("col_action_title").hidden = false;
     document.getElementById("btn_add_question").hidden = false;
     document.getElementById("btn_add_topic").hidden = false;
     document.getElementById('btn_logIn').hidden = true;
     document.getElementById('btn_logOut').hidden = false;
-    document.getElementsByClassName('col_hint').hidden = false;
-    document.getElementById('col_hint_title').hidden = false;
     document.getElementById('ls_action').hidden = false;
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('btn_ls_question').hidden = false;
@@ -321,7 +312,7 @@ let checkAcc = function () {
     console.log(arr_account[0].email + ' email');
     for (let i = 0; i < arr_account.length; i++) {
         if (idAcc == 'admin' && passAcc == 1234) {
-            authorized_form();
+            admin_authorized();
             console.log('Logged in');
             document.getElementById('greeting_user').innerHTML = 'Admin';
             document.getElementById('login-page').hidden = true;
