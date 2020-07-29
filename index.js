@@ -64,7 +64,7 @@ function addItem() {
 function showItems(arr) {
     let tableBody = document.getElementById("table_body");
     let tableRow = document.createElement("tr");
-    for (let i = 0; i < 4; i ++) {
+    for (let i = 0; i < 4; i++) {
         let tableDetail = document.createElement("td");
         if (i == 2) tableDetail.innerHTML = arr[i].join(", ");
         else tableDetail.innerHTML = arr[i];
@@ -132,7 +132,7 @@ function addItemTopic() {
     newDropDown.value = newTopic;
     newDropDown.innerHTML = newTopic;
     topicList.appendChild(newDropDown);
-    document.getElementById('chude').insertAdjacentHTML('beforeend','<input class="btn btn-outline-dark" type="button" value="moi truong"onclick="start(environment_topic)">')
+    document.getElementById('chude').insertAdjacentHTML('beforeend', '<input class="btn btn-outline-dark" type="button" value="moi truong"onclick="start(environment_topic)">')
 }
 
 let unauthorized_form = function () {
@@ -155,6 +155,8 @@ let unauthorized_form = function () {
     document.getElementById('form_greeting').hidden = true;
     document.getElementById('form_qTopic').hidden = true;
     document.getElementById('btn_ls_question').hidden = true;
+    document.getElementById('form_profile').hidden = true;
+
 }
 unauthorized_form();
 
@@ -192,7 +194,17 @@ let authorized_form = function () {
     document.getElementById('form_greeting').hidden = false;
 }
 
+let form_greeting = document.getElementById('form_greeting')
+form_greeting.addEventListener('click', function () {
+    document.getElementById('form_profile').hidden = false;
+    document.getElementById('input_pName').readonly = false;
+    document.getElementById('input_pEmail').readonly = false;
+})
 
+let clicked_btn_updateAcc = document.getElementById('btn_updateAcc')
+clicked_btn_updateAcc.addEventListener('click', function(){
+    document.getElementById('')
+})
 let clicked_btn_add_question = function () {
     document.getElementById('form-add-question').hidden = false;
 }
@@ -239,7 +251,7 @@ let arr_account = [{
 
 const btn_logOut = document.getElementById('btn_logOut')
 btn_logOut.addEventListener('click', function () {
-    unauthorized_form(); 
+    unauthorized_form();
     stop();
 })
 
@@ -272,7 +284,7 @@ btn_reg.addEventListener('click', function () {
     console.log(arr_account);
 })
 const btn_try = document.getElementById('btn_try');
-btn_try.addEventListener('click', function(){
+btn_try.addEventListener('click', function () {
     clicked_btn_logIn();
 })
 let validate_registration = function () {
@@ -366,6 +378,7 @@ let checkAcc = function () {
             document.getElementById('input_password').value = '';
             document.getElementById('alert_success').hidden = false;
             document.getElementById('content_aSuccess').innerHTML = 'Login Successful!';
+
             setTimeout(function () {
                 document.getElementById('alert_success').hidden = true;
                 document.getElementById('content_aSuccess').innerHTML = '';
@@ -379,6 +392,8 @@ let checkAcc = function () {
                 document.getElementById('alert_success').hidden = false;
                 document.getElementById('content_aSuccess').innerHTML = 'Login Successful!';
                 document.getElementById('login-page').hidden = true;
+                document.getElementById('input_pName').value = arr_account[i]['full_name'];
+                document.getElementById('input_pEmail').value = arr_account[i]['email'];
                 setTimeout(function () {
                     document.getElementById('alert_success').hidden = true;
                     document.getElementById('content_aSuccess').innerHTML = '';
@@ -390,7 +405,7 @@ let checkAcc = function () {
                     document.getElementById('alert_warning').hidden = true;
                 }, 3000)
             }
-            console.log('iAcc'+iAcc);
+            console.log('iAcc' + iAcc);
             break;
         } else if (i == arr_account.length - 1) {
             document.getElementById('alert_warning').hidden = false;
@@ -401,6 +416,7 @@ let checkAcc = function () {
         };
     }
 };
+
 start = function (chudeinput) {
 
     document.getElementById("chude").style.display = 'none';
@@ -409,7 +425,7 @@ start = function (chudeinput) {
     let score = 0;
 
     var chuDe = chudeinput;
-    console.log('chudeinput: '+ chuDe[0])
+    console.log('chudeinput: ' + chuDe[0])
     let c = [];
     run = function () {
 
@@ -438,7 +454,7 @@ start = function (chudeinput) {
         alert("logout");
         document.getElementById("account").innerHTML = "";
     };
-    
+
     if (login == true) {
         userscore = arr_account[iAcc].score;
     };

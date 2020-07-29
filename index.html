@@ -50,7 +50,7 @@
             <form class="form-inline my-2 my-lg-0">
                 <div class="form-group">
                     <span>
-                        <span id="form_greeting" style="padding-right: 20px; font-size: 15px;">Hello <span id="greeting_user"></span>!</span> 
+                        <a id="form_greeting" style="padding-right: 20px; font-size: 15px;">Hello <span id="greeting_user"></span>!</a> 
                         <button id="btn_logIn" class="btn btn-success" type="button">Log In</button>
                         <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
                     </span>
@@ -114,6 +114,18 @@
         </div>
     </div>
     <div class="container manh_container">
+        <div id="form_profile" class="form_profile">
+            <div class="form-group">
+                <label for="" >Name: </label>
+                <input type="text" id="input_pName" value="" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="" >Email: </label>
+                <input type="text" id="input_pEmail" value="" class="form-control" readonly>
+            </div>
+            <button id="btn_updateAcc" class="btn btn-outline-success">Update Account</button>
+        </div>
+
         <div id="form-add-question" class="form_add">
             <div class="form-group">
                 <label for="input_question">Question: </label>
