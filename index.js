@@ -30,7 +30,11 @@ document.getElementById("select_topic").onchange = function () {
     showTable();
 }
 
-// Add item
+// Add question
+let clicked_btn_add_question = function () {
+    document.getElementById('form-add-question').hidden = false;
+}
+
 function addItem() {
     let data = {
         question: document.getElementById("input_question").value,
@@ -45,7 +49,7 @@ function addItem() {
         alert_warning.hidden = false;
         setTimeout(function () {
             alert_warning.hidden = true;
-        }, 3000)
+        }, 1000)
     } else {
         document.getElementById('form-add-question').hidden = true;
         data.wrongAnswers = data.wrongAnswers.split(", ");
@@ -56,7 +60,7 @@ function addItem() {
         document.getElementById('alert_success').innerHTML = 'Item is successfully added!';
         setTimeout(function () {
             document.getElementById('alert_success').hidden = true;
-        }, 3000)
+        }, 1000)
     }
 }
 
@@ -122,6 +126,10 @@ function showItems(arr) {
 }
 
 // Add topic
+let clicked_btn_add_topic = function () {
+    document.getElementById('form-add-topic').hidden = false;
+}
+
 function addItemTopic() {
     let newTopic = document.getElementById("new-topic").value;
     document.getElementById("new-topic").value = "";
@@ -188,27 +196,6 @@ let authorized_form = function () {
     document.getElementById('form_greeting').hidden = false;
 }
 
-
-let clicked_btn_add_question = function () {
-    document.getElementById('form-add-question').hidden = false;
-}
-let clicked_btn_add_topic = function () {
-    document.getElementById('form-add-topic').hidden = false;
-}
-
-const btn_add_topic = document.getElementById('btn_add_topic');
-const btn_add_item_topic = document.getElementById('btn_item_add_topic');
-
-const btn_add = document.getElementById('btn_add_question');
-const btn_add_item = document.getElementById('btn_item_add');
-
-btn_add_topic.addEventListener('click', function () {
-    clicked_btn_add_topic();
-})
-btn_add.addEventListener('click', function () {
-    clicked_btn_add_question();
-})
-
 let arr_account = [{
     'full_name': 'a',
     'email': 'a',
@@ -216,34 +203,10 @@ let arr_account = [{
     score: 10
 }];
 
-// check = function () {
-//     let account = document.getElementById("input_account").value;
-//     let password = document.getElementById("input_password").value;
-//     console.log(account + password);
-//     if (account == 'admin' && password == 1234) {
-//         authorized_form();
-//         console.log('Logged in')
-//     }
-//     for (let i = 0; i < arr_account.length; i++) {
-//         if (account == arr_account[i]['email'] && password == arr_account[i]['password']) {
-//             console.log('Logged in')
-//             user_authorized();
-//         } else {
-//             unauthorized_form();
-//         }
-//     }
-// };
-
 const btn_logOut = document.getElementById('btn_logOut')
 btn_logOut.addEventListener('click', function () {
     unauthorized_form();
 })
-
-
-// let unclicked_btn_log = function () {
-//     document.getElementById('login-page').hidden = true;
-// }
-// unclicked_btn_log();
 
 let clicked_btn_logIn = function () {
     document.getElementById('login-page').hidden = false;
