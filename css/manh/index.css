@@ -77,3 +77,6 @@
   .form_add{
     margin: 40px;
   }
+  #nav-bar {
+    background: transparent;
+  }
