@@ -163,6 +163,7 @@ let unauthorized_form = function () {
     document.getElementById('form_qTopic').hidden = true;
     document.getElementById('btn_ls_question').hidden = true;
     document.getElementById('form_profile').hidden = true;
+    document.getElementById('form_pPassword').hidden = true;
 
 }
 unauthorized_form();
@@ -180,6 +181,7 @@ let user_authorized = function () {
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('form_qTopic').hidden = false;
     document.getElementById('btn_ls_question').hidden = false;
+    document.getElementById('btn_editInfo').hidden = true;
 }
 
 let authorized_form = function () {
@@ -240,6 +242,43 @@ const btn_try = document.getElementById('btn_try');
 btn_try.addEventListener('click', function () {
     clicked_btn_logIn();
 })
+const btn_updateAcc = document.getElementById('btn_updateAcc')
+btn_updateAcc.addEventListener('click', function(){
+    let password = prompt('Enter password: ');
+    if(password == arr_account[iAcc].password)
+    {
+        console.log('confirm checked!')
+        document.getElementById('input_pName').readOnly = false;
+        document.getElementById('input_pEmail').readOnly = false;
+        document.getElementById('form_pPassword').hidden = false;
+        btn_editInfo.hidden = false;
+        btn_updateAcc.hidden = true;
+    }
+    else
+    {
+        let alert_warning = document.getElementById('alert_warning');
+        let content_aWarning = document.getElementById('content_aWarning')
+        content_aWarning.innerHTML = 'Password is incorrect!';
+        alert_warning.hidden = false;
+        setTimeout(function () {
+            alert_warning.hidden = true;
+        }, 3000)
+    }
+})
+const btn_editInfo = document.getElementById('btn_editInfo');
+btn_editInfo.addEventListener('click', function(){
+    arr_account[iAcc].full_name = document.getElementById('input_pName').value;
+    arr_account[iAcc].email = document.getElementById('input_pEmail').value;
+    arr_account[iAcc].password = document.getElementById('input_pPassword').value;
+
+    console.log(arr_account)
+})
+
+const btn_formGreeting = document.getElementById('form_greeting')
+btn_formGreeting.addEventListener('click', function(){
+    document.getElementById('form_profile').hidden = false;
+})
+
 let validate_registration = function () {
     var input_fName = document.getElementById('input_fName').value;
     var input_email = document.getElementById('input_email').value;
