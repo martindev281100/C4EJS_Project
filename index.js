@@ -3,16 +3,16 @@ let topic = general_topic;
 document.getElementById("redirect-to-login").onclick = function () {
     document.getElementById("register-form").style.display = "none";
     document.getElementById("login-form").style.display = "block";
-    }
+}
 
-    document.getElementById("redirect-to-register").onclick = function () {
+document.getElementById("redirect-to-register").onclick = function () {
     document.getElementById("register-form").style.display = "block";
     document.getElementById("login-form").style.display = "none";
 }
 
 function showTable() {
     let tableBody = document.getElementById("table_body");
-    while(tableBody.childElementCount > 1) {
+    while (tableBody.childElementCount > 1) {
         tableBody.removeChild(tableBody.lastChild);
     }
     for (let i = 0; i < topic.length; i++) {
@@ -25,14 +25,25 @@ showTable();
 document.getElementById("select_topic").onchange = function () {
     let topic_title = document.getElementById("select_topic").value;
     switch (topic_title) {
-        case "general": topic = general_topic; break;
-        case "math": topic = math_topic; break;
-        case "calculation": topic = calculation_topic; break;
-        case "environment": topic = environment_topic; break;
-        case "coding": topic = coding_topic; break;
+        case "general":
+            topic = general_topic;
+            break;
+        case "math":
+            topic = math_topic;
+            break;
+        case "calculation":
+            topic = calculation_topic;
+            break;
+        case "environment":
+            topic = environment_topic;
+            break;
+        case "coding":
+            topic = coding_topic;
+            break;
     }
     showTable();
 }
+
 function addItem() {
     let data = {
         question: document.getElementById("input_question").value,
@@ -40,10 +51,29 @@ function addItem() {
         wrongAnswers: document.getElementById("input_wrong").value,
         hint: document.getElementById("input_hint").value,
     }
-    data.wrongAnswers = data.wrongAnswers.split(", ");
-    topic.push(data);
-    let arr = [data.question, data.correctAnswer, data.wrongAnswers, data.hint];
-    showItems(arr);
+    if(data.question == ''|| data.wrongAnswers ==''||data.correctAnswer =='')
+    {
+        let alert_warning = document.getElementById('alert_warning');
+        let content_aWarning = document.getElementById('content_aWarning')
+        content_aWarning.innerHTML = 'Some field is missing!';
+        alert_warning.hidden = false;
+        setTimeout(function () {
+            alert_warning.hidden = true;
+        }, 3000)
+    }
+    else
+    {
+        document.getElementById('form-add').hidden = true;
+        data.wrongAnswers = data.wrongAnswers.split(", ");
+        topic.push(data);
+        let arr = [data.question, data.correctAnswer, data.wrongAnswers, data.hint];
+        showItems(arr);
+        document.getElementById('alert_success').hidden = false;
+        document.getElementById('alert_success').innerHTML = 'Added item successful!';
+        setTimeout(function () {
+            document.getElementById('alert_success').hidden = true;
+        }, 3000)
+    }
 }
 
 function showItems(arr) {
@@ -108,51 +138,59 @@ function showItems(arr) {
 }
 
 
-
 let unauthorized_form = function () {
+    for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
+        document.getElementsByClassName('col_hint')[i].hidden = true;
+        document.getElementsByClassName('col_action')[i].hidden = true;
+    }
     document.getElementById('table_questions').hidden = true;
-    document.getElementsByClassName("col_action").hidden = true;
     document.getElementById("col_action_title").hidden = true;
     document.getElementById('btn_logOut').hidden = true;
-    document.getElementById('btn_Hidelogin').hidden=false;
-    document.getElementsByClassName('col_hint').hidden = true;
+    document.getElementById('btn_logIn').hidden = false;
     document.getElementById('col_hint_title').hidden = true;
     document.getElementById('btn_add').hidden = true;
-    document.getElementById('login-page').hidden=true;
     document.getElementById('form-add').hidden = true;
     document.getElementById('form_quizz').hidden = true;
+    document.getElementById('ls_action').hidden = true;
+    document.getElementById('homepage').hidden = false;
+    document.getElementById('form_greeting').hidden = true;
+    document.getElementById('form_qTopic').hidden = true;
 }
 unauthorized_form();
 
 let user_authorized = function () {
     document.getElementById("col_action_title").hidden = true;
     document.getElementById("btn_add").hidden = true;
-    document.getElementById('btn_Hidelogin').hidden=true;
+    document.getElementById('btn_logIn').hidden = true;
     document.getElementById('btn_logOut').hidden = false;
     document.getElementsByClassName('col_hint').hidden = true;
     document.getElementsByClassName('col_action').hidden = true;
     document.getElementById('col_hint_title').hidden = true;
     document.getElementById('table_questions').hidden = true;
     document.getElementById('form_quizz').hidden = false;
-    document.getElementById('login-page').hidden = true;
+    document.getElementById('form_greeting').hidden = false;
+    document.getElementById('form_qTopic').hidden = false;
+
+    
 }
 
 let authorized_form = function () {
-    document.getElementById('login-page').hidden = true;
+    for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
+        document.getElementsByClassName('col_hint')[i].hidden = false;
+        document.getElementsByClassName('col_action')[i].hidden = false;
+    }
     document.getElementById('table_questions').hidden = false;
     document.getElementsByClassName("col_action").hidden = false;
     document.getElementById("col_action_title").hidden = false;
     document.getElementById("btn_add").hidden = false;
-    document.getElementById('btn_Hidelogin').hidden=true;
+    document.getElementById('btn_logIn').hidden = true;
     document.getElementById('btn_logOut').hidden = false;
     document.getElementsByClassName('col_hint').hidden = false;
     document.getElementById('col_hint_title').hidden = false;
+    document.getElementById('ls_action').hidden = false;
+    document.getElementById('form_greeting').hidden = false;
 }
 
-let unclicked_btn_add = function () {
-    document.getElementById('form-add').hidden = true;
-}
-unclicked_btn_add();
 
 let clicked_btn_add = function () {
     document.getElementById('form-add').hidden = false;
@@ -163,12 +201,10 @@ const btn_add_item = document.getElementById('btn_item_add');
 
 btn_add.addEventListener('click', function () {
     clicked_btn_add();
-    btn_add.style.display = 'none';
 })
 btn_add_item.addEventListener('click', function () {
     //Code Event khi click thêm câu hỏi mới
     unclicked_btn_add();
-    btn_add.style.display = 'block';
 })
 
 let arr_account = [{
@@ -201,6 +237,38 @@ btn_logOut.addEventListener('click', function () {
     unauthorized_form();
 })
 
+
+// let unclicked_btn_log = function () {
+//     document.getElementById('login-page').hidden = true;
+// }
+// unclicked_btn_log();
+
+let clicked_btn_logIn = function () {
+    document.getElementById('login-page').hidden = false;
+    document.getElementById('homepage').hidden = true;
+}
+
+const btn_logIn = document.getElementById('btn_logIn')
+btn_logIn.addEventListener('click', function () {
+    if (document.getElementById('login-page').hidden == true) {
+        clicked_btn_logIn();
+    } else {
+        document.getElementById('login-page').hidden = true;
+        document.getElementById('homepage').hidden = false;
+    }
+})
+
+const btn_reg = document.getElementById('btn_reg');
+btn_reg.addEventListener('click', function () {
+    console.log(input_cPassword + ' - ' + input_regPassword + ' - ' + input_fName + ' - ' + input_email)
+    console.log('clicked')
+    validate_registration();
+    console.log(arr_account);
+})
+const btn_try = document.getElementById('btn_try');
+btn_try.addEventListener('click', function(){
+    clicked_btn_logIn();
+})
 let validate_registration = function () {
     var input_fName = document.getElementById('input_fName').value;
     var input_email = document.getElementById('input_email').value;
@@ -213,10 +281,17 @@ let validate_registration = function () {
         'password': input_cPassword,
     }
     if (input_email == "" || input_fName == "" || input_cPassword == "" || input_regPassword == "") {
-        alert('All form must be filled out');
+        let alert_warning = document.getElementById('alert_warning');
+        let content_aWarning = document.getElementById('content_aWarning')
+        content_aWarning.innerHTML = 'All form must be filled out!';
+        alert_warning.hidden = false;
+        setTimeout(function () {
+            alert_warning.hidden = true;
+        }, 3000)
     } else if (input_regPassword != input_cPassword) {
         let alert_warning = document.getElementById('alert_warning');
-        alert_warning.innerHTML = 'Password must be match!';
+        let content_aWarning = document.getElementById('content_aWarning')
+        content_aWarning.innerHTML = 'Password must be match!';
         alert_warning.hidden = false;
         setTimeout(function () {
             alert_warning.hidden = true;
@@ -226,38 +301,19 @@ let validate_registration = function () {
             arr_account.push(newObj);
             console.log(arr_account)
             document.getElementById('alert_success').hidden = false;
-            document.getElementById('alert_success').innerHTML = 'Registration success!'
+            document.getElementById('content_aSuccess').innerHTML = 'Registration success !';
             setTimeout(function () {
                 document.getElementById('alert_success').hidden = true;
+                document.getElementById('content_aSuccess').innerHTML = '';
             }, 3000)
+            document.getElementById('register-form').reset();
+            document.getElementById("redirect-to-login").onclick();
         }
     }
 }
-let unclicked_btn_log = function () {
-    document.getElementById('login-page').hidden = true;
-}
-unclicked_btn_log();
-let clicked_btn_log = function () {
-    document.getElementById('login-page').hidden = false;
-}
-const btn_Hidelogin = document.getElementById('btn_Hidelogin')
-btn_Hidelogin.addEventListener('click', function () {
-    
-    clicked_btn_log();
-    
-})
-
-const btn_reg = document.getElementById('btn_reg')
-btn_reg.addEventListener('click', function () {
-    console.log(input_cPassword + ' - ' + input_regPassword + ' - ' + input_fName + ' - ' + input_email)
-    console.log('clicked')
-    validate_registration();
-    console.log(arr_account);
-})
 
 chonchude = function () {
     document.getElementById("chude").style.display = 'block';
-
 }
 playGame = function () {
     document.getElementById("chude").style.display = 'block';
@@ -276,9 +332,8 @@ let checkReg = function () {
     console.log('arr_account length: ' + arr_account.length)
     for (let i in arr_account) {
         if (arr_account[i].email == idRegister) {
-            alert('tai khoan da dang ky');
             let alert_warning = document.getElementById('alert_warning');
-            alert_warning.innerHTML = 'Account has been created!';
+            document.getElementById('content_aWarning').innerHTML = 'Account has been existed !';
             alert_warning.hidden = false;
             setTimeout(function () {
                 alert_warning.hidden = true;
@@ -291,29 +346,54 @@ let checkReg = function () {
     }
 };
 
-checkAcc = function () {
+let checkAcc = function () {
     let idAcc = document.getElementById("input_account").value;
     let passAcc = document.getElementById("input_password").value;
     console.log(arr_account[0].email + ' email');
-
     for (let i = 0; i < arr_account.length; i++) {
         if (idAcc == 'admin' && passAcc == 1234) {
             authorized_form();
             console.log('Logged in');
+            document.getElementById('greeting_user').innerHTML = 'Admin';
+            document.getElementById('login-page').hidden = true;
+            document.getElementById('input_account').value = '';
+            document.getElementById('input_password').value = '';
+            document.getElementById('alert_success').hidden = false;
+            document.getElementById('content_aSuccess').innerHTML = 'Login Successful!';
+            setTimeout(function () {
+                document.getElementById('alert_success').hidden = true;
+                document.getElementById('content_aSuccess').innerHTML = '';
+            }, 3000)
+
         } else if (idAcc == arr_account[i].email) {
 
             if (arr_account[i].password == passAcc) {
                 login = true;
                 iAcc = i;
-                alert(iAcc);
                 user_authorized();
+                document.getElementById('greeting_user').innerHTML = arr_account[i]['full_name'];
+                document.getElementById('alert_success').hidden = false;
+                document.getElementById('content_aSuccess').innerHTML = 'Login Successful!';
+                document.getElementById('login-page').hidden = true;
+                setTimeout(function () {
+                    document.getElementById('alert_success').hidden = true;
+                    document.getElementById('content_aSuccess').innerHTML = '';
+                }, 3000)
             } else {
-                alert('sai mat khau');
+                document.getElementById('alert_warning').hidden = false;
+                document.getElementById('content_aWarning').innerHTML = 'Password is in correct!';
+                setTimeout(function () {
+                    document.getElementById('alert_warning').hidden = true;
+                }, 3000)
             }
             console.log(i);
             break;
         } else if (i == arr_account.length - 1) {
-            alert("sai tai khoan");
+            document.getElementById('alert_warning').hidden = false;
+            document.getElementById('content_aWarning').innerHTML = 'Account is in correct!';
+            setTimeout(function () {
+                document.getElementById('alert_warning').hidden = true;
+            }, 3000)
         };
     }
 };
@@ -321,7 +401,6 @@ start = function (chudeinput) {
 
     document.getElementById("chude").style.display = 'none';
     document.getElementById("formGame").style.display = 'block';
-    
 
     let score = 0;
 
@@ -343,7 +422,6 @@ start = function (chudeinput) {
             c.splice(rand, 1);
         };
     }
-
     run();
     logout = function () {
         i = 0;
@@ -467,7 +545,6 @@ start = function (chudeinput) {
         }
     }
 
-
     quay = function () {
         document.getElementById("inscore").style.display = 'block';
         document.getElementById("quay").style.display = 'block';
@@ -493,13 +570,10 @@ let btn_ls_question = document.getElementById('btn_ls_question');
 btn_ls_question.addEventListener('click', function () {
     console.log('click')
     let table_questions = document.getElementById('table_questions')
-    if(table_questions.hidden == true)
-    {
+    if (table_questions.hidden == true) {
         table_questions.hidden = false;
-    }
-    else{
+    } else {
         table_questions.hidden = true;
         console.log('second condition')
     }
 })
-

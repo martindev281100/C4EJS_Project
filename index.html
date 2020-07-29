@@ -7,376 +7,272 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Course Project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-    <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-    <link rel="stylesheet" type="text/css" href="styles/responsive.css">
     <link rel="stylesheet" href="css/manh/index.css">
     <link rel="stylesheet" href="css/manh/login.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="data.js"></script>
-
 </head>
 
 <body>
-    
-    <div id="login-page">
-    <div class="alert alert-success" id="alert_success" style="margin-bottom: 0rem;" hidden></div>
-    <div class="alert alert-warning" id="alert_warning" style="margin-bottom: 0rem;" hidden></div>
-    
-    <section id="pLog">
-        <div class="form">
-          <form id="register-form">
-            <input type="text" placeholder="name" id="input_fName"/>
-            <input type="text" placeholder="email address" id="input_email"/>
-            <input type="password" placeholder="password" id="input_regPassword"/>
-            <input type="password" placeholder="confirm password" id="input_cPassword"/>
-            <button id="btn_reg" onclick="checkReg()">CREATE</button>
-            <p class="message">Already registered? <a id="redirect-to-login" href="#">Sign In</a></p>
-          </form>
-          <form >
-            <input type="text" placeholder="username" id="input_account"/>
-            <input type="password" placeholder="password" id="input_password"/>
-            <button id="btn_logIn" onclick="checkAcc()"> LOGIN</button>
-            <p class="message">Not registered? <a id="redirect-to-register" href="#">Create an account</a></p>
-          </form>
+    <div class="alert alert-success" id="alert_success" style="margin-bottom: 0rem;" hidden><strong
+            id="content_aSuccess"></strong></div>
+    <div class="alert alert-warning" id="alert_warning" style="margin-bottom: 0rem;" hidden><strong
+            id="content_aWarning"></strong></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">EQuizz</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="btn_add">Add Question</a>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                <div class="form-group">
+                    <span>
+                        <span id="form_greeting" style="padding-right: 20px; font-size: 15px;">Hello <span id="greeting_user"></span>!</span> 
+                        <button id="btn_logIn" class="btn btn-success" type="button">Log In</button>
+                        <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </nav>
+    <div id="homepage">
+        <div class="header background_homepage">
+            <h1>Quizz</h1>
+            <p>Quizz for education</p>
+            <button class="btn btn_header btn_radius" id="btn_try">Try it</button>
+        </div>
+        <div class="container">
+            <div class="row row-padding">
+                <div class="col-md-4">
+                    <h2>Feature 1</h2>
+                    <p>
+                        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                        enables a clean separation of concerns and gives you full control over markup
+                        for enjoyable, agile development.
+                    </p>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Feature 2</h2>
+                    <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries
+                        and tools
+                        in Visual Studio projects.</p>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Feature 3</h2>
+                    <p>You can easily find a web hosting company that offers the right mix of features and price for
+                        your
+                        applications.</p>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
-    </section>
-<div class="container manh_container">
-</div>
-    
-    <div class="super_container">
-        <!-- Header -->
-        <header class="header " id="super_header">
-
-            <div>
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" style="color: turquoise;" href="#">Navbar</a>
-                    <ul class="navbar-nav  ">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#homePage" style="color: turquoise;">Home </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#Question" style="color: turquoise;">List of question </a>
-                        </li>
-                    </ul>
-                    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-                        <span>
-                        <button class="btn btn-success" type="button" id="btn_Hidelogin"><a href="#pLog">Log In</a></button>
-                        <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
-                        </span>
-                    </div>
-                    
-                </nav>
-            </div>
-        </header>
-
-
-        <!-- Home -->
-        <section id="homePage">
-            <div class="home">
-                <!-- Hero Slider -->
-                <div class="hero_slider_container">
-                    <div class="hero_slider owl-carousel">
-                        <!-- Hero Slide -->
-                        <div class="hero_slide">
-                            <div class="hero_slide_background"
-                                style="background-image:url(images/slider_background.jpg)">
-                            </div>
-                            <div
-                                class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
-                                <div class="hero_slide_content text-center">
-                                    <h1>Get your
-                                        <span>Education</span> today!</h1>
-                                </div>
-                            </div>
-                        </div>
-                        
-						
-					</div>
-				</div>
-			</div>
+    <div id="login-page" hidden>
+        <div class="form">
+            <form id="register-form">
+                <input type="text" placeholder="name" id="input_fName" />
+                <input type="text" placeholder="email address" id="input_email" />
+                <input type="password" placeholder="password" id="input_regPassword" />
+                <input type="password" placeholder="confirm password" id="input_cPassword" />
+                <button id="btn_reg" onclick="checkReg()" type="button">CREATE</button>
+                <p class="message">Already registered? <a id="redirect-to-login" href="#">Sign In</a></p>
+            </form>
+            <form id="login-form">
+                <input type="text" placeholder="username" id="input_account" />
+                <input type="password" placeholder="password" id="input_password" />
+                <button id="btn_logIn" onclick="checkAcc()" type="button"> LOGIN</button>
+                <p class="message">Not registered? <a id="redirect-to-register" href="#">Create an account</a></p>
+            </form>
         </div>
-    </section>
+    </div>
+    <div class="container manh_container">
+        <div id="form-add" class="form_add">
 
-        <!-- Services -->
-        <section id="Question">
-            <div class="services page_section">
+            <div class="form-group">
+                <label for="input_question">Question: </label>
+                <input type="text" id="input_question" placeholder="Enter question" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="input_correct">Correct Answer: </label>
+                <input type="text" id="input_correct" placeholder="Enter correct answer" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="input_wrong">Wrong Answer: </label>
+                <input type="text" id="input_wrong" placeholder="Enter wrong answer" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="input_hint">Hints: </label>
+                <input type="text" id="input_hint" placeholder="Enter hint for question" class="form-control">
+            </div>
+            <button id="btn_item_add" class="btn btn-success" onclick="addItem()">Add Item</button>
+        </div>
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="section_title text-center">
-                                <h1>Our Services</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                    <div class="row services_row">
+        <div id="form_quizz">
+            <div id="thuvanmay">
+                <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
+                <input type="number" name="" id="inscore">
+                <input type="button" value="doi diem" id="quay" onclick="quayso();">
+                <script>
+                    document.getElementById("inscore").style.display = 'none';
+                    document.getElementById("quay").style.display = 'none';
+                </script>
+            </div>
+            <button id="btn_ls_question" class="btn btn-light">List Question</button>
 
-                        <div
-                            class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-                            <div class="icon_container d-flex flex-column justify-content-end">
-                                <img src="images/earth-globe.svg" alt="">
-                            </div>
-                            <h3>Online Courses</h3>
-                            <p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula
-                                vel
-                                nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-                        </div>
-
-                        <div
-                            class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-                            <div class="icon_container d-flex flex-column justify-content-end">
-                                <img src="images/exam.svg" alt="">
-                            </div>
-                            <h3>Indoor Courses</h3>
-                            
-                            <p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula
-                                vel
-                                nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-                        </div>
-
-                        <div
-                            class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-                            <div class="icon_container d-flex flex-column justify-content-end">
-                                <img src="images/books.svg" alt="">
-                            </div>
-                            <h3>Amazing Library</h3>
-                            <p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula
-                                vel
-                                nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-                        </div>
-
-                        <div
-                            class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-                            <div class="icon_container d-flex flex-column justify-content-end">
-                                <img src="images/professor.svg" alt="">
-                            </div>
-                            <h3>Exceptional Professors</h3>
-                            <p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula
-                                vel
-                                nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-                        </div>
-
-                        <div
-                            class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-                            <div class="icon_container d-flex flex-column justify-content-end">
-                                <img src="images/blackboard.svg" alt="">
-                            </div>
-                            <h3>Top Programs</h3>
-                            <p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula
-                                vel
-                                nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-                        </div>
-                        <div
-                            class="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
-                            <div class="icon_container d-flex flex-column justify-content-end">
-                                <img src="images/mortarboard.svg" alt="">
-                            </div>
-                            <h3>Graduate Diploma</h3>
-                            <p>In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula
-                                vel
-                                nunc. Proin quis mi malesuada, finibus tortor fermentum.</p>
-                        </div>
-                    </div>
-                    
+            <div id="playgame">
+                <div id="chude">
+                    <input class="btn btn-outline-dark" type="button" value="Data" onclick="start(general_topic);">
+                    <input class="btn btn-outline-dark" type="button" value="Toán Học"
+                        onclick="start(calculation_topic)">
+                    <input class="btn btn-outline-dark" type="button" value="math" onclick="start(math_topic)">
+                    <input class="btn btn-outline-dark" type="button" value="coding" onclick="start(coding_topic)">
+                    <input class="btn btn-outline-dark" type="button" value="moi truong"
+                        onclick="start(environment_topic)">
                 </div>
             </div>
-        </section>
-
-        <section id="formtable" style="background-color: tomato;">
-            <div>
-                <div id="form-add">
-                    
-                    <div class="form-group">
-                        <label for="input_question">Question: </label>
-                        <input type="text" id="input_question" placeholder="Enter question" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="input_correct">Correct Answer: </label>
-                        <input type="text" id="input_correct" placeholder="Enter correct answer" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="input_wrong">Wrong Answer: </label>
-                        <input type="text" id="input_wrong" placeholder="Enter wrong answer" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="input_hint">Hints: </label>
-                        <input type="text" id="input_hint" placeholder="Enter hint for question" class="form-control">
-                    </div>
-                    <button id="btn_item_add" class="btn btn-success" onclick = "addItem()">Add Item</button>
-                    
+            <div id="thongbao">
+                <div id="thongBaoKq"></div>
+                <div id="end">
+                    <div id="score"></div>
                 </div>
-
-                
-
-                <button id="btn_add" class="btn btn-primary">Add Question</button>
-                <div id="form_quizz">
-                    
-                    <div id="thuvanmay">
-                        <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
-                        <input type="number" name="" id="inscore">
-                        <input type="button" value="doi diem" id="quay" onclick="quayso();">
-                        <script>
-                            document.getElementById("inscore").style.display = 'none';
-                            document.getElementById("quay").style.display = 'none';
-                        </script>
-                    </div>
-                    <button id="btn_ls_question">List Question</button>
-
-                    <div id="playgame">
-                        
-                        <div id="chude">
-                            <input class="btn_chude" type="button" value="Data" onclick="start(general_topic);">
-                            <input class="btn_chude" type="button" value="Toán Học" onclick="start(calculation_topic)">
-                            <input class="btn_chude" type="button" value="math" onclick="start(math_topic)">
-                            <input class="btn_chude" type="button" value="coding" onclick="start(coding_topic)">
-                            <input class="btn_chude" type="button" value="moi truong" onclick="start(environment_topic)">
-                        </div>
-                    </div>
-                    <div id="thongbao">
-                        <div id="thongBaoKq"></div>
-                        <div id="end">
-                            <div id="score"></div>
-                        </div>
-                    </div>
-                    <div id="formGame">
-                        <div id="cauHoi"></div>
-                        <div id="support">
-                            <input class="sp" type="button" value="hint" id="hint" onclick="doihint(hint.value);">
-                            <input class="sp" type="button" value="50 / 50" id="trogiup" onclick="trogiup();">
-                        </div>
-            
-                        <div id="formGame0">
-                            <div id="formGame1">
-                                <hr>
-                                <input class="ans" type="button" value="" id="c1" onclick="check(c1.value,1);">
-                                <input class="ans" type="button" value="" id="c2" onclick="check(c2.value,2);">
-                            </div>
-                            <div id="formGame2">
-                                <input class="ans" type="button" value="" id="c3" onclick="check(c3.value,3);">
-                                <input class="ans" type="button" value="" id="c4" onclick="check(c4.value,4);">
-                            </div>
-                        </div>    
-                        <script>
-                            document.getElementById("formGame").style.display = 'none';
-                        </script>
-                    </div id="formGame">
-            
-                </div>
-        
-                <table id="table_questions" border="1" class="table table-striped">
-                    
-                    <thead id="table_head">
-                        <tr><th><select id="select_topic">
-                            <option value="general">General</option>
-                            <option value="math">Math</option>
-                            <option value="calculation">Calculation</option>
-                            <option value="environment">Environment</option>
-                            <option value="coding">Coding</option>
-                        </select></th></tr>
-                    <tr>
-                        <th>Question</th>
-                        <th>Correct Answer</th>
-                        <th>Wrong Answer</th>
-                        <th id="col_hint_title">Hint</th>
-                        <th id="col_action_title">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody id="table_body">
-                    <tr hidden>
-                        <td class="question_content">1 + 1 = ?</td>
-                        <td class="correct_answer">2</td>
-                        <td class="wrong_answer">1, 3, 4</td>
-                        <td class="col_hint">Lam toan di!</td>
-                        <td class="col_action">
-                            <button class="btn_update btn btn-warning">Update</button>
-                            <button class="btn_delete btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                
-            
-            
             </div>
-        </section>
+            <div id="formGame">
+                <div id="cauHoi"></div>
+                <div id="support">
+                    <input class="sp" type="button" value="hint" id="hint" onclick="doihint(hint.value);">
+                    <input class="sp" type="button" value="50 / 50" id="trogiup" onclick="trogiup();">
+                </div>
 
-		<!-- Testimonials -->
-		<div class="testimonials page_section" id="foot_er">
-			<!-- <div class="testimonials_background" style="background-image:url(images/testimonials_background.jpg)"></div> -->
-			<div class="testimonials_background_container prlx_parent">
-				<div class="testimonials_background prlx"
-					style="background-image:url(images/testimonials_background.jpg)"></div>
-			</div>
-			<div class="container">
+                <div id="formGame0">
+                    <div id="formGame1">
+                        <hr>
+                        <input class="ans" type="button" value="" id="c1" onclick="check(c1.value,1);">
+                        <input class="ans" type="button" value="" id="c2" onclick="check(c2.value,2);">
+                    </div>
+                    <div id="formGame2">
+                        <input class="ans" type="button" value="" id="c3" onclick="check(c3.value,3);">
+                        <input class="ans" type="button" value="" id="c4" onclick="check(c4.value,4);">
+                    </div>
+                </div>
+                <script>
+                    document.getElementById("formGame").style.display = 'none';
+                </script>
+            </div>
+        </div>
+        <div class="form-group" id="ls_action">
+            <label for="select_topic">Topic: </label>
+            
+            <select id="select_topic" class="custom-select">
+                <option value="general">General</option>
+                <option value="math">Math</option>
+                <option value="calculation">Calculation</option>
+                <option value="environment">Environment</option>
+                <option value="coding">Coding</option>
+            </select>
+        </div>
 
-				<div class="row">
-					<div class="col">
-						<div class="section_title text-center">
-							<h1>What our students say</h1>
-						</div>
-					</div>
-				</div>
+        <table id="table_questions" border="1" class="table table-striped">
+            <thead id="table_head">
+                <tr>
+                    <th>Question</th>
+                    <th>Correct Answer</th>
+                    <th>Wrong Answer</th>
+                    <th id="col_hint_title">Hint</th>
+                    <th id="col_action_title">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="table_body">
+                <tr hidden>
+                    <td class="question_content">1 + 1 = ?</td>
+                    <td class="correct_answer">2</td>
+                    <td class="wrong_answer">1, 3, 4</td>
+                    <td class="col_hint">Lam toan di!</td>
+                    <td class="col_action">
+                        <button class="btn_update btn btn-warning">Update</button>
+                        <button class="btn_delete btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row text-center" id="form_qTopic">
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                </div>
+                <div class="card-footer">
+                  <a href="#" class="btn btn-primary">Find Out More!</a>
+                </div>
+              </div>
+            </div>
+      
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
+                </div>
+                <div class="card-footer">
+                  <a href="#" class="btn btn-primary">Find Out More!</a>
+                </div>
+              </div>
+            </div>
+      
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                </div>
+                <div class="card-footer">
+                  <a href="#" class="btn btn-primary">Find Out More!</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card h-100">
+                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+                <div class="card-body">
+                  <h4 class="card-title">Card title</h4>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
+                </div>
+                <div class="card-footer">
+                  <a href="#" class="btn btn-primary">Find Out More!</a>
+                </div>
+              </div>
+            </div>
+      
+          </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Place sticky footer content here.</span>
+        </div>
+    </footer>
 
-				<div class="row">
-					<div class="col-lg-10 offset-lg-1">
-						<div class="testimonials_slider_container" <!-- Testimonials Slider -->
-							<div class="owl-carousel owl-theme testimonials_slider">
 
-								<!-- Testimonials Item -->
-								<div class="owl-item">
-									<div class="testimonials_item text-center">
-										<div class="quote">“</div>
-										<p class="testimonials_text">In aliquam, augue a gravida rutrum, ante nisl
-											fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada,
-											finibus tortor fermentum.In aliquam, augue a gravida rutrum, ante nisl
-											fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada,
-											finibus tortor fermentum.</p>
-										<div class="testimonial_user">
-											<div class="testimonial_image mx-auto">
-												<img src="images/testimonials_user.jpg" alt="">
-											</div>
-											<div class="testimonial_name">james cooper</div>
-											<div class="testimonial_title">Graduate Student</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	</div>
-	</div>
-
-	<!-- Footer -->
-
-	<footer class="footer">
-
-	</footer>
-
-	</div>
-
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<!-- <script src="styles/bootstrap4/popper.js"></script> -->
-	<script src="styles/bootstrap4/bootstrap.min.js"></script>
-	<!-- <script src="plugins/greensock/TweenMax.min.js"></script> -->
-	<!-- <script src="plugins/greensock/TimelineMax.min.js"></script> -->
-	<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-	<!-- <script src="plugins/greensock/animation.gsap.min.js"></script> -->
-	<!-- <script src="plugins/greensock/ScrollToPlugin.min.js"></script> -->
-	<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-	<script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
-	<!-- <script src="plugins/easing/easing.js"></script> -->
-	<script src="js/custom.js"></script>
     <script src="index.js"></script>
 
 </body>

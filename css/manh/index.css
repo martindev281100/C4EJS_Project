@@ -30,4 +30,50 @@
   body {
     height: 100%;
   }
+  .footer {
+    position: static;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+  }
+  .header {
+    padding: 60px;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  .btn_radius{
+    border-radius: 22px!important;
+    padding: 10px 30px!important;
+    text-transform: uppercase;
+  }
+  .btn_header{
+    background-color: #ee0979;
+    border-color: #ee0979;
+    color: white;
+  }
+  .btn_header:active, .btn_header:focus, .btn_header:hover {
+    background-color: #bd0760 !important;
+    border-color: #bd0760 !important;
+  }
   
+  .background_homepage{
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(7rem + 72px);
+  padding-bottom: 7rem;
+  background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+  }
+  .row-padding{
+    margin: 40px 0px;
+  }
+  .form_add{
+    margin: 40px;
+  }
