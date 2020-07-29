@@ -126,6 +126,27 @@ function showItems(arr) {
     tableBody.appendChild(tableRow);
 }
 
+// Change page
+let quizzPage = document.getElementById("quizz");
+let questionListPage = document.getElementById("question-list");
+let homePage = document.getElementById("homepage");
+
+document.getElementById("btn_quizz").onclick = function () {
+    quizzPage.hidden = false;
+    questionListPage.hidden = true;
+    homePage.hidden = true;
+}
+document.getElementById("btn_ls_question").onclick = function () {
+    quizzPage.hidden = true;
+    questionListPage.hidden = false;
+    homePage.hidden = true;
+}
+document.getElementById("btn_home").onclick = function () {
+    quizzPage.hidden = true;
+    questionListPage.hidden = true;
+    homePage.hidden = false;
+}
+
 // Add topic
 let clicked_btn_add_topic = function () {
     document.getElementById('form-add-topic').hidden = false;
@@ -524,16 +545,3 @@ start = function (chudeinput) {
         }
     }
 };
-
-let btn_ls_question = document.getElementById('btn_ls_question');
-
-btn_ls_question.addEventListener('click', function () {
-    console.log('click')
-    let question_list = document.getElementById('question-list')
-    if (question_list.hidden == true) {
-        question_list.hidden = false;
-    } else {
-        question_list.hidden = true;
-        console.log('second condition')
-    }
-})
