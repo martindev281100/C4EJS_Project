@@ -154,6 +154,7 @@ let unauthorized_form = function () {
     document.getElementById('homepage').hidden = false;
     document.getElementById('form_greeting').hidden = true;
     document.getElementById('form_qTopic').hidden = true;
+    document.getElementById('btn_ls_question').hidden = true;
 }
 unauthorized_form();
 
@@ -170,6 +171,7 @@ let user_authorized = function () {
     document.getElementById('form_quizz').hidden = false;
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('form_qTopic').hidden = false;
+    document.getElementById('btn_ls_question').hidden = false;
 }
 
 let authorized_form = function () {
@@ -237,7 +239,8 @@ let arr_account = [{
 
 const btn_logOut = document.getElementById('btn_logOut')
 btn_logOut.addEventListener('click', function () {
-    unauthorized_form();
+    unauthorized_form(); 
+    stop();
 })
 
 
@@ -435,9 +438,7 @@ start = function (chudeinput) {
         alert("logout");
         document.getElementById("account").innerHTML = "";
     };
-    if (login == true) {
-        alert('ok');
-    };
+    
     if (login == true) {
         userscore = arr_account[iAcc].score;
     };
@@ -480,7 +481,6 @@ start = function (chudeinput) {
                 if (login == true) {
                     console.log(arr_account);
                 }
-
             }
         }, 800);
 
