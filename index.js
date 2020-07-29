@@ -1,5 +1,4 @@
-let topic = general_topic;
-
+// Redirect
 document.getElementById("redirect-to-login").onclick = function () {
     document.getElementById("register-form").style.display = "none";
     document.getElementById("login-form").style.display = "block";
@@ -10,13 +9,16 @@ document.getElementById("redirect-to-register").onclick = function () {
     document.getElementById("login-form").style.display = "none";
 }
 
+// Display topic
+let currentTopic = topics["general_topic"];
+
 function showTable() {
     let tableBody = document.getElementById("table_body");
     while (tableBody.childElementCount > 1) {
         tableBody.removeChild(tableBody.lastChild);
     }
-    for (let i = 0; i < topic.length; i++) {
-        let arr = [topic[i].question, topic[i].correctAnswer, topic[i].wrongAnswers, topic[i].hint];
+    for (let i = 0; i < currentTopic.length; i++) {
+        let arr = [currentTopic[i].question, currentTopic[i].correctAnswer, currentTopic[i].wrongAnswers, currentTopic[i].hint];
         showItems(arr);
     }
 }
@@ -24,26 +26,11 @@ showTable();
 
 document.getElementById("select_topic").onchange = function () {
     let topic_title = document.getElementById("select_topic").value;
-    switch (topic_title) {
-        case "general":
-            topic = general_topic;
-            break;
-        case "math":
-            topic = math_topic;
-            break;
-        case "calculation":
-            topic = calculation_topic;
-            break;
-        case "environment":
-            topic = environment_topic;
-            break;
-        case "coding":
-            topic = coding_topic;
-            break;
-    }
+    currentTopic = topics[topic_title];
     showTable();
 }
 
+// Add item
 function addItem() {
     let data = {
         question: document.getElementById("input_question").value,
@@ -51,8 +38,7 @@ function addItem() {
         wrongAnswers: document.getElementById("input_wrong").value,
         hint: document.getElementById("input_hint").value,
     }
-    if(data.question == ''|| data.wrongAnswers ==''||data.correctAnswer =='')
-    {
+    if (data.question == '' || data.wrongAnswers == '' || data.correctAnswer == '') {
         let alert_warning = document.getElementById('alert_warning');
         let content_aWarning = document.getElementById('content_aWarning')
         content_aWarning.innerHTML = 'Some field is missing!';
@@ -60,16 +46,14 @@ function addItem() {
         setTimeout(function () {
             alert_warning.hidden = true;
         }, 3000)
-    }
-    else
-    {
-        document.getElementById('form-add').hidden = true;
+    } else {
+        document.getElementById('form-add-question').hidden = true;
         data.wrongAnswers = data.wrongAnswers.split(", ");
-        topic.push(data);
+        currentTopic.push(data);
         let arr = [data.question, data.correctAnswer, data.wrongAnswers, data.hint];
         showItems(arr);
         document.getElementById('alert_success').hidden = false;
-        document.getElementById('alert_success').innerHTML = 'Added item successful!';
+        document.getElementById('alert_success').innerHTML = 'Item is successfully added!';
         setTimeout(function () {
             document.getElementById('alert_success').hidden = true;
         }, 3000)
@@ -79,7 +63,7 @@ function addItem() {
 function showItems(arr) {
     let tableBody = document.getElementById("table_body");
     let tableRow = document.createElement("tr");
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i ++) {
         let tableDetail = document.createElement("td");
         if (i == 2) tableDetail.innerHTML = arr[i].join(", ");
         else tableDetail.innerHTML = arr[i];
@@ -137,6 +121,17 @@ function showItems(arr) {
     tableBody.appendChild(tableRow);
 }
 
+// Add topic
+function addItemTopic() {
+    let newTopic = document.getElementById("new-topic").value;
+    document.getElementById("new-topic").value = "";
+    topics[newTopic] = [];
+    let topicList = document.getElementById("select_topic");
+    let newDropDown = document.createElement("option");
+    newDropDown.value = newTopic;
+    newDropDown.innerHTML = newTopic;
+    topicList.appendChild(newDropDown);
+}
 
 let unauthorized_form = function () {
     for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
@@ -149,7 +144,8 @@ let unauthorized_form = function () {
     document.getElementById('btn_logIn').hidden = false;
     document.getElementById('col_hint_title').hidden = true;
     document.getElementById('btn_add').hidden = true;
-    document.getElementById('form-add').hidden = true;
+    document.getElementById('form-add-question').hidden = true;
+    document.getElementById('form-add-topic').hidden = true;
     document.getElementById('form_quizz').hidden = true;
     document.getElementById('ls_action').hidden = true;
     document.getElementById('homepage').hidden = false;
@@ -161,6 +157,7 @@ unauthorized_form();
 let user_authorized = function () {
     document.getElementById("col_action_title").hidden = true;
     document.getElementById("btn_add").hidden = true;
+    document.getElementById("btn_add_topic").hidden = true;
     document.getElementById('btn_logIn').hidden = true;
     document.getElementById('btn_logOut').hidden = false;
     document.getElementsByClassName('col_hint').hidden = true;
@@ -170,8 +167,6 @@ let user_authorized = function () {
     document.getElementById('form_quizz').hidden = false;
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('form_qTopic').hidden = false;
-
-    
 }
 
 let authorized_form = function () {
@@ -183,6 +178,7 @@ let authorized_form = function () {
     document.getElementsByClassName("col_action").hidden = false;
     document.getElementById("col_action_title").hidden = false;
     document.getElementById("btn_add").hidden = false;
+    document.getElementById("btn_add_topic").hidden = false;
     document.getElementById('btn_logIn').hidden = true;
     document.getElementById('btn_logOut').hidden = false;
     document.getElementsByClassName('col_hint').hidden = false;
@@ -192,19 +188,24 @@ let authorized_form = function () {
 }
 
 
-let clicked_btn_add = function () {
-    document.getElementById('form-add').hidden = false;
+let clicked_btn_add_question = function () {
+    document.getElementById('form-add-question').hidden = false;
 }
+let clicked_btn_add_topic = function () {
+    document.getElementById('form-add-topic').hidden = false;
+}
+
+const btn_add_topic = document.getElementById('btn_add_topic');
+const btn_add_item_topic = document.getElementById('btn_item_add_topic');
 
 const btn_add = document.getElementById('btn_add');
 const btn_add_item = document.getElementById('btn_item_add');
 
-btn_add.addEventListener('click', function () {
-    clicked_btn_add();
+btn_add_topic.addEventListener('click', function () {
+    clicked_btn_add_topic();
 })
-btn_add_item.addEventListener('click', function () {
-    //Code Event khi click thêm câu hỏi mới
-    unclicked_btn_add();
+btn_add.addEventListener('click', function () {
+    clicked_btn_add_question();
 })
 
 let arr_account = [{

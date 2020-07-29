@@ -17,39 +17,46 @@
 </head>
 
 <body>
-    <div class="alert alert-success" id="alert_success" style="margin-bottom: 0rem;" hidden><strong
-            id="content_aSuccess"></strong></div>
-    <div class="alert alert-warning" id="alert_warning" style="margin-bottom: 0rem;" hidden><strong
-            id="content_aWarning"></strong></div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">EQuizz</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="alert alert-success" id="alert_success" style="margin-bottom: 0rem;" hidden>
+        <strong id="content_aSuccess"></strong>
+    </div>
+    <div class="alert alert-warning" id="alert_warning" style="margin-bottom: 0rem;" hidden>
+        <strong id="content_aWarning"></strong>
+    </div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" id="btn_add">Add Question</a>
-                </li>
-            </ul>
-
-            <form class="form-inline my-2 my-lg-0">
-                <div class="form-group">
-                    <span>
-                        <span id="form_greeting" style="padding-right: 20px; font-size: 15px;">Hello <span id="greeting_user"></span>!</span> 
-                        <button id="btn_logIn" class="btn btn-success" type="button">Log In</button>
-                        <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
-                    </span>
-                </div>
-            </form>
-        </div>
-    </nav>
     <div id="homepage">
+        <nav id="nav-bar" class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">EQuizz</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="btn_add">Add Question</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="btn_add_topic">Add Topic</a>
+                    </li>
+                </ul>
+    
+                <form class="form-inline my-2 my-lg-0">
+                    <div class="form-group">
+                        <span>
+                            <span id="form_greeting" style="padding-right: 20px; font-size: 15px;">Hello <span id="greeting_user"></span>!</span> 
+                            <button id="btn_logIn" class="btn btn-success" type="button">Log In</button>
+                            <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </nav>
+
         <div class="header background_homepage">
             <h1>Quizz</h1>
             <p>Quizz for education</p>
@@ -64,25 +71,27 @@
                         enables a clean separation of concerns and gives you full control over markup
                         for enjoyable, agile development.
                     </p>
-                    </p>
                 </div>
                 <div class="col-md-4">
                     <h2>Feature 2</h2>
-                    <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries
+                    <p>
+                        NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries
                         and tools
-                        in Visual Studio projects.</p>
+                        in Visual Studio projects.
                     </p>
                 </div>
                 <div class="col-md-4">
                     <h2>Feature 3</h2>
-                    <p>You can easily find a web hosting company that offers the right mix of features and price for
+                    <p>
+                        You can easily find a web hosting company that offers the right mix of features and price for
                         your
-                        applications.</p>
+                        applications.
                     </p>
                 </div>
             </div>
         </div>
     </div>
+
     <div id="login-page" hidden>
         <div class="form">
             <form id="register-form">
@@ -102,8 +111,7 @@
         </div>
     </div>
     <div class="container manh_container">
-        <div id="form-add" class="form_add">
-
+        <div id="form-add-question" class="form_add">
             <div class="form-group">
                 <label for="input_question">Question: </label>
                 <input type="text" id="input_question" placeholder="Enter question" class="form-control">
@@ -121,6 +129,14 @@
                 <input type="text" id="input_hint" placeholder="Enter hint for question" class="form-control">
             </div>
             <button id="btn_item_add" class="btn btn-success" onclick="addItem()">Add Item</button>
+        </div>
+
+        <div id="form-add-topic" class="form_add">
+            <div class="form-group">
+                <label for="new-topic">Topic: </label>
+                <input type="text" id="new-topic" placeholder="Enter topic" class="form-control">
+            </div>
+            <button id="btn_item_add_topic" class="btn btn-success" onclick="addItemTopic()">Add Item</button>
         </div>
 
         <div id="form_quizz">
@@ -179,11 +195,11 @@
             <label for="select_topic">Topic: </label>
             
             <select id="select_topic" class="custom-select">
-                <option value="general">General</option>
-                <option value="math">Math</option>
-                <option value="calculation">Calculation</option>
-                <option value="environment">Environment</option>
-                <option value="coding">Coding</option>
+                <option value="general_topic">General</option>
+                <option value="math_topic">Math</option>
+                <option value="calculation_topic">Calculation</option>
+                <option value="environment_topic">Environment</option>
+                <option value="coding_topic">Coding</option>
             </select>
         </div>
 
