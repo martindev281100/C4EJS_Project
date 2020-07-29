@@ -148,7 +148,7 @@ let unauthorized_form = function () {
         document.getElementsByClassName('col_hint')[i].hidden = true;
         document.getElementsByClassName('col_action')[i].hidden = true;
     }
-    document.getElementById('table_questions').hidden = true;
+    document.getElementById('question-list').hidden = true;
     document.getElementById("col_action_title").hidden = true;
     document.getElementById('btn_logOut').hidden = true;
     document.getElementById('btn_logIn').hidden = false;
@@ -157,7 +157,6 @@ let unauthorized_form = function () {
     document.getElementById("btn_add_topic").hidden = true;
     document.getElementById('form-add-question').hidden = true;
     document.getElementById('form-add-topic').hidden = true;
-    document.getElementById('form_quizz').hidden = true;
     document.getElementById('ls_action').hidden = true;
     document.getElementById('homepage').hidden = false;
     document.getElementById('form_greeting').hidden = true;
@@ -175,8 +174,7 @@ let user_authorized = function () {
     document.getElementsByClassName('col_hint').hidden = true;
     document.getElementsByClassName('col_action').hidden = true;
     document.getElementById('col_hint_title').hidden = true;
-    document.getElementById('table_questions').hidden = true;
-    document.getElementById('form_quizz').hidden = false;
+    document.getElementById('question-list').hidden = true;
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('form_qTopic').hidden = false;
     document.getElementById('btn_ls_question').hidden = false;
@@ -187,7 +185,7 @@ let authorized_form = function () {
         document.getElementsByClassName('col_hint')[i].hidden = false;
         document.getElementsByClassName('col_action')[i].hidden = false;
     }
-    document.getElementById('table_questions').hidden = false;
+    document.getElementById('question-list').hidden = false;
     document.getElementsByClassName("col_action").hidden = false;
     document.getElementById("col_action_title").hidden = false;
     document.getElementById("btn_add_question").hidden = false;
@@ -198,6 +196,7 @@ let authorized_form = function () {
     document.getElementById('col_hint_title').hidden = false;
     document.getElementById('ls_action').hidden = false;
     document.getElementById('form_greeting').hidden = false;
+    document.getElementById('btn_ls_question').hidden = false;
 }
 
 let arr_account = [{
@@ -535,11 +534,11 @@ let btn_ls_question = document.getElementById('btn_ls_question');
 
 btn_ls_question.addEventListener('click', function () {
     console.log('click')
-    let table_questions = document.getElementById('table_questions')
-    if (table_questions.hidden == true) {
-        table_questions.hidden = false;
+    let question_list = document.getElementById('question-list')
+    if (question_list.hidden == true) {
+        question_list.hidden = false;
     } else {
-        table_questions.hidden = true;
+        question_list.hidden = true;
         console.log('second condition')
     }
 })

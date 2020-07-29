@@ -46,14 +46,18 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="#quizz" id="btn_quizz">Quizz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#question-list" id="btn_ls_question">Question List</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#" id="btn_add_question" onclick="clicked_btn_add_question()">Add Question</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="btn_add_topic" onclick="clicked_btn_add_topic()">Add Topic</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" id="btn_ls_question" >List Question</a>
-                </li>
+                
             </ul>
 
             <form class="form-inline my-2 my-lg-0">
@@ -151,44 +155,9 @@
             </div>
             <button id="btn_item_add_topic" class="btn btn-success" onclick="addItemTopic()">Add Item</button>
         </div>
+    </div>
 
-        <div class="form-group" id="ls_action">
-            <label for="select_topic">Topic: </label>
-            <select id="select_topic" class="custom-select">
-                <option value="general_topic">General</option>
-                <option value="math_topic">Math</option>
-                <option value="calculation_topic">Calculation</option>
-                <option value="environment_topic">Environment</option>
-                <option value="coding_topic">Coding</option>
-            </select>
-        </div>
-
-        <table id="table_questions" border="1" class="table table-striped">
-            <thead id="table_head">
-                <tr>
-                    <th>Question</th>
-                    <th>Correct Answer</th>
-                    <th>Wrong Answer</th>
-                    <th id="col_hint_title">Hint</th>
-                    <th id="col_action_title">Actions</th>
-                </tr>
-            </thead>
-            <tbody id="table_body">
-                <tr hidden>
-                    <td class="question_content">1 + 1 = ?</td>
-                    <td class="correct_answer">2</td>
-                    <td class="wrong_answer">1, 3, 4</td>
-                    <td class="col_hint">Lam toan di!</td>
-                    <td class="col_action">
-                        <button class="btn_update btn btn-warning">Update</button>
-                        <button class="btn_delete btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-
-        <div id="form_quizz">
+    <div id="quizz">
             <div id="thuvanmay">
                 <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
                 <input type="number" name="" id="inscore">
@@ -238,9 +207,46 @@
                 </script>
             </div>
         </div>
-</div>
+    </div>
 
-<div class="row text-center" id="form_qTopic">
+    <div id="question-list">
+        <div class="form-group" id="ls_action">
+            <label for="select_topic">Topic: </label>
+            <select id="select_topic" class="custom-select">
+                <option value="general_topic">General</option>
+                <option value="math_topic">Math</option>
+                <option value="calculation_topic">Calculation</option>
+                <option value="environment_topic">Environment</option>
+                <option value="coding_topic">Coding</option>
+            </select>
+        </div>
+
+        <table id="table_questions" border="1" class="table table-striped">
+            <thead id="table_head">
+                <tr>
+                    <th>Question</th>
+                    <th>Correct Answer</th>
+                    <th>Wrong Answer</th>
+                    <th id="col_hint_title">Hint</th>
+                    <th id="col_action_title">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="table_body">
+                <tr hidden>
+                    <td class="question_content">1 + 1 = ?</td>
+                    <td class="correct_answer">2</td>
+                    <td class="wrong_answer">1, 3, 4</td>
+                    <td class="col_hint">Lam toan di!</td>
+                    <td class="col_action">
+                        <button class="btn_update btn btn-warning">Update</button>
+                        <button class="btn_delete btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+ <div class="row text-center" id="form_qTopic">
     <div class="col-lg-3 col-md-6 mb-4">
       <div class="card h-100">
         <img class="card-img-top" src="http://placehold.it/500x325" alt="">
@@ -289,7 +295,7 @@
       <div class="card-footer">
         <a href="#" class="btn btn-primary">Find Out More!</a>
       </div>
-    </div>
+    </div> 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
