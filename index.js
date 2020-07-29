@@ -143,7 +143,8 @@ let unauthorized_form = function () {
     document.getElementById('btn_logOut').hidden = true;
     document.getElementById('btn_logIn').hidden = false;
     document.getElementById('col_hint_title').hidden = true;
-    document.getElementById('btn_add').hidden = true;
+    document.getElementById('btn_add_question').hidden = true;
+    document.getElementById("btn_add_topic").hidden = true;
     document.getElementById('form-add-question').hidden = true;
     document.getElementById('form-add-topic').hidden = true;
     document.getElementById('form_quizz').hidden = true;
@@ -156,7 +157,7 @@ unauthorized_form();
 
 let user_authorized = function () {
     document.getElementById("col_action_title").hidden = true;
-    document.getElementById("btn_add").hidden = true;
+    document.getElementById("btn_add_question").hidden = true;
     document.getElementById("btn_add_topic").hidden = true;
     document.getElementById('btn_logIn').hidden = true;
     document.getElementById('btn_logOut').hidden = false;
@@ -177,7 +178,7 @@ let authorized_form = function () {
     document.getElementById('table_questions').hidden = false;
     document.getElementsByClassName("col_action").hidden = false;
     document.getElementById("col_action_title").hidden = false;
-    document.getElementById("btn_add").hidden = false;
+    document.getElementById("btn_add_question").hidden = false;
     document.getElementById("btn_add_topic").hidden = false;
     document.getElementById('btn_logIn').hidden = true;
     document.getElementById('btn_logOut').hidden = false;
@@ -198,7 +199,7 @@ let clicked_btn_add_topic = function () {
 const btn_add_topic = document.getElementById('btn_add_topic');
 const btn_add_item_topic = document.getElementById('btn_item_add_topic');
 
-const btn_add = document.getElementById('btn_add');
+const btn_add = document.getElementById('btn_add_question');
 const btn_add_item = document.getElementById('btn_item_add');
 
 btn_add_topic.addEventListener('click', function () {
