@@ -51,6 +51,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="btn_add_topic" onclick="clicked_btn_add_topic()">Add Topic</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="btn_ls_question" >List Question</a>
+                </li>
             </ul>
 
             <form class="form-inline my-2 my-lg-0">
@@ -185,8 +188,6 @@
         </table>
 
 
-        
-
         <div id="form_quizz">
             <div id="thuvanmay">
                 <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
@@ -198,17 +199,14 @@
                 </script>
             </div>
 
-            <button id="btn_ls_question" class="btn btn-light">List Question</button>
-
             <div id="playgame">
                 <div id="chude">
-                    <input class="btn btn-outline-dark" type="button" value="Data" onclick="start(general_topic);">
-                    <input class="btn btn-outline-dark" type="button" value="Toán Học"
-                        onclick="start(calculation_topic)">
-                    <input class="btn btn-outline-dark" type="button" value="math" onclick="start(math_topic)">
-                    <input class="btn btn-outline-dark" type="button" value="coding" onclick="start(coding_topic)">
-                    <input class="btn btn-outline-dark" type="button" value="moi truong"
-                        onclick="start(environment_topic)">
+                    <input class="btn btn-outline-dark" type="button" value="Data" onclick="start(topics.general_topic);">
+                    <input class="btn btn-outline-dark" type="button" value="Toán Học"onclick="start(topics.calculation_topic)">
+                    <input class="btn btn-outline-dark" type="button" value="math" onclick="start(topcis.math_topic)">
+                    <input class="btn btn-outline-dark" type="button" value="coding" onclick="start(topics.coding_topic)">
+                    <input class="btn btn-outline-dark" type="button" value="moi truong"onclick="start(topics.environment_topic)">
+
                 </div>
             </div>
             <div id="thongbao">

@@ -1,4 +1,5 @@
 // Redirect
+console.log(topics.calculation_topic[0].question)
 document.getElementById("redirect-to-login").onclick = function () {
     document.getElementById("register-form").style.display = "none";
     document.getElementById("login-form").style.display = "block";
@@ -139,6 +140,7 @@ function addItemTopic() {
     newDropDown.value = newTopic;
     newDropDown.innerHTML = newTopic;
     topicList.appendChild(newDropDown);
+    document.getElementById('chude').insertAdjacentHTML('beforeend','<input class="btn btn-outline-dark" type="button" value="moi truong"onclick="start(environment_topic)">')
 }
 
 let unauthorized_form = function () {
@@ -160,6 +162,7 @@ let unauthorized_form = function () {
     document.getElementById('homepage').hidden = false;
     document.getElementById('form_greeting').hidden = true;
     document.getElementById('form_qTopic').hidden = true;
+    document.getElementById('btn_ls_question').hidden = true;
 }
 unauthorized_form();
 
@@ -176,6 +179,7 @@ let user_authorized = function () {
     document.getElementById('form_quizz').hidden = false;
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('form_qTopic').hidden = false;
+    document.getElementById('btn_ls_question').hidden = false;
 }
 
 let authorized_form = function () {
@@ -205,7 +209,8 @@ let arr_account = [{
 
 const btn_logOut = document.getElementById('btn_logOut')
 btn_logOut.addEventListener('click', function () {
-    unauthorized_form();
+    unauthorized_form(); 
+    stop();
 })
 
 let clicked_btn_logIn = function () {
@@ -329,9 +334,7 @@ let checkAcc = function () {
                 document.getElementById('alert_success').hidden = true;
                 document.getElementById('content_aSuccess').innerHTML = '';
             }, 3000)
-
         } else if (idAcc == arr_account[i].email) {
-
             if (arr_account[i].password == passAcc) {
                 login = true;
                 iAcc = i;
@@ -351,7 +354,7 @@ let checkAcc = function () {
                     document.getElementById('alert_warning').hidden = true;
                 }, 3000)
             }
-            console.log(i);
+            console.log('iAcc'+iAcc);
             break;
         } else if (i == arr_account.length - 1) {
             document.getElementById('alert_warning').hidden = false;
@@ -370,6 +373,7 @@ start = function (chudeinput) {
     let score = 0;
 
     var chuDe = chudeinput;
+    console.log('chudeinput: '+ chuDe[0])
     let c = [];
     run = function () {
 
@@ -398,9 +402,7 @@ start = function (chudeinput) {
         alert("logout");
         document.getElementById("account").innerHTML = "";
     };
-    if (login == true) {
-        alert('ok');
-    };
+    
     if (login == true) {
         userscore = arr_account[iAcc].score;
     };
@@ -443,7 +445,6 @@ start = function (chudeinput) {
                 if (login == true) {
                     console.log(arr_account);
                 }
-
             }
         }, 800);
 
