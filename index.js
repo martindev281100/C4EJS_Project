@@ -1,4 +1,5 @@
 // Redirect
+console.log(topics.calculation_topic[0].question)
 document.getElementById("redirect-to-login").onclick = function () {
     document.getElementById("register-form").style.display = "none";
     document.getElementById("login-form").style.display = "block";
@@ -131,6 +132,7 @@ function addItemTopic() {
     newDropDown.value = newTopic;
     newDropDown.innerHTML = newTopic;
     topicList.appendChild(newDropDown);
+    document.getElementById('chude').insertAdjacentHTML('beforeend','<input class="btn btn-outline-dark" type="button" value="moi truong"onclick="start(environment_topic)">')
 }
 
 let unauthorized_form = function () {
@@ -197,14 +199,13 @@ let clicked_btn_add_topic = function () {
 }
 
 const btn_add_topic = document.getElementById('btn_add_topic');
-const btn_add_item_topic = document.getElementById('btn_item_add_topic');
 
 const btn_add = document.getElementById('btn_add_question');
-const btn_add_item = document.getElementById('btn_item_add');
 
 btn_add_topic.addEventListener('click', function () {
     clicked_btn_add_topic();
 })
+
 btn_add.addEventListener('click', function () {
     clicked_btn_add_question();
 })
@@ -405,6 +406,7 @@ start = function (chudeinput) {
     let score = 0;
 
     var chuDe = chudeinput;
+    console.log('chudeinput: '+ chuDe[0])
     let c = [];
     run = function () {
 
