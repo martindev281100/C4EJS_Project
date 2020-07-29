@@ -364,9 +364,7 @@ let checkAcc = function () {
                 document.getElementById('alert_success').hidden = true;
                 document.getElementById('content_aSuccess').innerHTML = '';
             }, 3000)
-
         } else if (idAcc == arr_account[i].email) {
-
             if (arr_account[i].password == passAcc) {
                 login = true;
                 iAcc = i;
@@ -386,7 +384,7 @@ let checkAcc = function () {
                     document.getElementById('alert_warning').hidden = true;
                 }, 3000)
             }
-            console.log(i);
+            console.log('iAcc'+iAcc);
             break;
         } else if (i == arr_account.length - 1) {
             document.getElementById('alert_warning').hidden = false;
