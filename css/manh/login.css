@@ -6,9 +6,6 @@
   justify-content: center;
   align-items: center;
 }
-.form #register-form {
-  display: none;
-}
 .form {
   background: #FFFFFF;
   max-width: 360px;

@@ -1,13 +1,13 @@
 // Redirect
 console.log(topics.calculation_topic[0].question)
 document.getElementById("redirect-to-login").onclick = function () {
-    document.getElementById("register-form").style.display = "none";
-    document.getElementById("login-form").style.display = "block";
+    document.getElementById("register-form").hidden = true;
+    document.getElementById("login-form").hidden = false;
 }
 
 document.getElementById("redirect-to-register").onclick = function () {
-    document.getElementById("register-form").style.display = "block";
-    document.getElementById("login-form").style.display = "none";
+    document.getElementById("register-form").hidden = false;
+    document.getElementById("login-form").hidden = true;
 }
 
 // Display topic
@@ -126,6 +126,27 @@ function showItems(arr) {
     tableBody.appendChild(tableRow);
 }
 
+// Change page
+let quizzPage = document.getElementById("quizz");
+let questionListPage = document.getElementById("question-list");
+let homePage = document.getElementById("homepage");
+
+document.getElementById("btn_quizz").onclick = function () {
+    quizzPage.hidden = false;
+    questionListPage.hidden = true;
+    homePage.hidden = true;
+}
+document.getElementById("btn_ls_question").onclick = function () {
+    quizzPage.hidden = true;
+    questionListPage.hidden = false;
+    homePage.hidden = true;
+}
+document.getElementById("btn_home").onclick = function () {
+    quizzPage.hidden = true;
+    questionListPage.hidden = true;
+    homePage.hidden = false;
+}
+
 // Add topic
 let clicked_btn_add_topic = function () {
     document.getElementById('form-add-topic').hidden = false;
@@ -143,22 +164,10 @@ function addItemTopic() {
     document.getElementById('chude').insertAdjacentHTML('beforeend', '<input class="btn btn-outline-dark" type="button" value="moi truong"onclick="start(environment_topic)">')
 }
 
+// Authorize
 let unauthorized_form = function () {
-    for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
-        document.getElementsByClassName('col_hint')[i].hidden = true;
-        document.getElementsByClassName('col_action')[i].hidden = true;
-    }
-    document.getElementById('question-list').hidden = true;
-    document.getElementById("col_action_title").hidden = true;
     document.getElementById('btn_logOut').hidden = true;
-    document.getElementById('btn_logIn').hidden = false;
-    document.getElementById('col_hint_title').hidden = true;
-    document.getElementById('btn_add_question').hidden = true;
-    document.getElementById("btn_add_topic").hidden = true;
-    document.getElementById('form-add-question').hidden = true;
-    document.getElementById('form-add-topic').hidden = true;
     document.getElementById('ls_action').hidden = true;
-    document.getElementById('homepage').hidden = false;
     document.getElementById('form_greeting').hidden = true;
     document.getElementById('form_qTopic').hidden = true;
     document.getElementById('btn_ls_question').hidden = true;
@@ -169,6 +178,12 @@ let unauthorized_form = function () {
 unauthorized_form();
 
 let user_authorized = function () {
+    document.getElementById("col_action_title").hidden = true;
+    document.getElementById('col_hint_title').hidden = true;
+    for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
+        document.getElementsByClassName('col_hint')[i].hidden = true;
+        document.getElementsByClassName('col_action')[i].hidden = true;
+    }
     document.getElementById("col_action_title").hidden = true;
     document.getElementById("btn_add_question").hidden = true;
     document.getElementById("btn_add_topic").hidden = true;
@@ -184,20 +199,12 @@ let user_authorized = function () {
     document.getElementById('btn_editInfo').hidden = true;
 }
 
-let authorized_form = function () {
-    for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
-        document.getElementsByClassName('col_hint')[i].hidden = false;
-        document.getElementsByClassName('col_action')[i].hidden = false;
-    }
+let admin_authorized = function () {
     document.getElementById('question-list').hidden = false;
-    document.getElementsByClassName("col_action").hidden = false;
-    document.getElementById("col_action_title").hidden = false;
     document.getElementById("btn_add_question").hidden = false;
     document.getElementById("btn_add_topic").hidden = false;
     document.getElementById('btn_logIn').hidden = true;
     document.getElementById('btn_logOut').hidden = false;
-    document.getElementsByClassName('col_hint').hidden = false;
-    document.getElementById('col_hint_title').hidden = false;
     document.getElementById('ls_action').hidden = false;
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('btn_ls_question').hidden = false;
@@ -362,7 +369,7 @@ let checkAcc = function () {
     console.log(arr_account[0].email + ' email');
     for (let i = 0; i < arr_account.length; i++) {
         if (idAcc == 'admin' && passAcc == 1234) {
-            authorized_form();
+            admin_authorized();
             console.log('Logged in');
             document.getElementById('greeting_user').innerHTML = 'Admin';
             document.getElementById('login-page').hidden = true;
@@ -574,16 +581,3 @@ start = function (chudeinput) {
         }
     }
 };
-
-let btn_ls_question = document.getElementById('btn_ls_question');
-
-btn_ls_question.addEventListener('click', function () {
-    console.log('click')
-    let question_list = document.getElementById('question-list')
-    if (question_list.hidden == true) {
-        question_list.hidden = false;
-    } else {
-        question_list.hidden = true;
-        console.log('second condition')
-    }
-})
