@@ -65,8 +65,9 @@
                     <span>
                         <a id="form_greeting" style="padding-right: 20px; font-size: 15px;">Hello <span id="greeting_user"></span>!</a> 
                         <button id="btn_logIn" class="btn btn-success" type="button">Log In</button>
-                        <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
+                        <button id="btn_logOut" class="btn btn-success" type="button" onclick="logout();">Log Out</button>
                     </span>
+
                 </div>
             </form>
         </div>
@@ -314,7 +315,9 @@
             <span class="text-muted">Place sticky footer content here.</span>
         </div>
     </footer>
-
+    <script>
+        document.getElementById("chude").style.display = 'none';
+    </script>
 
     <script src="index.js"></script>
 
