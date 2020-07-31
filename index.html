@@ -52,21 +52,26 @@
                     <a class="nav-link" href="#" id="btn_ls_question" hidden>Question List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="btn_add_question" onclick="clicked_btn_add_question()" hidden>Add Question</a>
+                    <a class="nav-link" href="#" id="btn_add_question" onclick="clicked_btn_add_question()" hidden>Add
+                        Question</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="btn_add_topic" onclick="clicked_btn_add_topic()" hidden>Add Topic</a>
+                    <a class="nav-link" href="#" id="btn_add_topic" onclick="clicked_btn_add_topic()" hidden>Add
+                        Topic</a>
                 </li>
-                
+
             </ul>
 
             <form class="form-inline my-2 my-lg-0">
                 <div class="form-group">
                     <span>
-                        <a id="form_greeting" style="padding-right: 20px; font-size: 15px;">Hello <span id="greeting_user"></span>!</a> 
+                        <a id="form_greeting" style="padding-right: 20px; font-size: 15px;">Hello <span
+                                id="greeting_user"></span>!</a>
                         <button id="btn_logIn" class="btn btn-success" type="button">Log In</button>
-                        <button id="btn_logOut" class="btn btn-success" type="button">Log Out</button>
+                        <button id="btn_logOut" class="btn btn-success" type="button" onclick="logout();">Log
+                            Out</button>
                     </span>
+
                 </div>
             </form>
         </div>
@@ -130,15 +135,15 @@
     <div class="container manh_container">
         <div id="form_profile" class="form_profile">
             <div class="form-group">
-                <label for="" >Name: </label>
+                <label for="">Name: </label>
                 <input type="text" id="input_pName" value="" class="form-control" readonly>
             </div>
             <div class="form-group">
-                <label for="" >Email: </label>
+                <label for="">Email: </label>
                 <input type="text" id="input_pEmail" value="" class="form-control" readonly>
             </div>
             <div class="form-group" id="form_pPassword">
-                <label for="" >Password: </label>
+                <label for="">Password: </label>
                 <input type="password" id="input_pPassword" value="" class="form-control">
             </div>
             <button id="btn_updateAcc" class="btn btn-outline-success">Update Account</button>
@@ -176,55 +181,123 @@
     </div>
 
     <div id="quizz" hidden>
-            <div id="thuvanmay">
-                <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
-                <input type="number" name="" id="inscore">
-                <input type="button" value="doi diem" id="quay" onclick="quayso();">
-                <script>
-                    document.getElementById("inscore").style.display = 'none';
-                    document.getElementById("quay").style.display = 'none';
-                </script>
-            </div>
+        <div id="thuvanmay">
+            <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
+            <input type="number" name="" id="inscore">
+            <input type="button" value="doi diem" id="quay" onclick="quayso();">
+            <script>
+                document.getElementById("inscore").style.display = 'none';
+                document.getElementById("quay").style.display = 'none';
+            </script>
+        </div>
 
-            <div id="playgame">
-                <div id="chude">
-                    <input class="btn btn-outline-dark" type="button" value="Data" onclick="start(topics.general_topic);">
-                    <input class="btn btn-outline-dark" type="button" value="Toán Học"onclick="start(topics.calculation_topic)">
-                    <input class="btn btn-outline-dark" type="button" value="math" onclick="start(topics.math_topic)">
-                    <input class="btn btn-outline-dark" type="button" value="coding" onclick="start(topics.coding_topic)">
-                    <input class="btn btn-outline-dark" type="button" value="moi truong"onclick="start(topics.environment_topic)">
+        <div id="playgame">
+            <div id="chude">
 
-                </div>
-            </div>
-            <div id="thongbao">
-                <div id="thongBaoKq"></div>
-                <div id="end">
-                    <div id="score"></div>
-                </div>
-            </div>
-            <div id="formGame">
-                <div id="cauHoi"></div>
-                <div id="support">
-                    <input class="sp" type="button" value="hint" id="hint" onclick="doihint(hint.value);">
-                    <input class="sp" type="button" value="50 / 50" id="trogiup" onclick="trogiup();">
-                </div>
-
-                <div id="formGame0">
-                    <div id="formGame1">
-                        <hr>
-                        <input class="ans" type="button" value="" id="c1" onclick="check(c1.value,1);">
-                        <input class="ans" type="button" value="" id="c2" onclick="check(c2.value,2);">
+                <!-- <input class="btn btn-outline-dark" type="button" value="math" onclick="start(topics.math_topic)">
+                <input class="btn btn-outline-dark" type="button" value="coding" onclick="start(topics.coding_topic)">
+                <input class="btn btn-outline-dark" type="button" value="moi truong"
+                    onclick="start(topics.environment_topic)"> -->
+                <div class="row text-center" id="form_qTopic">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <!-- <img class="card-img-top" src="http://placehold.it/500x325" alt=""> -->
+                            <div class="card-body">
+                                <h4 class="card-title">Calculation</h4>
+                                <p class="card-text">Descriptions</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-primary" onclick="start(topics.calculation_topic)">Go!</a>
+                            </div>
+                        </div>
                     </div>
-                    <div id="formGame2">
-                        <input class="ans" type="button" value="" id="c3" onclick="check(c3.value,3);">
-                        <input class="ans" type="button" value="" id="c4" onclick="check(c4.value,4);">
+
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <!-- <img class="card-img-top" src="http://placehold.it/500x325" alt=""> -->
+                            <div class="card-body">
+                                <h4 class="card-title">Maths</h4>
+                                <p class="card-text">Descriptions</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-primary" onclick="start(topics.math_topic)">Go!</a>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <!-- <img class="card-img-top" src="http://placehold.it/500x325" alt=""> -->
+                            <div class="card-body">
+                                <h4 class="card-title">Coding</h4>
+                                <p class="card-text">Description</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-primary" onclick="start(topics.coding_topic)">Go!</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <!-- <img class="card-img-top" src="http://placehold.it/500x325" alt=""> -->
+                            <div class="card-body">
+                                <h4 class="card-title">General Questions</h4>
+                                <p class="card-text">Descriptions</p>
+                            </div>
+                            <div class="card-footer">
+                                <input class="btn btn-outline-dark" type="button" value="Data"
+                                    onclick="start(topics.general_topic);">
+                                <a href="#" class="btn btn-primary" onclick="start(topics.general_topic);">Go!</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h4 class="card-title">Environments</h4>
+                                <p class="card-text">Descriptions</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-primary" onclick="start(topics.environment_topic)">Go!</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                 </div>
-                <script>
-                    document.getElementById("formGame").style.display = 'none';
-                </script>
             </div>
         </div>
+        <div id="thongbao">
+            <div id="thongBaoKq"></div>
+            <div id="end">
+                <div id="score"></div>
+            </div>
+        </div>
+        <div id="formGame">
+            <div id="cauHoi"></div>
+            <div id="support">
+                <input class="sp" type="button" value="hint" id="hint" onclick="doihint(hint.value);">
+                <input class="sp" type="button" value="50 / 50" id="trogiup" onclick="trogiup();">
+            </div>
+
+            <div id="formGame0">
+                <div id="formGame1">
+                    <hr>
+                    <input class="btn btn-secondary" type="button" value="" id="c1" onclick="check(c1.value,1);">
+                    <input class="btn btn-secondary" type="button" value="" id="c2" onclick="check(c2.value,2);">
+                </div>
+                <div id="formGame2">
+                    <input class="btn btn-secondary" type="button" value="" id="c3" onclick="check(c3.value,3);">
+                    <input class="btn btn-secondary" type="button" value="" id="c4" onclick="check(c4.value,4);">
+                </div>
+            </div>
+            <script>
+                document.getElementById("formGame").style.display = 'none';
+            </script>
+        </div>
+    </div>
     </div>
 
     <div id="question-list" hidden>
@@ -264,63 +337,16 @@
         </table>
     </div>
 
- <div class="row text-center" id="form_qTopic">
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="card h-100">
-        <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
-      </div>
-    </div>
 
-<div class="col-lg-3 col-md-6 mb-4">
-    <div class="card h-100">
-      <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-      <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-      </div>
-      <div class="card-footer">
-        <a href="#" class="btn btn-primary">Find Out More!</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-3 col-md-6 mb-4">
-    <div class="card h-100">
-      <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-      <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-      </div>
-      <div class="card-footer">
-        <a href="#" class="btn btn-primary">Find Out More!</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-3 col-md-6 mb-4">
-    <div class="card h-100">
-      <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-      <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-      </div>
-      <div class="card-footer">
-        <a href="#" class="btn btn-primary">Find Out More!</a>
-      </div>
-    </div> 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <span class="text-muted">Place sticky footer content here.</span>
         </div>
     </footer>
-
+    <script>
+        document.getElementById("chude").style.display = 'none';
+    </script>
 
     <script src="index.js"></script>
 

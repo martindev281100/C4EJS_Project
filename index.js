@@ -57,8 +57,10 @@ function addItem() {
         currentTopic.push(data);
         let arr = [data.question, data.correctAnswer, data.wrongAnswers, data.hint];
         showItems(arr);
-        document.getElementById('alert_success').hidden = false;
-        document.getElementById('alert_success').innerHTML = 'Item is successfully added!';
+        let alert_success = document.getElementById('alert_success');
+        let content_aSuccess = document.getElementById('content_aSuccess')
+        content_aSuccess.innerHTML = 'Some field is missing!';
+        alert_success.hidden = false;
         setTimeout(function () {
             document.getElementById('alert_success').hidden = true;
         }, 1000)
@@ -161,7 +163,7 @@ function addItemTopic() {
     newDropDown.value = newTopic;
     newDropDown.innerHTML = newTopic;
     topicList.appendChild(newDropDown);
-    document.getElementById('chude').insertAdjacentHTML('beforeend', '<input class="btn btn-outline-dark" type="button" value="moi truong"onclick="start(environment_topic)">')
+    document.getElementById('form_qTopic').insertAdjacentHTML('beforeend', '<div class="col-lg-3 col-md-6 mb-4"><div class="card h-100"><div class="card-body"><h4 class="card-title">'+newTopic+'</h4><p class="card-text">Descriptions</p></div><div class="card-footer"><a href="#" class="btn btn-primary" onclick="start(topics.'+newTopic+')">Go!</a></div></div></div>')
 }
 
 // Authorize
@@ -173,6 +175,7 @@ let unauthorized_form = function () {
     document.getElementById('btn_ls_question').hidden = true;
     document.getElementById('form_profile').hidden = true;
     document.getElementById('form_pPassword').hidden = true;
+    document.getElementById('homepage').hidden = false;
 
 }
 unauthorized_form();
@@ -423,7 +426,6 @@ let checkAcc = function () {
 start = function (chudeinput) {
 
     //document.getElementById("chude").style.display = 'none';
-   
 
     let score = 0;
 
@@ -442,7 +444,7 @@ start = function (chudeinput) {
         for (let i1 = 1; i1 < 5; i1++) {
             rand = Math.floor(Math.random() * c.length);
             document.getElementById('c' + i1).value = c[rand];
-            document.getElementById("c" + i1).style.background = 'rgb(64, 204, 8)';
+            // document.getElementById("c" + i1).style.background = 'rgb(64, 204, 8)';
             c.splice(rand, 1);
         };
         document.getElementById("formGame").style.display = 'block';
@@ -578,10 +580,10 @@ logout = function () {
     score = 0;
     login = false;
     stop();  
-    alert("logout");
+    unauthorized_form();
     document.getElementById("btn_logIn").hidden = false;
     document.getElementById('btn_logOut').hidden = true;
-    document.getElementById('formGame').hidden = true;
+    document.getElementById('quizz').hidden = true;
    
     document.getElementById("chude").style.display = 'none';
 
