@@ -135,15 +135,19 @@ let homePage = document.getElementById("homepage");
 
 document.getElementById("quizz").onclick = function () {
     quizzPage.hidden = false;
+    //document.getElementById("quizz").innerHTML.style.color = rgba(0,0,0,0);
     questionListPage.hidden = true;
+    //document.getElementById("quizz").innerHTML.style.color = rgba(0,0,0,.5);
     homePage.hidden = true;
 }
 document.getElementById("question-list").onclick = function () {
+    //document.getElementById("question-list").innerHTML.style.color = rgba(0,0,0,0);
     quizzPage.hidden = true;
     questionListPage.hidden = false;
     homePage.hidden = true;
 }
 document.getElementById("home").onclick = function () {
+    //document.getElementById("home").innerHTML.style.color = rgba(0,0,0,0);
     quizzPage.hidden = true;
     questionListPage.hidden = true;
     homePage.hidden = false;
@@ -195,22 +199,22 @@ let user_authorized = function () {
     document.getElementsByClassName('col_hint').hidden = true;
     document.getElementsByClassName('col_action').hidden = true;
     document.getElementById('col_hint_title').hidden = true;
-    document.getElementById('question-list').hidden = true;
+    document.getElementById('question-list-page').hidden = true;
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('form_qTopic').hidden = false;
-    document.getElementById('btn_ls_question').hidden = false;
+    document.getElementById('question-list').hidden = false;
     document.getElementById('btn_editInfo').hidden = true;
 }
 
 let admin_authorized = function () {
-    document.getElementById('question-list').hidden = false;
+    document.getElementById('question-list-page').hidden = false;
     document.getElementById("btn_add_question").hidden = false;
     document.getElementById("btn_add_topic").hidden = false;
     document.getElementById('btn_logIn').hidden = true;
     document.getElementById('btn_logOut').hidden = false;
     document.getElementById('ls_action').hidden = false;
     document.getElementById('form_greeting').hidden = false;
-    document.getElementById('btn_ls_question').hidden = false;
+    document.getElementById('question-list').hidden = false;
 }
 
 let arr_account = [{
@@ -583,7 +587,7 @@ logout = function () {
     unauthorized_form();
     document.getElementById("btn_logIn").hidden = false;
     document.getElementById('btn_logOut').hidden = true;
-    document.getElementById('quizz').hidden = true;
+    document.getElementById('quizz-page').hidden = true;
    
     document.getElementById("chude").style.display = 'none';
 
