@@ -127,21 +127,21 @@ function showItems(arr) {
 }
 
 // Change page
-let quizzPage = document.getElementById("quizz");
-let questionListPage = document.getElementById("question-list");
+let quizzPage = document.getElementById("quizz-page");
+let questionListPage = document.getElementById("question-list-page");
 let homePage = document.getElementById("homepage");
 
-document.getElementById("btn_quizz").onclick = function () {
+document.getElementById("quizz").onclick = function () {
     quizzPage.hidden = false;
     questionListPage.hidden = true;
     homePage.hidden = true;
 }
-document.getElementById("btn_ls_question").onclick = function () {
+document.getElementById("question-list").onclick = function () {
     quizzPage.hidden = true;
     questionListPage.hidden = false;
     homePage.hidden = true;
 }
-document.getElementById("btn_home").onclick = function () {
+document.getElementById("home").onclick = function () {
     quizzPage.hidden = true;
     questionListPage.hidden = true;
     homePage.hidden = false;
