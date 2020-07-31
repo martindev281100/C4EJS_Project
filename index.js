@@ -164,14 +164,26 @@ document.getElementById("home").onclick = function () {
 // Add topic
 function addItemTopic() {
     let newTopic = document.getElementById("new-topic").value;
-    document.getElementById("new-topic").value = "";
-    topics[newTopic] = [];
-    let topicList = document.getElementById("select_topic");
-    let newDropDown = document.createElement("option");
-    newDropDown.value = newTopic;
-    newDropDown.innerHTML = newTopic;
-    topicList.appendChild(newDropDown);
-    document.getElementById('form_qTopic').insertAdjacentHTML('beforeend', '<div class="col-lg-3 col-md-6 mb-4"><div class="card h-100"><div class="card-body"><h4 class="card-title">' + newTopic + '</h4><p class="card-text"></p></div><div class="card-footer"><a href="#" class="btn btn-primary" onclick="start(topics.' + newTopic + ')">Go!</a></div></div></div>')
+    if (newTopic == '') {
+        let alert_warning = document.getElementById('alert_warning');
+        let content_aWarning = document.getElementById('content_aWarning')
+        content_aWarning.innerHTML = 'Please enter topic name!';
+        alert_warning.hidden = false;
+        setTimeout(function () {
+            alert_warning.hidden = true;
+        }, 1000)
+    } else {
+        document.getElementById("new-topic").value = "";
+        topics[newTopic] = [];
+        document.getElementById('form-add-topic').hidden = false;
+        let topicList = document.getElementById("select_topic");
+        let newDropDown = document.createElement("option");
+        newDropDown.value = newTopic;
+        newDropDown.innerHTML = newTopic;
+        topicList.appendChild(newDropDown);
+        document.getElementById('form_qTopic').insertAdjacentHTML('beforeend', '<div class="col-lg-3 col-md-6 mb-4"><div class="card h-100"><div class="card-body"><h4 class="card-title">' + newTopic + '</h4><p class="card-text"></p></div><div class="card-footer"><a href="#" class="btn btn-primary" onclick="start(topics.' + newTopic + ')">Go!</a></div></div></div>')
+    }
+
 }
 
 // Authorize
@@ -225,6 +237,10 @@ let admin_authorized = function () {
     document.getElementById('ls_action').hidden = false;
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('question-list').hidden = false;
+    document.getElementById("col_action_title").hidden = false;
+    document.getElementById('col_hint_title').hidden = false;
+
+
 }
 
 let arr_account = [{
@@ -291,13 +307,23 @@ btn_editInfo.addEventListener('click', function () {
     arr_account[iAcc].full_name = document.getElementById('input_pName').value;
     arr_account[iAcc].email = document.getElementById('input_pEmail').value;
     arr_account[iAcc].password = document.getElementById('input_pPassword').value;
-
+    document.getElementById('alert_success').hidden = false;
+            document.getElementById('content_aSuccess').innerHTML = 'Your account has been changed!';
+            setTimeout(function () {
+                document.getElementById('alert_success').hidden = true;
+                document.getElementById('content_aSuccess').innerHTML = '';
+            }, 1000)
     console.log(arr_account)
 })
 
+
 const btn_formGreeting = document.getElementById('form_greeting')
 btn_formGreeting.addEventListener('click', function () {
-    document.getElementById('form_profile').hidden = false;
+    if (document.getElementById('form_profile').hidden == false) {
+        document.getElementById('form_profile').hidden = true
+    } else {
+        document.getElementById('form_profile').hidden = false
+    }
 })
 
 let validate_registration = function () {
