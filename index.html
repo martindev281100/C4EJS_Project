@@ -116,17 +116,17 @@
     <div id="login-page" hidden>
         <div class="form">
             <form id="register-form" hidden>
-                <input type="text" placeholder="name" id="input_fName" />
-                <input type="text" placeholder="email address" id="input_email" />
-                <input type="password" placeholder="password" id="input_regPassword" />
-                <input type="password" placeholder="confirm password" id="input_cPassword" />
-                <button id="btn_reg" onclick="checkReg()" type="button">CREATE</button>
+                <input type="text" class="form-control" placeholder="name" id="input_fName" />
+                <input type="text" class="form-control" placeholder="email address" id="input_email" />
+                <input type="password" class="form-control" placeholder="password" id="input_regPassword" />
+                <input type="password" class="form-control" placeholder="confirm password" id="input_cPassword" />
+                <button id="btn_reg" class="form-control" onclick="checkReg()" type="button">CREATE</button>
                 <p class="message">Already registered? <a id="redirect-to-login" href="#">Sign In</a></p>
             </form>
             <form id="login-form">
-                <input type="text" placeholder="username" id="input_account" />
-                <input type="password" placeholder="password" id="input_password" />
-                <button id="btn_logIn" onclick="checkAcc()" type="button"> LOGIN</button>
+                <input type="text" class="form-control" placeholder="username" id="input_account" />
+                <input type="password" class="form-control" placeholder="password" id="input_password" />
+                <button id="btn_logIn" class="form-control" onclick="checkAcc()" type="button"> LOGIN</button>
                 <p class="message">Not registered? <a id="redirect-to-register" href="#">Create an account</a></p>
             </form>
         </div>
