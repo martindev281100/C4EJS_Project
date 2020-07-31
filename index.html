@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/manh/index.css">
     <link rel="stylesheet" href="css/manh/login.css">
+    <link rel="stylesheet" href="css/manh/home.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,26 +25,12 @@
         <strong id="content_aWarning"></strong>
     </div>
 
-    <!-- <div id="home-page">
-        <nav id="nav-bar">
-            <a href="#">EQuizz</a>
-            <a href="#">Home <span class="sr-only">(current)</span></a>
-            <a href="#" id="btn_add_question">Add Question</a>
-            <a href="#" id="btn_add_topic">Add Topic</a>
-        </nav>
-    </div> -->
-
-    <nav id="nav-bar" class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">EQuizz</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <nav id="nav-bar" class="navbar navbar-expand-lg navbar-light">
+        <a id="logo" class="navbar-brand" href="#">EQUIZZ</a>
+        <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" id="home">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#" id="home">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="quizz">Quizz</a>
@@ -51,15 +38,66 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="btn_ls_question" hidden>Question List</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" id="btn_add_question" onclick="clicked_btn_add_question()" hidden>Add
-                        Question</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" id="btn_add_topic" onclick="clicked_btn_add_topic()" hidden>Add
-                        Topic</a>
-                </li>
+                
+                <!-- Add question -->
+                <button id="btn_add_question" class="btn btn-primary" data-toggle="modal" data-target="#add-question" onclick="clicked_btn_add_question()" hidden>Add Question</button>
+                <div class="modal" id="add-question">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Add Question</h4>
+                                <button class="close" data-dismiss="modal">&times;</button>
+                            </div>
 
+                            <div id="form-add-question" class="modal-body form_add">
+                                <div class="form-group">
+                                    <label for="input_question">Question: </label>
+                                    <input type="text" id="input_question" placeholder="Enter question" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_correct">Correct Answer: </label>
+                                    <input type="text" id="input_correct" placeholder="Enter correct answer" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_wrong">Wrong Answer: </label>
+                                    <input type="text" id="input_wrong" placeholder="Enter wrong answer" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input_hint">Hints: </label>
+                                    <input type="text" id="input_hint" placeholder="Enter hint for question" class="form-control">
+                                </div>
+                            </div>    
+
+                            <div class="modal-footer">
+                                <button id="btn_item_add" class="btn btn-success" onclick="addItem()" data-dismiss="modal">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add topic -->
+                <button id="btn_add_topic" class="btn btn-primary" data-toggle="modal" data-target="#add-topic" onclick="clicked_btn_add_topic()" hidden>Add Topic</button>
+                <div class="modal" id="add-topic">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Add Topic</h4>
+                                <button class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <div id="form-add-topic" class="modal-body form_add">
+                                <div class="form-group">
+                                    <label for="new-topic">Topic: </label>
+                                    <input type="text" id="new-topic" placeholder="Enter topic" class="form-control">
+                                </div>
+                            </div>    
+
+                            <div class="modal-footer">
+                                <button id="btn_item_add_topic" class="btn btn-success" onclick="addItemTopic()" data-dismiss="modal">Add Item</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </ul>
 
             <form class="form-inline my-2 my-lg-0">
@@ -76,6 +114,9 @@
             </form>
         </div>
     </nav>
+
+
+  
 
     <div id="homepage">
         <div class="header background_homepage">
@@ -149,34 +190,6 @@
             <button id="btn_updateAcc" class="btn btn-outline-success">Update Account</button>
             <button id="btn_editInfo" class="btn btn-outline-success">Edit</button>
 
-        </div>
-
-        <div id="form-add-question" class="form_add" hidden>
-            <div class="form-group">
-                <label for="input_question">Question: </label>
-                <input type="text" id="input_question" placeholder="Enter question" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="input_correct">Correct Answer: </label>
-                <input type="text" id="input_correct" placeholder="Enter correct answer" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="input_wrong">Wrong Answer: </label>
-                <input type="text" id="input_wrong" placeholder="Enter wrong answer" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="input_hint">Hints: </label>
-                <input type="text" id="input_hint" placeholder="Enter hint for question" class="form-control">
-            </div>
-            <button id="btn_item_add" class="btn btn-success" onclick="addItem()">Add Item</button>
-        </div>
-
-        <div id="form-add-topic" class="form_add" hidden>
-            <div class="form-group">
-                <label for="new-topic">Topic: </label>
-                <input type="text" id="new-topic" placeholder="Enter topic" class="form-control">
-            </div>
-            <button id="btn_item_add_topic" class="btn btn-success" onclick="addItemTopic()">Add Item</button>
         </div>
     </div>
 

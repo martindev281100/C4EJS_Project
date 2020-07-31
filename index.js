@@ -162,14 +162,6 @@ document.getElementById("home").onclick = function () {
 }
 
 // Add topic
-let clicked_btn_add_topic = function () {
-    if (document.getElementById('form-add-topic').hidden == false) {
-        document.getElementById('form-add-topic').hidden = true;
-    } else {
-        document.getElementById('form-add-topic').hidden = false
-    }
-}
-
 function addItemTopic() {
     let newTopic = document.getElementById("new-topic").value;
     document.getElementById("new-topic").value = "";

@@ -40,3 +40,6 @@
 .form .message a {
   color: #4CAF50;
 }
+button {
+  outline: 0;  
+}
