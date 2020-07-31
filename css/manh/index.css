@@ -105,3 +105,6 @@ body {
 .form_profile {
   margin: 40px;
 }
+.dropdown:hover>.dropdown-menu{
+  display:block;
+}

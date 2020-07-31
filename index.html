@@ -108,38 +108,38 @@
             </div>
       </div> -->
 
-
+<!-- 
     <div id="home-page">
         <div id="nav-bar" class="site-navbar-wrap site-navbar row align-items-center">
             <h2 id="logo" class="site-logo font-weight-bold">EQUIZZ</h2>
             <nav class="site-navigation text-right">
                 <ul class="site-menu">
-                    <li class="active"><a href="index.html">Home</a></li>
+                    <li class="active"><a href="#">Home</a></li>
                     <li class="has-children">
-                        <a href="about.html">About</a>
+                        <a href="#">About</a>
                         <ul class="dropdown">
-                            <li><a href="testimonials.html">Testimonials</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="why-choose-us.html">Why Choose Us</a></li>
-                            <li class="has-children">
+                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Why Choose Us</a></li>
+                            <li class="#">
                                 <a href="#">Sub Menus</a>
                                 <ul class="dropdown">
-                                    <li><a href="testimonials.html">Testimonials</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                    <li><a href="why-choose-us.html">Why Choose Us</a></li>
+                                    <li><a href="#">Testimonials</a></li>
+                                    <li><a href="#">Gallery</a></li>
+                                    <li><a href="#">Why Choose Us</a></li>
                                 </ul>
                           </li>
                         </ul>
                     </li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#l">Contact</a></li>
                     <li><button>LOG IN</button></li>
                 </ul>
             </nav>
         </div>
-    </div>
+    </div> -->
 
     <nav id="nav-bar" class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">EQuizz</a>
@@ -148,13 +148,18 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+            <ul class="navbar-nav mr-auto" >
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" id="btn_home">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#" id="btn_home" style="color: #28a745;">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" id="btn_quizz">Quizz</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="btn_quizz">Quizz</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                      </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="btn_ls_question" hidden>Question List</a>
@@ -224,10 +229,10 @@
     <div id="login-page" hidden>
         <div class="form">
             <form id="register-form" hidden>
-                <input type="text" placeholder="name" id="input_fName" />
-                <input type="text" placeholder="email address" id="input_email" />
-                <input type="password" placeholder="password" id="input_regPassword" />
-                <input type="password" placeholder="confirm password" id="input_cPassword" />
+                <input type="text" placeholder="name" id="input_fName" class="form-control" />
+                <input type="text" placeholder="email address" id="input_email"class="form-control" />
+                <input type="password" placeholder="password" id="input_regPassword" class="form-control"/>
+                <input type="password" placeholder="confirm password" id="input_cPassword" class="form-control"/>
                 <button id="btn_reg" onclick="checkReg()" type="button">CREATE</button>
                 <p class="message">Already registered? <a id="redirect-to-login" href="#">Sign In</a></p>
             </form>
