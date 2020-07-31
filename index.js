@@ -129,37 +129,47 @@ function showItems(arr) {
 }
 
 // Change page
+let loginPage = document.getElementById("login-page");
 let quizzPage = document.getElementById("quizz-page");
 let questionListPage = document.getElementById("question-list-page");
 let homePage = document.getElementById("homepage");
 let quizzNav = document.getElementById("quizz");
 let questionListNav = document.getElementById("question-list");
 let homeNav = document.getElementById("home");
+let loginButton = document.getElementById("login-button");
 
-document.getElementById("quizz").onclick = function () {
-    quizzNav.style.color = "rgba(1, 1, 1, 1)";
+loginButton.onclick = function () {
+    loginPage.hidden = false;
+    quizzPage.hidden = true;
+    homePage.hidden = true;
+};
+quizzNav.onclick = function () {
+    quizzNav.style.color = "#71bc42";
     questionListNav.style.color = "rgba(0, 0, 0, .5)";
     homeNav.style.color = "rgba(0, 0, 0, .5)";
     quizzPage.hidden = false;
     questionListPage.hidden = true;
     homePage.hidden = true;
-}
-document.getElementById("question-list").onclick = function () {
+    loginPage.hidden = true;
+};
+questionListNav.onclick = function () {
     quizzNav.style.color = "rgba(0, 0, 0, .5)";
-    questionListNav.style.color = "rgba(1, 1, 1, 1)";
+    questionListNav.style.color = "#71bc42";
     homeNav.style.color = "rgba(0, 0, 0, .5)";
     quizzPage.hidden = true;
     questionListPage.hidden = false;
     homePage.hidden = true;
-}
-document.getElementById("home").onclick = function () {
+    loginPage.hidden = true;
+};
+homeNav.onclick = function () {
     quizzNav.style.color = "rgba(0, 0, 0, .5)";
     questionListNav.style.color = "rgba(0, 0, 0, .5)";
-    homeNav.style.color = "rgba(1, 1, 1, 1)";
+    homeNav.style.color = "#71bc42";
     quizzPage.hidden = true;
     questionListPage.hidden = true;
     homePage.hidden = false;
-}
+    loginPage.hidden = true;
+};
 
 // Add topic
 function addItemTopic() {
@@ -183,26 +193,20 @@ function addItemTopic() {
         topicList.appendChild(newDropDown);
         document.getElementById('form_qTopic').insertAdjacentHTML('beforeend', '<div class="col-lg-3 col-md-6 mb-4"><div class="card h-100"><div class="card-body"><h4 class="card-title">' + newTopic + '</h4><p class="card-text"></p></div><div class="card-footer"><a href="#" class="btn btn-primary" onclick="start(topics.' + newTopic + ')">Go!</a></div></div></div>')
     }
-
 }
 
 // Authorize
 let unauthorized_form = function () {
     document.getElementById("col_action_title").hidden = true;
     document.getElementById('col_hint_title').hidden = true;
-    for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
-        document.getElementsByClassName('col_hint')[i].hidden = false;
-        document.getElementsByClassName('col_action')[i].hidden = false;
-    }
     document.getElementById('btn_logOut').hidden = true;
     document.getElementById('ls_action').hidden = true;
     document.getElementById('form_greeting').hidden = true;
     document.getElementById('form_qTopic').hidden = true;
-    document.getElementById('question-list-page').hidden = true;
+    questionListPage.hidden = true;
     document.getElementById('form_profile').hidden = true;
     document.getElementById('form_pPassword').hidden = true;
-    document.getElementById('homepage').hidden = false;
-    document.getElementById('question-list').hidden = true;
+    questionListNav.hidden = true;
     document.getElementById("btn_add_question").hidden = true;
     document.getElementById("btn_add_topic").hidden = true;
 }
@@ -218,10 +222,9 @@ let user_authorized = function () {
     document.getElementById("col_action_title").hidden = true;
     document.getElementById("btn_add_question").hidden = true;
     document.getElementById("btn_add_topic").hidden = true;
-    document.getElementById('btn_logIn').hidden = true;
+    document.getElementById('login-button').hidden = true;
     document.getElementById('btn_logOut').hidden = false;
     document.getElementById('col_hint_title').hidden = true;
-    document.getElementById('question-list-page').hidden = true;
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('form_qTopic').hidden = false;
     document.getElementById('question-list').hidden = false;
@@ -232,15 +235,13 @@ let admin_authorized = function () {
     document.getElementById('question-list-page').hidden = false;
     document.getElementById("btn_add_question").hidden = false;
     document.getElementById("btn_add_topic").hidden = false;
-    document.getElementById('btn_logIn').hidden = true;
+    document.getElementById('login-button').hidden = true;
     document.getElementById('btn_logOut').hidden = false;
     document.getElementById('ls_action').hidden = false;
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('question-list').hidden = false;
     document.getElementById("col_action_title").hidden = false;
     document.getElementById('col_hint_title').hidden = false;
-
-
 }
 
 let arr_account = [{
@@ -256,20 +257,7 @@ let arr_account = [{
 //     stop();
 // })
 
-let clicked_btn_logIn = function () {
-    document.getElementById('login-page').hidden = false;
-    document.getElementById('homepage').hidden = true;
-}
 
-const btn_logIn = document.getElementById('btn_logIn')
-btn_logIn.addEventListener('click', function () {
-    if (document.getElementById('login-page').hidden == true) {
-        clicked_btn_logIn();
-    } else {
-        document.getElementById('login-page').hidden = true;
-        document.getElementById('homepage').hidden = false;
-    }
-})
 
 const btn_reg = document.getElementById('btn_reg');
 btn_reg.addEventListener('click', function () {
@@ -278,10 +266,7 @@ btn_reg.addEventListener('click', function () {
     validate_registration();
     console.log(arr_account);
 })
-const btn_try = document.getElementById('btn_try');
-btn_try.addEventListener('click', function () {
-    clicked_btn_logIn();
-})
+
 const btn_updateAcc = document.getElementById('btn_updateAcc')
 btn_updateAcc.addEventListener('click', function () {
     let password = prompt('Enter password: ');
@@ -618,7 +603,7 @@ logout = function () {
     login = false;
     stop();
     unauthorized_form();
-    document.getElementById("btn_logIn").hidden = false;
+    document.getElementById("login-button").hidden = false;
     document.getElementById('btn_logOut').hidden = true;
     document.getElementById('quizz-page').hidden = true;
 

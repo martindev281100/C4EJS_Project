@@ -108,3 +108,16 @@ body {
 .dropdown:hover>.dropdown-menu{
   display:block;
 }
+#home {
+  color: #71bc42;
+}
+#nav-list a:hover {
+  color: #111111 !important;
+}
+.authorize-button {
+  background-color: #71bc42;
+  color: #ffffff;
+}
+.authorize-button:hover {
+  background: #43A047;
+}
