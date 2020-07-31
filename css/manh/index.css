@@ -88,7 +88,6 @@ body {
   background-position: center center;
   background-attachment: scroll;
   background-size: cover;
-<<<<<<< HEAD
 }
 
 .row-padding {
@@ -109,15 +108,3 @@ body {
 .dropdown:hover>.dropdown-menu{
   display:block;
 }
-=======
-  }
-  .row-padding{
-    margin: 40px 0px;
-  }
-  .form_add{
-    margin: 40px;
-  }
-  .form_profile {
-    margin: 40px;
-  }
->>>>>>> 8766c6d760f0491d673983af8ac4f51820652ec1
