@@ -132,22 +132,30 @@ function showItems(arr) {
 let quizzPage = document.getElementById("quizz-page");
 let questionListPage = document.getElementById("question-list-page");
 let homePage = document.getElementById("homepage");
+let quizzNav = document.getElementById("quizz");
+let questionListNav = document.getElementById("question-list");
+let homeNav = document.getElementById("home");
 
 document.getElementById("quizz").onclick = function () {
+    quizzNav.style.color = "rgba(1, 1, 1, 1)";
+    questionListNav.style.color = "rgba(0, 0, 0, .5)";
+    homeNav.style.color = "rgba(0, 0, 0, .5)";
     quizzPage.hidden = false;
-    //document.getElementById("quizz").innerHTML.style.color = rgba(0,0,0,0);
     questionListPage.hidden = true;
-    //document.getElementById("quizz").innerHTML.style.color = rgba(0,0,0,.5);
     homePage.hidden = true;
 }
 document.getElementById("question-list").onclick = function () {
-    //document.getElementById("question-list").innerHTML.style.color = rgba(0,0,0,0);
+    quizzNav.style.color = "rgba(0, 0, 0, .5)";
+    questionListNav.style.color = "rgba(1, 1, 1, 1)";
+    homeNav.style.color = "rgba(0, 0, 0, .5)";
     quizzPage.hidden = true;
     questionListPage.hidden = false;
     homePage.hidden = true;
 }
 document.getElementById("home").onclick = function () {
-    //document.getElementById("home").innerHTML.style.color = rgba(0,0,0,0);
+    quizzNav.style.color = "rgba(0, 0, 0, .5)";
+    questionListNav.style.color = "rgba(0, 0, 0, .5)";
+    homeNav.style.color = "rgba(1, 1, 1, 1)";
     quizzPage.hidden = true;
     questionListPage.hidden = true;
     homePage.hidden = false;
