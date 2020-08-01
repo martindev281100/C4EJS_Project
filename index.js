@@ -1,3 +1,7 @@
+// Play quizz
+//function play(topic) {
+
+//}
 // Redirect
 console.log(topics.calculation_topic[0].question)
 document.getElementById("redirect-to-login").onclick = function () {
@@ -468,7 +472,6 @@ start = function (topic) {
             answers.splice(rand, 1);
         };
         document.getElementById("formGame").style.display = 'block';
-        console.log(arr_account[iAcc].score);
     }
     run();
 

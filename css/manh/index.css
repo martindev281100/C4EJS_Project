@@ -144,3 +144,9 @@ body {
   transform: translateX(-50%) !important;
   top: 100% !important;
 }
+#btn_add_topic {
+  outline: 0;
+}
+#btn_add_question {
+  outline: 0;
+}

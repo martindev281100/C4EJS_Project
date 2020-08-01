@@ -45,7 +45,7 @@
                 <li class="nav-item">
                     <a id="btn_add_question" href="#" class="nav-link" data-toggle="modal" data-target="#add-question"
                         onclick="clicked_btn_add_question()" hidden>Add Question</a>
-                    <div class="modal" id="add-question">
+                    <div class="modal fade" id="add-question">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -89,7 +89,7 @@
                 <li class="nav-item">
                     <a id="btn_add_topic" href="#" class="nav-link" data-toggle="modal" data-target="#add-topic"
                         onclick="clicked_btn_add_topic()" hidden>Add Topic</a>
-                    <div class="modal" id="add-topic">
+                    <div class="modal fade" id="add-topic">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -198,12 +198,60 @@
     </div>
 
     <!-- <div id="quizz-page">
+
+        <a id="btn_add_topic" href="#" class="nav-link" data-toggle="modal" data-target="#quizz-modal"
+                        onclick="clicked_btn_add_topic()" hidden>Add Topic</a>
+                    <div class="modal" id="add-topic">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Add Topic</h4>
+                                    <button class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <div id="form-add-topic" class="modal-body form_add">
+                                    <div class="form-group">
+                                        <label for="new-topic">Topic: </label>
+                                        <input type="text" id="new-topic" placeholder="Enter topic"
+                                            class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button id="btn_item_add_topic" class="btn btn-success" onclick="addItemTopic()"
+                                        data-dismiss="modal">Add Item</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+        <div class="modal fade" id="quizz-modal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><span class="label label-warning" id="qid">2</span> THREE is CORRECT</h3>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="quiz" id="quiz" data-toggle="buttons">
+                            <label class="element-animation1 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">1 One</label>
+                            <label class="element-animation2 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="2">2 Two</label>
+                            <label class="element-animation3 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="3">3 Three</label>
+                            <label class="element-animation4 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="4">4 Four</label>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer text-muted"><span id="answer"></span></div>
+                </div>
+            </div>
+        </div>
+
         <div class="card topic-card">
             <img class="card-img-top" width="300" height="300" src="images/general.png" alt="General topic">
             <div class="card-body">
               <h4 class="card-title">General</h4>
               <p class="card-text">Many types of question to test the width of your knowledge</p>
-              <button class="btn btn-primary" onclick="start(topics.general_topic)">Go!</button>
+              <button class="btn btn-primary" onclick="play(topics.general_topic)" data-toggle="modal" data-target="#quizz-modal">Go!</button>
             </div>
         </div>
     
@@ -212,7 +260,7 @@
             <div class="card-body">
               <h4 class="card-title">Calculation</h4>
               <p class="card-text">Let's sharpen your mind math</p>
-              <button class="btn btn-primary" onclick="start(topics.calculation_topic)">Go!</button>
+              <button class="btn btn-primary" onclick="play(topics.calculation_topic)" data-toggle="modal" data-target="#quizz-modal">Go!</button>
             </div>
         </div>
 
@@ -221,7 +269,7 @@
             <div class="card-body">
               <h4 class="card-title">Math</h4>
               <p class="card-text">Mathematics rightly viewed possesses not only truth but supreme beauty</p>
-              <button class="btn btn-primary" onclick="start(topics.math_topic)">Go!</button>
+              <button class="btn btn-primary" onclick="play(topics.math_topic)" data-toggle="modal" data-target="#quizz-modal">Go!</button>
             </div>
         </div>
 
@@ -230,7 +278,7 @@
             <div class="card-body">
               <h4 class="card-title">Coding</h4>
               <p class="card-text">The sooner you start to code, the longer the program will take</p>
-              <button class="btn btn-primary" onclick="start(topics.coding_topic)">Go!</button>
+              <button class="btn btn-primary" onclick="play(topics.coding_topic)" data-toggle="modal" data-target="#quizz-modal">Go!</button>
             </div>
         </div>
 
@@ -239,11 +287,10 @@
             <div class="card-body">
               <h4 class="card-title">Environment</h4>
               <p class="card-text">We won't have a society if we destroy the environment</p>
-              <button class="btn btn-primary" onclick="start(topics.environment_topic)">Go!</button>
+              <button class="btn btn-primary" onclick="play(topics.environment_topic)" data-toggle="modal" data-target="#quizz-modal">Go!</button>
             </div>
         </div>
-    </div>  -->
-
+    </div> -->
 
 
     <!-- <div>
