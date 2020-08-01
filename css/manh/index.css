@@ -130,17 +130,9 @@ body {
   background: #43A047;
 }
 
-#nav-list a:hover {
-  color: #71bc42 !important;
-}
-
 #form_greeting {
   text-decoration: none;
   padding-right: 20px; 
   font-size: 15px;
   color: #111111;
-}
-
-#form_greeting:hover {
-  color: #71bc42;
 }
