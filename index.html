@@ -202,22 +202,23 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title">THREE is CORRECT</h3>
+                        <h3 id="question" class="modal-title">THREE is CORRECT</h3>
                         <button id="play-button" class="close"><i class="fa fa-play" aria-hidden="true"></i></button>
                         <button id="pause-button" class="close"><i class="fa fa-pause" aria-hidden="true"></i></button>
                         <button id="close-button"class="close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
                     </div>
 
                     <div class="modal-body">
-                        <div>
-                            <label class="btn btn-lg btn-primary btn-block"><input type="radio" name="q_answer" value="1">1 One</label>
-                            <label class="btn btn-lg btn-primary btn-block"><input type="radio" name="q_answer" value="2">2 Two</label>
-                            <label class="btn btn-lg btn-primary btn-block"><input type="radio" name="q_answer" value="3">3 Three</label>
-                            <label class="btn btn-lg btn-primary btn-block"><input type="radio" name="q_answer" value="4">4 Four</label>
-                        </div>
+                        <input id="answer0" type="button" class="btn btn-lg btn-primary btn-block" value="" onclick="check()">
+                        <input id="answer1" type="button" class="btn btn-lg btn-primary btn-block" value="">
+                        <input id="answer2" type="button" class="btn btn-lg btn-primary btn-block" value="">
+                        <input id="answer3" type="button" class="btn btn-lg btn-primary btn-block" value="">
                     </div>
                     
-                    <div class="modal-footer"><span id="answer"></span></div>
+                    <div class="modal-footer">
+                        <span id="score"></span>
+                        <span id="answer"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -266,6 +267,7 @@
               <button class="btn btn-primary" onclick="play(topics.environment_topic)" data-toggle="modal" data-target="#quizz-modal">Go!</button>
             </div>
         </div>
+
     </div>
 
 
@@ -281,13 +283,14 @@
         </div>
 
         <div>
-            <div id="chude">
+            <divid="chude">
 
                 <div class="row text-center" id="form_qTopic">
 
                     
                 </div>
             </div>
+
             <div id="thongbao">
                 <div id="thongBaoKq"></div>
                 <div id="end">

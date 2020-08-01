@@ -1,7 +1,63 @@
 // Play quizz
-//function play(topic) {
+// function play(topic) {
+//     let score = 0;
+//     for (let i = 0; i < topic.length; i ++) {
+//         let answers = [topic[i].wrongAnswers[0], topic[i].wrongAnswers[1], topic[i].wrongAnswers[2], topic[i].correctAnswer];
+//         document.getElementById("question").innerHTML = topic[i].question;
+//         document.getElementById("score").innerHTML = score;
+//         for (let j = 0; j < 4; j ++) {
+//             let rand = Math.floor(Math.random() * answers.length);
+//             document.getElementById("answer" + j).value = answers[rand];
+//             answers.splice(rand, 1);
+//         }
+//     }
 
-//}
+
+        
+//     check = function (valuec, idtab) {
+//         let kq = valuec;
+//         let idthe = 'c' + idtab;
+//         let idtrue = 'c';
+
+
+//         if (kq == topic[i].correctAnswer) {
+//             score++;
+//             arr_account[iAcc].score++;
+//             xanh = setTimeout(() => {
+//                 document.getElementById("thongBaoKq").innerHTML = 'dung';
+//                 if (document.getElementById(idthe).value == topic[i].correctAnswer) {
+//                     document.getElementById(idthe).style.background = "green";
+
+//                 }
+//             }, 500);
+
+//         } else {
+//             vang = setTimeout(() => {
+//                 document.getElementById("thongBaoKq").innerHTML = 'sai';
+//                 for (let i4 = 1; i4 < 5; i4++) {
+//                     if (document.getElementById(idtrue + i4).value == topic[i].correctAnswer) {
+//                         document.getElementById(idtrue + i4).style.background = 'yellow';
+//                     }
+//                 }
+//             }, 499);
+
+//         }
+//         let endGame = setTimeout(() => {
+//             if (i == topic.length) {
+//                 document.getElementById("formGame").style.display = 'none';
+
+//                 stop();
+//                 clearTimeout(reRun);
+//                 if (login == true) {
+//                     console.log(arr_account);
+//                 }
+//             }
+//         }, 800);
+
+
+//         i++;
+//         reRun = setTimeout(run, 1000);
+// }
 // Redirect
 console.log(topics.calculation_topic[0].question)
 document.getElementById("redirect-to-login").onclick = function () {
@@ -509,7 +565,6 @@ start = function (topic) {
         }
         let endGame = setTimeout(() => {
             if (i == topic.length) {
-                console.log("end");
                 document.getElementById("formGame").style.display = 'none';
 
                 stop();
