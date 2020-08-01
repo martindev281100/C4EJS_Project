@@ -209,6 +209,7 @@ let unauthorized_form = function () {
     questionListNav.hidden = true;
     document.getElementById("btn_add_question").hidden = true;
     document.getElementById("btn_add_topic").hidden = true;
+    document.getElementById("homepage").hidden = false;
 }
 unauthorized_form();
 
@@ -229,9 +230,15 @@ let user_authorized = function () {
     document.getElementById('form_qTopic').hidden = false;
     document.getElementById('question-list').hidden = false;
     document.getElementById('btn_editInfo').hidden = true;
+    document.getElementById('ls_action').hidden = false;
+    homeNav.onclick();
 }
 
 let admin_authorized = function () {
+    for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
+        document.getElementsByClassName('col_hint')[i].hidden = false;
+        document.getElementsByClassName('col_action')[i].hidden = false;
+    }
     document.getElementById('question-list-page').hidden = false;
     document.getElementById("btn_add_question").hidden = false;
     document.getElementById("btn_add_topic").hidden = false;
@@ -242,6 +249,7 @@ let admin_authorized = function () {
     document.getElementById('question-list').hidden = false;
     document.getElementById("col_action_title").hidden = false;
     document.getElementById('col_hint_title').hidden = false;
+    questionListNav.onclick();
 }
 
 let arr_account = [{

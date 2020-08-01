@@ -105,19 +105,42 @@ body {
 .form_profile {
   margin: 40px;
 }
-.dropdown:hover>.dropdown-menu{
-  display:block;
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
 }
+
 #home {
   color: #71bc42;
 }
+
 #nav-list a:hover {
   color: #111111 !important;
 }
+#nav-list a:active{
+  border: 0;
+}
+
 .authorize-button {
   background-color: #71bc42;
   color: #ffffff;
 }
+
 .authorize-button:hover {
   background: #43A047;
+}
+
+#nav-list a:hover {
+  color: #71bc42 !important;
+}
+
+#form_greeting {
+  text-decoration: none;
+  padding-right: 20px; 
+  font-size: 15px;
+  color: #111111;
+}
+
+#form_greeting:hover {
+  color: #71bc42;
 }
