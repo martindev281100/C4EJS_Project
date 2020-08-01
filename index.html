@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/manh/index.css">
     <link rel="stylesheet" href="css/manh/login.css">
     <link rel="stylesheet" href="css/manh/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -113,14 +114,25 @@
                 </li>
             </ul>
 
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline">
                 <div class="form-group">
-                    <span>
-                        <a href="#" id="form_greeting">Hello <span id="greeting_user"></span>!</a>
-                        <button id="login-button" class="btn authorize-button" type="button">GET STARTED</button>
-                        <button id="btn_logOut" class="btn authorize-button" type="button" onclick="logout()">LOGOUT</button>
+                    <span id="form_greeting">Hello <span id="greeting_user"></span>!</span>
+                    <button id="login-button" class="btn authorize-button" type="button">GET STARTED</button>
+                    <button id="btn_logOut" class="btn authorize-button" type="button" onclick="logout()">LOG OUT</button>
+
+                    <span class="dropdown">
+                        <a  class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            <i id="user-menu" class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        </a>
+                        
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Link 1</a></li>
+                          <li><a class="dropdown-item" href="#">Link 2</a></li>
+                          <li><a class="dropdown-item" href="#">Link 3</a></li>
+                        </ul>
                     </span>
 
+                    
                 </div>
             </form>
         </div>
