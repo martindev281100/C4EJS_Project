@@ -370,7 +370,7 @@ chonchude = function () {
 //     document.getElementById("play").style.display = 'none';
 //     document.getElementById("formGame").style.display = 'none';
 // }
-let i = 0;
+
 var out = false;
 let userscore = 0;
 let login = false;
@@ -454,22 +454,18 @@ let checkAcc = function () {
 };
 
 start = function (topic) {
+    let i = 0;
     let score = 0;
-    let c = [];
+    
     run = function () {
-
-        c.push(topic[i].wrongAnswers[0]);
-        c.push(topic[i].wrongAnswers[1]);
-        c.push(topic[i].wrongAnswers[2]);
-        c.push(topic[i].correctAnswer);
+        let answers = [topic[i].wrongAnswers[0], topic[i].wrongAnswers[1], topic[i].wrongAnswers[2], topic[i].correctAnswer];
 
         document.getElementById("cauHoi").innerHTML = topic[i].question;
         document.getElementById("score").innerHTML = "Diem hien tai cua ban : " + score;
         for (let i1 = 1; i1 < 5; i1++) {
-            rand = Math.floor(Math.random() * c.length);
-            document.getElementById('c' + i1).value = c[rand];
-            // document.getElementById("c" + i1).style.background = 'rgb(64, 204, 8)';
-            c.splice(rand, 1);
+            rand = Math.floor(Math.random() * answers.length);
+            document.getElementById('c' + i1).value = answers[rand];
+            answers.splice(rand, 1);
         };
         document.getElementById("formGame").style.display = 'block';
         console.log(arr_account[iAcc].score);
@@ -500,11 +496,11 @@ start = function (topic) {
         } else {
             vang = setTimeout(() => {
                 document.getElementById("thongBaoKq").innerHTML = 'sai';
-                for (let i4 = 1; i4 < 5; i4++) {
-                    if (document.getElementById(idtrue + i4).value == topic[i].correctAnswer) {
-                        document.getElementById(idtrue + i4).style.background = 'yellow';
-                    }
-                }
+                // for (let i4 = 1; i4 < 5; i4++) {
+                //     if (document.getElementById(idtrue + i4).value == topic[i].correctAnswer) {
+                //         document.getElementById(idtrue + i4).style.background = 'yellow';
+                //     }
+                // }
             }, 499);
 
         }
@@ -600,7 +596,7 @@ start = function (topic) {
     //     }
 };
 logout = function () {
-    i = 0;
+    //i = 0;
     score = 0;
     login = false;
     stop();
