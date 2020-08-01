@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/manh/index.css">
     <link rel="stylesheet" href="css/manh/login.css">
     <link rel="stylesheet" href="css/manh/home.css">
+    <link rel="stylesheet" href="css/manh/quizz.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -121,9 +122,9 @@
                     <button id="btn_logOut" class="btn authorize-button" type="button" onclick="logout()">LOG OUT</button>
 
                     <span class="dropdown">
-                        <a  class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span  class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i id="user-menu" class="fa fa-user-circle-o" aria-hidden="true"></i>
-                        </a>
+                        </span>
                         
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <a class="dropdown-item" href="#">Link 1</a>
@@ -196,6 +197,109 @@
         </div>
     </div>
 
+    <!-- <div id="quizz-page">
+        <div class="card topic-card">
+            <img class="card-img-top" width="300" height="300" src="images/general.png" alt="General topic">
+            <div class="card-body">
+              <h4 class="card-title">General</h4>
+              <p class="card-text">Many types of question to test the width of your knowledge</p>
+              <button class="btn btn-primary" onclick="start(topics.general_topic)">Go!</button>
+            </div>
+        </div>
+    
+        <div class="card topic-card">
+            <img class="card-img-top" width="300" height="300" src="images/calculation.jpg" alt="Calculation topic">
+            <div class="card-body">
+              <h4 class="card-title">Calculation</h4>
+              <p class="card-text">Let's sharpen your mind math</p>
+              <button class="btn btn-primary" onclick="start(topics.calculation_topic)">Go!</button>
+            </div>
+        </div>
+
+        <div class="card topic-card">
+            <img class="card-img-top" width="300" height="300" src="images/math.jpg" alt="Math topic">
+            <div class="card-body">
+              <h4 class="card-title">Math</h4>
+              <p class="card-text">Mathematics rightly viewed possesses not only truth but supreme beauty</p>
+              <button class="btn btn-primary" onclick="start(topics.math_topic)">Go!</button>
+            </div>
+        </div>
+
+        <div class="card topic-card">
+            <img class="card-img-top" width="300" height="300" src="images/coding.jpg" alt="Coding topic">
+            <div class="card-body">
+              <h4 class="card-title">Coding</h4>
+              <p class="card-text">The sooner you start to code, the longer the program will take</p>
+              <button class="btn btn-primary" onclick="start(topics.coding_topic)">Go!</button>
+            </div>
+        </div>
+
+        <div class="card topic-card">
+            <img class="card-img-top" width="300" height="300" src="images/environment.jpeg" alt="Environment topic">
+            <div class="card-body">
+              <h4 class="card-title">Environment</h4>
+              <p class="card-text">We won't have a society if we destroy the environment</p>
+              <button class="btn btn-primary" onclick="start(topics.environment_topic)">Go!</button>
+            </div>
+        </div>
+    </div>  -->
+
+
+
+    <!-- <div>
+        <div id="thuvanmay">
+            <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
+            <input type="number" name="" id="inscore">
+            <input type="button" value="doi diem" id="quay" onclick="quayso();">
+            <script>
+                document.getElementById("inscore").style.display = 'none';
+                document.getElementById("quay").style.display = 'none';
+            </script>
+        </div>
+
+        <div>
+            <div id="chude">
+
+                <div class="row text-center" id="form_qTopic">
+
+                    
+                </div>
+            </div>
+            <div id="thongbao">
+                <div id="thongBaoKq"></div>
+                <div id="end">
+                    <div id="score"></div>
+                </div>
+            </div>
+            <div id="formGame">
+                <div id="cauHoi"></div>
+                <div id="support">
+                    <input class="sp" type="button" value="hint" id="hint" onclick="doihint(hint.value);">
+                    <input class="sp" type="button" value="50 / 50" id="trogiup" onclick="trogiup();">
+                </div>
+
+                <div id="formGame0">
+                    <div id="formGame1">
+                        <hr>
+                        <input class="btn btn-secondary" type="button" value="" id="c1"
+                            onclick="check(c1.value,1);">
+                        <input class="btn btn-secondary" type="button" value="" id="c2"
+                            onclick="check(c2.value,2);">
+                    </div>
+                    <div id="formGame2">
+                        <input class="btn btn-secondary" type="button" value="" id="c3"
+                            onclick="check(c3.value,3);">
+                        <input class="btn btn-secondary" type="button" value="" id="c4"
+                            onclick="check(c4.value,4);">
+                    </div>
+                </div>
+                <script>
+                    document.getElementById("formGame").style.display = 'none';
+                </script>
+            </div>
+        </div>
+    </div> -->
+
     <div class="container manh_container">
         <div id="form_profile" class="form_profile">
             <div class="form-group">
@@ -250,6 +354,7 @@
                 </tbody>
             </table>
         </div>
+
         <div id="quizz-page" hidden>
             <div id="thuvanmay">
                 <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
@@ -266,7 +371,7 @@
                     <div class="row text-center" id="form_qTopic">
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="card h-50">
-                                <!-- <img class="card-img-top" src="http://placehold.it/500x325" alt=""> -->
+                                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
                                 <div class="card-body">
                                     <h4 class="card-title">General</h4>
                                     <p class="card-text"></p>
@@ -279,7 +384,7 @@
 
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="card h-50">
-                                <!-- <img class="card-img-top" src="http://placehold.it/500x325" alt=""> -->
+                                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
                                 <div class="card-body">
                                     <h4 class="card-title">Calculation</h4>
                                     <p class="card-text"></p>
@@ -293,7 +398,7 @@
 
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="card h-50">
-                                <!-- <img class="card-img-top" src="http://placehold.it/500x325" alt=""> -->
+                                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
                                 <div class="card-body">
                                     <h4 class="card-title">Maths</h4>
                                     <p class="card-text"></p>
@@ -305,7 +410,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="card h-50">
-                                <!-- <img class="card-img-top" src="http://placehold.it/500x325" alt=""> -->
+                                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
                                 <div class="card-body">
                                     <h4 class="card-title">Coding</h4>
                                     <p class="card-text"></p>
@@ -317,7 +422,7 @@
                         </div>
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="card h-50">
-                                <!-- <img class="card-img-top" src="http://placehold.it/500x325" alt=""> -->
+                                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
                                 <div class="card-body">
                                     <h4 class="card-title">Environment</h4>
                                     <p class="card-text"></p>
@@ -362,8 +467,10 @@
                         document.getElementById("formGame").style.display = 'none';
                     </script>
                 </div>
-            </div>
+            </div> 
         </div>
+
+        
     </div>
 
 

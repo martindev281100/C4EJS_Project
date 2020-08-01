@@ -453,23 +453,17 @@ let checkAcc = function () {
     }
 };
 
-start = function (chudeinput) {
-
-    //document.getElementById("chude").style.display = 'none';
-
+start = function (topic) {
     let score = 0;
-
-    var chuDe = chudeinput;
-    console.log('chudeinput: ' + chuDe[0])
     let c = [];
     run = function () {
 
-        c.push(chuDe[i].wrongAnswers[0]);
-        c.push(chuDe[i].wrongAnswers[1]);
-        c.push(chuDe[i].wrongAnswers[2]);
-        c.push(chuDe[i].correctAnswer);
+        c.push(topic[i].wrongAnswers[0]);
+        c.push(topic[i].wrongAnswers[1]);
+        c.push(topic[i].wrongAnswers[2]);
+        c.push(topic[i].correctAnswer);
 
-        document.getElementById("cauHoi").innerHTML = chuDe[i].question;
+        document.getElementById("cauHoi").innerHTML = topic[i].question;
         document.getElementById("score").innerHTML = "Diem hien tai cua ban : " + score;
         for (let i1 = 1; i1 < 5; i1++) {
             rand = Math.floor(Math.random() * c.length);
@@ -492,12 +486,12 @@ start = function (chudeinput) {
         let idtrue = 'c';
 
 
-        if (kq == chuDe[i].correctAnswer) {
+        if (kq == topic[i].correctAnswer) {
             score++;
             arr_account[iAcc].score++;
             xanh = setTimeout(() => {
                 document.getElementById("thongBaoKq").innerHTML = 'dung';
-                if (document.getElementById(idthe).value == chuDe[i].correctAnswer) {
+                if (document.getElementById(idthe).value == topic[i].correctAnswer) {
                     document.getElementById(idthe).style.background = "green";
 
                 }
@@ -507,7 +501,7 @@ start = function (chudeinput) {
             vang = setTimeout(() => {
                 document.getElementById("thongBaoKq").innerHTML = 'sai';
                 for (let i4 = 1; i4 < 5; i4++) {
-                    if (document.getElementById(idtrue + i4).value == chuDe[i].correctAnswer) {
+                    if (document.getElementById(idtrue + i4).value == topic[i].correctAnswer) {
                         document.getElementById(idtrue + i4).style.background = 'yellow';
                     }
                 }
@@ -515,7 +509,7 @@ start = function (chudeinput) {
 
         }
         let endGame = setTimeout(() => {
-            if (i == chuDe.length) {
+            if (i == topic.length) {
                 console.log("end");
                 document.getElementById("formGame").style.display = 'none';
 
@@ -542,15 +536,15 @@ start = function (chudeinput) {
     doihint = () => {
         document.getElementById("score").innerHTML = "Diem cua ban la : " + arr_account[iAcc].score;
         console.log(score + ' ' + arr_account[iAcc].score);
-        if (chuDe[i].hint) {
+        if (topic[i].hint) {
             if (score > 0) {
-                alert(chuDe[i].hint);
+                alert(topic[i].hint);
                 score -= 0.5;
 
             } else if (score < 0.5 && arr_account[iAcc].score < 0.5) {
                 alert("ban khong du diem ");
             } else if (arr_account[iAcc].score > 0) {
-                alert(chuDe[i].hint);
+                alert(topic[i].hint);
                 score -= 0.5;
             }
         } else {
@@ -566,7 +560,7 @@ start = function (chudeinput) {
         let arr = [];
         for (let i3 = 1; i3 < 5; i3++) {
 
-            if (document.getElementById(cc + i3).value == chuDe[i].correctAnswer) {
+            if (document.getElementById(cc + i3).value == topic[i].correctAnswer) {
                 arr.push(i3);
                 for (let i4 = 1; i4 < 5; i4++) {
                     let rand = Math.ceil(Math.random() * 4);
