@@ -1,63 +1,107 @@
 // Play quizz
-// function play(topic) {
-//     let score = 0;
-//     for (let i = 0; i < topic.length; i ++) {
-//         let answers = [topic[i].wrongAnswers[0], topic[i].wrongAnswers[1], topic[i].wrongAnswers[2], topic[i].correctAnswer];
-//         document.getElementById("question").innerHTML = topic[i].question;
-//         document.getElementById("score").innerHTML = score;
-//         for (let j = 0; j < 4; j ++) {
-//             let rand = Math.floor(Math.random() * answers.length);
-//             document.getElementById("answer" + j).value = answers[rand];
-//             answers.splice(rand, 1);
-//         }
-//     }
+
+function play(topic) {
+    document.getElementById('answer').hidden = false;
+    document.getElementById('result').hidden = true;
+    let score = 0;
+    let i = 0;
+    let answers = [];
+    console.log('topic[0]: ' + topic);
+    console.log('topics.calculation[0]: ' + topics.calculation_topic[0])
+    run = function () {
+        answers = [topic[i].wrongAnswers[0], topic[i].wrongAnswers[1], topic[i].wrongAnswers[2], topic[i].correctAnswer];
+        document.getElementById("question").innerHTML = topic[i].question;
+        document.getElementById("score").innerHTML = score;
+        for (let j = 0; j < 4; j++) {
+            let rand = Math.floor(Math.random() * answers.length);
+            document.getElementById("answer" + j).value = answers[rand];
+            answers.splice(rand, 1);
+        }
+    }
+    run();
+    check = function (valuec, idtab) {
+        console.log('index topic: ' + i)
+        console.log('topic i: ' + topic[i])
+        let kq = valuec;
+        console.log(valuec)
+        console.log('valuec: ' + kq)
+        console.log('topic length: ' + topic.length)
+        let idthe = 'answer' + idtab;
+        let idtrue = 'answer';
+
+        if (kq == topic[i].correctAnswer) {
+            score++;
+            arr_account[iAcc].score++;
+            document.getElementById("recent_result").hidden = false;
+            document.getElementById("recent_result").innerHTML = 'Correct';
+            document.getElementById("correct_answer").hidden = true;
+            setTimeout(() => {
+                document.getElementById("recent_result").hidden = true;
+                document.getElementById("correct_answer").hidden = false;
+            }, 1000);
+
+        } else {
+            document.getElementById("recent_result").hidden = false;
+            document.getElementById("recent_result").innerHTML = 'Wrong';
+            document.getElementById("correct_answer").hidden = true;
+
+            setTimeout(() => {
+                document.getElementById("recent_result").hidden = true;
+                document.getElementById("correct_answer").hidden = false;
+
+            }, 1000);
+
+        }
+        let endGame = setTimeout(() => {
+            if (i == topic.length) {
+                // document.getElementById("formGame").style.display = 'none';
+
+                stop();
+                clearTimeout(reRun);
+                if (login == true) {
+                    console.log(arr_account);
+                }
+            }
+        }, 800);
 
 
-        
-//     check = function (valuec, idtab) {
-//         let kq = valuec;
-//         let idthe = 'c' + idtab;
-//         let idtrue = 'c';
+        i++;
+        console.log('i++ = ' + i)
+        reRun = setTimeout(run, 1000);
+    }
+    stop = function () {
+        console.log("Diem cua ban la : " + arr_account[iAcc].score);
+        i = 0;
+        document.getElementById('answer').hidden = true;
+        document.getElementById('result').hidden = false;
+        document.getElementById('result').innerHTML = "Diem cua ban la : " + arr_account[iAcc].score;
+        document.getElementById('question').innerHTML = "Result"
+    };
+    doihint = () => {
+        document.getElementById("score").innerHTML = "Diem cua ban la : " + arr_account[iAcc].score;
+        console.log(score + ' ' + arr_account[iAcc].score);
+        if (topic[i].hint) {
+            if (score > 0) {
+                alert(topic[i].hint);
+                score -= 0.5;
+
+            } else if (score < 0.5 && arr_account[iAcc].score < 0.5) {
+                alert("ban khong du diem ");
+            } else if (arr_account[iAcc].score > 0) {
+                alert(topic[i].hint);
+                score -= 0.5;
+            }
+        } else {
+            alert("not hint");
+        }
 
 
-//         if (kq == topic[i].correctAnswer) {
-//             score++;
-//             arr_account[iAcc].score++;
-//             xanh = setTimeout(() => {
-//                 document.getElementById("thongBaoKq").innerHTML = 'dung';
-//                 if (document.getElementById(idthe).value == topic[i].correctAnswer) {
-//                     document.getElementById(idthe).style.background = "green";
-
-//                 }
-//             }, 500);
-
-//         } else {
-//             vang = setTimeout(() => {
-//                 document.getElementById("thongBaoKq").innerHTML = 'sai';
-//                 for (let i4 = 1; i4 < 5; i4++) {
-//                     if (document.getElementById(idtrue + i4).value == topic[i].correctAnswer) {
-//                         document.getElementById(idtrue + i4).style.background = 'yellow';
-//                     }
-//                 }
-//             }, 499);
-
-//         }
-//         let endGame = setTimeout(() => {
-//             if (i == topic.length) {
-//                 document.getElementById("formGame").style.display = 'none';
-
-//                 stop();
-//                 clearTimeout(reRun);
-//                 if (login == true) {
-//                     console.log(arr_account);
-//                 }
-//             }
-//         }, 800);
+    };
 
 
-//         i++;
-//         reRun = setTimeout(run, 1000);
-// }
+
+
+}
 // Redirect
 console.log(topics.calculation_topic[0].question)
 document.getElementById("redirect-to-login").onclick = function () {
@@ -251,7 +295,7 @@ function addItemTopic() {
         newDropDown.value = newTopic;
         newDropDown.innerHTML = newTopic;
         topicList.appendChild(newDropDown);
-        document.getElementById('form_qTopic').insertAdjacentHTML('beforeend', '<div class="col-lg-3 col-md-6 mb-4"><div class="card h-100"><div class="card-body"><h4 class="card-title">' + newTopic + '</h4><p class="card-text"></p></div><div class="card-footer"><a href="#" class="btn btn-primary" onclick="start(topics.' + newTopic + ')">Go!</a></div></div></div>')
+        document.getElementById('form_qTopic').insertAdjacentHTML('beforeend', '<div class="col-lg-3 col-md-6 mb-4"><div class="card h-50 topic-card"><div class="card-body"><h4 class="card-title">'+newTopic+'</h4><p class="card-text"></p><button class="btn btn-primary" onclick="play(topics.'+newTopic+')" data-toggle="modal"data-target="#quizz-modal">Go!</button></div></div></div>')
     }
 }
 
@@ -262,7 +306,7 @@ let unauthorized_form = function () {
     document.getElementById('btn_logOut').hidden = true;
     document.getElementById('ls_action').hidden = true;
     document.getElementById('form_greeting').hidden = true;
-    document.getElementById('form_qTopic').hidden = true;
+    // document.getElementById('form_qTopic').hidden = true;
     questionListPage.hidden = true;
     document.getElementById('form_profile').hidden = true;
     document.getElementById('form_pPassword').hidden = true;
@@ -361,11 +405,11 @@ btn_editInfo.addEventListener('click', function () {
     arr_account[iAcc].email = document.getElementById('input_pEmail').value;
     arr_account[iAcc].password = document.getElementById('input_pPassword').value;
     document.getElementById('alert_success').hidden = false;
-            document.getElementById('content_aSuccess').innerHTML = 'Your account has been changed!';
-            setTimeout(function () {
-                document.getElementById('alert_success').hidden = true;
-                document.getElementById('content_aSuccess').innerHTML = '';
-            }, 1000)
+    document.getElementById('content_aSuccess').innerHTML = 'Your account has been changed!';
+    setTimeout(function () {
+        document.getElementById('alert_success').hidden = true;
+        document.getElementById('content_aSuccess').innerHTML = '';
+    }, 1000)
     console.log(arr_account)
 })
 
@@ -487,9 +531,8 @@ let checkAcc = function () {
                 document.getElementById('login-page').hidden = true;
                 document.getElementById('input_pName').value = arr_account[i]['full_name'];
                 document.getElementById('input_pEmail').value = arr_account[i]['email'];
-                document.getElementById('formGame').hidden = false;
-                document.getElementById("chude").style.display = 'block';
-                document.getElementById("formGame").style.display = 'none';
+                // document.getElementById("chude").style.display = 'block';
+                // document.getElementById("formGame").style.display = 'none';
                 setTimeout(function () {
                     document.getElementById('alert_success').hidden = true;
                     document.getElementById('content_aSuccess').innerHTML = '';
@@ -513,146 +556,6 @@ let checkAcc = function () {
     }
 };
 
-start = function (topic) {
-    let i = 0;
-    let score = 0;
-    
-    run = function () {
-        let answers = [topic[i].wrongAnswers[0], topic[i].wrongAnswers[1], topic[i].wrongAnswers[2], topic[i].correctAnswer];
-
-        document.getElementById("cauHoi").innerHTML = topic[i].question;
-        document.getElementById("score").innerHTML = "Diem hien tai cua ban : " + score;
-        for (let i1 = 1; i1 < 5; i1++) {
-            rand = Math.floor(Math.random() * answers.length);
-            document.getElementById('c' + i1).value = answers[rand];
-            answers.splice(rand, 1);
-        };
-        document.getElementById("formGame").style.display = 'block';
-    }
-    run();
-
-
-    // if (login == true) {
-    //     userscore = arr_account[iAcc].score;
-    // };
-    check = function (valuec, idtab) {
-        let kq = valuec;
-        let idthe = 'c' + idtab;
-        let idtrue = 'c';
-
-
-        if (kq == topic[i].correctAnswer) {
-            score++;
-            arr_account[iAcc].score++;
-            xanh = setTimeout(() => {
-                document.getElementById("thongBaoKq").innerHTML = 'dung';
-                if (document.getElementById(idthe).value == topic[i].correctAnswer) {
-                    document.getElementById(idthe).style.background = "green";
-
-                }
-            }, 500);
-
-        } else {
-            vang = setTimeout(() => {
-                document.getElementById("thongBaoKq").innerHTML = 'sai';
-                // for (let i4 = 1; i4 < 5; i4++) {
-                //     if (document.getElementById(idtrue + i4).value == topic[i].correctAnswer) {
-                //         document.getElementById(idtrue + i4).style.background = 'yellow';
-                //     }
-                // }
-            }, 499);
-
-        }
-        let endGame = setTimeout(() => {
-            if (i == topic.length) {
-                document.getElementById("formGame").style.display = 'none';
-
-                stop();
-                clearTimeout(reRun);
-                if (login == true) {
-                    console.log(arr_account);
-                }
-            }
-        }, 800);
-
-
-        i++;
-        reRun = setTimeout(run, 1000);
-
-    }
-
-    stop = function () {
-
-        document.getElementById("score").innerHTML = "Diem cua ban la : " + arr_account[iAcc].score;
-        i = 0;
-
-    };
-    doihint = () => {
-        document.getElementById("score").innerHTML = "Diem cua ban la : " + arr_account[iAcc].score;
-        console.log(score + ' ' + arr_account[iAcc].score);
-        if (topic[i].hint) {
-            if (score > 0) {
-                alert(topic[i].hint);
-                score -= 0.5;
-
-            } else if (score < 0.5 && arr_account[iAcc].score < 0.5) {
-                alert("ban khong du diem ");
-            } else if (arr_account[iAcc].score > 0) {
-                alert(topic[i].hint);
-                score -= 0.5;
-            }
-        } else {
-            alert("not hint");
-        }
-
-
-    };
-    trogiup = function () {
-        score -= 0.5;
-        console.log(score);
-        let cc = 'c';
-        let arr = [];
-        for (let i3 = 1; i3 < 5; i3++) {
-
-            if (document.getElementById(cc + i3).value == topic[i].correctAnswer) {
-                arr.push(i3);
-                for (let i4 = 1; i4 < 5; i4++) {
-                    let rand = Math.ceil(Math.random() * 4);
-                    if (rand != i3) {
-                        arr.push(rand);
-                        break;
-                    }
-                }
-
-            }
-        }
-        console.log(arr);
-        for (let i5 = 1; i5 < 5; i5++) {
-            if (i5 != arr[0] && i5 != arr[1]) {
-                document.getElementById(cc + i5).value = "x";
-            }
-        }
-    }
-
-    //     quay = function () {
-    //         document.getElementById("inscore").style.display = 'block';
-    //         document.getElementById("quay").style.display = 'block';
-    //         let diemcuoc = document.getElementById("inscore").value;
-    //         console.log(diemcuoc);
-    //     };
-    //     quayso = function () {
-    //         let diemdoi = document.getElementById("inscore").value;
-    //         let ran = Math.floor(Math.random() * ((diemdoi * 2) + 1));
-    //         if (userscore >= diemdoi) {
-    //             userscore -= diemdoi;
-    //             console.log("ban nhan duoc " + ran + " diem");
-    //             userscore += ran;
-    //             console.log(userscore + " D");
-    //         } else {
-    //             console.log("ban khong du diem");
-    //         }
-    //     }
-};
 logout = function () {
     //i = 0;
     score = 0;
@@ -663,7 +566,4 @@ logout = function () {
     document.getElementById('btn_logOut').hidden = true;
     document.getElementById('quizz-page').hidden = true;
 
-    document.getElementById("chude").style.display = 'none';
-
-    //document.getElementById("account").innerHTML = "";
 };
