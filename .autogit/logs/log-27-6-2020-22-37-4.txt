@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Mon Jul 27 2020 22:37:04 GMT+0700 (Indochina Time)
+------------------------------------------------------
+
+Modified files:
+* index.html
+* index.js
+
+
+Created files:
+
+
+Deleted files:
+
+
+Renamed files:
