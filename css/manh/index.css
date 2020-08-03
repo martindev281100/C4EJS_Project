@@ -100,6 +100,11 @@ body {
 
 #nav-bar {
   background: transparent;
+  position: fixed!important;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
 }
 
 .form_profile {
@@ -117,7 +122,8 @@ body {
 #nav-list a:hover {
   color: #111111 !important;
 }
-#nav-list a:active{
+
+#nav-list a:active {
   border: 0;
 }
 
@@ -132,21 +138,25 @@ body {
 
 #form_greeting {
   text-decoration: none;
-  padding-right: 20px; 
+  padding-right: 20px;
   font-size: 15px;
   color: #111111;
 }
+
 #user-menu {
   font-size: 35px;
 }
+
 .dropdown-menu {
   left: 0% !important;
   transform: translateX(-50%) !important;
   top: 100% !important;
 }
+
 #btn_add_topic {
   outline: 0;
 }
+
 #btn_add_question {
   outline: 0;
 }
