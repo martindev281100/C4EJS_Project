@@ -59,14 +59,14 @@ body {
   margin: 40px;
 }
 
-#nav-bar {
+/* #nav-bar {
   background: transparent;
   position: fixed!important;
   top: 0;
   right: 0;
   left: 0;
   z-index: 999;
-}
+} */
 
 .form_profile {
   margin: 40px;
@@ -131,5 +131,4 @@ body {
 
 #nav-bar {
   height: 10%;
-  position: sticky;
 }
