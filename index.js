@@ -103,7 +103,6 @@ function play(topic) {
 
 }
 // Redirect
-console.log(topics.calculation_topic[0].question)
 document.getElementById("redirect-to-login").onclick = function () {
     document.getElementById("register-form").hidden = true;
     document.getElementById("login-form").hidden = false;
@@ -149,8 +148,7 @@ function addItem() {
     }
     if (data.question == '' || data.wrongAnswers == '' || data.correctAnswer == '') {
         let alert_warning = document.getElementById('alert_warning');
-        let content_aWarning = document.getElementById('content_aWarning')
-        content_aWarning.innerHTML = 'Some field is missing!';
+        document.getElementById('content_aWarning').innerHTML = 'Some field is missing!';
         alert_warning.hidden = false;
         setTimeout(function () {
             alert_warning.hidden = true;
@@ -162,8 +160,7 @@ function addItem() {
         let arr = [data.question, data.correctAnswer, data.wrongAnswers, data.hint];
         showItems(arr);
         let alert_success = document.getElementById('alert_success');
-        let content_aSuccess = document.getElementById('content_aSuccess')
-        content_aSuccess.innerHTML = 'Added item successful!';
+        document.getElementById('content_aSuccess').innerHTML = 'Added item successful!';
         alert_success.hidden = false;
         setTimeout(function () {
             document.getElementById('alert_success').hidden = true;
@@ -248,27 +245,27 @@ loginButton.onclick = function () {
     homePage.hidden = true;
 };
 quizzNav.onclick = function () {
-    quizzNav.style.color = "#71bc42";
-    questionListNav.style.color = "rgba(0, 0, 0, .5)";
-    homeNav.style.color = "rgba(0, 0, 0, .5)";
+    quizzNav.classList.add("active");
+    questionListNav.classList.remove("active");
+    homeNav.classList.remove("active");
     quizzPage.hidden = false;
     questionListPage.hidden = true;
     homePage.hidden = true;
     loginPage.hidden = true;
 };
 questionListNav.onclick = function () {
-    quizzNav.style.color = "rgba(0, 0, 0, .5)";
-    questionListNav.style.color = "#71bc42";
-    homeNav.style.color = "rgba(0, 0, 0, .5)";
+    quizzNav.classList.remove("active");
+    questionListNav.classList.add("active");
+    homeNav.classList.remove("active");
     quizzPage.hidden = true;
     questionListPage.hidden = false;
     homePage.hidden = true;
     loginPage.hidden = true;
 };
 homeNav.onclick = function () {
-    quizzNav.style.color = "rgba(0, 0, 0, .5)";
-    questionListNav.style.color = "rgba(0, 0, 0, .5)";
-    homeNav.style.color = "#71bc42";
+    quizzNav.classList.remove("active");
+    questionListNav.classList.remove("active");
+    homeNav.classList.add("active");
     quizzPage.hidden = true;
     questionListPage.hidden = true;
     homePage.hidden = false;
@@ -557,13 +554,10 @@ let checkAcc = function () {
 };
 
 logout = function () {
-    //i = 0;
-    score = 0;
     login = false;
     stop();
     unauthorized_form();
     document.getElementById("login-button").hidden = false;
     document.getElementById('btn_logOut').hidden = true;
     document.getElementById('quizz-page').hidden = true;
-
 };

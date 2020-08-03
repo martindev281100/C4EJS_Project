@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse">
             <ul id="nav-list" class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="home">Home</a>
+                    <a class="nav-link active" href="#" id="home">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="quizz">Quizz</a>
@@ -119,19 +119,17 @@
                 <div class="form-group">
                     <span id="form_greeting">Hello <span id="greeting_user"></span>!</span>
                     <button id="login-button" class="btn authorize-button" type="button">GET STARTED</button>
-                    <button id="btn_logOut" class="btn authorize-button" type="button" onclick="logout()">LOG
-                        OUT</button>
 
                     <span class="dropdown">
-                        <span class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown"
+                        <span id="user-menu" class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            <i id="user-menu" class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            <i id="user-icon" class="fa fa-user-circle-o" aria-hidden="true"></i>
                         </span>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
+                            <a class="dropdown-item" href="#"><i class="icon fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile</a>
+                            <a class="dropdown-item" href="#"><i class="icon fa fa-bar-chart" aria-hidden="true"></i>Rank</a>
+                            <a id="btn_logOut" class="dropdown-item" href="#" onclick="logout()"><i class="icon fa fa-sign-out" aria-hidden="true"></i> Log out</a>
                         </div>
                     </span>
 
@@ -205,8 +203,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3 id="question" class="modal-title"></h3>
-                        <!-- <button id="play-button" class="close"><i class="fa fa-play" aria-hidden="true"></i></button>
-                        <button id="pause-button" class="close"><i class="fa fa-pause" aria-hidden="true"></i></button> -->
+                        <button id="play-button" class="close"><i class="fa fa-play" aria-hidden="true"></i></button>
+                        <button id="pause-button" class="close"><i class="fa fa-pause" aria-hidden="true"></i></button>
                         <button id="close-button" class="close" data-dismiss="modal"><i class="fa fa-times"
                                 aria-hidden="true"></i></button>
                     </div>
