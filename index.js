@@ -297,23 +297,6 @@ function addItemTopic() {
 }
 
 // Authorize
-let unauthorized_form = function () {
-    document.getElementById("col_action_title").hidden = true;
-    document.getElementById('col_hint_title').hidden = true;
-    document.getElementById('btn_logOut').hidden = true;
-    document.getElementById('ls_action').hidden = true;
-    document.getElementById('form_greeting').hidden = true;
-    // document.getElementById('form_qTopic').hidden = true;
-    questionListPage.hidden = true;
-    document.getElementById('form_profile').hidden = true;
-    document.getElementById('form_pPassword').hidden = true;
-    questionListNav.hidden = true;
-    document.getElementById("btn_add_question").hidden = true;
-    document.getElementById("btn_add_topic").hidden = true;
-    document.getElementById("homepage").hidden = false;
-}
-unauthorized_form();
-
 let user_authorized = function () {
     document.getElementById("col_action_title").hidden = true;
     document.getElementById('col_hint_title').hidden = true;
@@ -325,7 +308,7 @@ let user_authorized = function () {
     document.getElementById("btn_add_question").hidden = true;
     document.getElementById("btn_add_topic").hidden = true;
     document.getElementById('login-button').hidden = true;
-    document.getElementById('btn_logOut').hidden = false;
+    document.getElementById('user-form').hidden = false;
     document.getElementById('col_hint_title').hidden = true;
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('form_qTopic').hidden = false;
@@ -340,12 +323,11 @@ let admin_authorized = function () {
         document.getElementsByClassName('col_hint')[i].hidden = false;
         document.getElementsByClassName('col_action')[i].hidden = false;
     }
-    document.getElementById('question-list-page').hidden = false;
+    questionListPage.hidden = false;
     document.getElementById("btn_add_question").hidden = false;
     document.getElementById("btn_add_topic").hidden = false;
     document.getElementById('login-button').hidden = true;
-    document.getElementById('btn_logOut').hidden = false;
-    document.getElementById('ls_action').hidden = false;
+    document.getElementById('user-form').hidden = false;
     document.getElementById('form_greeting').hidden = false;
     document.getElementById('question-list').hidden = false;
     document.getElementById("col_action_title").hidden = false;
@@ -359,14 +341,6 @@ let arr_account = [{
     'password': 'a',
     score: 10
 }];
-
-// const btn_logOut = document.getElementById('btn_logOut')
-// btn_logOut.addEventListener('click', function () {
-//     unauthorized_form();
-//     stop();
-// })
-
-
 
 const btn_reg = document.getElementById('btn_reg');
 btn_reg.addEventListener('click', function () {
@@ -383,7 +357,6 @@ btn_updateAcc.addEventListener('click', function () {
         console.log('confirm checked!')
         document.getElementById('input_pName').readOnly = false;
         document.getElementById('input_pEmail').readOnly = false;
-        document.getElementById('form_pPassword').hidden = false;
         btn_editInfo.hidden = false;
         btn_updateAcc.hidden = true;
     } else {
@@ -556,7 +529,6 @@ let checkAcc = function () {
 logout = function () {
     login = false;
     stop();
-    unauthorized_form();
     document.getElementById("login-button").hidden = false;
     document.getElementById('btn_logOut').hidden = true;
     document.getElementById('quizz-page').hidden = true;

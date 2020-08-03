@@ -1,2 +1,29 @@
-
-
+#get-in-touch-button:hover {
+  background: white;
+  color: #ff6a00;
+}
+#get-in-touch-button {
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 1rem 3rem;
+  color: white;
+}
+#home-page {
+  height: 180%;
+}
+#home-main {
+  height: 50%;
+  background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
+  padding-top: 250px;
+  text-align: center;
+  color: white;
+}
+#home-main p {
+  font-size: 35px;
+  font-family: 'Courier New', Courier, monospace;
+}
+#home-main h1 {
+  font-size: 55px;
+  font-family: 'Courier New', Courier, monospace;
+}

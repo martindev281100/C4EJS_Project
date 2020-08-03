@@ -117,37 +117,37 @@
 
             <form class="form-inline">
                 <div class="form-group">
-                    <span id="form_greeting">Hello <span id="greeting_user"></span>!</span>
                     <button id="login-button" class="btn authorize-button" type="button">GET STARTED</button>
-
-                    <span class="dropdown">
-                        <span id="user-menu" class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown"
+                    <span id="form_greeting" hidden>Hello <span id="greeting_user"></span>!</span>
+                    <span id="user-form" class="dropdown" hidden>
+                        <span id="user-menu" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             <i id="user-icon" class="fa fa-user-circle-o" aria-hidden="true"></i>
                         </span>
 
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu">
                             <a class="dropdown-item" href="#"><i class="icon fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile</a>
                             <a class="dropdown-item" href="#"><i class="icon fa fa-bar-chart" aria-hidden="true"></i>Rank</a>
                             <a id="btn_logOut" class="dropdown-item" href="#" onclick="logout()"><i class="icon fa fa-sign-out" aria-hidden="true"></i> Log out</a>
                         </div>
                     </span>
-
-
                 </div>
             </form>
         </div>
     </nav>
 
-
+    <div id="home-page">
+        <div id="home-main">
+            <h1>WELCOME TO <strong>EQUIZZ</strong></h1>
+            <p>Quizz for education</p>
+            <button id="get-in-touch-button" class="btn">Get in touch</button>
+        </div>
+        <div id="home-detail"></div>
+        <div id="home-footer"></div>
+    </div>    
 
 
     <div id="homepage">
-        <div class="header background_homepage">
-            <h1>Quizz</h1>
-            <p>Quizz for education</p>
-            <button class="btn btn_header btn_radius" id="btn_try">Try it</button>
-        </div>
         <div class="container">
             <div class="row row-padding">
                 <div class="col-md-4">
@@ -176,6 +176,11 @@
                 </div>
             </div>
         </div>
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted"><p>Equizz - Quizz for education ©</p></span>
+            </div>
+        </footer>
     </div>
 
     <div id="login-page" hidden>
@@ -197,7 +202,7 @@
         </div>
     </div>
 
-    <div id="quizz-page" class="container">
+    <div id="quizz-page" class="container" hidden>
         <div class="modal fade" id="quizz-modal">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -358,7 +363,7 @@
 
     <div class="container">
 
-        <div id="form_profile" class="form_profile">
+        <div id="form_profile" class="form_profile" hidden>
             <div class="form-group">
                 <label for="">Name: </label>
                 <input type="text" id="input_pName" value="" class="form-control" readonly>
@@ -535,11 +540,7 @@
 
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <span class="text-muted"><p>Equizz - Quizz for education ©</p></span>
-        </div>
-    </footer>
+    
 
 
     <script src="index.js"></script>
