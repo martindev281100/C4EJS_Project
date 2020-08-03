@@ -122,4 +122,5 @@ body {
 
 #nav-bar {
   height: 10%;
+  position: sticky;
 }
