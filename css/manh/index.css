@@ -59,7 +59,14 @@ body {
   margin: 40px;
 }
 
-
+#nav-bar {
+  background: transparent;
+  position: fixed!important;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+}
 
 .form_profile {
   margin: 40px;
@@ -91,12 +98,14 @@ body {
   font-family: "Comic Sans MS", cursive, sans-serif;
   padding: 0;
 }
+
 #user-menu {
   color: #71bc42;
 }
 #user-icon {
   font-size: 35px;
 }
+
 .dropdown-menu {
   left: 0% !important;
   transform: translateX(-50%) !important;
