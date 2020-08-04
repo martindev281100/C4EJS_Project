@@ -14,6 +14,7 @@ let currentTopic = topics["general_topic"];
 
 function showTable() {
     let tableBody = document.getElementById("table_body");
+    
     while (tableBody.childElementCount > 1) {
         tableBody.removeChild(tableBody.lastChild);
     }
