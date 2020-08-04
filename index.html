@@ -171,7 +171,7 @@
                         <div class="dropdown-menu">
                             <a data-toggle="modal" data-target="#edit-profile" class="dropdown-item" href="#"><i
                                     class="icon fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile</a>
-                            <a class="dropdown-item" href="#"><i class="icon fa fa-bar-chart"
+                            <a class="dropdown-item" href="#" id="btn_rank"><i class="icon fa fa-bar-chart"
                                     aria-hidden="true"></i>Rank</a>
                             <a id="logout-button" class="dropdown-item" href="#" onclick="logOutFunction()"><i
                                     class="icon fa fa-sign-out" aria-hidden="true"></i> Log out</a>
@@ -189,12 +189,23 @@
             <a id="get-in-touch-button" href="#get-in-touch" class="btn">Get in touch</a>
         </header>
         <section></section>
-
+        <div class="container">
+            <table id="table_ranking" class="table table-striped" hidden>
+                <thead class="background_green">
+                    <th>Name</th>
+                    <th>Score</th>
+                </thead>
+                <tbody id="tbody_ranking">
+                    
+                </tbody>
+            </table>
+        </div>
+        
         <div class="site-wrap">
             <div class="site-half">
                 <div class="img-bg-1 " style="background-image: url('images/img_4.jpg');"></div>
                 <div class="container">
-                    <div class="row no-gutters align-items-stretch">
+                    <div class="row no-gutters align-items-stretch ">
                         <div class="col-lg-5 ml-lg-auto py-5">
                             <span class="caption d-block mb-2 font-secondary font-weight-bold">Outstanding
                                 Services</span>
@@ -232,7 +243,7 @@
                 </div>
             </div>
         </div>
-
+        
         <footer id="get-in-touch">
             <div class="row">
                 <div class="col">
@@ -264,7 +275,7 @@
                 </script> All rights reserved | Equizz - Quizz for education</p>
         </footer>
     </div>
-
+    
     <div id="login-page" hidden>
         <div class="form">
             <form id="register-form" hidden>

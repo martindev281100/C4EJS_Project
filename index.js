@@ -14,7 +14,7 @@ let currentTopic = topics["general_topic"];
 
 function showTable() {
     let tableBody = document.getElementById("table_body");
-    
+
     while (tableBody.childElementCount > 1) {
         tableBody.removeChild(tableBody.lastChild);
     }
@@ -40,6 +40,7 @@ function alertWarning(message) {
         alert_warning.hidden = true;
     }, 2000);
 }
+
 function alertSuccess(message) {
     let alert_success = document.getElementById('alert-success');
     alert_success.hidden = false;
@@ -218,6 +219,7 @@ let user_authorized = function () {
     }
     document.getElementById("btn_add_question").hidden = true;
     document.getElementById("btn_add_topic").hidden = true;
+    homeNav.onclick();
 }
 
 let admin_authorized = function () {
@@ -234,18 +236,16 @@ let admin_authorized = function () {
 function logInFunction() {
     let id = document.getElementById("input-id").value;
     let password = document.getElementById("input-password").value;
-    for (let i = 0; i < accounts.length; i ++) {
+    for (let i = 0; i < accounts.length; i++) {
         if (id == 'admin' && password == "1234") {
             admin_authorized();
             logIn = true;
             currentUser = accounts[0];
-        }
-        else if (id == accounts[i].id && password == accounts[i].password) {
+        } else if (id == accounts[i].id && password == accounts[i].password) {
             user_authorized();
             logIn = true;
             currentUser = accounts[i];
-        }
-        else if (id == accounts[i].id && password != accounts[i].password) {
+        } else if (id == accounts[i].id && password != accounts[i].password) {
             alertWarning('Password is incorrect!');
             return;
         }
@@ -260,13 +260,11 @@ function logInFunction() {
         loginButton.hidden = true;
         alertSuccess('Login Successfully!');
         questionListNav.hidden = false;
-    } 
-    else alertWarning('Account is incorrect!');
+    } else alertWarning('Account is incorrect!');
 }
 
 // Accounts
-let accounts = [
-    {
+let accounts = [{
         id: 'admin',
         email: 'admin@gmail.com',
         password: '1234',
@@ -466,4 +464,17 @@ function play(topic) {
             alert("not hint");
         }
     };
+}
+btn_rank = document.getElementById('btn_rank');
+btn_rank.addEventListener('click', function () {
+    document.getElementById('table_ranking').hidden = false;
+    ranking();
+})
+
+let ranking = function(){
+    for(let i = 0; i< accounts.length; i++)
+    {
+        document.getElementById('tbody_ranking').insertAdjacentHTML('beforeend', 
+        '<tr><td>'+accounts[i].email+'</td><td>'+accounts[i].score+'</td></tr>')
+    }
 }
