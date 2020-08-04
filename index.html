@@ -107,15 +107,7 @@
                                     <div class="form-group">
                                         <label for="new-topic-description">Description: </label>
                                         <input type="text" id="new-topic-description" placeholder="Enter topic description"
-                                            class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="file" id="new-topic-image" class="form-control">
-                                        <label for="new-topic-image">Choose image: </label>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input form-control" id="new-topic-image">
-                                        <label class="custom-file-label" for="new-topic-image">Choose image</label>
+                                            class="form-control" maxlength="80">
                                     </div>
                                 </div>
 
@@ -240,17 +232,6 @@
             </div>
         </div>
         <div id="topic-list" class="row text-center">
-            <!-- <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-50 topic-card">
-                    <img class="card-img-top" width="300" height="300" src="images/new-topic.gif" alt="New topic">
-                    <div class="card-body">
-                        <h4 class="card-title">'+newTopic+'</h4>
-                        <p class="card-text">"+newTopicDescription+"</p>
-                        <button class="btn btn-primary" onclick="play(topics.'+newTopic+')" data-toggle="modal" data-target="#quizz-modal">Go!</button>
-                    </div>
-                </div>
-            </div> -->
-
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card h-50 topic-card">
                     <img class="card-img-top" width="300" height="300" src="images/general.png" alt="General topic">
@@ -308,7 +289,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 

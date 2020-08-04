@@ -130,3 +130,7 @@ body {
 #btn_add_topic {
   outline: 0;
 }
+.card-text {
+  height: 60px;
+  line-height: 20px;
+}
