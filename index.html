@@ -47,8 +47,7 @@
 
                 <!-- Add question -->
                 <li class="nav-item">
-                    <a id="btn_add_question" href="#" class="nav-link" data-toggle="modal" data-target="#add-question"
-                        onclick="clicked_btn_add_question()" hidden>Add Question</a>
+                    <a id="btn_add_question" href="#" class="nav-link" data-toggle="modal" data-target="#add-question" hidden>Add Question</a>
                     <div class="modal fade" id="add-question">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -81,8 +80,7 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button id="btn_item_add" class="btn btn-success" onclick="addItem()"
-                                        data-dismiss="modal">Add Item</button>
+                                    <button id="btn_item_add" class="btn btn-success" onclick="addItem()">Add Item</button>
                                 </div>
                             </div>
                         </div>
@@ -104,14 +102,25 @@
                                 <div id="form-add-topic" class="modal-body form_add">
                                     <div class="form-group">
                                         <label for="new-topic">Topic: </label>
-                                        <input type="text" id="new-topic" placeholder="Enter topic"
+                                        <input type="text" id="new-topic" placeholder="Enter topic" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="new-topic-description">Description: </label>
+                                        <input type="text" id="new-topic-description" placeholder="Enter topic description"
                                             class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="file" id="new-topic-image" class="form-control">
+                                        <label for="new-topic-image">Choose image: </label>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input form-control" id="new-topic-image">
+                                        <label class="custom-file-label" for="new-topic-image">Choose image</label>
                                     </div>
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button id="btn_item_add_topic" class="btn btn-success" onclick="addItemTopic()"
-                                        data-dismiss="modal">Add Item</button>
+                                    <button id="btn_item_add_topic" class="btn btn-success" onclick="addItemTopic()">Add Item</button>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +141,7 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#"><i class="icon fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile</a>
                             <a class="dropdown-item" href="#"><i class="icon fa fa-bar-chart" aria-hidden="true"></i>Rank</a>
-                            <a id="btn_logOut" class="dropdown-item" href="#" onclick="logout()"><i class="icon fa fa-sign-out" aria-hidden="true"></i> Log out</a>
+                            <a id="logout-button" class="dropdown-item" href="#" onclick="logOutFunction()"><i class="icon fa fa-sign-out" aria-hidden="true"></i> Log out</a>
                         </div>
                     </span>
                 </div>
@@ -157,10 +166,10 @@
                 </div>
                 <div class="col">
                     <h2>Contact Information</h2>
-                    <ul class="list-unstyled content">
+                    <ul class="list-unstyled">
                         <li><a class="content" href="#">198 West 21th Street, Suite 721 New York NY 10016</a></li>
-                        <li><a class="content" href="#">+ 1235 2355 98</a></li>
-                        <li><a class="content" href="#">email@gmail.com</a></li>
+                        <li><a class="content" href="#">+ 0123 456 789</a></li>
+                        <li><a class="content" href="#">abcxyz@gmail.com</a></li>
                     </ul>
                 </div>
                 <div id="social-list" class="col">
@@ -171,19 +180,9 @@
                     </ul>
                 </div>
             </div>
+            <hr>
+            <p id="author" class="content">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Equizz - Quizz for education</p>
         </footer>
-
-        
-        
-              <div class="row">
-                <div class="col-md-12 text-center">
-      
-                  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                </div>
-              </div>
-            </div>
     </div>    
 
     <div id="login-page" hidden>
@@ -240,7 +239,18 @@
                 </div>
             </div>
         </div>
-        <div class="row text-center" id="form_qTopic">
+        <div id="topic-list" class="row text-center">
+            <!-- <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card h-50 topic-card">
+                    <img class="card-img-top" width="300" height="300" src="images/new-topic.gif" alt="New topic">
+                    <div class="card-body">
+                        <h4 class="card-title">'+newTopic+'</h4>
+                        <p class="card-text">"+newTopicDescription+"</p>
+                        <button class="btn btn-primary" onclick="play(topics.'+newTopic+')" data-toggle="modal" data-target="#quizz-modal">Go!</button>
+                    </div>
+                </div>
+            </div> -->
+
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card h-50 topic-card">
                     <img class="card-img-top" width="300" height="300" src="images/general.png" alt="General topic">
@@ -551,3 +561,4 @@
 </body>
 
 </html>
+

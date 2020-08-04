@@ -1,107 +1,3 @@
-// Play quizz
-
-function play(topic) {
-    document.getElementById('answer').hidden = false;
-    document.getElementById('result').hidden = true;
-    let score = 0;
-    let i = 0;
-    let answers = [];
-    console.log('topic[0]: ' + topic);
-    console.log('topics.calculation[0]: ' + topics.calculation_topic[0])
-    run = function () {
-        answers = [topic[i].wrongAnswers[0], topic[i].wrongAnswers[1], topic[i].wrongAnswers[2], topic[i].correctAnswer];
-        document.getElementById("question").innerHTML = topic[i].question;
-        document.getElementById("score").innerHTML = score;
-        for (let j = 0; j < 4; j++) {
-            let rand = Math.floor(Math.random() * answers.length);
-            document.getElementById("answer" + j).value = answers[rand];
-            answers.splice(rand, 1);
-        }
-    }
-    run();
-    check = function (valuec, idtab) {
-        console.log('index topic: ' + i)
-        console.log('topic i: ' + topic[i])
-        let kq = valuec;
-        console.log(valuec)
-        console.log('valuec: ' + kq)
-        console.log('topic length: ' + topic.length)
-        let idthe = 'answer' + idtab;
-        let idtrue = 'answer';
-
-        if (kq == topic[i].correctAnswer) {
-            score++;
-            arr_account[iAcc].score++;
-            document.getElementById("recent_result").hidden = false;
-            document.getElementById("recent_result").innerHTML = 'Correct';
-            document.getElementById("correct_answer").hidden = true;
-            setTimeout(() => {
-                document.getElementById("recent_result").hidden = true;
-                document.getElementById("correct_answer").hidden = false;
-            }, 1000);
-
-        } else {
-            document.getElementById("recent_result").hidden = false;
-            document.getElementById("recent_result").innerHTML = 'Wrong';
-            document.getElementById("correct_answer").hidden = true;
-
-            setTimeout(() => {
-                document.getElementById("recent_result").hidden = true;
-                document.getElementById("correct_answer").hidden = false;
-
-            }, 1000);
-
-        }
-        let endGame = setTimeout(() => {
-            if (i == topic.length) {
-                // document.getElementById("formGame").style.display = 'none';
-
-                stop();
-                clearTimeout(reRun);
-                if (login == true) {
-                    console.log(arr_account);
-                }
-            }
-        }, 800);
-
-
-        i++;
-        console.log('i++ = ' + i)
-        reRun = setTimeout(run, 1000);
-    }
-    stop = function () {
-        console.log("Diem cua ban la : " + arr_account[iAcc].score);
-        i = 0;
-        document.getElementById('answer').hidden = true;
-        document.getElementById('result').hidden = false;
-        document.getElementById('result').innerHTML = "Diem cua ban la : " + arr_account[iAcc].score;
-        document.getElementById('question').innerHTML = "Result"
-    };
-    doihint = () => {
-        document.getElementById("score").innerHTML = "Diem cua ban la : " + arr_account[iAcc].score;
-        console.log(score + ' ' + arr_account[iAcc].score);
-        if (topic[i].hint) {
-            if (score > 0) {
-                alert(topic[i].hint);
-                score -= 0.5;
-
-            } else if (score < 0.5 && arr_account[iAcc].score < 0.5) {
-                alert("ban khong du diem ");
-            } else if (arr_account[iAcc].score > 0) {
-                alert(topic[i].hint);
-                score -= 0.5;
-            }
-        } else {
-            alert("not hint");
-        }
-
-
-    };
-
-
-
-
-}
 // Redirect
 document.getElementById("redirect-to-login").onclick = function () {
     document.getElementById("register-form").hidden = true;
@@ -134,11 +30,13 @@ document.getElementById("select_topic").onchange = function () {
     showTable();
 }
 
-// Add question
-let clicked_btn_add_question = function () {
-    document.getElementById('form-add-question').hidden = false;
-}
+// Alert
+let alert_warning = document.getElementById('alert_warning');
+let alert_warning_content = document.getElementById('content_aWarning');
+let alert_success = document.getElementById('alert_success');
+let alert_success_content = document.getElementById('content_aSuccess');
 
+// Add question
 function addItem() {
     let data = {
         question: document.getElementById("input_question").value,
@@ -146,25 +44,23 @@ function addItem() {
         wrongAnswers: document.getElementById("input_wrong").value,
         hint: document.getElementById("input_hint").value,
     }
-    if (data.question == '' || data.wrongAnswers == '' || data.correctAnswer == '') {
-        let alert_warning = document.getElementById('alert_warning');
-        document.getElementById('content_aWarning').innerHTML = 'Some field is missing!';
+    if (data.question.trim() == '' || data.wrongAnswers.trim() == '' || data.correctAnswer.trim() == '') {
+        alert_warning_content.innerHTML = 'Some field is missing!';
         alert_warning.hidden = false;
         setTimeout(function () {
             alert_warning.hidden = true;
-        }, 1000)
+        }, 2000)
     } else {
-        document.getElementById('form-add-question').hidden = true;
+        $("#add-question").modal("hide");
         data.wrongAnswers = data.wrongAnswers.split(", ");
         currentTopic.push(data);
         let arr = [data.question, data.correctAnswer, data.wrongAnswers, data.hint];
         showItems(arr);
-        let alert_success = document.getElementById('alert_success');
-        document.getElementById('content_aSuccess').innerHTML = 'Added item successful!';
+        alert_success_content.innerHTML = 'Item added successfully!';
         alert_success.hidden = false;
         setTimeout(function () {
-            document.getElementById('alert_success').hidden = true;
-        }, 1000)
+            alert_success.hidden = true;
+        }, 2000)
     }
 }
 
@@ -233,7 +129,7 @@ function showItems(arr) {
 let loginPage = document.getElementById("login-page");
 let quizzPage = document.getElementById("quizz-page");
 let questionListPage = document.getElementById("question-list-page");
-let homePage = document.getElementById("homepage");
+let homePage = document.getElementById("home-page");
 let quizzNav = document.getElementById("quizz");
 let questionListNav = document.getElementById("question-list");
 let homeNav = document.getElementById("home");
@@ -275,26 +171,31 @@ homeNav.onclick = function () {
 // Add topic
 function addItemTopic() {
     let newTopic = document.getElementById("new-topic").value;
-    if (newTopic == '') {
-        let alert_warning = document.getElementById('alert_warning');
-        let content_aWarning = document.getElementById('content_aWarning')
-        content_aWarning.innerHTML = 'Please enter topic name!';
+    if (newTopic.trim() == '') {
+        alert_warning_content.innerHTML = 'Please enter topic name!';
         alert_warning.hidden = false;
         setTimeout(function () {
             alert_warning.hidden = true;
-        }, 1000)
+        }, 2000)
     } else {
+        $("#add-topic").modal("hide");
         document.getElementById("new-topic").value = "";
         topics[newTopic] = [];
-        document.getElementById('form-add-topic').hidden = false;
         let topicList = document.getElementById("select_topic");
         let newDropDown = document.createElement("option");
         newDropDown.value = newTopic;
         newDropDown.innerHTML = newTopic;
         topicList.appendChild(newDropDown);
-        document.getElementById('form_qTopic').insertAdjacentHTML('beforeend', '<div class="col-lg-3 col-md-6 mb-4"><div class="card h-50 topic-card"><div class="card-body"><h4 class="card-title">'+newTopic+'</h4><p class="card-text"></p><button class="btn btn-primary" onclick="play(topics.'+newTopic+')" data-toggle="modal"data-target="#quizz-modal">Go!</button></div></div></div>')
+        // document.getElementById("topic-list").insertAdjacentHTML("beforeend",
+
+        // );
     }
 }
+
+// Status 
+let authorized = false;
+let logOut = false;
+let logIn = false;
 
 // Authorize
 let user_authorized = function () {
@@ -304,18 +205,12 @@ let user_authorized = function () {
         document.getElementsByClassName('col_hint')[i].hidden = true;
         document.getElementsByClassName('col_action')[i].hidden = true;
     }
-    document.getElementById("col_action_title").hidden = true;
     document.getElementById("btn_add_question").hidden = true;
     document.getElementById("btn_add_topic").hidden = true;
     document.getElementById('login-button').hidden = true;
     document.getElementById('user-form').hidden = false;
-    document.getElementById('col_hint_title').hidden = true;
     document.getElementById('form_greeting').hidden = false;
-    document.getElementById('form_qTopic').hidden = false;
     document.getElementById('question-list').hidden = false;
-    document.getElementById('btn_editInfo').hidden = true;
-    document.getElementById('ls_action').hidden = false;
-    homeNav.onclick();
 }
 
 let admin_authorized = function () {
@@ -329,10 +224,7 @@ let admin_authorized = function () {
     document.getElementById('login-button').hidden = true;
     document.getElementById('user-form').hidden = false;
     document.getElementById('form_greeting').hidden = false;
-    document.getElementById('question-list').hidden = false;
-    document.getElementById("col_action_title").hidden = false;
-    document.getElementById('col_hint_title').hidden = false;
-    questionListNav.onclick();
+    questionListNav.hidden = false;
 }
 
 let arr_account = [{
@@ -526,10 +418,108 @@ let checkAcc = function () {
     }
 };
 
-logout = function () {
+function logOutFunction() {
     login = false;
     stop();
     document.getElementById("login-button").hidden = false;
-    document.getElementById('btn_logOut').hidden = true;
+    document.getElementById('logout-button').hidden = true;
     document.getElementById('quizz-page').hidden = true;
 };
+
+// Play quizz
+function play(topic) {
+    document.getElementById('answer').hidden = false;
+    document.getElementById('result').hidden = true;
+    let score = 0;
+    let i = 0;
+    let answers = [];
+    console.log('topic[0]: ' + topic);
+    console.log('topics.calculation[0]: ' + topics.calculation_topic[0])
+    run = function () {
+        answers = [topic[i].wrongAnswers[0], topic[i].wrongAnswers[1], topic[i].wrongAnswers[2], topic[i].correctAnswer];
+        document.getElementById("question").innerHTML = topic[i].question;
+        document.getElementById("score").innerHTML = score;
+        for (let j = 0; j < 4; j++) {
+            let rand = Math.floor(Math.random() * answers.length);
+            document.getElementById("answer" + j).value = answers[rand];
+            answers.splice(rand, 1);
+        }
+    }
+    run();
+    check = function (valuec, idtab) {
+        console.log('index topic: ' + i)
+        console.log('topic i: ' + topic[i])
+        let kq = valuec;
+        console.log(valuec)
+        console.log('valuec: ' + kq)
+        console.log('topic length: ' + topic.length)
+        let idthe = 'answer' + idtab;
+        let idtrue = 'answer';
+
+        if (kq == topic[i].correctAnswer) {
+            score++;
+            arr_account[iAcc].score++;
+            document.getElementById("recent_result").hidden = false;
+            document.getElementById("recent_result").innerHTML = 'Correct';
+            document.getElementById("correct_answer").hidden = true;
+            setTimeout(() => {
+                document.getElementById("recent_result").hidden = true;
+                document.getElementById("correct_answer").hidden = false;
+            }, 1000);
+
+        } else {
+            document.getElementById("recent_result").hidden = false;
+            document.getElementById("recent_result").innerHTML = 'Wrong';
+            document.getElementById("correct_answer").hidden = true;
+
+            setTimeout(() => {
+                document.getElementById("recent_result").hidden = true;
+                document.getElementById("correct_answer").hidden = false;
+
+            }, 1000);
+
+        }
+        let endGame = setTimeout(() => {
+            if (i == topic.length) {
+                // document.getElementById("formGame").style.display = 'none';
+
+                stop();
+                clearTimeout(reRun);
+                if (login == true) {
+                    console.log(arr_account);
+                }
+            }
+        }, 800);
+
+
+        i++;
+        console.log('i++ = ' + i)
+        reRun = setTimeout(run, 1000);
+    }
+    stop = function () {
+        console.log("Diem cua ban la : " + arr_account[iAcc].score);
+        i = 0;
+        document.getElementById('answer').hidden = true;
+        document.getElementById('result').hidden = false;
+        document.getElementById('result').innerHTML = "Diem cua ban la : " + arr_account[iAcc].score;
+        document.getElementById('question').innerHTML = "Result"
+    };
+    doihint = () => {
+        document.getElementById("score").innerHTML = "Diem cua ban la : " + arr_account[iAcc].score;
+        console.log(score + ' ' + arr_account[iAcc].score);
+        if (topic[i].hint) {
+            if (score > 0) {
+                alert(topic[i].hint);
+                score -= 0.5;
+
+            } else if (score < 0.5 && arr_account[iAcc].score < 0.5) {
+                alert("ban khong du diem ");
+            } else if (arr_account[iAcc].score > 0) {
+                alert(topic[i].hint);
+                score -= 0.5;
+            }
+        } else {
+            alert("not hint");
+        }
+    };
+}

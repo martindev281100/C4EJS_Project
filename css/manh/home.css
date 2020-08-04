@@ -27,9 +27,12 @@
 #home-page footer {
   background: #3c312e;
   padding: 12rem 6rem;
+  color: white;
+}
+#home-page footer hr {
+  background: white;
 }
 #home-page footer h2 {
-  color: #fff;
   font-size: 20px;
   font-weight: 400;
   margin-bottom: 40px;
@@ -38,6 +41,7 @@
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   font-size: 15px;
+  padding-bottom: 30px;
 }
 #home-page footer a:hover {
   color: #fff;
@@ -45,7 +49,7 @@
 #social-list a {
   padding-top: 5px;
   font-size: 25px;
-  color: #fff;
+  color: white;
   height: 50px;
   width: 50px;
   float: left;
@@ -56,4 +60,14 @@
   display: inline-block;
   text-align: center;
   margin-right: 15px;
+}
+#get-in-touch li {
+  padding-bottom: 1rem;
+}
+#author {
+  text-align: center;
+  padding-top: 1rem;
+}
+#nav-bar {
+  height: 10%;
 }

@@ -124,5 +124,9 @@ body {
   font-size: 30px;
 }
 
-#nav-bar {
+#btn_add_question {
+  outline: 0;
+}
+#btn_add_topic {
+  outline: 0;
 }
