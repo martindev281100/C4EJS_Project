@@ -207,7 +207,7 @@ let logOut = false;
 let logIn = false;
 let currentUser;
 
-// Authorize
+// Login
 let user_authorized = function () {
     document.getElementById("col_action_title").hidden = true;
     document.getElementById('col_hint_title').hidden = true;
@@ -217,10 +217,6 @@ let user_authorized = function () {
     }
     document.getElementById("btn_add_question").hidden = true;
     document.getElementById("btn_add_topic").hidden = true;
-    document.getElementById('login-button').hidden = true;
-    document.getElementById('user-form').hidden = false;
-    document.getElementById('form_greeting').hidden = false;
-    questionListNav.hidden = false;
 }
 
 let admin_authorized = function () {
@@ -232,26 +228,20 @@ let admin_authorized = function () {
     }
     document.getElementById("btn_add_question").hidden = false;
     document.getElementById("btn_add_topic").hidden = false;
-    document.getElementById('login-button').hidden = true;
-    document.getElementById('user-form').hidden = false;
-    document.getElementById('form_greeting').hidden = false;
-    questionListNav.hidden = false;
 }
 
-// Login
 function logInFunction() {
     let id = document.getElementById("input-id").value;
     let password = document.getElementById("input-password").value;
-    let check = false;
     for (let i = 0; i < accounts.length; i ++) {
         if (id == 'admin' && password == "1234") {
             admin_authorized();
-            check = true;
+            logIn = true;
             currentUser = accounts[0];
         }
         else if (id == accounts[i].id && password == accounts[i].password) {
             user_authorized();
-            check = true;
+            logIn = true;
             currentUser = accounts[i];
         }
         else if (id == accounts[i].id && password != accounts[i].password) {
@@ -259,13 +249,16 @@ function logInFunction() {
             return;
         }
     }
-    if (check) {
+    if (logIn) {
         id.value = "";
         password.value = "";
-        document.getElementById('greeting_user').innerHTML = id;
+        document.getElementById('user-form').hidden = false;
+        document.getElementById('form_greeting').hidden = false;
+        document.getElementById('form_greeting').children[0].innerHTML = id;
         loginPage.hidden = true;
         loginButton.hidden = true;
         alertSuccess('Login Successfully!');
+        questionListNav.hidden = false;
     } 
     else alertWarning('Account is incorrect!');
 }
