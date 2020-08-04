@@ -134,3 +134,6 @@ body {
   height: 60px;
   line-height: 20px;
 }
+.alert {
+  margin-bottom: 0rem !important;
+}
