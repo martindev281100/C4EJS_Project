@@ -32,10 +32,22 @@ document.getElementById("select_topic").onchange = function () {
 }
 
 // Alert
-let alert_warning = document.getElementById('alert_warning');
-let alert_warning_content = document.getElementById('content_aWarning');
-let alert_success = document.getElementById('alert_success');
-let alert_success_content = document.getElementById('content_aSuccess');
+function alertWarning(message) {
+    let alert_warning = document.getElementById('alert-warning');
+    alert_warning.hidden = false;
+    alert_warning.children[0].innerHTML = message;
+    setTimeout(function () {
+        alert_warning.hidden = true;
+    }, 2000);
+}
+function alertSuccess(message) {
+    let alert_success = document.getElementById('alert-success');
+    alert_success.hidden = false;
+    alert_success.children[0].innerHTML = message;
+    setTimeout(function () {
+        alert_success.hidden = true;
+    }, 2000);
+}
 
 // Add question
 function addItem() {
@@ -46,22 +58,14 @@ function addItem() {
         hint: document.getElementById("input_hint").value,
     }
     if (data.question.trim() == '' || data.wrongAnswers.trim() == '' || data.correctAnswer.trim() == '') {
-        alert_warning_content.innerHTML = 'Some field is missing!';
-        alert_warning.hidden = false;
-        setTimeout(function () {
-            alert_warning.hidden = true;
-        }, 2000)
+        alertWarning('Some field is missing!');
     } else {
         $("#add-question").modal("hide");
         data.wrongAnswers = data.wrongAnswers.split(", ");
         currentTopic.push(data);
         let arr = [data.question, data.correctAnswer, data.wrongAnswers, data.hint];
         showItems(arr);
-        alert_success_content.innerHTML = 'Item added successfully!';
-        alert_success.hidden = false;
-        setTimeout(function () {
-            alert_success.hidden = true;
-        }, 2000)
+        alertSuccess('Item added successfully!');
     }
 }
 
@@ -173,13 +177,8 @@ homeNav.onclick = function () {
 function addItemTopic() {
     let newTopic = document.getElementById("new-topic").value;
     let newTopicDescription = document.getElementById("new-topic-description").value;
-    if (newTopic.trim() == '') {
-        alert_warning_content.innerHTML = 'Please enter topic name!';
-        alert_warning.hidden = false;
-        setTimeout(function () {
-            alert_warning.hidden = true;
-        }, 2000)
-    } else {
+    if (newTopic.trim() == '') alertWarning('Please enter topic name!');
+    else {
         $("#add-topic").modal("hide");
         document.getElementById("new-topic").value = "";
         topics[newTopic] = [];
@@ -207,8 +206,9 @@ function addItemTopic() {
 let authorized = false;
 let logOut = false;
 let logIn = false;
+let currentUser;
 
-// Authorize
+// Login
 let user_authorized = function () {
     document.getElementById("col_action_title").hidden = true;
     document.getElementById('col_hint_title').hidden = true;
@@ -218,10 +218,6 @@ let user_authorized = function () {
     }
     document.getElementById("btn_add_question").hidden = true;
     document.getElementById("btn_add_topic").hidden = true;
-    document.getElementById('login-button').hidden = true;
-    document.getElementById('user-form').hidden = false;
-    document.getElementById('form_greeting').hidden = false;
-    questionListNav.hidden = false;
 }
 
 let admin_authorized = function () {
@@ -233,30 +229,66 @@ let admin_authorized = function () {
     }
     document.getElementById("btn_add_question").hidden = false;
     document.getElementById("btn_add_topic").hidden = false;
-    document.getElementById('login-button').hidden = true;
-    document.getElementById('user-form').hidden = false;
-    document.getElementById('form_greeting').hidden = false;
-    questionListNav.hidden = false;
 }
 
-// Account
-let arr_account = [
+function logInFunction() {
+    let id = document.getElementById("input-id").value;
+    let password = document.getElementById("input-password").value;
+    for (let i = 0; i < accounts.length; i ++) {
+        if (id == 'admin' && password == "1234") {
+            admin_authorized();
+            logIn = true;
+            currentUser = accounts[0];
+        }
+        else if (id == accounts[i].id && password == accounts[i].password) {
+            user_authorized();
+            logIn = true;
+            currentUser = accounts[i];
+        }
+        else if (id == accounts[i].id && password != accounts[i].password) {
+            alertWarning('Password is incorrect!');
+            return;
+        }
+    }
+    if (logIn) {
+        id.value = "";
+        password.value = "";
+        document.getElementById('user-form').hidden = false;
+        document.getElementById('form_greeting').hidden = false;
+        document.getElementById('form_greeting').children[0].innerHTML = id;
+        loginPage.hidden = true;
+        loginButton.hidden = true;
+        alertSuccess('Login Successfully!');
+        questionListNav.hidden = false;
+    } 
+    else alertWarning('Account is incorrect!');
+}
+
+// Accounts
+let accounts = [
     {
-        full_name: 'a',
-        email: 'a',
+        id: 'admin',
+        email: 'admin@gmail.com',
+        password: '1234',
+        score: 0
+    },
+    {
+        id: 'a',
+        email: 'a@gmail.com',
         password: 'a',
         score: 0
     }
 ];
 
-
-
+function editProfile() {
+    // document.getElementById("input-name").value = ;
+}
 
 
 // const btn_updateAcc = document.getElementById('btn_updateAcc')
 // btn_updateAcc.addEventListener('click', function () {
 //     let password = prompt('Enter password: ');
-//     if (password == arr_account[iAcc].password) {
+//     if (password == currentUser.password) {
 //         document.getElementById('input_pName').readOnly = false;
 //         document.getElementById('input_pEmail').readOnly = false;
 //         btn_editInfo.hidden = false;
@@ -273,9 +305,9 @@ let arr_account = [
 // })
 // const btn_editInfo = document.getElementById('btn_editInfo');
 // btn_editInfo.addEventListener('click', function () {
-//     arr_account[iAcc].full_name = document.getElementById('input_pName').value;
-//     arr_account[iAcc].email = document.getElementById('input_pEmail').value;
-//     arr_account[iAcc].password = document.getElementById('input_pPassword').value;
+//     currentUser.id = document.getElementById('input_pName').value;
+//     currentUser.email = document.getElementById('input_pEmail').value;
+//     currentUser.password = document.getElementById('input_pPassword').value;
 //     document.getElementById('alert_success').hidden = false;
 //     document.getElementById('content_aSuccess').innerHTML = 'Your account has been changed!';
 //     setTimeout(function () {
@@ -299,35 +331,18 @@ let validate_registration = function () {
     var input_cPassword = document.getElementById('input_cPassword').value;
 
     const newObj = {
-        'full_name': input_fName,
+        'id': input_fName,
         'email': input_email,
         'password': input_cPassword,
     }
-    if (input_email == "" || input_fName == "" || input_cPassword == "" || input_regPassword == "") {
-        let alert_warning = document.getElementById('alert_warning');
-        let content_aWarning = document.getElementById('content_aWarning')
-        content_aWarning.innerHTML = 'All form must be filled out!';
-        alert_warning.hidden = false;
-        setTimeout(function () {
-            alert_warning.hidden = true;
-        }, 3000)
+    if (input_email.trim() == "" || input_fName.trim() == "" || input_cPassword.trim() == "" || input_regPassword.trim() == "") {
+        alertWarning('All form must be filled out!');
     } else if (input_regPassword != input_cPassword) {
-        let alert_warning = document.getElementById('alert_warning');
-        let content_aWarning = document.getElementById('content_aWarning')
-        content_aWarning.innerHTML = 'Password must be match!';
-        alert_warning.hidden = false;
-        setTimeout(function () {
-            alert_warning.hidden = true;
-        }, 3000)
+        alertWarning("Password doesn't match!");
     } else {
         if (reg == true) {
-            arr_account.push(newObj);
-            document.getElementById('alert_success').hidden = false;
-            document.getElementById('content_aSuccess').innerHTML = 'Registration success !';
-            setTimeout(function () {
-                document.getElementById('alert_success').hidden = true;
-                document.getElementById('content_aSuccess').innerHTML = '';
-            }, 3000)
+            accounts.push(newObj);
+            alertSuccess('Register successfully!');
             document.getElementById('register-form').reset();
             document.getElementById("redirect-to-login").onclick();
         }
@@ -350,71 +365,14 @@ let iAcc;
 let reg = false;
 let checkReg = function () {
     let idRegister = document.getElementById("input_email").value;
-    for (let i in arr_account) {
-        if (arr_account[i].email == idRegister) {
-            let alert_warning = document.getElementById('alert_warning');
-            document.getElementById('content_aWarning').innerHTML = 'Account has been existed !';
-            alert_warning.hidden = false;
-            setTimeout(function () {
-                alert_warning.hidden = true;
-            }, 3000)
+    for (let i in accounts) {
+        if (accounts[i].email == idRegister) {
+            alertWarning('This email has been used!');
             reg = false;
             break;
         } else {
             reg = true;
         }
-    }
-};
-
-let checkAcc = function () {
-    let idAcc = document.getElementById("input_account").value;
-    let passAcc = document.getElementById("input_password").value;
-    for (let i = 0; i < arr_account.length; i++) {
-        if (idAcc == 'admin' && passAcc == 1234) {
-            admin_authorized();
-            document.getElementById('greeting_user').innerHTML = 'Admin';
-            document.getElementById('login-page').hidden = true;
-            document.getElementById('input_account').value = '';
-            document.getElementById('input_password').value = '';
-            document.getElementById('alert_success').hidden = false;
-            document.getElementById('content_aSuccess').innerHTML = 'Login Successful!';
-
-            setTimeout(function () {
-                document.getElementById('alert_success').hidden = true;
-                document.getElementById('content_aSuccess').innerHTML = '';
-            }, 3000)
-        } else if (idAcc == arr_account[i].email) {
-            if (arr_account[i].password == passAcc) {
-                login = true;
-                iAcc = i;
-                user_authorized();
-                document.getElementById('greeting_user').innerHTML = arr_account[i]['full_name'];
-                document.getElementById('alert_success').hidden = false;
-                document.getElementById('content_aSuccess').innerHTML = 'Login Successful!';
-                document.getElementById('login-page').hidden = true;
-                document.getElementById('input_pName').value = arr_account[i]['full_name'];
-                document.getElementById('input_pEmail').value = arr_account[i]['email'];
-                // document.getElementById("chude").style.display = 'block';
-                // document.getElementById("formGame").style.display = 'none';
-                setTimeout(function () {
-                    document.getElementById('alert_success').hidden = true;
-                    document.getElementById('content_aSuccess').innerHTML = '';
-                }, 3000)
-            } else {
-                document.getElementById('alert_warning').hidden = false;
-                document.getElementById('content_aWarning').innerHTML = 'Password is in correct!';
-                setTimeout(function () {
-                    document.getElementById('alert_warning').hidden = true;
-                }, 3000)
-            }
-            break;
-        } else if (i == arr_account.length - 1) {
-            document.getElementById('alert_warning').hidden = false;
-            document.getElementById('content_aWarning').innerHTML = 'Account is in correct!';
-            setTimeout(function () {
-                document.getElementById('alert_warning').hidden = true;
-            }, 3000)
-        };
     }
 };
 
@@ -451,7 +409,7 @@ function play(topic) {
 
         if (kq == topic[i].correctAnswer) {
             score++;
-            arr_account[iAcc].score++;
+            currentUser.score++;
             document.getElementById("recent_result").hidden = false;
             document.getElementById("recent_result").innerHTML = 'Correct';
             document.getElementById("correct_answer").hidden = true;
@@ -488,19 +446,19 @@ function play(topic) {
         i = 0;
         document.getElementById('answer').hidden = true;
         document.getElementById('result').hidden = false;
-        document.getElementById('result').innerHTML = "Diem cua ban la : " + arr_account[iAcc].score;
+        document.getElementById('result').innerHTML = "Diem cua ban la : " + currentUser.score;
         document.getElementById('question').innerHTML = "Result"
     };
     doihint = () => {
-        document.getElementById("score").innerHTML = "Diem cua ban la : " + arr_account[iAcc].score;
+        document.getElementById("score").innerHTML = "Diem cua ban la : " + currentUser.score;
         if (topic[i].hint) {
             if (score > 0) {
                 alert(topic[i].hint);
                 score -= 0.5;
 
-            } else if (score < 0.5 && arr_account[iAcc].score < 0.5) {
+            } else if (score < 0.5 && currentUser.score < 0.5) {
                 alert("ban khong du diem ");
-            } else if (arr_account[iAcc].score > 0) {
+            } else if (currentUser.score > 0) {
                 alert(topic[i].hint);
                 score -= 0.5;
             }
