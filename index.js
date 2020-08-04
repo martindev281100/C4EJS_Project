@@ -238,12 +238,50 @@ let admin_authorized = function () {
     questionListNav.hidden = false;
 }
 
-let arr_account = [{
-    'full_name': 'a',
-    'email': 'a',
-    'password': 'a',
-    score: 10
-}];
+// Account
+let arr_account = [
+    {
+        full_name: 'a',
+        email: 'a',
+        password: 'a',
+        score: 0
+    }
+];
+
+
+
+
+
+// const btn_updateAcc = document.getElementById('btn_updateAcc')
+// btn_updateAcc.addEventListener('click', function () {
+//     let password = prompt('Enter password: ');
+//     if (password == arr_account[iAcc].password) {
+//         document.getElementById('input_pName').readOnly = false;
+//         document.getElementById('input_pEmail').readOnly = false;
+//         btn_editInfo.hidden = false;
+//         btn_updateAcc.hidden = true;
+//     } else {
+//         let alert_warning = document.getElementById('alert_warning');
+//         let content_aWarning = document.getElementById('content_aWarning')
+//         content_aWarning.innerHTML = 'Password is incorrect!';
+//         alert_warning.hidden = false;
+//         setTimeout(function () {
+//             alert_warning.hidden = true;
+//         }, 3000)
+//     }
+// })
+// const btn_editInfo = document.getElementById('btn_editInfo');
+// btn_editInfo.addEventListener('click', function () {
+//     arr_account[iAcc].full_name = document.getElementById('input_pName').value;
+//     arr_account[iAcc].email = document.getElementById('input_pEmail').value;
+//     arr_account[iAcc].password = document.getElementById('input_pPassword').value;
+//     document.getElementById('alert_success').hidden = false;
+//     document.getElementById('content_aSuccess').innerHTML = 'Your account has been changed!';
+//     setTimeout(function () {
+//         document.getElementById('alert_success').hidden = true;
+//         document.getElementById('content_aSuccess').innerHTML = '';
+//     }, 1000)
+// })
 
 
 
@@ -251,47 +289,6 @@ let arr_account = [{
 const btn_reg = document.getElementById('btn_reg');
 btn_reg.addEventListener('click', function () {
     validate_registration();
-})
-
-const btn_updateAcc = document.getElementById('btn_updateAcc')
-btn_updateAcc.addEventListener('click', function () {
-    let password = prompt('Enter password: ');
-    if (password == arr_account[iAcc].password) {
-        document.getElementById('input_pName').readOnly = false;
-        document.getElementById('input_pEmail').readOnly = false;
-        btn_editInfo.hidden = false;
-        btn_updateAcc.hidden = true;
-    } else {
-        let alert_warning = document.getElementById('alert_warning');
-        let content_aWarning = document.getElementById('content_aWarning')
-        content_aWarning.innerHTML = 'Password is incorrect!';
-        alert_warning.hidden = false;
-        setTimeout(function () {
-            alert_warning.hidden = true;
-        }, 3000)
-    }
-})
-const btn_editInfo = document.getElementById('btn_editInfo');
-btn_editInfo.addEventListener('click', function () {
-    arr_account[iAcc].full_name = document.getElementById('input_pName').value;
-    arr_account[iAcc].email = document.getElementById('input_pEmail').value;
-    arr_account[iAcc].password = document.getElementById('input_pPassword').value;
-    document.getElementById('alert_success').hidden = false;
-    document.getElementById('content_aSuccess').innerHTML = 'Your account has been changed!';
-    setTimeout(function () {
-        document.getElementById('alert_success').hidden = true;
-        document.getElementById('content_aSuccess').innerHTML = '';
-    }, 1000)
-})
-
-
-const btn_formGreeting = document.getElementById('form_greeting')
-btn_formGreeting.addEventListener('click', function () {
-    if (document.getElementById('form_profile').hidden == false) {
-        document.getElementById('form_profile').hidden = true
-    } else {
-        document.getElementById('form_profile').hidden = false
-    }
 })
 
 let validate_registration = function () {
