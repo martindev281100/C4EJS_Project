@@ -176,9 +176,8 @@ homeNav.onclick = function () {
 function addItemTopic() {
     let newTopic = document.getElementById("new-topic").value;
     let newTopicDescription = document.getElementById("new-topic-description").value;
-    if (newTopic.trim() == '') {
-        alertWarning('Please enter topic name!');
-    } else {
+    if (newTopic.trim() == '') alertWarning('Please enter topic name!');
+    else {
         $("#add-topic").modal("hide");
         document.getElementById("new-topic").value = "";
         topics[newTopic] = [];
@@ -206,6 +205,7 @@ function addItemTopic() {
 let authorized = false;
 let logOut = false;
 let logIn = false;
+let currentUser;
 
 // Authorize
 let user_authorized = function () {
@@ -239,24 +239,22 @@ let admin_authorized = function () {
 }
 
 // Login
-let currentUser;
 function logInFunction() {
     let id = document.getElementById("input-id").value;
     let password = document.getElementById("input-password").value;
     let check = false;
-    for (let i = 0; i < arr_account.length; i ++) {
+    for (let i = 0; i < accounts.length; i ++) {
         if (id == 'admin' && password == "1234") {
             admin_authorized();
             check = true;
-            currentUser = arr_account[0];
+            currentUser = accounts[0];
         }
-        else if (id == arr_account[i].full_name && password == arr_account[i].password) {
+        else if (id == accounts[i].id && password == accounts[i].password) {
             user_authorized();
             check = true;
-            iAcc = i;
-            currentUser = arr_account[i];
+            currentUser = accounts[i];
         }
-        else if (id == arr_account[i].full_name && password != arr_account[i].password) {
+        else if (id == accounts[i].id && password != accounts[i].password) {
             alertWarning('Password is incorrect!');
             return;
         }
@@ -269,19 +267,19 @@ function logInFunction() {
         loginButton.hidden = true;
         alertSuccess('Login Successfully!');
     } 
-    else alertWarning('Account is in correct!');
+    else alertWarning('Account is incorrect!');
 }
 
 // Accounts
-let arr_account = [
+let accounts = [
     {
-        full_name: 'admin',
+        id: 'admin',
         email: 'admin@gmail.com',
         password: '1234',
         score: 0
     },
     {
-        full_name: 'a',
+        id: 'a',
         email: 'a@gmail.com',
         password: 'a',
         score: 0
@@ -296,7 +294,7 @@ function editProfile() {
 // const btn_updateAcc = document.getElementById('btn_updateAcc')
 // btn_updateAcc.addEventListener('click', function () {
 //     let password = prompt('Enter password: ');
-//     if (password == arr_account[iAcc].password) {
+//     if (password == currentUser.password) {
 //         document.getElementById('input_pName').readOnly = false;
 //         document.getElementById('input_pEmail').readOnly = false;
 //         btn_editInfo.hidden = false;
@@ -313,9 +311,9 @@ function editProfile() {
 // })
 // const btn_editInfo = document.getElementById('btn_editInfo');
 // btn_editInfo.addEventListener('click', function () {
-//     arr_account[iAcc].full_name = document.getElementById('input_pName').value;
-//     arr_account[iAcc].email = document.getElementById('input_pEmail').value;
-//     arr_account[iAcc].password = document.getElementById('input_pPassword').value;
+//     currentUser.id = document.getElementById('input_pName').value;
+//     currentUser.email = document.getElementById('input_pEmail').value;
+//     currentUser.password = document.getElementById('input_pPassword').value;
 //     document.getElementById('alert_success').hidden = false;
 //     document.getElementById('content_aSuccess').innerHTML = 'Your account has been changed!';
 //     setTimeout(function () {
@@ -339,18 +337,18 @@ let validate_registration = function () {
     var input_cPassword = document.getElementById('input_cPassword').value;
 
     const newObj = {
-        'full_name': input_fName,
+        'id': input_fName,
         'email': input_email,
         'password': input_cPassword,
     }
     if (input_email.trim() == "" || input_fName.trim() == "" || input_cPassword.trim() == "" || input_regPassword.trim() == "") {
         alertWarning('All form must be filled out!');
     } else if (input_regPassword != input_cPassword) {
-        alertWarning('Password must be match!');
+        alertWarning("Password doesn't match!");
     } else {
         if (reg == true) {
-            arr_account.push(newObj);
-            alertSuccess('Registration success !');
+            accounts.push(newObj);
+            alertSuccess('Register successfully!');
             document.getElementById('register-form').reset();
             document.getElementById("redirect-to-login").onclick();
         }
@@ -373,9 +371,9 @@ let iAcc;
 let reg = false;
 let checkReg = function () {
     let idRegister = document.getElementById("input_email").value;
-    for (let i in arr_account) {
-        if (arr_account[i].email == idRegister) {
-            alertWarning('Account has been existed !');
+    for (let i in accounts) {
+        if (accounts[i].email == idRegister) {
+            alertWarning('This email has been used!');
             reg = false;
             break;
         } else {
@@ -417,7 +415,7 @@ function play(topic) {
 
         if (kq == topic[i].correctAnswer) {
             score++;
-            arr_account[iAcc].score++;
+            currentUser.score++;
             document.getElementById("recent_result").hidden = false;
             document.getElementById("recent_result").innerHTML = 'Correct';
             document.getElementById("correct_answer").hidden = true;
@@ -454,19 +452,19 @@ function play(topic) {
         i = 0;
         document.getElementById('answer').hidden = true;
         document.getElementById('result').hidden = false;
-        document.getElementById('result').innerHTML = "Diem cua ban la : " + arr_account[iAcc].score;
+        document.getElementById('result').innerHTML = "Diem cua ban la : " + currentUser.score;
         document.getElementById('question').innerHTML = "Result"
     };
     doihint = () => {
-        document.getElementById("score").innerHTML = "Diem cua ban la : " + arr_account[iAcc].score;
+        document.getElementById("score").innerHTML = "Diem cua ban la : " + currentUser.score;
         if (topic[i].hint) {
             if (score > 0) {
                 alert(topic[i].hint);
                 score -= 0.5;
 
-            } else if (score < 0.5 && arr_account[iAcc].score < 0.5) {
+            } else if (score < 0.5 && currentUser.score < 0.5) {
                 alert("ban khong du diem ");
-            } else if (arr_account[iAcc].score > 0) {
+            } else if (currentUser.score > 0) {
                 alert(topic[i].hint);
                 score -= 0.5;
             }
