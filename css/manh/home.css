@@ -84,3 +84,8 @@
 .half {
   height: 450px;
 }
+.caption {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 15px;
+  letter-spacing: .2em;
+}
