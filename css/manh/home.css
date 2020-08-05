@@ -71,7 +71,7 @@
 
 
 
-/* .site-half .img-bg-1 {
+.site-half .img-bg-1 {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -84,10 +84,8 @@
   right: 0;
 }
 .site-wrap {
-  margin: 0 auto;
+  margin: 100px auto;
   overflow: hidden;
   position: relative;
-  -webkit-box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
-  box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
   background: #fff;
-} */
+}
