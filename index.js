@@ -23,7 +23,6 @@ function showTable() {
         showItems(arr);
     }
 }
-showTable();
 
 document.getElementById("select_topic").onchange = function () {
     let topic_title = document.getElementById("select_topic").value;
@@ -74,6 +73,7 @@ function showItems(arr) {
     let tableBody = document.getElementById("table_body");
     let tableRow = document.createElement("tr");
     for (let i = 0; i < 4; i++) {
+        if (i == 3 && currentUser.id != "admin") break;
         let tableDetail = document.createElement("td");
         if (i == 2) tableDetail.innerHTML = arr[i].join(", ");
         else tableDetail.innerHTML = arr[i];
@@ -93,41 +93,43 @@ function showItems(arr) {
         }
         tableRow.appendChild(tableDetail);
     }
-
-    let tableDetail = document.createElement("td");
-    tableDetail.classList.add("col_action");
-
-    let buttonUpdate = document.createElement("button");
-    buttonUpdate.innerHTML = "Update";
-    buttonUpdate.onclick = function () {
-        let i = buttonUpdate.parentNode.parentNode.rowIndex;
-        tableBody.rows[i - 1].contentEditable = "true";
-        tableBody.rows[i - 1].onfocusout = function () {
-            tableBody.rows[i - 1].contentEditable = "false";
-            topic[i - 2].question = tableBody.rows[i - 1].cells[0].innerHTML;
-            topic[i - 2].correctAnswer = tableBody.rows[i - 1].cells[1].innerHTML;
-            topic[i - 2].wrongAnswers = tableBody.rows[i - 1].cells[2].innerHTML;
-            topic[i - 2].hint = tableBody.rows[i - 1].cells[3].innerHTML;
+    if(currentUser.id == "admin") {
+        let tableDetail = document.createElement("td");
+        tableDetail.classList.add("col_action");
+    
+        let buttonUpdate = document.createElement("button");
+        buttonUpdate.innerHTML = "Update";
+        buttonUpdate.onclick = function () {
+            let i = buttonUpdate.parentNode.parentNode.rowIndex;
+            tableBody.rows[i - 1].contentEditable = "true";
+            tableBody.rows[i - 1].onfocusout = function () {
+                tableBody.rows[i - 1].contentEditable = "false";
+                topic[i - 2].question = tableBody.rows[i - 1].cells[0].innerHTML;
+                topic[i - 2].correctAnswer = tableBody.rows[i - 1].cells[1].innerHTML;
+                topic[i - 2].wrongAnswers = tableBody.rows[i - 1].cells[2].innerHTML;
+                topic[i - 2].hint = tableBody.rows[i - 1].cells[3].innerHTML;
+            }
         }
+        buttonUpdate.classList.add("btn-warning");
+        buttonUpdate.classList.add("btn");
+        buttonUpdate.classList.add("btn_update");
+    
+        let buttonDelete = document.createElement("button");
+        buttonDelete.innerHTML = "Delete";
+        buttonDelete.onclick = function () {
+            let i = buttonDelete.parentNode.parentNode.rowIndex;
+            tableBody.deleteRow(i - 1);
+            topic.splice(i - 2, 1);
+        };
+        buttonDelete.classList.add("btn-danger");
+        buttonDelete.classList.add("btn");
+        buttonDelete.classList.add("btn_delete");
+    
+        tableDetail.appendChild(buttonUpdate);
+        tableDetail.appendChild(buttonDelete);
+        tableRow.appendChild(tableDetail);
     }
-    buttonUpdate.classList.add("btn-warning");
-    buttonUpdate.classList.add("btn");
-    buttonUpdate.classList.add("btn_update");
 
-    let buttonDelete = document.createElement("button");
-    buttonDelete.innerHTML = "Delete";
-    buttonDelete.onclick = function () {
-        let i = buttonDelete.parentNode.parentNode.rowIndex;
-        tableBody.deleteRow(i - 1);
-        topic.splice(i - 2, 1);
-    };
-    buttonDelete.classList.add("btn-danger");
-    buttonDelete.classList.add("btn");
-    buttonDelete.classList.add("btn_delete");
-
-    tableDetail.appendChild(buttonUpdate);
-    tableDetail.appendChild(buttonDelete);
-    tableRow.appendChild(tableDetail);
     tableBody.appendChild(tableRow);
 }
 
@@ -204,54 +206,28 @@ function addItemTopic() {
 }
 
 // Status 
-let authorized = false;
-let logOut = false;
+let logOut = true;
 let logIn = false;
 let currentUser;
 
 // Login
-let user_authorized = function () {
-    // document.getElementById("col_action_title").hidden = true;
-    // document.getElementById('col_hint_title').hidden = true;
-    // for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
-    //     document.getElementsByClassName('col_hint')[i].hidden = true;
-    //     document.getElementsByClassName('col_action')[i].hidden = true;
-    // }
-    // document.getElementsByClassName('col_hint').style.display = "none";
-    // document.getElementsByClassName('col_action').style.display = "none";
-    document.getElementById("col_action_title").style.display = "none";
-    document.getElementById('col_hint_title').style.display = "none";
-    // for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
-    //     document.getElementsByClassName('col_hint')[i].style.display = "none";
-    //     document.getElementsByClassName('col_action')[i].style.display = "none";
-    // }
-    document.getElementById("btn_add_question").hidden = true;
-    document.getElementById("btn_add_topic").hidden = true;
-    homeNav.onclick();
-}
-
-let admin_authorized = function () {
-    document.getElementById("col_action_title").hidden = false;
-    document.getElementById('col_hint_title').hidden = false;
-    for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
-        document.getElementsByClassName('col_hint')[i].hidden = false;
-        document.getElementsByClassName('col_action')[i].hidden = false;
-    }
-    document.getElementById("btn_add_question").hidden = false;
-    document.getElementById("btn_add_topic").hidden = false;
-}
-
 function logInFunction() {
     let id = document.getElementById("input-id").value;
     let password = document.getElementById("input-password").value;
     for (let i = 0; i < accounts.length; i++) {
         if (id == 'admin' && password == "1234") {
-            admin_authorized();
+            document.getElementById("btn_add_question").hidden = false;
+            document.getElementById("btn_add_topic").hidden = false;
             logIn = true;
+            logOut = false;
             currentUser = accounts[0];
         } else if (id == accounts[i].id && password == accounts[i].password) {
-            user_authorized();
+            document.getElementById("col_action_title").style.display = "none";
+            document.getElementById('col_hint_title').style.display = "none";
+            document.getElementById("btn_add_question").hidden = true;
+            document.getElementById("btn_add_topic").hidden = true;
             logIn = true;
+            logOut = false;
             currentUser = accounts[i];
         } else if (id == accounts[i].id && password != accounts[i].password) {
             alertWarning('Password is incorrect!');
@@ -259,6 +235,7 @@ function logInFunction() {
         }
     }
     if (logIn) {
+        showTable();
         id.value = "";
         password.value = "";
         document.getElementById('user-form').hidden = false;
