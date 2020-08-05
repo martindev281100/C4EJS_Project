@@ -60,6 +60,7 @@ function addItem() {
     if (data.question.trim() == '' || data.wrongAnswers.trim() == '' || data.correctAnswer.trim() == '') {
         alertWarning('Some field is missing!');
     } else {
+        document.getElementById("add-question-form").reset();
         $("#add-question").modal("hide");
         data.wrongAnswers = data.wrongAnswers.split(", ");
         currentTopic.push(data);
@@ -182,6 +183,7 @@ function addItemTopic() {
     let newTopicDescription = document.getElementById("new-topic-description").value;
     if (newTopic.trim() == '') alertWarning('Please enter topic name!');
     else {
+        document.getElementById("add-topic-form").reset();
         $("#add-topic").modal("hide");
         document.getElementById("new-topic").value = "";
         topics[newTopic] = [];

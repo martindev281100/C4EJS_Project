@@ -141,19 +141,16 @@ body {
   background-color: #71bc42;
   color: #ffffff;
 }
-/* .col_hint {
-  display: none;
-}
-.col_action {
-  display: none;
-} */
+
 #nav-bar {
   height: 10%;
 }
 #quizz-modal .modal-dialog {
-  width: 1000px !important;
+  width: 1200px !important;
+  height: 700px !important;
   margin: auto;
 }
 .modal-dialog {
-  max-width: 1000px !important;
+  max-width: 1200px !important;
+  max-height: 700px !important;
 }
