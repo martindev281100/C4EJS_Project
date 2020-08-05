@@ -221,6 +221,7 @@ function logInFunction() {
             logIn = true;
             logOut = false;
             currentUser = accounts[0];
+            break;
         } else if (id == accounts[i].id && password == accounts[i].password) {
             document.getElementById("col_action_title").style.display = "none";
             document.getElementById('col_hint_title').style.display = "none";
@@ -229,6 +230,7 @@ function logInFunction() {
             logIn = true;
             logOut = false;
             currentUser = accounts[i];
+            break;
         } else if (id == accounts[i].id && password != accounts[i].password) {
             alertWarning('Password is incorrect!');
             return;
@@ -262,6 +264,43 @@ let accounts = [{
         score: 0
     }
 ];
+
+// Register
+let reg = false;
+let registerFunction = function () {
+    let idRegister = document.getElementById("input_email").value;
+    for (let i in accounts) {
+        if (accounts[i].email == idRegister) {
+            alertWarning('This email has been used!');
+            reg = false;
+            break;
+        } else {
+            reg = true;
+        }
+    }
+    var input_fName = document.getElementById('input_fName').value;
+    var input_email = document.getElementById('input_email').value;
+    var input_regPassword = document.getElementById('input_regPassword').value;
+    var input_cPassword = document.getElementById('input_cPassword').value;
+
+    const newObj = {
+        'id': input_fName,
+        'email': input_email,
+        'password': input_cPassword,
+    }
+    if (input_email.trim() == "" || input_fName.trim() == "" || input_cPassword.trim() == "" || input_regPassword.trim() == "") {
+        alertWarning('All form must be filled out!');
+    } else if (input_regPassword != input_cPassword) {
+        alertWarning("Password doesn't match!");
+    } else {
+        if (reg == true) {
+            accounts.push(newObj);
+            alertSuccess('Register successfully!');
+            document.getElementById('register-form').reset();
+            document.getElementById("redirect-to-login").onclick();
+        }
+    }
+};
 
 function editProfile() {
     // document.getElementById("input-name").value = ;
@@ -299,39 +338,6 @@ function editProfile() {
 //     }, 1000)
 // })
 
-
-
-
-const btn_reg = document.getElementById('btn_reg');
-btn_reg.addEventListener('click', function () {
-    validate_registration();
-})
-
-let validate_registration = function () {
-    var input_fName = document.getElementById('input_fName').value;
-    var input_email = document.getElementById('input_email').value;
-    var input_regPassword = document.getElementById('input_regPassword').value;
-    var input_cPassword = document.getElementById('input_cPassword').value;
-
-    const newObj = {
-        'id': input_fName,
-        'email': input_email,
-        'password': input_cPassword,
-    }
-    if (input_email.trim() == "" || input_fName.trim() == "" || input_cPassword.trim() == "" || input_regPassword.trim() == "") {
-        alertWarning('All form must be filled out!');
-    } else if (input_regPassword != input_cPassword) {
-        alertWarning("Password doesn't match!");
-    } else {
-        if (reg == true) {
-            accounts.push(newObj);
-            alertSuccess('Register successfully!');
-            document.getElementById('register-form').reset();
-            document.getElementById("redirect-to-login").onclick();
-        }
-    }
-}
-
 chonchude = function () {
     document.getElementById("chude").style.display = 'block';
 }
@@ -341,26 +347,10 @@ chonchude = function () {
 //     document.getElementById("formGame").style.display = 'none';
 // }
 
-var out = false;
-let userscore = 0;
-let login = false;
-let iAcc;
-let reg = false;
-let checkReg = function () {
-    let idRegister = document.getElementById("input_email").value;
-    for (let i in accounts) {
-        if (accounts[i].email == idRegister) {
-            alertWarning('This email has been used!');
-            reg = false;
-            break;
-        } else {
-            reg = true;
-        }
-    }
-};
+
 
 function logOutFunction() {
-    login = false;
+    logIn = false;
     stop();
     document.getElementById("login-button").hidden = false;
     document.getElementById('logout-button').hidden = true;
