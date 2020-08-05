@@ -71,23 +71,16 @@
 #home-page section {
   position: relative;
 }
-
-
-.site-half .img-bg-1 {
+#home-page section .image {
   background-size: cover;
   background-position: center center;
-  background-repeat: no-repeat;
   position: absolute;
   width: 50%;
   height: 50%;
 }
-
-.site-half .img-bg-1.right {
+#home-page section .right {
   right: 0;
 }
-.site-wrap {
-  margin: 100px auto;
-  overflow: hidden;
-  position: relative;
-  background: #fff;
+.half {
+  height: 450px;
 }
