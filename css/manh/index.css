@@ -152,5 +152,8 @@ body {
 }
 .modal-dialog {
   max-width: 1200px !important;
-  max-height: 700px !important;
+  max-height: 2000px !important ;
+}
+.modal-content{
+  height: 500px !important;
 }
