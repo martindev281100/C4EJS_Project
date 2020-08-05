@@ -223,8 +223,8 @@ function logInFunction() {
             currentUser = accounts[0];
             break;
         } else if (id == accounts[i].id && password == accounts[i].password) {
-            document.getElementById("col_action_title").style.display = "none";
-            document.getElementById('col_hint_title').style.display = "none";
+            document.getElementById("col_action_title").hidden = true;
+            document.getElementById('col_hint_title').hidden = true;
             document.getElementById("btn_add_question").hidden = true;
             document.getElementById("btn_add_topic").hidden = true;
             logIn = true;
@@ -238,8 +238,7 @@ function logInFunction() {
     }
     if (logIn) {
         showTable();
-        id.value = "";
-        password.value = "";
+        document.getElementById('login-form').reset();
         document.getElementById('user-form').hidden = false;
         document.getElementById('form_greeting').hidden = false;
         document.getElementById('form_greeting').children[0].innerHTML = id;
@@ -266,40 +265,39 @@ let accounts = [{
 ];
 
 // Register
-let reg = false;
 let registerFunction = function () {
-    let idRegister = document.getElementById("input_email").value;
-    for (let i in accounts) {
-        if (accounts[i].email == idRegister) {
-            alertWarning('This email has been used!');
-            reg = false;
-            break;
-        } else {
-            reg = true;
-        }
-    }
-    var input_fName = document.getElementById('input_fName').value;
-    var input_email = document.getElementById('input_email').value;
-    var input_regPassword = document.getElementById('input_regPassword').value;
-    var input_cPassword = document.getElementById('input_cPassword').value;
-
-    const newObj = {
-        'id': input_fName,
-        'email': input_email,
-        'password': input_cPassword,
-    }
-    if (input_email.trim() == "" || input_fName.trim() == "" || input_cPassword.trim() == "" || input_regPassword.trim() == "") {
+    let newId = document.getElementById('input-register-name').value;
+    let newEmail = document.getElementById('input-register-email').value;
+    let password = document.getElementById('input-register-password').value;
+    let confirm_password = document.getElementById('input-register-confirm-password').value;
+    if (newId.trim() == "" || newEmail.trim() == "" || password.trim() == "" || confirm_password.trim() == "") {
         alertWarning('All form must be filled out!');
-    } else if (input_regPassword != input_cPassword) {
-        alertWarning("Password doesn't match!");
-    } else {
-        if (reg == true) {
-            accounts.push(newObj);
-            alertSuccess('Register successfully!');
-            document.getElementById('register-form').reset();
-            document.getElementById("redirect-to-login").onclick();
-        }
+        return;
     }
+    for (let i in accounts) {
+        if (accounts[i].id == newId) {
+            alertWarning('This id has been used!');
+            return;
+        } 
+        if (accounts[i].email == newEmail) {
+            alertWarning('This email has been used!');
+            return;
+        } 
+    }
+    if (confirm_password != password) {
+        alertWarning("Password doesn't match!");
+        return
+    }
+    let newAccount = {
+        id: newId,
+        email: newEmail,
+        password: password,
+        score: 0
+    }
+    accounts.push(newAccount);
+    alertSuccess('Register successfully!');
+    document.getElementById('register-form').reset();
+    document.getElementById("redirect-to-login").onclick();
 };
 
 function editProfile() {

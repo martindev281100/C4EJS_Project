@@ -268,16 +268,16 @@
     <div id="login-page" hidden>
         <div class="form">
             <form id="register-form" hidden>
-                <input type="text" placeholder="name" id="input_fName" />
-                <input type="text" placeholder="email address" id="input_email" />
-                <input type="password" placeholder="password" id="input_regPassword" />
-                <input type="password" placeholder="confirm password" id="input_cPassword" />
+                <input type="text" placeholder="username" id="input-register-name"/>
+                <input type="text" placeholder="email address" id="input-register-email"/>
+                <input type="password" placeholder="password" id="input-register-password"/>
+                <input type="password" placeholder="confirm password" id="input-register-confirm-password"/>
                 <button id="btn_reg" onclick="registerFunction()" type="button">CREATE</button>
                 <p class="message">Already registered? <a id="redirect-to-login" href="#">Sign In</a></p>
             </form>
             <form id="login-form">
-                <input type="text" placeholder="username" id="input-id" />
-                <input type="password" placeholder="password" id="input-password" />
+                <input type="text" placeholder="username" id="input-id"/>
+                <input type="password" placeholder="password" id="input-password"/>
                 <button onclick="logInFunction()" type="button"> LOGIN</button>
                 <p class="message">Not registered? <a id="redirect-to-register" href="#">Create an account</a></p>
             </form>
