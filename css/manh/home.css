@@ -2,7 +2,6 @@
   background: white;
   color: #ff6a00;
 }
-
 #get-in-touch-button {
   background: transparent;
   border: 2px solid white;
@@ -10,7 +9,6 @@
   padding: 1rem 3rem;
   color: white;
 }
-
 #home-page header {
   height: 700px;
   background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
@@ -18,44 +16,36 @@
   text-align: center;
   color: white;
 }
-
 #home-page header p {
   font-size: 35px;
   font-family: 'Courier New', Courier, monospace;
 }
-
 #home-page header h1 {
   font-size: 55px;
   font-family: 'Courier New', Courier, monospace;
 }
-
 #home-page footer {
   background: #3c312e;
   padding: 6rem 6rem;
   color: white;
 }
-
 #home-page footer hr {
   background: white;
 }
-
 #home-page footer h2 {
   font-size: 20px;
   font-weight: 400;
   margin-bottom: 40px;
 }
-
 #home-page footer .content {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   font-size: 15px;
   padding-bottom: 30px;
 }
-
 #home-page footer a:hover {
   color: #fff;
 }
-
 #social-list a {
   padding-top: 5px;
   font-size: 25px;
@@ -66,27 +56,22 @@
   background: rgba(255, 255, 255, 0.05);
   border-radius: 50%;
 }
-
 #social-list li {
   display: inline-block;
   text-align: center;
   margin-right: 15px;
 }
-
-#get-in-touch li {
+#home-page footer li {
   padding-bottom: 1rem;
 }
-
 #author {
   text-align: center;
   padding-top: 1rem;
 }
 
-#nav-bar {
-  height: 10%;
-}
 
-.site-half .img-bg-1 {
+
+/* .site-half .img-bg-1 {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -99,11 +84,10 @@
   right: 0;
 }
 .site-wrap {
-  max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
   -webkit-box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
   box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
   background: #fff;
-}
+} */

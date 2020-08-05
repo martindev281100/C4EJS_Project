@@ -188,20 +188,7 @@
             <p>Quizz for education</p>
             <a id="get-in-touch-button" href="#get-in-touch" class="btn">Get in touch</a>
         </header>
-        <section></section>
-        <div class="container">
-            <table id="table_ranking" class="table table-striped" hidden>
-                <thead class="background_green">
-                    <th>Name</th>
-                    <th>Score</th>
-                </thead>
-                <tbody id="tbody_ranking">
-                    
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="site-wrap">
+        <!-- <section class="site-wrap">
             <div class="site-half">
                 <div class="img-bg-1 " style="background-image: url('images/img_4.jpg');"></div>
                 <div class="container">
@@ -242,9 +229,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <footer id="get-in-touch">
+        </section> -->
+        <footer>
             <div class="row">
                 <div class="col">
                     <h2>About Us</h2>
@@ -270,9 +256,12 @@
                 </div>
             </div>
             <hr>
-            <p id="author" class="content">Copyright &copy;<script>
+            <p id="author" class="content">Copyright &copy;
+                <script>
                     document.write(new Date().getFullYear());
-                </script> All rights reserved | Equizz - Quizz for education</p>
+                </script> 
+                All rights reserved | Equizz - Quizz for education
+            </p>
         </footer>
     </div>
     
@@ -390,21 +379,7 @@
         </div>
     </div>
 
-    <!-- <div id="thuvanmay">
-        <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
-        <input type="number" name="" id="inscore">
-        <input type="button" value="doi diem" id="quay" onclick="quayso();">
-        <script>
-            document.getElementById("inscore").style.display = 'none';
-            document.getElementById("quay").style.display = 'none';
-        </script>
-    </div> -->
-
-
-
     <div class="container">
-
-
         <div id="question-list-page" hidden>
             <div class="form-group" id="ls_action">
                 <label for="select_topic">Topic: </label>
@@ -417,7 +392,7 @@
                 </select>
             </div>
 
-            <table id="question-list-page" border="1" class="table table-striped">
+            <table border="1" class="table table-striped">
                 <thead id="table_head">
                     <tr>
                         <th>Question</th>
@@ -441,6 +416,18 @@
                 </tbody>
             </table>
         </div>
+    </div>
+
+    <div class="container">
+        <table id="table_ranking" class="table table-striped" hidden>
+            <thead class="background_green">
+                <th>Name</th>
+                <th>Score</th>
+            </thead>
+            <tbody id="tbody_ranking">
+                
+            </tbody>
+        </table>
     </div>
 
     <script src="index.js"></script>

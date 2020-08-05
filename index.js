@@ -211,12 +211,20 @@ let currentUser;
 
 // Login
 let user_authorized = function () {
-    document.getElementById("col_action_title").hidden = true;
-    document.getElementById('col_hint_title').hidden = true;
-    for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
-        document.getElementsByClassName('col_hint')[i].hidden = true;
-        document.getElementsByClassName('col_action')[i].hidden = true;
-    }
+    // document.getElementById("col_action_title").hidden = true;
+    // document.getElementById('col_hint_title').hidden = true;
+    // for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
+    //     document.getElementsByClassName('col_hint')[i].hidden = true;
+    //     document.getElementsByClassName('col_action')[i].hidden = true;
+    // }
+    // document.getElementsByClassName('col_hint').style.display = "none";
+    // document.getElementsByClassName('col_action').style.display = "none";
+    document.getElementById("col_action_title").style.display = "none";
+    document.getElementById('col_hint_title').style.display = "none";
+    // for (let i = 0; i < document.getElementsByClassName('col_hint').length; i++) {
+    //     document.getElementsByClassName('col_hint')[i].style.display = "none";
+    //     document.getElementsByClassName('col_action')[i].style.display = "none";
+    // }
     document.getElementById("btn_add_question").hidden = true;
     document.getElementById("btn_add_topic").hidden = true;
     homeNav.onclick();
