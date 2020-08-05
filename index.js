@@ -143,6 +143,8 @@ let quizzNav = document.getElementById("quizz");
 let questionListNav = document.getElementById("question-list");
 let homeNav = document.getElementById("home");
 let loginButton = document.getElementById("login-button");
+let addQuestionButton = document.getElementById("btn_add_question");
+let addTopicButton = document.getElementById("btn_add_topic");
 
 loginButton.onclick = function () {
     loginPage.hidden = false;
@@ -156,6 +158,9 @@ quizzNav.onclick = function () {
     quizzPage.hidden = false;
     questionListPage.hidden = true;
     homePage.hidden = true;
+    loginPage.hidden = true;
+    addQuestionButton.hidden = true;
+    addTopicButton.hidden = true;
 };
 questionListNav.onclick = function () {
     quizzNav.classList.remove("active");
@@ -164,6 +169,10 @@ questionListNav.onclick = function () {
     quizzPage.hidden = true;
     questionListPage.hidden = false;
     homePage.hidden = true;
+    if (currentUser.id == "admin") {
+        addQuestionButton.hidden = false;
+        addTopicButton.hidden = false;
+    }
 };
 homeNav.onclick = function () {
     quizzNav.classList.remove("active");
@@ -172,6 +181,9 @@ homeNav.onclick = function () {
     quizzPage.hidden = true;
     questionListPage.hidden = true;
     homePage.hidden = false;
+    loginPage.hidden = true;
+    addQuestionButton.hidden = true;
+    addTopicButton.hidden = true;
 };
 
 // Add topic
@@ -217,8 +229,6 @@ function logInFunction() {
         if (id == 'admin' && password == "1234") {
             document.getElementById("col_action_title").hidden = false;
             document.getElementById('col_hint_title').hidden = false;
-            document.getElementById("btn_add_question").hidden = false;
-            document.getElementById("btn_add_topic").hidden = false;
             logIn = true;
             logOut = false;
             currentUser = accounts[0];
@@ -226,8 +236,6 @@ function logInFunction() {
         } else if (id == accounts[i].id && password == accounts[i].password) {
             document.getElementById("col_action_title").hidden = true;
             document.getElementById('col_hint_title').hidden = true;
-            document.getElementById("btn_add_question").hidden = true;
-            document.getElementById("btn_add_topic").hidden = true;
             logIn = true;
             logOut = false;
             currentUser = accounts[i];
