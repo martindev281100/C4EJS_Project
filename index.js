@@ -338,17 +338,6 @@ function editProfile() {
 //     }, 1000)
 // })
 
-chonchude = function () {
-    document.getElementById("chude").style.display = 'block';
-}
-// playGame = function () {
-//     document.getElementById("chude").style.display = 'block';
-//     document.getElementById("play").style.display = 'none';
-//     document.getElementById("formGame").style.display = 'none';
-// }
-
-
-
 function logOutFunction() {
     logIn = false;
     stop();
