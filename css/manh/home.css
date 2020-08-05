@@ -68,7 +68,9 @@
   text-align: center;
   padding-top: 1rem;
 }
-
+#home-page section {
+  position: relative;
+}
 
 
 .site-half .img-bg-1 {
