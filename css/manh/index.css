@@ -145,18 +145,12 @@ body {
 #nav-bar {
   height: 10%;
 }
-/* #quizz-modal .modal-dialog {
-  width: 1200px !important;
-  height: 700px !important;
-  margin: auto;
-}
-.modal-dialog {
+#quizz-modal .modal-dialog {
   max-width: 1200px !important;
-  max-height: 2000px !important ;
 }
-.modal-content{
-  height: 500px !important;
-} */
+#quizz-modal .modal-content{
+  height: 700px !important;
+}
 ::-webkit-scrollbar {
   display: none;
 }
