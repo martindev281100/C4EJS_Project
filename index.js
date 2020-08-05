@@ -467,14 +467,8 @@ function play(topic) {
 }
 btn_rank = document.getElementById('btn_rank');
 btn_rank.addEventListener('click', function () {
-    document.getElementById('table_ranking').hidden = false;
-    ranking();
-})
-
-let ranking = function(){
-    for(let i = 0; i< accounts.length; i++)
-    {
-        document.getElementById('tbody_ranking').insertAdjacentHTML('beforeend', 
-        '<tr><td>'+accounts[i].email+'</td><td>'+accounts[i].score+'</td></tr>')
+    for (let i = 0; i < accounts.length; i++) {
+        document.getElementById('tbody_ranking').insertAdjacentHTML('beforeend',
+            '<tr><td>' + accounts[i].email + '</td><td>' + accounts[i].score + '</td></tr>')
     }
-}
+})

@@ -171,7 +171,7 @@
                         <div class="dropdown-menu">
                             <a data-toggle="modal" data-target="#edit-profile" class="dropdown-item" href="#"><i
                                     class="icon fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile</a>
-                            <a class="dropdown-item" href="#" id="btn_rank"><i class="icon fa fa-bar-chart"
+                            <a class="dropdown-item" href="#" id="btn_rank" data-toggle="modal" data-target="#table_ranking"><i class="icon fa fa-bar-chart"
                                     aria-hidden="true"></i>Rank</a>
                             <a id="logout-button" class="dropdown-item" href="#" onclick="logOutFunction()"><i
                                     class="icon fa fa-sign-out" aria-hidden="true"></i> Log out</a>
@@ -190,15 +190,33 @@
         </header>
         <section></section>
         <div class="container">
-            <table id="table_ranking" class="table table-striped" hidden>
-                <thead class="background_green">
-                    <th>Name</th>
-                    <th>Score</th>
-                </thead>
-                <tbody id="tbody_ranking">
-                    
-                </tbody>
-            </table>
+            <div class="modal fade" id="table_ranking">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Ranking</h4>
+                            <button class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <form class="modal-body">
+                            <table  class="table table-striped">
+                                <thead class="background_green">
+                                    <th>Name</th>
+                                    <th>Score</th>
+                                </thead>
+                                <tbody id="tbody_ranking">
+                                    
+                                </tbody>
+                            </table>
+                        </form>
+
+                        <div class="modal-footer">
+                            <!-- <button id="btn_item_add_topic" class="btn btn-success" onclick="addItemTopic()">Add
+                                Item</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div class="site-wrap">
