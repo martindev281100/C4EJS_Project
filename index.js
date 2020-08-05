@@ -156,7 +156,6 @@ quizzNav.onclick = function () {
     quizzPage.hidden = false;
     questionListPage.hidden = true;
     homePage.hidden = true;
-    loginPage.hidden = true;
 };
 questionListNav.onclick = function () {
     quizzNav.classList.remove("active");
@@ -165,7 +164,6 @@ questionListNav.onclick = function () {
     quizzPage.hidden = true;
     questionListPage.hidden = false;
     homePage.hidden = true;
-    loginPage.hidden = true;
 };
 homeNav.onclick = function () {
     quizzNav.classList.remove("active");
@@ -174,7 +172,6 @@ homeNav.onclick = function () {
     quizzPage.hidden = true;
     questionListPage.hidden = true;
     homePage.hidden = false;
-    loginPage.hidden = true;
 };
 
 // Add topic
@@ -212,12 +209,14 @@ let logOut = true;
 let logIn = false;
 let currentUser;
 
-// Login
+// Log in
 function logInFunction() {
     let id = document.getElementById("input-id").value;
     let password = document.getElementById("input-password").value;
     for (let i = 0; i < accounts.length; i++) {
         if (id == 'admin' && password == "1234") {
+            document.getElementById("col_action_title").hidden = false;
+            document.getElementById('col_hint_title').hidden = false;
             document.getElementById("btn_add_question").hidden = false;
             document.getElementById("btn_add_topic").hidden = false;
             logIn = true;
@@ -239,7 +238,9 @@ function logInFunction() {
         }
     }
     if (logIn) {
+        homeNav.onclick();
         showTable();
+        loginPage.hidden = true;
         document.getElementById('login-form').reset();
         document.getElementById('user-form').hidden = false;
         document.getElementById('form_greeting').hidden = false;
@@ -302,48 +303,59 @@ let registerFunction = function () {
     document.getElementById("redirect-to-login").onclick();
 };
 
+// Edit profile
+function confirmEditProfile() {
+    let password = prompt('Enter password: ');
+    if (password == currentUser.password) {
+        document.getElementById("input-edit-id").value = currentUser.id;
+        document.getElementById("input-edit-email").value = currentUser.email;
+        document.getElementById("input-edit-password").value = currentUser.password;
+        $("#edit-profile").modal("show");
+    }
+    else alertWarning('Password is incorrect!');
+}
+document.getElementById("input-edit-password").onfocus = function () {
+    document.getElementById("confirm-edit-password").hidden = false;
+}
 function editProfile() {
-    // document.getElementById("input-name").value = ;
+    let newId = document.getElementById('input-edit-id').value;
+    let newEmail = document.getElementById('input-edit-email').value;
+    for (let i in accounts) {
+        if (accounts[i].id == newId && newId != currentUser.id) {
+            alertWarning('This id has been used!');
+            return;
+        } 
+        if (accounts[i].email == newEmail && newEmail != currentUser.email) {
+            alertWarning('This email has been used!');
+            return;
+        } 
+    }
+    let password = document.getElementById("input-edit-password").value;
+    let confirm_password = document.getElementById("input-edit-confirm-password").value;
+    if (password != confirm_password && !document.getElementById("confirm-edit-password").hidden) {
+        alertWarning("Password doesn't match");
+        return;
+    }
+    currentUser.id = newId;
+    currentUser.email = newEmail;
+    currentUser.password = password;
+    alertSuccess('Your account has been changed!');
+    document.getElementById('edit-profile-form').reset();
+    document.getElementById("confirm-edit-password").hidden = true;
+    $("#edit-profile").modal("hide");
 }
 
-
-// const btn_updateAcc = document.getElementById('btn_updateAcc')
-// btn_updateAcc.addEventListener('click', function () {
-//     let password = prompt('Enter password: ');
-//     if (password == currentUser.password) {
-//         document.getElementById('input_pName').readOnly = false;
-//         document.getElementById('input_pEmail').readOnly = false;
-//         btn_editInfo.hidden = false;
-//         btn_updateAcc.hidden = true;
-//     } else {
-//         let alert_warning = document.getElementById('alert_warning');
-//         let content_aWarning = document.getElementById('content_aWarning')
-//         content_aWarning.innerHTML = 'Password is incorrect!';
-//         alert_warning.hidden = false;
-//         setTimeout(function () {
-//             alert_warning.hidden = true;
-//         }, 3000)
-//     }
-// })
-// const btn_editInfo = document.getElementById('btn_editInfo');
-// btn_editInfo.addEventListener('click', function () {
-//     currentUser.id = document.getElementById('input_pName').value;
-//     currentUser.email = document.getElementById('input_pEmail').value;
-//     currentUser.password = document.getElementById('input_pPassword').value;
-//     document.getElementById('alert_success').hidden = false;
-//     document.getElementById('content_aSuccess').innerHTML = 'Your account has been changed!';
-//     setTimeout(function () {
-//         document.getElementById('alert_success').hidden = true;
-//         document.getElementById('content_aSuccess').innerHTML = '';
-//     }, 1000)
-// })
-
+// Log out
 function logOutFunction() {
     logIn = false;
-    stop();
+    logOut = true;
+    currentUser = undefined;
+    homeNav.onclick();
     document.getElementById("login-button").hidden = false;
-    document.getElementById('logout-button').hidden = true;
-    document.getElementById('quizz-page').hidden = true;
+    questionListNav.hidden = true;
+    questionListPage.hidden = true;
+    document.getElementById("user-form").hidden = true;
+    document.getElementById("form_greeting").hidden = true;
 };
 
 // Play quizz

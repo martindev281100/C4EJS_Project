@@ -145,7 +145,7 @@ body {
 #nav-bar {
   height: 10%;
 }
-#quizz-modal .modal-dialog {
+/* #quizz-modal .modal-dialog {
   width: 1200px !important;
   height: 700px !important;
   margin: auto;
@@ -156,4 +156,7 @@ body {
 }
 .modal-content{
   height: 500px !important;
+} */
+::-webkit-scrollbar {
+  display: none;
 }
