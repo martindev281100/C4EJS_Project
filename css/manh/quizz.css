@@ -18,14 +18,14 @@
 }
 .modal-button {
     position: absolute;
-    right: 20px;
+    right: 10px;
 }
-#pause-button {
+/* #pause-button {
     right: 1160px !important;
 }
 #play-button {
     right: 1120px !important;
-}
+} */
 #quizz-modal .modal-title {
     width: 1000px;
     text-align: center;
@@ -33,15 +33,25 @@
 }
 #space {
     height: 60%;
+    padding-bottom: 15px;
 }
 #clock {
     width: 20%;
-    
+    display: inline-block;
+    /* vertical-align: middle; */
 }
 #hint {
+    width: 60%;
     display: inline-block;
+    background: white;
+    height: 100%;
 }
 #result {
-    width: 20%;
     display: inline-block;
+}
+#clock-content {
+    width: 200px;
+    height: 200px;
+    background: blue;
+    border-radius: 50%;
 }
