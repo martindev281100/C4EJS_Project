@@ -453,6 +453,6 @@ btn_rank = document.getElementById('btn_rank');
 btn_rank.addEventListener('click', function () {
     for (let i = 0; i < accounts.length; i++) {
         document.getElementById('tbody_ranking').insertAdjacentHTML('beforeend',
-            '<tr><td>' + accounts[i].email + '</td><td>' + accounts[i].score + '</td></tr>')
+            '<tr><td>' + (i+1) + '</td><td>' + accounts[i].email + '</td><td>' + accounts[i].score + '</td></tr>')
     }
 })
