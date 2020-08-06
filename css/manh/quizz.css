@@ -1,3 +1,47 @@
 /* #quizz-page {
     background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
 } */
+#quizz-modal .modal-dialog {
+    max-width: 1200px !important;
+}
+#quizz-modal .modal-content{
+    height: 700px !important;
+}
+#quizz-modal .modal-header {
+    background: white;
+    color: black;
+    font-family: Tahoma, Geneva, sans-serif;
+}
+#quizz-modal .modal-body {
+    background: rgba(0, 0 ,0 , .1);
+    height: 500px;
+}
+.modal-button {
+    position: absolute;
+    right: 20px;
+}
+#pause-button {
+    right: 1160px !important;
+}
+#play-button {
+    right: 1120px !important;
+}
+#quizz-modal .modal-title {
+    width: 1000px;
+    text-align: center;
+    font-size: 20px;
+}
+#space {
+    height: 60%;
+}
+#clock {
+    width: 20%;
+    
+}
+#hint {
+    display: inline-block;
+}
+#result {
+    width: 20%;
+    display: inline-block;
+}

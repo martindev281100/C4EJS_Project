@@ -359,7 +359,7 @@ function logOutFunction() {
     logOut = true;
     currentUser = undefined;
     homeNav.onclick();
-    document.getElementById("login-button").hidden = false;
+    loginButton.hidden = false;
     questionListNav.hidden = true;
     questionListPage.hidden = true;
     document.getElementById("user-form").hidden = true;

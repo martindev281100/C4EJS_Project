@@ -4,6 +4,7 @@
 
 .col_action {
   width: 10%;
+  vertical-align: middle !important;
 }
 
 .col_hint {
@@ -145,12 +146,21 @@ body {
 #nav-bar {
   height: 10%;
 }
-#quizz-modal .modal-dialog {
-  max-width: 1200px !important;
-}
-#quizz-modal .modal-content{
-  height: 700px !important;
-}
+
 ::-webkit-scrollbar {
   display: none;
+}
+.modal-header {
+  background: #28a745;
+  color: white;
+}
+.modal-title {
+  margin: auto;
+  position: relative;
+}
+#edit-profile .modal-header {
+  background: #17a2b8;
+}
+button {
+  outline: 0;  
 }
