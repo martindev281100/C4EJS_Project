@@ -449,6 +449,8 @@ function startClock() {
     }, 1000);
 }
 function play() {
+    document.getElementById("hint-image").hidden = false;
+    document.getElementById("hint-content").innerHTML = "";
     clock.innerHTML = "10";
     startClock();
     result.innerHTML = "";
@@ -466,6 +468,16 @@ function play() {
         answers.splice(rand, 1);
     }
 }
+
+// Hint
+function showHint() {
+    let confirmHint = confirm("Would you like to spend 20pts to show hint?");
+    if (confirmHint) {
+        document.getElementById("hint-image").hidden = true;
+        document.getElementById("hint-content").innerHTML = currentTopic[currentQuestion].hint;
+    }
+}
+
 
     // doihint = () => {
     //     document.getElementById("score").innerHTML = "Diem cua ban la : " + currentUser.score;
