@@ -388,7 +388,6 @@ let tick;
 function check(answer) {
     clearInterval(tick);
     currentTime = 10;
-    result.hidden = false;
     if (answer == currentTopic[currentQuestion].correctAnswer) {
         currentScore += 10;
         result.innerHTML = `
