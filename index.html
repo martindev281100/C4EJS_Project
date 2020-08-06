@@ -282,39 +282,37 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h3 id="question" class="modal-title"></h3>
-                            <!-- <button id="play-button" class="modal-button close"><i class="fa fa-play" aria-hidden="true"></i></button>
-                            <button id="pause-button" class="modal-button close"><i class="fa fa-pause" aria-hidden="true"></i></button> -->
-                            <button id="close-button" class="modal-button close" data-dismiss="modal"><i
-                                    class="fa fa-times" aria-hidden="true"></i></button>
+                            <button id="close-button" class="modal-button close" data-dismiss="modal" onclick="stop()">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
                         </div>
 
                         <div class="modal-body">
                             <div id="space">
                                 <div id="clock" class="inline">
-                                    <div id="clock-content">69</div>
+                                    <div id="clock-content"></div>
                                 </div>
                                 <div id="hint" class="inline">
 
                                 </div>
-                                <div id="result" class="inline">
+                                <div id="score" class="inline">
 
                                 </div>
                             </div>
                             <div id="answers">
                                 <input id="answer0" type="button" class="btn btn-lg btn-primary btn-block" value=""
-                                    onclick="check(answer0.value,0);">
+                                    onclick="check(this.value);">
                                 <input id="answer1" type="button" class="btn btn-lg btn-primary btn-block" value=""
-                                    onclick="check(answer1.value,1);">
+                                    onclick="check(this.value);">
                                 <input id="answer2" type="button" class="btn btn-lg btn-primary btn-block" value=""
-                                    onclick="check(answer2.value,2);">
+                                    onclick="check(this.value);">
                                 <input id="answer3" type="button" class="btn btn-lg btn-primary btn-block" value=""
-                                    onclick="check(answer3.value,3);">
+                                    onclick="check(this.value);">
                             </div>
                         </div>
 
                         <div class="modal-footer">
-                            <span id="recent_result"></span>
-                            <span id="correct_answer">Correct Answers: <span id="score"></span></span>
+                            <span id="result"></span>
                         </div>
                     </div>
                 </div>
@@ -326,7 +324,7 @@
                         <div class="card-body">
                             <h4 class="card-title">General</h4>
                             <p class="card-text">Many types of question to test the width of your knowledge</p>
-                            <button class="btn btn-primary" onclick="play(topics.general_topic)" data-toggle="modal"
+                            <button class="btn btn-primary" onclick="chooseTopic(topics.general_topic)" data-toggle="modal"
                                 data-target="#quizz-modal">Go!</button>
                         </div>
                     </div>
@@ -338,7 +336,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Calculation</h4>
                             <p class="card-text">Let's sharpen your mind math</p>
-                            <button class="btn btn-primary" onclick="play(topics.calculation_topic)" data-toggle="modal"
+                            <button class="btn btn-primary" onclick="chooseTopic(topics.calculation_topic)" data-toggle="modal"
                                 data-target="#quizz-modal">Go!</button>
                         </div>
                     </div>
@@ -350,7 +348,7 @@
                             <h4 class="card-title">Math</h4>
                             <p class="card-text">Mathematics rightly viewed possesses not only truth but supreme beauty
                             </p>
-                            <button class="btn btn-primary" onclick="play(topics.math_topic)" data-toggle="modal"
+                            <button class="btn btn-primary" onclick="chooseTopic(topics.math_topic)" data-toggle="modal"
                                 data-target="#quizz-modal">Go!</button>
                         </div>
                     </div>
@@ -361,7 +359,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Coding</h4>
                             <p class="card-text">The sooner you start to code, the longer the program will take</p>
-                            <button class="btn btn-primary" onclick="play(topics.coding_topic)" data-toggle="modal"
+                            <button class="btn btn-primary" onclick="chooseTopic(topics.coding_topic)" data-toggle="modal"
                                 data-target="#quizz-modal">Go!</button>
                         </div>
                     </div>
@@ -373,7 +371,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Environment</h4>
                             <p class="card-text">We won't have a society if we destroy the environment</p>
-                            <button class="btn btn-primary" onclick="play(topics.environment_topic)" data-toggle="modal"
+                            <button class="btn btn-primary" onclick="chooseTopic(topics.environment_topic)" data-toggle="modal"
                                 data-target="#quizz-modal">Go!</button>
                         </div>
                     </div>

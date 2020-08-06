@@ -16,16 +16,15 @@
     background: rgba(0, 0 ,0 , .1);
     height: 500px;
 }
+#quizz-modal .modal-footer {
+    height: 60px;
+    font-size: 20px;
+    padding-right: 50px
+}
 .modal-button {
     position: absolute;
     right: 10px;
 }
-/* #pause-button {
-    right: 1160px !important;
-}
-#play-button {
-    right: 1120px !important;
-} */
 #quizz-modal .modal-title {
     width: 1000px;
     text-align: center;
@@ -58,4 +57,10 @@
 }
 .inline {
     float: left;
+}
+.check-icon-correct {
+    color: green;
+}
+.check-icon-wrong {
+    color: red;
 }
