@@ -417,6 +417,8 @@ function check(answer) {
     }
 }
 function stop() {
+    clearInterval(tick);
+    currentTime = 10;
     currentScore = 0;
     currentQuestion = 0;
     result.innerHTML = "";
