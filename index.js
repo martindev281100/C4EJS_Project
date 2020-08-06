@@ -372,6 +372,8 @@ function logOutFunction() {
     loginButton.hidden = false;
     questionListNav.hidden = true;
     questionListPage.hidden = true;
+    quizzNav.hidden = true;
+    quizzPage.hidden = true;
     document.getElementById("user-form").hidden = true;
     document.getElementById("form_greeting").hidden = true;
 };
@@ -435,9 +437,16 @@ function startClock() {
         clock.innerHTML = currentTime;
         if (currentTime == 0) {
             clearInterval(tick);
-            currentQuestion++;
+            if (currentQuestion == currentTopic.length - 1) {
+                currentQuestion = 0;
+                $("#quizz-modal").modal("hide");
+                alert("Your final score is " + currentScore);
+                currentScore = 0;
+            } else {
+                currentQuestion++;
+                setTimeout(play, 1000);
+            }
             currentTime = 10;
-            setTimeout(play, 1000);
         }
     }, 1000);
 }

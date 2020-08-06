@@ -64,3 +64,6 @@
 .check-icon-wrong {
     color: red;
 }
+.answer {
+    text-align: left !important;
+}
