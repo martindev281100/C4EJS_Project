@@ -368,7 +368,8 @@ function logOutFunction() {
 
 // Play quizz
 function play(topic) {
-    document.getElementById('answer').hidden = false;
+    
+
     let score = 0;
     let i = 0;
     let answers = [];

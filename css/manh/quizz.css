@@ -37,21 +37,25 @@
 }
 #clock {
     width: 20%;
-    display: inline-block;
-    /* vertical-align: middle; */
+    height: 100%;
 }
 #hint {
     width: 60%;
-    display: inline-block;
     background: white;
     height: 100%;
 }
-#result {
-    display: inline-block;
-}
 #clock-content {
-    width: 200px;
-    height: 200px;
-    background: blue;
+    width: 150px;
+    height: 150px;
+    background: orange;
     border-radius: 50%;
+    margin-top: 70px;
+    margin-left: 30px;
+    text-align: center;
+    padding-top: 35px;
+    font-size: 50px;
+    color: white;
+}
+.inline {
+    float: left;
 }
