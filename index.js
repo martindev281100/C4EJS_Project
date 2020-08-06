@@ -359,7 +359,7 @@ function logOutFunction() {
     logOut = true;
     currentUser = undefined;
     homeNav.onclick();
-    document.getElementById("login-button").hidden = false;
+    loginButton.hidden = false;
     questionListNav.hidden = true;
     questionListPage.hidden = true;
     document.getElementById("user-form").hidden = true;
@@ -368,8 +368,8 @@ function logOutFunction() {
 
 // Play quizz
 function play(topic) {
-    document.getElementById('answer').hidden = false;
-    document.getElementById('result').hidden = true;
+    
+
     let score = 0;
     let i = 0;
     let answers = [];
@@ -427,8 +427,8 @@ function play(topic) {
     stop = function () {
         i = 0;
         document.getElementById('answer').hidden = true;
-        document.getElementById('result').hidden = false;
-        document.getElementById('result').innerHTML = "Diem cua ban la : " + currentUser.score;
+        //document.getElementById('result').hidden = false;
+        //document.getElementById('result').innerHTML = "Diem cua ban la : " + currentUser.score;
         document.getElementById('question').innerHTML = "Result"
     };
     doihint = () => {
