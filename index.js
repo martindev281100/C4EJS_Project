@@ -400,6 +400,7 @@ let answers = document.getElementById('answers');
 let question = document.getElementById('question');
 let correct_question = 0;
 let correct_ques = document.getElementById('correct_question')
+
 function check(answer) {
     clearInterval(tick);
     currentTime = 10;
@@ -434,7 +435,7 @@ function end() {
         final_score.hidden = false;
         correct_ques.hidden = false;
         final_score.innerHTML = "Total score: " + currentScore
-        correct_ques.innerHTML = "Correct Question: "+ correct_question
+        correct_ques.innerHTML = "Correct Question: " + correct_question
         result.innerHTML = "";
         // $("#quizz-modal").modal("hide");
         // alert("Your final score is " + currentScore);
@@ -538,12 +539,23 @@ function showHint() {
 
 btn_rank = document.getElementById('btn_rank');
 btn_rank.addEventListener('click', function () {
-    quizzPage.hidden = true;
-    homePage.hidden = true;
-    table_ranking.hidden = false
-    for (let i = 0; i < accounts.length; i++) {
-        document.getElementById('tbody_ranking').insertAdjacentHTML('beforeend',
-            '<tr><td>' + (i + 1) + '</td><td>' + accounts[i].id + '</td><td>' + accounts[i].score + '</td></tr>')
+
+    if (table_ranking.hidden == true) {
+        quizzPage.hidden = true;
+        homePage.hidden = true;
+        table_ranking.hidden = false
+        console.log(accounts.length)
+        let score = 0;
+        for (let i = 0; i < accounts.length; i++) {
+            let arr_score = Object.values(accounts[i].score)
+            for(let j = 0; j < arr_score; j++)
+            {
+                score = score + arr_score[j]
+            }
+            document.getElementById('tbody_ranking').insertAdjacentHTML('beforeend',
+                '<tr><td>' + (i + 1) + '</td><td>' + accounts[i].email + '</td><td>' + score + '</td></tr>')
+        }
     }
+
 
 })
