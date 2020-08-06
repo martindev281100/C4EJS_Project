@@ -220,7 +220,7 @@ function addItemTopic() {
                     <div class="card-body">
                         <h4 class="card-title">${newTopic}</h4>
                         <p class="card-text">${newTopicDescription}</p>
-                        <button class="btn btn-primary" onclick="play(topics.${newTopic})" data-toggle="modal" data-target="#quizz-modal">Go!</button>
+                        <button class="btn btn-primary btn-play" onclick="play(topics.${newTopic})" data-toggle="modal" data-target="#quizz-modal">Go!</button>
                     </div>
                 </div>
             </div>`
@@ -231,8 +231,8 @@ function addItemTopic() {
 // Status 
 let logOut = true;
 let logIn = false;
-let currentUser;
-
+let currentUser = null;
+console.log(currentUser)
 // Log in
 function logInFunction() {
     let id = document.getElementById("input-id").value;
