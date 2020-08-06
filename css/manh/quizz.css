@@ -13,7 +13,7 @@
     font-family: Tahoma, Geneva, sans-serif;
 }
 #quizz-modal .modal-body {
-    background: rgba(0, 0 ,0 , .1);
+    background: rgba(0, 0, 0, .1);
     height: 500px;
 }
 #quizz-modal .modal-footer {
@@ -42,18 +42,24 @@
     width: 60%;
     background: white;
     height: 100%;
+    text-align: center;
+    padding-top: 70px;
+}
+#hint-button {
+    font-size: 50px;
+    color: wheat;
+    width: 300px;
 }
 #clock-content {
     width: 150px;
     height: 150px;
-    background: orange;
+    background: white;
     border-radius: 50%;
     margin-top: 70px;
     margin-left: 30px;
     text-align: center;
     padding-top: 35px;
     font-size: 50px;
-    color: white;
 }
 .inline {
     float: left;
