@@ -426,6 +426,7 @@ function end() {
         alert("Your final score is " + currentScore);
         currentTime = 10;
         currentScore = 0;
+        updateTotalScore()
     }, 1000);
 }
 function stop() {
@@ -476,6 +477,8 @@ function play() {
         currentTopic[currentQuestion].correctAnswer
     ];
     document.getElementById("question").innerHTML = currentTopic[currentQuestion].question;
+    document.getElementById("points").innerHTML = currentUser.totalScore;
+    document.getElementById("correct-answers").innerHTML = currentScore / 10;
     for (let i = 0; i < 4; i++) {
         let rand = Math.floor(Math.random() * answers.length);
         document.getElementById("answer" + i).value = answers[rand];
