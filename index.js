@@ -156,7 +156,6 @@ loginButton.onclick = function () {
     quizzPage.hidden = true;
     homePage.hidden = true;
     table_ranking.hidden = true;
-
 };
 quizzNav.onclick = function () {
     quizzNav.classList.add("active");
@@ -182,7 +181,6 @@ questionListNav.onclick = function () {
         addTopicButton.hidden = false;
     }
     table_ranking.hidden = true;
-
 };
 homeNav.onclick = function () {
     quizzNav.classList.remove("active");
@@ -195,7 +193,6 @@ homeNav.onclick = function () {
     addQuestionButton.hidden = true;
     addTopicButton.hidden = true;
     table_ranking.hidden = true;
-
 };
 
 // Add topic
@@ -231,8 +228,8 @@ function addItemTopic() {
 // Status 
 let logOut = true;
 let logIn = false;
-let currentUser = null;
-console.log(currentUser)
+let currentUser = undefined;
+
 // Log in
 function logInFunction() {
     let id = document.getElementById("input-id").value;
@@ -259,6 +256,7 @@ function logInFunction() {
     }
     if (logIn) {
         homeNav.onclick();
+        quizzNav.hidden = false;
         showTable();
         loginPage.hidden = true;
         document.getElementById('login-form').reset();
@@ -384,13 +382,13 @@ let currentQuestion = 0;
 let currentScore = 0;
 let result = document.getElementById("result");
 let clock = document.getElementById("clock-content");
-let startTime;
-let currentTime;
+let currentTime = 10;
 let tick;
 
 function check(answer) {
-    result.hidden = false;
     clearInterval(tick);
+    currentTime = 10;
+    result.hidden = false;
     if (answer == currentTopic[currentQuestion].correctAnswer) {
         currentScore += 10;
         result.innerHTML = `
@@ -430,21 +428,20 @@ function chooseTopic(topic) {
     play();
 }
 function startClock() {
-    let tick = setInterval(() => {
-        clock.innerHTML = currentTime;
+    let startTime = Math.floor(new Date() / 1000);
+    tick = setInterval(() => {
         currentTime = 10 - (Math.floor(new Date() / 1000) - startTime);
-        if (currentTime == -1) {
+        clock.innerHTML = currentTime;
+        if (currentTime == 0) {
+            clearInterval(tick);
             currentQuestion++;
             currentTime = 10;
             setTimeout(play, 1000);
-            clearInterval(tick);
         }
     }, 1000);
 }
 function play() {
-    clock.innerHTML = "";
-    startTime = Math.floor(new Date() / 1000);
-    currentTime = 10;
+    clock.innerHTML = "10";
     startClock();
     result.innerHTML = "";
     let answers = [
