@@ -367,88 +367,91 @@ function logOutFunction() {
 };
 
 // Play quizz
-function play(topic) {
-    
+let currentQuestion = 0;
+function check(answer) {
 
-    let score = 0;
-    let i = 0;
-    let answers = [];
-    run = function () {
-        answers = [topic[i].wrongAnswers[0], topic[i].wrongAnswers[1], topic[i].wrongAnswers[2], topic[i].correctAnswer];
-        document.getElementById("question").innerHTML = topic[i].question;
-        document.getElementById("score").innerHTML = score;
-        for (let j = 0; j < 4; j++) {
-            let rand = Math.floor(Math.random() * answers.length);
-            document.getElementById("answer" + j).value = answers[rand];
-            answers.splice(rand, 1);
-        }
-    }
-    run();
-    check = function (valuec, idtab) {
-        let kq = valuec;
-        let idthe = 'answer' + idtab;
-        let idtrue = 'answer';
-
-        if (kq == topic[i].correctAnswer) {
-            score++;
-            currentUser.score++;
-            document.getElementById("recent_result").hidden = false;
-            document.getElementById("recent_result").innerHTML = 'Correct';
-            document.getElementById("correct_answer").hidden = true;
-            setTimeout(() => {
-                document.getElementById("recent_result").hidden = true;
-                document.getElementById("correct_answer").hidden = false;
-            }, 1000);
-
-        } else {
-            document.getElementById("recent_result").hidden = false;
-            document.getElementById("recent_result").innerHTML = 'Wrong';
-            document.getElementById("correct_answer").hidden = true;
-
-            setTimeout(() => {
-                document.getElementById("recent_result").hidden = true;
-                document.getElementById("correct_answer").hidden = false;
-
-            }, 1000);
-
-        }
-        let endGame = setTimeout(() => {
-            if (i == topic.length) {
-
-                stop();
-                clearTimeout(reRun);
-            }
-        }, 800);
-
-
-        i++;
-        reRun = setTimeout(run, 1000);
-    }
-    stop = function () {
-        i = 0;
-        document.getElementById('answer').hidden = true;
-        //document.getElementById('result').hidden = false;
-        //document.getElementById('result').innerHTML = "Diem cua ban la : " + currentUser.score;
-        document.getElementById('question').innerHTML = "Result"
-    };
-    doihint = () => {
-        document.getElementById("score").innerHTML = "Diem cua ban la : " + currentUser.score;
-        if (topic[i].hint) {
-            if (score > 0) {
-                alert(topic[i].hint);
-                score -= 0.5;
-
-            } else if (score < 0.5 && currentUser.score < 0.5) {
-                alert("ban khong du diem ");
-            } else if (currentUser.score > 0) {
-                alert(topic[i].hint);
-                score -= 0.5;
-            }
-        } else {
-            alert("not hint");
-        }
-    };
 }
+function play(topic) {
+
+}
+// function play(topic) {
+//     let score = 0;
+//     let i = 0;
+//     let answers = [];
+//     run = function () {
+//         answers = [topic[i].wrongAnswers[0], topic[i].wrongAnswers[1], topic[i].wrongAnswers[2], topic[i].correctAnswer];
+//         document.getElementById("question").innerHTML = topic[i].question;
+//         document.getElementById("score").innerHTML = score;
+//         for (let j = 0; j < 4; j++) {
+//             let rand = Math.floor(Math.random() * answers.length);
+//             document.getElementById("answer" + j).value = answers[rand];
+//             answers.splice(rand, 1);
+//         }
+//     }
+//     run();
+    // check = function (valuec, idtab) {
+    //     let kq = valuec;
+    //     let idthe = 'answer' + idtab;
+    //     let idtrue = 'answer';
+
+    //     if (kq == topic[i].correctAnswer) {
+    //         score++;
+    //         currentUser.score++;
+    //         document.getElementById("recent_result").hidden = false;
+    //         document.getElementById("recent_result").innerHTML = 'Correct';
+    //         document.getElementById("correct_answer").hidden = true;
+    //         setTimeout(() => {
+    //             document.getElementById("recent_result").hidden = true;
+    //             document.getElementById("correct_answer").hidden = false;
+    //         }, 1000);
+
+    //     } else {
+    //         document.getElementById("recent_result").hidden = false;
+    //         document.getElementById("recent_result").innerHTML = 'Wrong';
+    //         document.getElementById("correct_answer").hidden = true;
+
+    //         setTimeout(() => {
+    //             document.getElementById("recent_result").hidden = true;
+    //             document.getElementById("correct_answer").hidden = false;
+
+    //         }, 1000);
+
+    //     }
+    //     let endGame = setTimeout(() => {
+    //         if (i == topic.length) {
+
+    //             stop();
+    //             clearTimeout(reRun);
+    //         }
+    //     }, 800);
+
+
+    //     i++;
+    //     reRun = setTimeout(run, 1000);
+    // }
+    // stop = function () {
+    //     i = 0;
+    //     document.getElementById('answer').hidden = true;
+    //     document.getElementById('question').innerHTML = "Result"
+    // };
+    // doihint = () => {
+    //     document.getElementById("score").innerHTML = "Diem cua ban la : " + currentUser.score;
+    //     if (topic[i].hint) {
+    //         if (score > 0) {
+    //             alert(topic[i].hint);
+    //             score -= 0.5;
+
+//             } else if (score < 0.5 && currentUser.score < 0.5) {
+//                 alert("ban khong du diem ");
+//             } else if (currentUser.score > 0) {
+//                 alert(topic[i].hint);
+//                 score -= 0.5;
+//             }
+//         } else {
+//             alert("not hint");
+//         }
+//     };
+// }
 btn_rank = document.getElementById('btn_rank');
 btn_rank.addEventListener('click', function () {
     for (let i = 0; i < accounts.length; i++) {
