@@ -165,10 +165,11 @@
                             <i id="user-icon" class="fa fa-user-circle-o" aria-hidden="true"></i>
                         </span>
                         <div class="dropdown-menu">
-                            <a data-target="#edit-profile" class="dropdown-item" href="#" onclick="confirmEditProfile()">
+                            <a data-target="#edit-profile" class="dropdown-item" href="#"
+                                onclick="confirmEditProfile()">
                                 <i class="icon fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile
                             </a>
-                            <a class="dropdown-item" href="#" id="btn_rank" data-toggle="modal" data-target="#table_ranking">
+                            <a class="dropdown-item" href="#" id="btn_rank">
                                 <i class="icon fa fa-bar-chart" aria-hidden="true"></i>Rank
                             </a>
                             <a id="logout-button" class="dropdown-item" href="#" onclick="logOutFunction()">
@@ -193,24 +194,31 @@
                 <div class="container">
                     <div class="row no-gutters align-items-stretch">
                         <div class="col-lg-5 ml-lg-auto py-5">
-                            <span class="caption font-weight-bold mb-2 text-uppercase d-block">Outstanding service</span>
+                            <span class="caption font-weight-bold mb-2 text-uppercase d-block">Outstanding
+                                service</span>
                             <h2 class="text-uppercase mb-5">Make learning awesome!</h2>
-                            <p>To make learning awesome! We are all about lifelong learning. We learn new skills through curiosity and play. By combining the two, in a fun and social way, we can unlock the learning potential within all of us, no matter the subject, age or ability.</p>
-                            <p>Unleashing this potential within every learner is what drives us. We do this by creating the most engaging and powerful experience </p>
+                            <p>To make learning awesome! We are all about lifelong learning. We learn new skills through
+                                curiosity and play. By combining the two, in a fun and social way, we can unlock the
+                                learning potential within all of us, no matter the subject, age or ability.</p>
+                            <p>Unleashing this potential within every learner is what drives us. We do this by creating
+                                the most engaging and powerful experience </p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="half">
-                <div class="image right" style="background-image: url('images/img_5.jpg');" >
+                <div class="image right" style="background-image: url('images/img_5.jpg');">
                 </div>
                 <div class="container">
                     <div class="row no-gutters align-items-stretch">
                         <div class="col-lg-5 mr-lg-auto py-5">
                             <span class="caption font-weight-bold mb-2 text-uppercase d-block">Easy To Use</span>
                             <h2 class="text-uppercase mb-5">Suitable for everyone!</h2>
-                            <p>Play is the first language we learn. It’s how we discover the world and understand our place in it. When we make learning fun, we make it engaging for everyone.</p>
-                            <p>Curiosity is part of human nature, and it lies at the heart of all great endeavors. It’s what turns learners into amazing leaders and keeps those leaders learning. Equizz strives to ensure that everyone has the chance to succeed.</p>
+                            <p>Play is the first language we learn. It’s how we discover the world and understand our
+                                place in it. When we make learning fun, we make it engaging for everyone.</p>
+                            <p>Curiosity is part of human nature, and it lies at the heart of all great endeavors. It’s
+                                what turns learners into amazing leaders and keeps those leaders learning. Equizz
+                                strives to ensure that everyone has the chance to succeed.</p>
                         </div>
                     </div>
                 </div>
@@ -245,25 +253,25 @@
             <p id="author" class="content">Copyright &copy;
                 <script>
                     document.write(new Date().getFullYear());
-                </script> 
+                </script>
                 All rights reserved | Equizz - Quizz for education
             </p>
         </footer>
     </div>
-    
+
     <div id="login-page" hidden>
         <div class="form">
             <form id="register-form" hidden>
-                <input type="text" placeholder="username" id="input-register-name"/>
-                <input type="text" placeholder="email address" id="input-register-email"/>
-                <input type="password" placeholder="password" id="input-register-password"/>
-                <input type="password" placeholder="confirm password" id="input-register-confirm-password"/>
+                <input type="text" placeholder="username" id="input-register-name" />
+                <input type="text" placeholder="email address" id="input-register-email" />
+                <input type="password" placeholder="password" id="input-register-password" />
+                <input type="password" placeholder="confirm password" id="input-register-confirm-password" />
                 <button id="btn_reg" onclick="registerFunction()" type="button">CREATE</button>
                 <p class="message">Already registered? <a id="redirect-to-login" href="#">Sign In</a></p>
             </form>
             <form id="login-form">
-                <input type="text" placeholder="username" id="input-id"/>
-                <input type="password" placeholder="password" id="input-password"/>
+                <input type="text" placeholder="username" id="input-id" />
+                <input type="password" placeholder="password" id="input-password" />
                 <button onclick="logInFunction()" type="button"> LOGIN</button>
                 <p class="message">Not registered? <a id="redirect-to-register" href="#">Create an account</a></p>
             </form>
@@ -279,8 +287,8 @@
                             <h3 id="question" class="modal-title"></h3>
                             <!-- <button id="play-button" class="modal-button close"><i class="fa fa-play" aria-hidden="true"></i></button>
                             <button id="pause-button" class="modal-button close"><i class="fa fa-pause" aria-hidden="true"></i></button> -->
-                            <button id="close-button" class="modal-button close" data-dismiss="modal"><i class="fa fa-times"
-                                    aria-hidden="true"></i></button>
+                            <button id="close-button" class="modal-button close" data-dismiss="modal"><i
+                                    class="fa fa-times" aria-hidden="true"></i></button>
                         </div>
 
                         <div class="modal-body">
@@ -289,10 +297,10 @@
                                     <div id="clock-content">69</div>
                                 </div>
                                 <div id="hint" class="inline">
-                                    
+
                                 </div>
                                 <div id="result" class="inline">
-                                    
+
                                 </div>
                             </div>
                             <div id="answers">
@@ -343,7 +351,8 @@
                         <img class="card-img-top" width="300" height="300" src="images/math.jpg" alt="Math topic">
                         <div class="card-body">
                             <h4 class="card-title">Math</h4>
-                            <p class="card-text">Mathematics rightly viewed possesses not only truth but supreme beauty</p>
+                            <p class="card-text">Mathematics rightly viewed possesses not only truth but supreme beauty
+                            </p>
                             <button class="btn btn-primary" onclick="play(topics.math_topic)" data-toggle="modal"
                                 data-target="#quizz-modal">Go!</button>
                         </div>
@@ -416,14 +425,14 @@
     </div>
 
     <div class="container">
-        <table id="table_ranking" class="table table-striped" hidden>
+        <table class="table table-striped" id="table_ranking" hidden>
             <thead class="background_green">
                 <th>No.</th>
                 <th>Name</th>
                 <th>Score</th>
             </thead>
             <tbody id="tbody_ranking">
-                
+
             </tbody>
         </table>
     </div>

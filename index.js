@@ -94,10 +94,10 @@ function showItems(arr) {
         }
         tableRow.appendChild(tableDetail);
     }
-    if(currentUser.id == "admin") {
+    if (currentUser.id == "admin") {
         let tableDetail = document.createElement("td");
         tableDetail.classList.add("col_action");
-    
+
         let buttonUpdate = document.createElement("button");
         buttonUpdate.innerHTML = "Update";
         buttonUpdate.onclick = function () {
@@ -114,7 +114,7 @@ function showItems(arr) {
         buttonUpdate.classList.add("btn-warning");
         buttonUpdate.classList.add("btn");
         buttonUpdate.classList.add("btn_update");
-    
+
         let buttonDelete = document.createElement("button");
         buttonDelete.innerHTML = "Delete";
         buttonDelete.onclick = function () {
@@ -125,7 +125,7 @@ function showItems(arr) {
         buttonDelete.classList.add("btn-danger");
         buttonDelete.classList.add("btn");
         buttonDelete.classList.add("btn_delete");
-    
+
         tableDetail.appendChild(buttonUpdate);
         tableDetail.appendChild(buttonDelete);
         tableRow.appendChild(tableDetail);
@@ -145,11 +145,13 @@ let homeNav = document.getElementById("home");
 let loginButton = document.getElementById("login-button");
 let addQuestionButton = document.getElementById("btn_add_question");
 let addTopicButton = document.getElementById("btn_add_topic");
-
+let table_ranking = document.getElementById('table_ranking')
 loginButton.onclick = function () {
     loginPage.hidden = false;
     quizzPage.hidden = true;
     homePage.hidden = true;
+    table_ranking.hidden = true;
+
 };
 quizzNav.onclick = function () {
     quizzNav.classList.add("active");
@@ -161,6 +163,7 @@ quizzNav.onclick = function () {
     loginPage.hidden = true;
     addQuestionButton.hidden = true;
     addTopicButton.hidden = true;
+    table_ranking.hidden = true;
 };
 questionListNav.onclick = function () {
     quizzNav.classList.remove("active");
@@ -173,6 +176,8 @@ questionListNav.onclick = function () {
         addQuestionButton.hidden = false;
         addTopicButton.hidden = false;
     }
+    table_ranking.hidden = true;
+
 };
 homeNav.onclick = function () {
     quizzNav.classList.remove("active");
@@ -184,6 +189,8 @@ homeNav.onclick = function () {
     loginPage.hidden = true;
     addQuestionButton.hidden = true;
     addTopicButton.hidden = true;
+    table_ranking.hidden = true;
+
 };
 
 // Add topic
@@ -289,11 +296,11 @@ let registerFunction = function () {
         if (accounts[i].id == newId) {
             alertWarning('This id has been used!');
             return;
-        } 
+        }
         if (accounts[i].email == newEmail) {
             alertWarning('This email has been used!');
             return;
-        } 
+        }
     }
     if (confirm_password != password) {
         alertWarning("Password doesn't match!");
@@ -319,12 +326,12 @@ function confirmEditProfile() {
         document.getElementById("input-edit-email").value = currentUser.email;
         document.getElementById("input-edit-password").value = currentUser.password;
         $("#edit-profile").modal("show");
-    }
-    else alertWarning('Password is incorrect!');
+    } else alertWarning('Password is incorrect!');
 }
 document.getElementById("input-edit-password").onfocus = function () {
     document.getElementById("confirm-edit-password").hidden = false;
 }
+
 function editProfile() {
     let newId = document.getElementById('input-edit-id').value;
     let newEmail = document.getElementById('input-edit-email').value;
@@ -332,11 +339,11 @@ function editProfile() {
         if (accounts[i].id == newId && newId != currentUser.id) {
             alertWarning('This id has been used!');
             return;
-        } 
+        }
         if (accounts[i].email == newEmail && newEmail != currentUser.email) {
             alertWarning('This email has been used!');
             return;
-        } 
+        }
     }
     let password = document.getElementById("input-edit-password").value;
     let confirm_password = document.getElementById("input-edit-confirm-password").value;
@@ -368,7 +375,7 @@ function logOutFunction() {
 
 // Play quizz
 function play(topic) {
-    
+
 
     let score = 0;
     let i = 0;
@@ -451,8 +458,12 @@ function play(topic) {
 }
 btn_rank = document.getElementById('btn_rank');
 btn_rank.addEventListener('click', function () {
+    quizzPage.hidden = true;
+    homePage.hidden = true;
+    table_ranking.hidden = false
     for (let i = 0; i < accounts.length; i++) {
         document.getElementById('tbody_ranking').insertAdjacentHTML('beforeend',
-            '<tr><td>' + (i+1) + '</td><td>' + accounts[i].email + '</td><td>' + accounts[i].score + '</td></tr>')
+            '<tr><td>' + (i + 1) + '</td><td>' + accounts[i].email + '</td><td>' + accounts[i].score + '</td></tr>')
     }
+
 })
