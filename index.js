@@ -275,13 +275,17 @@ let accounts = [{
         id: 'admin',
         email: 'admin@gmail.com',
         password: '1234',
-        score: {}
+        score: {},
+        totalScore: 0,
+        hintList: []
     },
     {
         id: 'a',
         email: 'a@gmail.com',
         password: 'a',
-        score: {}
+        score: {},
+        totalScore: 0,
+        hintList: []
     }
 ];
 
@@ -313,7 +317,9 @@ let registerFunction = function () {
         id: newId,
         email: newEmail,
         password: password,
-        score: {}
+        score: {}, 
+        totalScore: 0,
+        hintList: []
     }
     accounts.push(newAccount);
     alertSuccess('Register successfully!');
@@ -365,6 +371,7 @@ function editProfile() {
 
 // Log out
 function logOutFunction() {
+    updateTotalScore();
     logIn = false;
     logOut = true;
     currentUser = undefined;
@@ -386,6 +393,7 @@ let result = document.getElementById("result");
 let clock = document.getElementById("clock-content");
 let currentTime = 10;
 let tick;
+let image = document.getElementById("hint-image");
 
 function check(answer) {
     clearInterval(tick);
@@ -400,7 +408,6 @@ function check(answer) {
             <i class="fa fa-times check-icon-wrong" aria-hidden="true"></i> Wrong
         `;
     }
-    document.getElementById("score").innerHTML = currentScore;
     if (currentQuestion == currentTopic.length - 1) end();
     else {
         currentQuestion++;
@@ -417,6 +424,7 @@ function end() {
         result.innerHTML = "";
         $("#quizz-modal").modal("hide");
         alert("Your final score is " + currentScore);
+        currentTime = 10;
         currentScore = 0;
     }, 1000);
 }
@@ -449,7 +457,14 @@ function startClock() {
     }, 1000);
 }
 function play() {
-    document.getElementById("hint-image").hidden = false;
+    if(currentTopic[currentQuestion].hint != "") {
+        image.src = "images/hint.jpg";
+        image.addEventListener("click", showHint);
+    } else {
+        image.src = "images/quizz-time.jpg";
+        image.removeEventListener("click", showHint);
+    }
+    image.hidden = false;
     document.getElementById("hint-content").innerHTML = "";
     clock.innerHTML = "10";
     startClock();
@@ -461,7 +476,6 @@ function play() {
         currentTopic[currentQuestion].correctAnswer
     ];
     document.getElementById("question").innerHTML = currentTopic[currentQuestion].question;
-    document.getElementById("score").innerHTML = currentScore;
     for (let i = 0; i < 4; i++) {
         let rand = Math.floor(Math.random() * answers.length);
         document.getElementById("answer" + i).value = answers[rand];
@@ -469,34 +483,35 @@ function play() {
     }
 }
 
-// Hint
-function showHint() {
-    let confirmHint = confirm("Would you like to spend 20pts to show hint?");
-    if (confirmHint) {
-        document.getElementById("hint-image").hidden = true;
-        document.getElementById("hint-content").innerHTML = currentTopic[currentQuestion].hint;
+// Update total score
+function updateTotalScore() {
+    currentUser.totalScore = 0;
+    for (let i in currentUser.score) {
+        currentUser.totalScore += currentUser.score[i];
+    }
+    for (let i of currentUser.hintList) {
+        currentUser.totalScore -= 20;
     }
 }
 
-
-    // doihint = () => {
-    //     document.getElementById("score").innerHTML = "Diem cua ban la : " + currentUser.score;
-    //     if (topic[i].hint) {
-    //         if (score > 0) {
-    //             alert(topic[i].hint);
-    //             score -= 0.5;
-
-//             } else if (score < 0.5 && currentUser.score < 0.5) {
-//                 alert("ban khong du diem ");
-//             } else if (currentUser.score > 0) {
-//                 alert(topic[i].hint);
-//                 score -= 0.5;
-//             }
-//         } else {
-//             alert("not hint");
-//         }
-//     };
-// }
+// Hint
+function showHint() {
+    for (let i of currentUser.hintList) {
+        if (currentUser.hintList[i] == currentTopic[currentQuestion].hint) {
+            image.hidden = true;
+            document.getElementById("hint-content").innerHTML = currentTopic[currentQuestion].hint;
+            return;
+        }
+    }
+    let confirmHint = confirm("Would you like to spend 20pts to show hint?");
+    updateTotalScore();
+    if (confirmHint && currentUser.totalScore < 20) alert("You don't have enough points");
+    else if (confirmHint) {
+        document.getElementById("hint-image").hidden = true;
+        document.getElementById("hint-content").innerHTML = currentTopic[currentQuestion].hint;
+        currentUser.hintList.push(currentTopic[currentQuestion].hint);
+    }
+}
 
 // btn_rank = document.getElementById('btn_rank');
 // btn_rank.addEventListener('click', function () {
