@@ -401,22 +401,24 @@ function check(answer) {
         `;
     }
     document.getElementById("score").innerHTML = currentScore;
-    if (currentQuestion == currentTopic.length - 1) {
-        setTimeout(function () {
-            for (let i in topics) {
-                if (currentTopic == topics[i] && (currentScore > currentUser.score[i] || currentUser.score[i] == undefined)) 
-                currentUser.score[i] = currentScore;
-            }
-            currentQuestion = 0;
-            result.innerHTML = "";
-            $("#quizz-modal").modal("hide");
-            alert("Your final score is " + currentScore);
-            currentScore = 0;
-        }, 1000);
-    } else {
+    if (currentQuestion == currentTopic.length - 1) end();
+    else {
         currentQuestion++;
         setTimeout(play, 1000);
     }
+}
+function end() {
+    setTimeout(function () {
+        for (let i in topics) {
+            if (currentTopic == topics[i] && (currentScore > currentUser.score[i] || currentUser.score[i] == undefined)) 
+            currentUser.score[i] = currentScore;
+        }
+        currentQuestion = 0;
+        result.innerHTML = "";
+        $("#quizz-modal").modal("hide");
+        alert("Your final score is " + currentScore);
+        currentScore = 0;
+    }, 1000);
 }
 function stop() {
     clearInterval(tick);
@@ -437,12 +439,8 @@ function startClock() {
         clock.innerHTML = currentTime;
         if (currentTime == 0) {
             clearInterval(tick);
-            if (currentQuestion == currentTopic.length - 1) {
-                currentQuestion = 0;
-                $("#quizz-modal").modal("hide");
-                alert("Your final score is " + currentScore);
-                currentScore = 0;
-            } else {
+            if (currentQuestion == currentTopic.length - 1) end();
+            else {
                 currentQuestion++;
                 setTimeout(play, 1000);
             }
