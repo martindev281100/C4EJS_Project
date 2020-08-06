@@ -215,7 +215,7 @@ function addItemTopic() {
                     <div class="card-body">
                         <h4 class="card-title">${newTopic}</h4>
                         <p class="card-text">${newTopicDescription}</p>
-                        <button class="btn btn-primary" onclick="play(topics.${newTopic})" data-toggle="modal" data-target="#quizz-modal">Go!</button>
+                        <button class="btn btn-primary btn-play" onclick="play(topics.${newTopic})" data-toggle="modal" data-target="#quizz-modal">Go!</button>
                     </div>
                 </div>
             </div>`
@@ -226,8 +226,8 @@ function addItemTopic() {
 // Status 
 let logOut = true;
 let logIn = false;
-let currentUser;
-
+let currentUser = null;
+console.log(currentUser)
 // Log in
 function logInFunction() {
     let id = document.getElementById("input-id").value;
@@ -375,86 +375,104 @@ function logOutFunction() {
 
 // Play quizz
 function play(topic) {
-
-
-    let score = 0;
-    let i = 0;
-    let answers = [];
-    run = function () {
-        answers = [topic[i].wrongAnswers[0], topic[i].wrongAnswers[1], topic[i].wrongAnswers[2], topic[i].correctAnswer];
-        document.getElementById("question").innerHTML = topic[i].question;
-        document.getElementById("score").innerHTML = score;
-        for (let j = 0; j < 4; j++) {
-            let rand = Math.floor(Math.random() * answers.length);
-            document.getElementById("answer" + j).value = answers[rand];
-            answers.splice(rand, 1);
+    if (currentUser == null) {
+        console.log('current user: '+ currentUser)
+        loginButton.onclick();
+    } else {
+        console.log('current user: '+ currentUser)
+        console.log('topics length: ' + topics.length)
+        count = 0
+        for (let item in topics){
+            count++
         }
-    }
-    run();
-    check = function (valuec, idtab) {
-        let kq = valuec;
-        let idthe = 'answer' + idtab;
-        let idtrue = 'answer';
-
-        if (kq == topic[i].correctAnswer) {
-            score++;
-            currentUser.score++;
-            document.getElementById("recent_result").hidden = false;
-            document.getElementById("recent_result").innerHTML = 'Correct';
-            document.getElementById("correct_answer").hidden = true;
-            setTimeout(() => {
-                document.getElementById("recent_result").hidden = true;
-                document.getElementById("correct_answer").hidden = false;
-            }, 1000);
-
-        } else {
-            document.getElementById("recent_result").hidden = false;
-            document.getElementById("recent_result").innerHTML = 'Wrong';
-            document.getElementById("correct_answer").hidden = true;
-
-            setTimeout(() => {
-                document.getElementById("recent_result").hidden = true;
-                document.getElementById("correct_answer").hidden = false;
-
-            }, 1000);
-
+        for(let i = 0; i < count; i++){
+            let btnplay = document.getElementsByClassName('btn-play')[i]
+            console.log(btnplay)
+            let att = document.createAttribute("data-toggle")
+            att.value = "modal"
+            btnplay.setAttributeNode(att)
+            console.log('ran')
         }
-        let endGame = setTimeout(() => {
-            if (i == topic.length) {
-
-                stop();
-                clearTimeout(reRun);
+        let score = 0;
+        let i = 0;
+        let answers = [];
+        run = function () {
+            answers = [topic[i].wrongAnswers[0], topic[i].wrongAnswers[1], topic[i].wrongAnswers[2], topic[i].correctAnswer];
+            document.getElementById("question").innerHTML = topic[i].question;
+            document.getElementById("score").innerHTML = score;
+            for (let j = 0; j < 4; j++) {
+                let rand = Math.floor(Math.random() * answers.length);
+                document.getElementById("answer" + j).value = answers[rand];
+                answers.splice(rand, 1);
             }
-        }, 800);
-
-
-        i++;
-        reRun = setTimeout(run, 1000);
-    }
-    stop = function () {
-        i = 0;
-        document.getElementById('answer').hidden = true;
-        //document.getElementById('result').hidden = false;
-        //document.getElementById('result').innerHTML = "Diem cua ban la : " + currentUser.score;
-        document.getElementById('question').innerHTML = "Result"
-    };
-    doihint = () => {
-        document.getElementById("score").innerHTML = "Diem cua ban la : " + currentUser.score;
-        if (topic[i].hint) {
-            if (score > 0) {
-                alert(topic[i].hint);
-                score -= 0.5;
-
-            } else if (score < 0.5 && currentUser.score < 0.5) {
-                alert("ban khong du diem ");
-            } else if (currentUser.score > 0) {
-                alert(topic[i].hint);
-                score -= 0.5;
-            }
-        } else {
-            alert("not hint");
         }
-    };
+        run();
+        check = function (valuec, idtab) {
+            let kq = valuec;
+            let idthe = 'answer' + idtab;
+            let idtrue = 'answer';
+
+            if (kq == topic[i].correctAnswer) {
+                score++;
+                currentUser.score++;
+                document.getElementById("recent_result").hidden = false;
+                document.getElementById("recent_result").innerHTML = 'Correct';
+                document.getElementById("correct_answer").hidden = true;
+                setTimeout(() => {
+                    document.getElementById("recent_result").hidden = true;
+                    document.getElementById("correct_answer").hidden = false;
+                }, 1000);
+
+            } else {
+                document.getElementById("recent_result").hidden = false;
+                document.getElementById("recent_result").innerHTML = 'Wrong';
+                document.getElementById("correct_answer").hidden = true;
+
+                setTimeout(() => {
+                    document.getElementById("recent_result").hidden = true;
+                    document.getElementById("correct_answer").hidden = false;
+
+                }, 1000);
+
+            }
+            let endGame = setTimeout(() => {
+                if (i == topic.length) {
+
+                    stop();
+                    clearTimeout(reRun);
+                }
+            }, 800);
+
+
+            i++;
+            reRun = setTimeout(run, 1000);
+        }
+        stop = function () {
+            i = 0;
+            document.getElementById('answer').hidden = true;
+            //document.getElementById('result').hidden = false;
+            //document.getElementById('result').innerHTML = "Diem cua ban la : " + currentUser.score;
+            document.getElementById('question').innerHTML = "Result"
+        };
+        doihint = () => {
+            document.getElementById("score").innerHTML = "Diem cua ban la : " + currentUser.score;
+            if (topic[i].hint) {
+                if (score > 0) {
+                    alert(topic[i].hint);
+                    score -= 0.5;
+
+                } else if (score < 0.5 && currentUser.score < 0.5) {
+                    alert("ban khong du diem ");
+                } else if (currentUser.score > 0) {
+                    alert(topic[i].hint);
+                    score -= 0.5;
+                }
+            } else {
+                alert("not hint");
+            }
+        };
+    }
+
 }
 btn_rank = document.getElementById('btn_rank');
 btn_rank.addEventListener('click', function () {
