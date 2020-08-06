@@ -20,9 +20,9 @@ function showTable() {
     }
     for (let i = 0; i < currentTopicToDisplay.length; i++) {
         let arr = [
-            currentTopicToDisplay[i].question, 
-            currentTopicToDisplay[i].correctAnswer, 
-            currentTopicToDisplay[i].wrongAnswers, 
+            currentTopicToDisplay[i].question,
+            currentTopicToDisplay[i].correctAnswer,
+            currentTopicToDisplay[i].wrongAnswers,
             currentTopicToDisplay[i].hint
         ];
         showItems(arr);
@@ -275,13 +275,17 @@ let accounts = [{
         id: 'admin',
         email: 'admin@gmail.com',
         password: '1234',
-        score: {}
+        score: {},
+        totalScore: 0,
+        hintList: []
     },
     {
         id: 'a',
         email: 'a@gmail.com',
         password: 'a',
-        score: {}
+        score: {},
+        totalScore: 0,
+        hintList: []
     }
 ];
 
@@ -313,7 +317,9 @@ let registerFunction = function () {
         id: newId,
         email: newEmail,
         password: password,
-        score: {}
+        score: {},
+        totalScore: 0,
+        hintList: []
     }
     accounts.push(newAccount);
     alertSuccess('Register successfully!');
@@ -365,6 +371,7 @@ function editProfile() {
 
 // Log out
 function logOutFunction() {
+    updateTotalScore();
     logIn = false;
     logOut = true;
     currentUser = undefined;
@@ -383,15 +390,22 @@ let currentTopic;
 let currentQuestion = 0;
 let currentScore = 0;
 let result = document.getElementById("result");
+let final_score = document.getElementById("final_score")
 let clock = document.getElementById("clock-content");
 let currentTime = 10;
 let tick;
-
+let image = document.getElementById("hint-image");
+let space = document.getElementById('space');
+let answers = document.getElementById('answers');
+let question = document.getElementById('question');
+let correct_question = 0;
+let correct_ques = document.getElementById('correct_question')
 function check(answer) {
     clearInterval(tick);
     currentTime = 10;
     if (answer == currentTopic[currentQuestion].correctAnswer) {
         currentScore += 10;
+        correct_question++;
         result.innerHTML = `
             <i class="fa fa-check check-icon-correct" aria-hidden="true"></i> Correct
         `;
@@ -400,26 +414,35 @@ function check(answer) {
             <i class="fa fa-times check-icon-wrong" aria-hidden="true"></i> Wrong
         `;
     }
-    document.getElementById("score").innerHTML = currentScore;
     if (currentQuestion == currentTopic.length - 1) end();
     else {
         currentQuestion++;
         setTimeout(play, 1000);
     }
 }
+
 function end() {
     setTimeout(function () {
         for (let i in topics) {
-            if (currentTopic == topics[i] && (currentScore > currentUser.score[i] || currentUser.score[i] == undefined)) 
-            currentUser.score[i] = currentScore;
+            if (currentTopic == topics[i] && (currentScore > currentUser.score[i] || currentUser.score[i] == undefined))
+                currentUser.score[i] = currentScore;
         }
         currentQuestion = 0;
+        answers.hidden = true;
+        space.hidden = true;
+        question.innerHTML = 'Summary'
+        final_score.hidden = false;
+        correct_ques.hidden = false;
+        final_score.innerHTML = "Total score: " + currentScore
+        correct_ques.innerHTML = "Correct Question: "+ correct_question
         result.innerHTML = "";
-        $("#quizz-modal").modal("hide");
-        alert("Your final score is " + currentScore);
+        // $("#quizz-modal").modal("hide");
+        // alert("Your final score is " + currentScore);
+        currentTime = 10;
         currentScore = 0;
     }, 1000);
 }
+
 function stop() {
     clearInterval(tick);
     currentTime = 10;
@@ -427,17 +450,23 @@ function stop() {
     currentQuestion = 0;
     result.innerHTML = "";
     currentTopic = undefined;
+    answers.hidden = false;
+    space.hidden = false;
+    final_score.hidden = true;
+    correct_ques.hidden = true;
 }
+
 function chooseTopic(topic) {
     currentTopic = topic;
     play();
 }
+
 function startClock() {
     let startTime = Math.floor(new Date() / 1000);
     tick = setInterval(() => {
         currentTime = 10 - (Math.floor(new Date() / 1000) - startTime);
         clock.innerHTML = currentTime;
-        console.log('current time: '+ currentTime)
+        console.log('current time: ' + currentTime)
         if (currentTime == 0) {
             clearInterval(tick);
             if (currentQuestion == currentTopic.length - 1) end();
@@ -449,20 +478,27 @@ function startClock() {
         }
     }, 1000);
 }
+
 function play() {
-    document.getElementById("hint-image").hidden = false;
+    if (currentTopic[currentQuestion].hint != "") {
+        image.src = "images/hint.jpg";
+        image.addEventListener("click", showHint);
+    } else {
+        image.src = "images/quizz-time.jpg";
+        image.removeEventListener("click", showHint);
+    }
+    image.hidden = false;
     document.getElementById("hint-content").innerHTML = "";
     clock.innerHTML = "10";
     startClock();
     result.innerHTML = "";
     let answers = [
-        currentTopic[currentQuestion].wrongAnswers[0], 
-        currentTopic[currentQuestion].wrongAnswers[1], 
-        currentTopic[currentQuestion].wrongAnswers[2], 
+        currentTopic[currentQuestion].wrongAnswers[0],
+        currentTopic[currentQuestion].wrongAnswers[1],
+        currentTopic[currentQuestion].wrongAnswers[2],
         currentTopic[currentQuestion].correctAnswer
     ];
     document.getElementById("question").innerHTML = currentTopic[currentQuestion].question;
-    document.getElementById("score").innerHTML = currentScore;
     for (let i = 0; i < 4; i++) {
         let rand = Math.floor(Math.random() * answers.length);
         document.getElementById("answer" + i).value = answers[rand];
@@ -470,43 +506,44 @@ function play() {
     }
 }
 
-// Hint
-function showHint() {
-    let confirmHint = confirm("Would you like to spend 20pts to show hint?");
-    if (confirmHint) {
-        document.getElementById("hint-image").hidden = true;
-        document.getElementById("hint-content").innerHTML = currentTopic[currentQuestion].hint;
+// Update total score
+function updateTotalScore() {
+    currentUser.totalScore = 0;
+    for (let i in currentUser.score) {
+        currentUser.totalScore += currentUser.score[i];
+    }
+    for (let i of currentUser.hintList) {
+        currentUser.totalScore -= 20;
     }
 }
 
+// Hint
+function showHint() {
+    for (let i of currentUser.hintList) {
+        if (currentUser.hintList[i] == currentTopic[currentQuestion].hint) {
+            image.hidden = true;
+            document.getElementById("hint-content").innerHTML = currentTopic[currentQuestion].hint;
+            return;
+        }
+    }
+    let confirmHint = confirm("Would you like to spend 20pts to show hint?");
+    updateTotalScore();
+    if (confirmHint && currentUser.totalScore < 20) alert("You don't have enough points");
+    else if (confirmHint) {
+        document.getElementById("hint-image").hidden = true;
+        document.getElementById("hint-content").innerHTML = currentTopic[currentQuestion].hint;
+        currentUser.hintList.push(currentTopic[currentQuestion].hint);
+    }
+}
 
-    // doihint = () => {
-    //     document.getElementById("score").innerHTML = "Diem cua ban la : " + currentUser.score;
-    //     if (topic[i].hint) {
-    //         if (score > 0) {
-    //             alert(topic[i].hint);
-    //             score -= 0.5;
+btn_rank = document.getElementById('btn_rank');
+btn_rank.addEventListener('click', function () {
+    quizzPage.hidden = true;
+    homePage.hidden = true;
+    table_ranking.hidden = false
+    for (let i = 0; i < accounts.length; i++) {
+        document.getElementById('tbody_ranking').insertAdjacentHTML('beforeend',
+            '<tr><td>' + (i + 1) + '</td><td>' + accounts[i].id + '</td><td>' + accounts[i].score + '</td></tr>')
+    }
 
-//             } else if (score < 0.5 && currentUser.score < 0.5) {
-//                 alert("ban khong du diem ");
-//             } else if (currentUser.score > 0) {
-//                 alert(topic[i].hint);
-//                 score -= 0.5;
-//             }
-//         } else {
-//             alert("not hint");
-//         }
-//     };
-// }
-
-// btn_rank = document.getElementById('btn_rank');
-// btn_rank.addEventListener('click', function () {
-//     quizzPage.hidden = true;
-//     homePage.hidden = true;
-//     table_ranking.hidden = false
-//     for (let i = 0; i < accounts.length; i++) {
-//         document.getElementById('tbody_ranking').insertAdjacentHTML('beforeend',
-//             '<tr><td>' + (i + 1) + '</td><td>' + accounts[i].email + '</td><td>' + accounts[i].score + '</td></tr>')
-//     }
-
-// })
+})
