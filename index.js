@@ -435,6 +435,7 @@ function startClock() {
     tick = setInterval(() => {
         currentTime = 10 - (Math.floor(new Date() / 1000) - startTime);
         clock.innerHTML = currentTime;
+        console.log('current time: '+ currentTime)
         if (currentTime == 0) {
             clearInterval(tick);
             if (currentQuestion == currentTopic.length - 1) {
