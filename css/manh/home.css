@@ -10,7 +10,7 @@
   color: white;
 }
 #home-page header {
-  height: 700px;
+  height: 90vh;
   background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
   padding-top: 250px;
   text-align: center;
