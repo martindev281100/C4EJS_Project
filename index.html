@@ -40,7 +40,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="question-list" hidden>Question List</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="aboutus" hidden>About Us</a>
+                </li>
                 <!-- Add question -->
                 <li class="nav-item">
                     <a id="btn_add_question" href="#" class="nav-link" data-toggle="modal" data-target="#add-question" hidden>
@@ -315,7 +317,9 @@
                         </div>
                         
                         <div class="modal-footer">
-                            <span id="result"></span>
+                            <span id="result" hidden></span>
+                            <span id="display_coques">Correct Question: <span id="co_question"></span></span>
+
                         </div>
                     </div>
                 </div>
@@ -429,7 +433,8 @@
                 <th>Score</th>
             </thead>
             <tbody id="tbody_ranking">
-                
+                <tr id="row_ranking0"></tr>
+                <tr id="row_ranking1"></tr>
             </tbody>
         </table>
     </div>

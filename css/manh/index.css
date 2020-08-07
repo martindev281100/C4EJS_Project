@@ -168,3 +168,6 @@ button {
 #table_ranking{
   border: 1px solid #f5f5f5;
 }
+.card{
+  border: 0px !important;
+}

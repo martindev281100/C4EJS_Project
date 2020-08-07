@@ -400,20 +400,35 @@ let answers = document.getElementById('answers');
 let question = document.getElementById('question');
 let correct_question = 0;
 let correct_ques = document.getElementById('correct_question')
-
+let co_question = document.getElementById('co_question')
+let display_coques = document.getElementById('display_coques')
 function check(answer) {
     clearInterval(tick);
     currentTime = 10;
     if (answer == currentTopic[currentQuestion].correctAnswer) {
         currentScore += 10;
         correct_question++;
+        console.log('co_ques: '+ correct_question)
+        co_question.innerHTML = correct_question;
+        display_coques.hidden = true
+        result.hidden = false;
         result.innerHTML = `
             <i class="fa fa-check check-icon-correct" aria-hidden="true"></i> Correct
         `;
+        setTimeout(() => {
+            display_coques.hidden = false
+            result.hidden = true;
+        }, 1000);
     } else {
+        display_coques.hidden = true
+        result.hidden = false;
         result.innerHTML = `
             <i class="fa fa-times check-icon-wrong" aria-hidden="true"></i> Wrong
         `;
+        setTimeout(() => {
+            display_coques.hidden = false
+            result.hidden = true;
+        }, 1000);
     }
     if (currentQuestion == currentTopic.length - 1) end();
     else {
@@ -432,6 +447,7 @@ function end() {
         answers.hidden = true;
         space.hidden = true;
         question.innerHTML = 'Summary'
+        display_coques.hidden = true
         final_score.hidden = false;
         correct_ques.hidden = false;
         final_score.innerHTML = "Total score: " + currentScore
