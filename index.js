@@ -452,6 +452,7 @@ function end() {
         currentScore = 0;
         updatepoints();
     }, 1000);
+    console.log('hint list: '+ accounts[1].hintList)
 }
 
 function stop() {
