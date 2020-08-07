@@ -532,7 +532,7 @@ function updatepoints() {
 // Hint
 function showHint() {
     for (let i of currentUser.hintList) {
-        if (currentUser.hintList[i] == currentTopic[currentQuestion].hint) {
+        if (i == currentTopic[currentQuestion].hint) {
             console.log(1);
             image.hidden = true;
             document.getElementById("hint-content").innerHTML = currentTopic[currentQuestion].hint;
