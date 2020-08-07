@@ -422,6 +422,8 @@ function check(answer) {
             result.hidden = true;
         }, 1000);
     }
+    document.getElementById("points").innerHTML = currentUser.points;
+    document.getElementById("correct-answer").innerHTML = currentScore / 10;
     if (currentQuestion == currentTopic.length - 1) end();
     else {
         currentQuestion++;
