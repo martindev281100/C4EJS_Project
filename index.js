@@ -276,7 +276,7 @@ let accounts = [{
         email: 'admin@gmail.com',
         password: '1234',
         score: {},
-        totalScore: 0,
+        points: 0,
         hintList: []
     },
     {
@@ -284,7 +284,7 @@ let accounts = [{
         email: 'a@gmail.com',
         password: 'a',
         score: {},
-        totalScore: 0,
+        points: 0,
         hintList: []
     }
 ];
@@ -318,7 +318,7 @@ let registerFunction = function () {
         email: newEmail,
         password: password,
         score: {},
-        totalScore: 0,
+        points: 0,
         hintList: []
     }
     accounts.push(newAccount);
@@ -371,7 +371,7 @@ function editProfile() {
 
 // Log out
 function logOutFunction() {
-    updateTotalScore();
+    updatepoints();
     logIn = false;
     logOut = true;
     currentUser = undefined;
@@ -398,35 +398,27 @@ let image = document.getElementById("hint-image");
 let space = document.getElementById('space');
 let answers = document.getElementById('answers');
 let question = document.getElementById('question');
-let correct_question = 0;
 let correct_ques = document.getElementById('correct_question')
 let co_question = document.getElementById('co_question')
-let display_coques = document.getElementById('display_coques')
+
 function check(answer) {
     clearInterval(tick);
     currentTime = 10;
     if (answer == currentTopic[currentQuestion].correctAnswer) {
         currentScore += 10;
-        correct_question++;
-        console.log('co_ques: '+ correct_question)
-        co_question.innerHTML = correct_question;
-        display_coques.hidden = true
         result.hidden = false;
         result.innerHTML = `
             <i class="fa fa-check check-icon-correct" aria-hidden="true"></i> Correct
         `;
         setTimeout(() => {
-            display_coques.hidden = false
             result.hidden = true;
         }, 1000);
     } else {
-        display_coques.hidden = true
         result.hidden = false;
         result.innerHTML = `
             <i class="fa fa-times check-icon-wrong" aria-hidden="true"></i> Wrong
         `;
         setTimeout(() => {
-            display_coques.hidden = false
             result.hidden = true;
         }, 1000);
     }
@@ -439,24 +431,24 @@ function check(answer) {
 
 function end() {
     setTimeout(function () {
+        let max = currentScore;
         for (let i in topics) {
             if (currentTopic == topics[i] && (currentScore > currentUser.score[i] || currentUser.score[i] == undefined))
                 currentUser.score[i] = currentScore;
+            else if (currentTopic == topics[i]) max = currentUser.score[i];
         }
         currentQuestion = 0;
         answers.hidden = true;
         space.hidden = true;
         question.innerHTML = 'Summary'
-        display_coques.hidden = true
         final_score.hidden = false;
         correct_ques.hidden = false;
-        final_score.innerHTML = "Total score: " + currentScore
-        correct_ques.innerHTML = "Correct Question: " + correct_question
+        final_score.innerHTML = "Highest score: " + max;
+        correct_ques.innerHTML = "Your final score: " + currentScore;
         result.innerHTML = "";
-        // $("#quizz-modal").modal("hide");
-        // alert("Your final score is " + currentScore);
         currentTime = 10;
         currentScore = 0;
+        updatepoints();
     }, 1000);
 }
 
@@ -516,6 +508,8 @@ function play() {
         currentTopic[currentQuestion].correctAnswer
     ];
     document.getElementById("question").innerHTML = currentTopic[currentQuestion].question;
+    document.getElementById("points").innerHTML = currentUser.points;
+    document.getElementById("correct-answer").innerHTML = currentScore / 10;
     for (let i = 0; i < 4; i++) {
         let rand = Math.floor(Math.random() * answers.length);
         document.getElementById("answer" + i).value = answers[rand];
@@ -524,13 +518,13 @@ function play() {
 }
 
 // Update total score
-function updateTotalScore() {
-    currentUser.totalScore = 0;
+function updatepoints() {
+    currentUser.points = 0;
     for (let i in currentUser.score) {
-        currentUser.totalScore += currentUser.score[i];
+        currentUser.points += currentUser.score[i];
     }
     for (let i of currentUser.hintList) {
-        currentUser.totalScore -= 20;
+        currentUser.points -= 20;
     }
 }
 
@@ -544,12 +538,14 @@ function showHint() {
         }
     }
     let confirmHint = confirm("Would you like to spend 20pts to show hint?");
-    updateTotalScore();
-    if (confirmHint && currentUser.totalScore < 20) alert("You don't have enough points");
+    updatepoints();
+    if (confirmHint && currentUser.points < 20) alert("You don't have enough points");
     else if (confirmHint) {
         document.getElementById("hint-image").hidden = true;
         document.getElementById("hint-content").innerHTML = currentTopic[currentQuestion].hint;
         currentUser.hintList.push(currentTopic[currentQuestion].hint);
+        updatepoints();
+        document.getElementById("points").innerHTML = currentUser.points;
     }
 }
 
