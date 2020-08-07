@@ -539,6 +539,9 @@ function showHint() {
 
 btn_rank = document.getElementById('btn_rank');
 btn_rank.addEventListener('click', function () {
+    for (let i = 0; i < accounts.length; i++) {
+        document.getElementById('row_ranking' + i).remove()
+    }
 
     if (table_ranking.hidden == true) {
         quizzPage.hidden = true;
@@ -548,14 +551,11 @@ btn_rank.addEventListener('click', function () {
         let score = 0;
         for (let i = 0; i < accounts.length; i++) {
             let arr_score = Object.values(accounts[i].score)
-            for(let j = 0; j < arr_score; j++)
-            {
+            for (let j = 0; j < arr_score; j++) {
                 score = score + arr_score[j]
             }
             document.getElementById('tbody_ranking').insertAdjacentHTML('beforeend',
-                '<tr><td>' + (i + 1) + '</td><td>' + accounts[i].email + '</td><td>' + score + '</td></tr>')
+                '<tr id = "row_ranking' + i + '"><td>' + (i + 1) + '</td><td>' + accounts[i].email + '</td><td>' + score + '</td></tr>')
         }
     }
-
-
 })
