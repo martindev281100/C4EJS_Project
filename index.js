@@ -478,7 +478,6 @@ function startClock() {
     tick = setInterval(() => {
         currentTime = 10 - (Math.floor(new Date() / 1000) - startTime);
         clock.innerHTML = currentTime;
-        console.log('current time: ' + currentTime)
         if (currentTime == 0) {
             clearInterval(tick);
             if (currentQuestion == currentTopic.length - 1) end();
@@ -520,7 +519,7 @@ function play() {
     }
 }
 
-// Update total score
+// Update points
 function updatepoints() {
     currentUser.points = 0;
     for (let i in currentUser.score) {
@@ -535,6 +534,7 @@ function updatepoints() {
 function showHint() {
     for (let i of currentUser.hintList) {
         if (currentUser.hintList[i] == currentTopic[currentQuestion].hint) {
+            console.log(1);
             image.hidden = true;
             document.getElementById("hint-content").innerHTML = currentTopic[currentQuestion].hint;
             return;
@@ -562,7 +562,6 @@ btn_rank.addEventListener('click', function () {
         quizzPage.hidden = true;
         homePage.hidden = true;
         table_ranking.hidden = false
-        console.log(accounts.length)
         let score = 0;
         for (let i = 0; i < accounts.length; i++) {
             let arr_score = Object.values(accounts[i].score)
