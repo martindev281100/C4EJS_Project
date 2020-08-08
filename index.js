@@ -321,6 +321,7 @@ let registerFunction = function () {
         hintList: []
     }
     accounts.push(newAccount);
+    
     alertSuccess('Register successfully!');
     document.getElementById('register-form').reset();
     document.getElementById("redirect-to-login").onclick();
@@ -559,6 +560,8 @@ function showHint() {
 btn_rank = document.getElementById('btn_rank');
 btn_rank.addEventListener('click', function () {
     for (let i = 0; i < accounts.length; i++) {
+        console.log('account_length: '+ accounts.length)
+        console.log('dom: '+ document.getElementById('row_ranking' + i))
         document.getElementById('row_ranking' + i).remove()
     }
 
@@ -567,9 +570,9 @@ btn_rank.addEventListener('click', function () {
         homePage.hidden = true;
         table_ranking.hidden = false
         let score = 0;
-        for (let i = 1; i < accounts.length; i++) {
+        for (let i = 0; i < accounts.length; i++) {
+            console.log('acc_length: '+ accounts.length)
             let arr_score = accounts[i].points
-            console.log('arr_score: '+arr_score)
             // for (let j = 0; j < arr_score; j++) {
             //     score = score + arr_score[j]
             // }
