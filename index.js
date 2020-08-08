@@ -59,7 +59,7 @@ function addItem() {
     let data = {
         question: document.getElementById("input_question").value,
         correctAnswer: document.getElementById("input_correct").value,
-        wrongAnswers: document.getElementById("input_wrong").value,
+        wrongAnswers: document.getElementById("input_wrong").value.split(", "),
         hint: document.getElementById("input_hint").value,
     }
     if (data.question.trim() == '' || data.wrongAnswers.trim() == '' || data.correctAnswer.trim() == '') {
@@ -67,7 +67,6 @@ function addItem() {
     } else {
         document.getElementById("add-question-form").reset();
         $("#add-question").modal("hide");
-        data.wrongAnswers = data.wrongAnswers.split(", ");
         currentTopicToDisplay.push(data);
         let arr = [data.question, data.correctAnswer, data.wrongAnswers, data.hint];
         showItems(arr);
@@ -110,10 +109,10 @@ function showItems(arr) {
             tableBody.rows[i - 1].contentEditable = "true";
             tableBody.rows[i - 1].onfocusout = function () {
                 tableBody.rows[i - 1].contentEditable = "false";
-                topics[i - 2].question = tableBody.rows[i - 1].cells[0].innerHTML;
-                topics[i - 2].correctAnswer = tableBody.rows[i - 1].cells[1].innerHTML;
-                topics[i - 2].wrongAnswers = tableBody.rows[i - 1].cells[2].innerHTML;
-                topics[i - 2].hint = tableBody.rows[i - 1].cells[3].innerHTML;
+                currentTopicToDisplay[i - 2].question = tableBody.rows[i - 1].cells[0].innerHTML;
+                currentTopicToDisplay[i - 2].correctAnswer = tableBody.rows[i - 1].cells[1].innerHTML;
+                currentTopicToDisplay[i - 2].wrongAnswers = tableBody.rows[i - 1].cells[2].innerHTML.split(", ");
+                currentTopicToDisplay[i - 2].hint = tableBody.rows[i - 1].cells[3].innerHTML;
             }
         }
         buttonUpdate.classList.add("btn-warning");
@@ -125,7 +124,7 @@ function showItems(arr) {
         buttonDelete.onclick = function () {
             let i = buttonDelete.parentNode.parentNode.rowIndex;
             tableBody.deleteRow(i - 1);
-            topic.splice(i - 2, 1);
+            currentTopicToDisplay.splice(i - 2, 1);
         };
         buttonDelete.classList.add("btn-danger");
         buttonDelete.classList.add("btn");
@@ -457,7 +456,6 @@ function end() {
         currentScore = 0;
         updatepoints();
     }, 1000);
-    console.log('hint list: '+ accounts[1].hintList)
 }
 
 function stop() {
@@ -475,6 +473,7 @@ function stop() {
 
 function chooseTopic(topic) {
     currentTopic = topic;
+    console.log(currentTopic);
     play();
 }
 
@@ -514,7 +513,7 @@ function play() {
         currentTopic[currentQuestion].wrongAnswers[2],
         currentTopic[currentQuestion].correctAnswer
     ];
-    console.log('answers: '+ answers)
+    console.log(answers);
     document.getElementById("question").innerHTML = currentTopic[currentQuestion].question;
     document.getElementById("points").innerHTML = currentUser.points;
     document.getElementById("correct-answer").innerHTML = currentScore / 10;
@@ -540,7 +539,6 @@ function updatepoints() {
 function showHint() {
     for (let i of currentUser.hintList) {
         if (i == currentTopic[currentQuestion].hint) {
-            console.log(1);
             image.hidden = true;
             document.getElementById("hint-content").innerHTML = currentTopic[currentQuestion].hint;
             return;
