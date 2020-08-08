@@ -399,26 +399,31 @@ let answers = document.getElementById('answers');
 let question = document.getElementById('question');
 let correct_ques = document.getElementById('correct_question')
 let co_question = document.getElementById('co_question')
-
+let score = document.getElementById('score')
 function check(answer) {
     clearInterval(tick);
     currentTime = 10;
     if (answer == currentTopic[currentQuestion].correctAnswer) {
         currentScore += 10;
         result.hidden = false;
+        score.hidden = true;
         result.innerHTML = `
             <i class="fa fa-check check-icon-correct" aria-hidden="true"></i> Correct
         `;
         setTimeout(() => {
             result.hidden = true;
+            score.hidden = false;
+
         }, 1000);
     } else {
         result.hidden = false;
+        score.hidden = true;
         result.innerHTML = `
             <i class="fa fa-times check-icon-wrong" aria-hidden="true"></i> Wrong
         `;
         setTimeout(() => {
             result.hidden = true;
+            score.hidden = false;
         }, 1000);
     }
     document.getElementById("points").innerHTML = currentUser.points;
