@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Course</title>
+    <title>Equizz</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Course Project">
@@ -20,12 +20,8 @@
 </head>
 
 <body>
-    <div class="alert alert-success" id="alert_success" style="margin-bottom: 0rem;" hidden>
-        <strong id="content_aSuccess"></strong>
-    </div>
-    <div class="alert alert-warning" id="alert_warning" style="margin-bottom: 0rem;" hidden>
-        <strong id="content_aWarning"></strong>
-    </div>
+    <div class="alert alert-success" id="alert-success" hidden><strong></strong></div>
+    <div class="alert alert-warning" id="alert-warning" hidden><strong></strong></div>
 
     <nav id="nav-bar" class="navbar navbar-expand-lg navbar-light">
         <a id="logo" class="navbar-brand" href="#">EQUIZZ</a>
@@ -39,25 +35,28 @@
                     <a class="nav-link active" href="#" id="home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="quizz">Quizz</a>
+                    <a class="nav-link" href="#" id="quizz" hidden>Quizz</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="question-list" hidden>Question List</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="aboutus" hidden>About Us</a>
+                </li>
                 <!-- Add question -->
                 <li class="nav-item">
-                    <a id="btn_add_question" href="#" class="nav-link" data-toggle="modal" data-target="#add-question"
-                        onclick="clicked_btn_add_question()" hidden>Add Question</a>
+                    <a id="btn_add_question" href="#" class="nav-link" data-toggle="modal" data-target="#add-question" hidden>
+                        Add Question
+                    </a>
                     <div class="modal fade" id="add-question">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Add Question</h4>
-                                    <button class="close" data-dismiss="modal">&times;</button>
+                                    <button class="close modal-button" data-dismiss="modal">&times;</button>
                                 </div>
 
-                                <div id="form-add-question" class="modal-body form_add">
+                                <form class="modal-body" id="add-question-form">
                                     <div class="form-group">
                                         <label for="input_question">Question: </label>
                                         <input type="text" id="input_question" placeholder="Enter question"
@@ -78,11 +77,10 @@
                                         <input type="text" id="input_hint" placeholder="Enter hint for question"
                                             class="form-control">
                                     </div>
-                                </div>
+                                </form>
 
                                 <div class="modal-footer">
-                                    <button id="btn_item_add" class="btn btn-success" onclick="addItem()"
-                                        data-dismiss="modal">Add Item</button>
+                                    <button id="btn_item_add" class="btn btn-success" onclick="addItem()">Add Item</button>
                                 </div>
                             </div>
                         </div>
@@ -91,33 +89,74 @@
 
                 <!-- Add topic -->
                 <li class="nav-item">
-                    <a id="btn_add_topic" href="#" class="nav-link" data-toggle="modal" data-target="#add-topic"
-                         hidden>Add Topic</a>
+                    <a id="btn_add_topic" href="#" class="nav-link" data-toggle="modal" data-target="#add-topic" hidden>
+                        Add Topic
+                    </a>
                     <div class="modal fade" id="add-topic">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Add Topic</h4>
-                                    <button class="close" data-dismiss="modal">&times;</button>
+                                    <button class="close modal-button" data-dismiss="modal">&times;</button>
                                 </div>
 
-                                <div id="form-add-topic" class="modal-body form_add">
+                                <form class="modal-body" id="add-topic-form">
                                     <div class="form-group">
                                         <label for="new-topic">Topic: </label>
-                                        <input type="text" id="new-topic" placeholder="Enter topic"
-                                            class="form-control">
+                                        <input type="text" id="new-topic" placeholder="Enter topic" class="form-control">
                                     </div>
-                                </div>
+                                    <div class="form-group">
+                                        <label for="new-topic-description">Description: </label>
+                                        <input type="text" id="new-topic-description"
+                                            placeholder="Enter topic description" class="form-control" maxlength="75">
+                                    </div>
+                                </form>
 
                                 <div class="modal-footer">
-                                    <button id="btn_item_add_topic" class="btn btn-success" onclick="addItemTopic()"
-                                        data-dismiss="modal">Add Item</button>
+                                    <button id="btn_item_add_topic" class="btn btn-success" onclick="addItemTopic()">
+                                        Add Item
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
             </ul>
+
+            <!-- Edit profile -->
+            <div class="modal fade" id="edit-profile">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Edit Profile</h4>
+                            <button class="close modal-button" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <form class="modal-body" id="edit-profile-form">
+                            <div class="form-group">
+                                <label for="input-edit-id">Username: </label>
+                                <input type="text" id="input-edit-id" value="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-edit-email">Email: </label>
+                                <input type="text" id="input-edit-email" value="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="input-edit-password">Password: </label>
+                                <input type="password" id="input-edit-password" value="" class="form-control">
+                            </div>
+                            <div class="form-group" id="confirm-edit-password" hidden>
+                                <label for="input-edit-confirm-password">Confirm password: </label>
+                                <input type="password" id="input-edit-confirm-password" value="" class="form-control">
+                            </div>
+                        </form>
+
+                        <div class="modal-footer">
+                            <button id="edit-profile-button" class="btn btn-success" onclick="editProfile()">Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <form class="form-inline">
                 <div class="form-group">
@@ -128,11 +167,16 @@
                             aria-haspopup="true" aria-expanded="false">
                             <i id="user-icon" class="fa fa-user-circle-o" aria-hidden="true"></i>
                         </span>
-
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#"><i class="icon fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile</a>
-                            <a class="dropdown-item" href="#"><i class="icon fa fa-bar-chart" aria-hidden="true"></i>Rank</a>
-                            <a id="btn_logOut" class="dropdown-item" href="#" onclick="logout()"><i class="icon fa fa-sign-out" aria-hidden="true"></i> Log out</a>
+                            <a data-target="#edit-profile" class="dropdown-item" href="#" onclick="confirmEditProfile()">
+                                <i class="icon fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile
+                            </a>
+                            <a class="dropdown-item" href="#" id="btn_rank">
+                                <i class="icon fa fa-bar-chart" aria-hidden="true"></i>Rank
+                            </a>
+                            <a id="logout-button" class="dropdown-item" href="#" onclick="logOutFunction()">
+                                <i class="icon fa fa-sign-out" aria-hidden="true"></i> Log out
+                            </a>
                         </div>
                     </span>
                 </div>
@@ -144,293 +188,207 @@
         <header>
             <h1>WELCOME TO <strong>EQUIZZ</strong></h1>
             <p>Quizz for education</p>
-            <button id="get-in-touch-button" class="btn">Get in touch</button>
+            <a id="get-in-touch-button" href="#get-in-touch" class="btn">Get in touch</a>
         </header>
-        <section></section>
-        <!-- <footer>
-            <div>
-
-            </div>
-        </footer> -->
-
-        
-        <footer class="ftco-footer ftco-bg-dark ftco-section">
-            <div class="container">
-              <div class="row mb-5">
-                <div class="col-md">
-                  <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Snipp.</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                  </div>
+        <section>
+            <div class="half">
+                <div class="image" style="background-image: url('images/img_4.jpg');"></div>
+                <div class="container">
+                    <div class="row no-gutters align-items-stretch">
+                        <div class="col-lg-5 ml-lg-auto py-5">
+                            <span class="caption font-weight-bold mb-2 text-uppercase d-block">
+                                Outstanding service
+                            </span>
+                            <h2 class="text-uppercase mb-5">Make learning awesome!</h2>
+                            <p>To make learning awesome! We are all about lifelong learning. We learn new skills through curiosity and play. By combining the two, in a fun and social way, we can unlock the learning potential within all of us, no matter the subject, age or ability.</p>
+                            <p>Unleashing this potential within every learner is what drives us. We do this by creating the most engaging and powerful experience. </p>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="col-md">
-                   <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Contact Information</h2>
+            </div>
+            <div class="half">
+                <div class="image right" style="background-image: url('images/img_5.jpg');">
+                </div>
+                <div class="container">
+                    <div class="row no-gutters align-items-stretch">
+                        <div class="col-lg-5 mr-lg-auto py-5">
+                            <span class="caption font-weight-bold mb-2 text-uppercase d-block">Easy To Use</span>
+                            <h2 class="text-uppercase mb-5">Suitable for everyone!</h2>
+                            <p>Play is the first language we learn. It’s how we discover the world and understand our
+                                place in it. When we make learning fun, we make it engaging for everyone.</p>
+                            <p>Curiosity is part of human nature, and it lies at the heart of all great endeavors. It’s
+                                what turns learners into amazing leaders and keeps those leaders learning. Equizz
+                                strives to ensure that everyone has the chance to succeed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer id="get-in-touch">
+            <div class="row">
+                <div class="col">
+                    <h2>About Us</h2>
+                    <p class="content">
+                        Hi! We are Group 1 from C4EJS-85 class at Mindx. Our mission is making learning awesome. Our platform makes it easy to create and play learning games or quizzes in minutes.
+                    </p>
+                </div>
+                <div class="col">
+                    <h2>Contact Information</h2>
                     <ul class="list-unstyled">
-                      <li><a href="#" class="py-2 d-block">198 West 21th Street, Suite 721 New York NY 10016</a></li>
-                      <li><a href="#" class="py-2 d-block">+ 1235 2355 98</a></li>
-                      <li><a href="#" class="py-2 d-block">info@yoursite.com</a></li>
-                      <li><a href="#" class="py-2 d-block">email@email.com</a></li>
+                        <li><a class="content" href="#">Floor 6, building C, 22 Thanh Cong street, Hanoi</a></li>
+                        <li><a class="content" href="#">024 777 05 666</a></li>
+                        <li><a class="content" href="#">manhdaokhacmanh@gmail.com</a></li>
                     </ul>
-                  </div>
                 </div>
-                <div class="col-md">
-                  <div class="ftco-footer-widget mb-4">
-                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
-                      <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                      <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                      <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                <div id="social-list" class="col">
+                    <ul class="list-unstyled">
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                     </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12 text-center">
-      
-                  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                </div>
-              </div>
-            </div>
-          </footer>
-    </div>    
-
-
-    <div id="homepage">
-        <div class="container">
-            <div class="row row-padding">
-                <div class="col-md-4">
-                    <h2>Feature 1</h2>
-                    <p>
-                        ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                        enables a clean separation of concerns and gives you full control over markup
-                        for enjoyable, agile development.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Feature 2</h2>
-                    <p>
-                        NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries
-                        and tools
-                        in Visual Studio projects.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <h2>Feature 3</h2>
-                    <p>
-                        You can easily find a web hosting company that offers the right mix of features and price for
-                        your
-                        applications.
-                    </p>
                 </div>
             </div>
-        </div>
-        <footer class="footer">
-            <div class="container">
-                <span class="text-muted"><p>Equizz - Quizz for education ©</p></span>
-            </div>
+            <hr>
+            <p id="author" class="content">Copyright &copy;
+                <script>
+                    document.write(new Date().getFullYear());
+                </script>
+                All rights reserved | Equizz - Quizz for education
+            </p>
         </footer>
     </div>
 
     <div id="login-page" hidden>
         <div class="form">
             <form id="register-form" hidden>
-                <input type="text" placeholder="name" id="input_fName" />
-                <input type="text" placeholder="email address" id="input_email" />
-                <input type="password" placeholder="password" id="input_regPassword" />
-                <input type="password" placeholder="confirm password" id="input_cPassword" />
-                <button id="btn_reg" onclick="checkReg()" type="button">CREATE</button>
+                <input type="text" placeholder="username" id="input-register-name" />
+                <input type="text" placeholder="email address" id="input-register-email" />
+                <input type="password" placeholder="password" id="input-register-password" />
+                <input type="password" placeholder="confirm password" id="input-register-confirm-password" />
+                <button id="btn_reg" onclick="registerFunction()" type="button">CREATE</button>
                 <p class="message">Already registered? <a id="redirect-to-login" href="#">Sign In</a></p>
             </form>
             <form id="login-form">
-                <input type="text" placeholder="username" id="input_account" />
-                <input type="password" placeholder="password" id="input_password" />
-                <button onclick="checkAcc()" type="button"> LOGIN</button>
+                <input type="text" placeholder="username" id="input-id" />
+                <input type="password" placeholder="password" id="input-password" />
+                <button onclick="logInFunction()" type="button"> LOGIN</button>
                 <p class="message">Not registered? <a id="redirect-to-register" href="#">Create an account</a></p>
             </form>
         </div>
     </div>
 
-    <div id="quizz-page" class="container" hidden>
-        <div class="modal fade" id="quizz-modal">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 id="question" class="modal-title"></h3>
-                        <button id="play-button" class="close"><i class="fa fa-play" aria-hidden="true"></i></button>
-                        <button id="pause-button" class="close"><i class="fa fa-pause" aria-hidden="true"></i></button>
-                        <button id="close-button" class="close" data-dismiss="modal"><i class="fa fa-times"
-                                aria-hidden="true"></i></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <div id="answer">
-                            <input id="answer0" type="button" class="btn btn-lg btn-primary btn-block" value=""
-                                onclick="check(answer0.value,0);">
-                            <input id="answer1" type="button" class="btn btn-lg btn-primary btn-block" value=""
-                                onclick="check(answer1.value,1);">
-                            <input id="answer2" type="button" class="btn btn-lg btn-primary btn-block" value=""
-                                onclick="check(answer2.value,2);">
-                            <input id="answer3" type="button" class="btn btn-lg btn-primary btn-block" value=""
-                                onclick="check(answer3.value,3);">
+    <div id="quizz-page" hidden>
+        <div class="container">
+            <div class="modal fade" id="quizz-modal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="question" class="modal-title"></h3>
+                            <button id="close-button" class="modal-button close" data-dismiss="modal" onclick="stop()">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
                         </div>
 
-                        <div id="result" hidden></div>
-                    </div>
+                        <div class="modal-body">
+                            <div id="space">
+                                <div id="clock" class="inline"><div id="clock-content">10</div></div>
+                                <div id="hint" class="inline">
+                                    <img id="hint-image" src="images/hint.jpg" width="100%" height="100%">
+                                    <div id="hint-content"></div>
+                                </div>
+                                
+                            </div>
+                            <div id="final_score" class="final_score" hidden>
 
-                    <div class="modal-footer">
-                        <span id="recent_result"></span>
-                        <span id="correct_answer">Correct Answers: <span id="score"></span></span>
+                            </div>
+                            <div id="correct_question" class="final_score" hidden>
 
+                            </div>
+                            <div id="answers">
+                                <input id="answer0" type="button" class="btn btn-lg btn-primary btn-block" value=""
+                                    onclick="check(this.value);">
+                                <input id="answer1" type="button" class="btn btn-lg btn-primary btn-block" value=""
+                                    onclick="check(this.value);">
+                                <input id="answer2" type="button" class="btn btn-lg btn-primary btn-block" value=""
+                                    onclick="check(this.value);">
+                                <input id="answer3" type="button" class="btn btn-lg btn-primary btn-block" value=""
+                                    onclick="check(this.value);">
+                            </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <span id="score">
+                                <span>Your points: <strong id="points"></strong></span> |
+                                <span>Correct answers: <strong id="correct-answer"></strong></span>
+                            </span>
+                            <span id="result" hidden></span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row text-center" id="form_qTopic">
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-50 topic-card">
-                    <img class="card-img-top" width="300" height="300" src="images/general.png" alt="General topic">
-                    <div class="card-body">
-                        <h4 class="card-title">General</h4>
-                        <p class="card-text">Many types of question to test the width of your knowledge</p>
-                        <button class="btn btn-primary" onclick="play(topics.general_topic)" data-toggle="modal"
-                            data-target="#quizz-modal">Go!</button>
+            <div id="topic-list" class="row text-center">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-50 topic-card">
+                        <img class="card-img-top" width="300" height="300" src="images/general.png" alt="General topic">
+                        <div class="card-body">
+                            <h4 class="card-title">General</h4>
+                            <p class="card-text">Many types of question to test the width of your knowledge</p>
+                            <button class="btn btn-primary" onclick="chooseTopic(topics.general_topic)" data-toggle="modal"
+                                data-target="#quizz-modal">Go!</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-50 topic-card">
-                    <img class="card-img-top" width="300" height="300" src="images/calculation.jpg"
-                        alt="Calculation topic">
-                    <div class="card-body">
-                        <h4 class="card-title">Calculation</h4>
-                        <p class="card-text">Let's sharpen your mind math</p>
-                        <button class="btn btn-primary" onclick="play(topics.calculation_topic)" data-toggle="modal"
-                            data-target="#quizz-modal">Go!</button>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-50 topic-card">
+                        <img class="card-img-top" width="300" height="300" src="images/calculation.jpg"
+                            alt="Calculation topic">
+                        <div class="card-body">
+                            <h4 class="card-title">Calculation</h4>
+                            <p class="card-text">Let's sharpen your mind math</p>
+                            <button class="btn btn-primary" onclick="chooseTopic(topics.calculation_topic)" data-toggle="modal"
+                                data-target="#quizz-modal">Go!</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-50 topic-card">
-                    <img class="card-img-top" width="300" height="300" src="images/math.jpg" alt="Math topic">
-                    <div class="card-body">
-                        <h4 class="card-title">Math</h4>
-                        <p class="card-text">Mathematics rightly viewed possesses not only truth but supreme beauty</p>
-                        <button class="btn btn-primary" onclick="play(topics.math_topic)" data-toggle="modal"
-                            data-target="#quizz-modal">Go!</button>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-50 topic-card">
+                        <img class="card-img-top" width="300" height="300" src="images/math.jpg" alt="Math topic">
+                        <div class="card-body">
+                            <h4 class="card-title">Math</h4>
+                            <p class="card-text">Mathematics rightly viewed possesses not only truth but supreme beauty</p>
+                            <button class="btn btn-primary" onclick="chooseTopic(topics.math_topic)" data-toggle="modal"
+                                data-target="#quizz-modal">Go!</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-50 topic-card">
-                    <img class="card-img-top" width="300" height="300" src="images/coding.jpg" alt="Coding topic">
-                    <div class="card-body">
-                        <h4 class="card-title">Coding</h4>
-                        <p class="card-text">The sooner you start to code, the longer the program will take</p>
-                        <button class="btn btn-primary" onclick="play(topics.coding_topic)" data-toggle="modal"
-                            data-target="#quizz-modal">Go!</button>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-50 topic-card">
+                        <img class="card-img-top" width="300" height="300" src="images/coding.jpg" alt="Coding topic">
+                        <div class="card-body">
+                            <h4 class="card-title">Coding</h4>
+                            <p class="card-text">The sooner you start to code, the longer the program will take</p>
+                            <button class="btn btn-primary" onclick="chooseTopic(topics.coding_topic)" data-toggle="modal"
+                                data-target="#quizz-modal">Go!</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card h-50 topic-card">
-                    <img class="card-img-top" width="300" height="300" src="images/environment.jpeg"
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-50 topic-card">
+                        <img class="card-img-top" width="300" height="300" src="images/environment.jpeg" 
                         alt="Environment topic">
-                    <div class="card-body">
-                        <h4 class="card-title">Environment</h4>
-                        <p class="card-text">We won't have a society if we destroy the environment</p>
-                        <button class="btn btn-primary" onclick="play(topics.environment_topic)" data-toggle="modal"
-                            data-target="#quizz-modal">Go!</button>
+                        <div class="card-body">
+                            <h4 class="card-title">Environment</h4>
+                            <p class="card-text">We won't have a society if we destroy the environment</p>
+                            <button class="btn btn-primary" onclick="chooseTopic(topics.environment_topic)" data-toggle="modal"
+                                data-target="#quizz-modal">Go!</button>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
-
-
-
-
-    </div>
-
-
-    <!-- <div>
-        <div id="thuvanmay">
-            <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
-            <input type="number" name="" id="inscore">
-            <input type="button" value="doi diem" id="quay" onclick="quayso();">
-            <script>
-                document.getElementById("inscore").style.display = 'none';
-                document.getElementById("quay").style.display = 'none';
-            </script>
-        </div>
-
-        <div>
-            <divid="chude">
-
-                <div class="row text-center" id="form_qTopic">
-
-                    
-                </div>
-            </div>
-
-            <div id="thongbao">
-                <div id="thongBaoKq"></div>
-                <div id="end">
-                    <div id="score"></div>
-                </div>
-            </div>
-            <div id="formGame">
-                <div id="cauHoi"></div>
-                <div id="support">
-                    <input class="sp" type="button" value="hint" id="hint" onclick="doihint(hint.value);">
-                    <input class="sp" type="button" value="50 / 50" id="trogiup" onclick="trogiup();">
-                </div>
-
-                <div id="formGame0">
-                    <div id="formGame1">
-                        <hr>
-                        <input class="btn btn-secondary" type="button" value="" id="answer1"
-                            onclick="check(answer1.value,1);">
-                        <input class="btn btn-secondary" type="button" value="" id="answer2"
-                            onclick="check(answer2.value,2);">
-                    </div>
-                    <div id="formGame2">
-                        <input class="btn btn-secondary" type="button" value="" id="answer3"
-                            onclick="check(answer3.value,3);">
-                        <input class="btn btn-secondary" type="button" value="" id="answer4"
-                            onclick="check(answer4.value,4);">
-                    </div>
-                </div>
-                <script>
-                    document.getElementById("formGame").style.display = 'none';
-                </script>
-            </div>
-        </div>
-    </div> -->
 
     <div class="container">
-
-        <div id="form_profile" class="form_profile" hidden>
-            <div class="form-group">
-                <label for="">Name: </label>
-                <input type="text" id="input_pName" value="" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="">Email: </label>
-                <input type="text" id="input_pEmail" value="" class="form-control" readonly>
-            </div>
-            <div class="form-group" id="form_pPassword">
-                <label for="">Password: </label>
-                <input type="password" id="input_pPassword" value="" class="form-control">
-            </div>
-            <button id="btn_updateAcc" class="btn btn-outline-success">Update Account</button>
-            <button id="btn_editInfo" class="btn btn-outline-success">Edit</button>
-
-        </div>
         <div id="question-list-page" hidden>
             <div class="form-group" id="ls_action">
                 <label for="select_topic">Topic: </label>
@@ -443,7 +401,7 @@
                 </select>
             </div>
 
-            <table id="question-list-page" border="1" class="table table-striped">
+            <table border="1" class="table table-striped">
                 <thead id="table_head">
                     <tr>
                         <th>Question</th>
@@ -467,135 +425,23 @@
                 </tbody>
             </table>
         </div>
-
-        <!-- <div id="" hidden>
-            <div id="thuvanmay">
-                <input type="button" value="thuvanmay" id="quayso" onclick="quay();">
-                <input type="number" name="" id="inscore">
-                <input type="button" value="doi diem" id="quay" onclick="quayso();">
-                <script>
-                    document.getElementById("inscore").style.display = 'none';
-                    document.getElementById("quay").style.display = 'none';
-                </script>
-            </div>
-
-            <div id="playgame">
-                <div id="chude">
-                    <div class="row text-center" id="form_qTopic">
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="card h-50">
-                                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                                <div class="card-body">
-                                    <h4 class="card-title">General</h4>
-                                    <p class="card-text"></p>
-                                </div>
-                                <div class="card-footer">
-                                    <a href="#" class="btn btn-primary" onclick="start(topics.general_topic)">Go!</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="card h-50">
-                                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                                <div class="card-body">
-                                    <h4 class="card-title">Calculation</h4>
-                                    <p class="card-text"></p>
-                                </div>
-                                <div class="card-footer">
-                                    <a href="#" class="btn btn-primary"
-                                        onclick="start(topics.calculation_topic)">Go!</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="card h-50">
-                                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                                <div class="card-body">
-                                    <h4 class="card-title">Maths</h4>
-                                    <p class="card-text"></p>
-                                </div>
-                                <div class="card-footer">
-                                    <a href="#" class="btn btn-primary" onclick="start(topics.math_topic)">Go!</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="card h-50">
-                                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                                <div class="card-body">
-                                    <h4 class="card-title">Coding</h4>
-                                    <p class="card-text"></p>
-                                </div>
-                                <div class="card-footer">
-                                    <a href="#" class="btn btn-primary" onclick="start(topics.coding_topic)">Go!</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 mb-4">
-                            <div class="card h-50">
-                                <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-                                <div class="card-body">
-                                    <h4 class="card-title">Environment</h4>
-                                    <p class="card-text"></p>
-                                </div>
-                                <div class="card-footer">
-                                    <a href="#" class="btn btn-primary"
-                                        onclick="start(topics.environment_topic)">Go!</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="thongbao">
-                    <div id="thongBaoKq"></div>
-                    <div id="end">
-                        <div id="score"></div>
-                    </div>
-                </div>
-                <div id="formGame">
-                    <div id="cauHoi"></div>
-                    <div id="support">
-                        <input class="sp" type="button" value="hint" id="hint" onclick="doihint(hint.value);">
-                        <input class="sp" type="button" value="50 / 50" id="trogiup" onclick="trogiup();">
-                    </div>
-
-                    <div id="formGame0">
-                        <div id="formGame1">
-                            <hr>
-                            <input class="btn btn-secondary" type="button" value="" id="answer1"
-                                onclick="check(answer1.value,1);">
-                            <input class="btn btn-secondary" type="button" value="" id="answer2"
-                                onclick="check(answer2.value,2);">
-                        </div>
-                        <div id="formGame2">
-                            <input class="btn btn-secondary" type="button" value="" id="answer3"
-                                onclick="check(answer3.value,3);">
-                            <input class="btn btn-secondary" type="button" value="" id="answer4"
-                                onclick="check(answer4.value,4);">
-                        </div>
-                    </div>
-                    <script>
-                        document.getElementById("formGame").style.display = 'none';
-                    </script>
-                </div>
-            </div>
-        </div> -->
-
-
     </div>
 
-
-
-
-
-    <!-- Footer -->
-    
-
+    <div class="container">
+        <table class="table table-striped" id="table_ranking" hidden>
+            <thead class="background_green">
+                <th>No.</th>
+                <th>Name</th>
+                <th>Score</th>
+            </thead>
+            <tbody id="tbody_ranking">
+                <tr id="row_ranking0"></tr>
+                <tr id="row_ranking1"></tr>
+            </tbody>
+        </table>
+    </div>
 
     <script src="index.js"></script>
-
 </body>
 
 </html>

@@ -4,6 +4,7 @@
 
 .col_action {
   width: 10%;
+  vertical-align: middle !important;
 }
 
 .col_hint {
@@ -50,11 +51,6 @@ body {
   /* Vertically center the text there */
   background-color: #f5f5f5;
 }
-
-.row-padding {
-  margin: 40px 0px;
-}
-
 .form_add {
   margin: 40px;
 }
@@ -129,6 +125,49 @@ body {
   font-size: 30px;
 }
 
+#btn_add_question {
+  outline: 0;
+}
+#btn_add_topic {
+  outline: 0;
+}
+.card-text {
+  height: 60px;
+  line-height: 20px;
+}
+.alert {
+  margin-bottom: 0rem !important;
+}
+.background_green{
+  background-color: #71bc42;
+  color: #ffffff;
+}
+
 #nav-bar {
-  height: 10%;
+  height: 10vh;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+.modal-header {
+  background: #28a745;
+  color: white;
+}
+.modal-title {
+  margin: auto;
+  position: relative;
+}
+#edit-profile .modal-header {
+  background: #28a745;
+}
+button {
+  outline: 0;  
+}
+
+#table_ranking{
+  border: 1px solid #f5f5f5;
+}
+.card{
+  border: 0px !important;
 }
