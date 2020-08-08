@@ -110,10 +110,10 @@ function showItems(arr) {
             tableBody.rows[i - 1].contentEditable = "true";
             tableBody.rows[i - 1].onfocusout = function () {
                 tableBody.rows[i - 1].contentEditable = "false";
-                topic[i - 2].question = tableBody.rows[i - 1].cells[0].innerHTML;
-                topic[i - 2].correctAnswer = tableBody.rows[i - 1].cells[1].innerHTML;
-                topic[i - 2].wrongAnswers = tableBody.rows[i - 1].cells[2].innerHTML;
-                topic[i - 2].hint = tableBody.rows[i - 1].cells[3].innerHTML;
+                topics[i - 2].question = tableBody.rows[i - 1].cells[0].innerHTML;
+                topics[i - 2].correctAnswer = tableBody.rows[i - 1].cells[1].innerHTML;
+                topics[i - 2].wrongAnswers = tableBody.rows[i - 1].cells[2].innerHTML;
+                topics[i - 2].hint = tableBody.rows[i - 1].cells[3].innerHTML;
             }
         }
         buttonUpdate.classList.add("btn-warning");
@@ -514,6 +514,7 @@ function play() {
         currentTopic[currentQuestion].wrongAnswers[2],
         currentTopic[currentQuestion].correctAnswer
     ];
+    console.log('answers: '+ answers)
     document.getElementById("question").innerHTML = currentTopic[currentQuestion].question;
     document.getElementById("points").innerHTML = currentUser.points;
     document.getElementById("correct-answer").innerHTML = currentScore / 10;
