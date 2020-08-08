@@ -567,14 +567,14 @@ btn_rank.addEventListener('click', function () {
         homePage.hidden = true;
         table_ranking.hidden = false
         let score = 0;
-        for (let i = 0; i < accounts.length; i++) {
+        for (let i = 1; i < accounts.length; i++) {
             let arr_score = accounts[i].points
             console.log('arr_score: '+arr_score)
             // for (let j = 0; j < arr_score; j++) {
             //     score = score + arr_score[j]
             // }
             document.getElementById('tbody_ranking').insertAdjacentHTML('beforeend',
-                '<tr id = "row_ranking' + i + '"><td>' + (i + 1) + '</td><td>' + accounts[i].email + '</td><td>' + arr_score + '</td></tr>')
+                '<tr id = "row_ranking' + i + '"><td>' + (i) + '</td><td>' + accounts[i].email + '</td><td>' + arr_score + '</td></tr>')
         }
     }
 })
