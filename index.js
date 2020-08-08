@@ -59,7 +59,7 @@ function addItem() {
     let data = {
         question: document.getElementById("input_question").value,
         correctAnswer: document.getElementById("input_correct").value,
-        wrongAnswers: document.getElementById("input_wrong").value.split(", "),
+        wrongAnswers: document.getElementById("input_wrong").value,
         hint: document.getElementById("input_hint").value,
     }
     if (data.question.trim() == '' || data.wrongAnswers.trim() == '' || data.correctAnswer.trim() == '') {
@@ -67,6 +67,7 @@ function addItem() {
     } else {
         document.getElementById("add-question-form").reset();
         $("#add-question").modal("hide");
+        data.wrongAnswers = data.wrongAnswers.split(", ");
         currentTopicToDisplay.push(data);
         let arr = [data.question, data.correctAnswer, data.wrongAnswers, data.hint];
         showItems(arr);
@@ -321,7 +322,7 @@ let registerFunction = function () {
         hintList: []
     }
     accounts.push(newAccount);
-    
+  
     alertSuccess('Register successfully!');
     document.getElementById('register-form').reset();
     document.getElementById("redirect-to-login").onclick();
